@@ -49,9 +49,167 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communication\CommunicationHandler.cs" />
+    <Compile Include="Communication\ICommunicator.cs" />
+    <Compile Include="Communication\InterDeviceCommunicator.cs" />
+    <Compile Include="Communication\OpponentRaceProgressCoordinator.cs" />
+    <Compile Include="Data\AreaDataContainer.cs" />
+    <Compile Include="Data\Avatar\AvatarComponent.cs" />
+    <Compile Include="Data\Avatar\AvatarComponentChildTintOverride.cs" />
+    <Compile Include="Data\Avatar\AvatarComponentManager.cs" />
+    <Compile Include="Data\Avatar\AvatarComponentMapping.cs" />
+    <Compile Include="Data\Avatar\AvatarComponentSet.cs" />
+    <Compile Include="Data\LevelData.cs" />
+    <Compile Include="Data\PhoneSettings.cs" />
+    <Compile Include="Data\Profile.cs" />
+    <Compile Include="Data\RaceLevelData.cs" />
+    <Compile Include="Data\RacePlayerCommunicationData.cs" />
+    <Compile Include="Data\SmashBlockItemData.cs" />
+    <Compile Include="Data\SurvivalLevelData.cs" />
+    <Compile Include="Data\UniversalSettings.cs" />
+    <Compile Include="Definitions.cs" />
+    <Compile Include="Effects\BackgroundSnow.cs" />
+    <Compile Include="Effects\FullScreenColourOverlay.cs" />
+    <Compile Include="Effects\GlowBurst.cs" />
+    <Compile Include="Effects\Particles\AdditiveLayerParticleEffectManager.cs" />
+    <Compile Include="Effects\Particles\OpaqueLayerParticleEffectManager.cs" />
+    <Compile Include="Effects\Particles\ParticleEffectManager.cs" />
+    <Compile Include="Effects\Popups\AutoDismissingPopup.cs" />
+    <Compile Include="Effects\Popups\MappingManager.cs" />
+    <Compile Include="Effects\Popups\PopupBase.cs" />
+    <Compile Include="Effects\Popups\PopupRequiringDismissal.cs" />
+    <Compile Include="Effects\SmashBlockItems\SmashBlockGlowingItem.cs" />
+    <Compile Include="Effects\SmashBlockItems\SmashBlockItem.cs" />
+    <Compile Include="Effects\SmashBlockItems\SmashBlockItemFactory.cs" />
+    <Compile Include="Effects\SmashBlockItems\SmashBlockItemMotionEngine.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="Gameplay\Controllers\PlayerTrackingCameraController.cs" />
+    <Compile Include="Gameplay\Coordination\RacePowerUpCoordinator.cs" />
+    <Compile Include="Gameplay\Coordination\RaceProgressCoordinator.cs" />
+    <Compile Include="Gameplay\LevelFactory.cs" />
+    <Compile Include="Gameplay\Objects\Behaviours\ICanHaveGlowEffect.cs" />
+    <Compile Include="Gameplay\Objects\Behaviours\IRaceRestartPoint.cs" />
+    <Compile Include="Gameplay\Objects\Characters\Base\Character.cs" />
+    <Compile Include="Gameplay\Objects\Characters\CharacterFactory.cs" />
+    <Compile Include="Gameplay\Objects\Characters\Player\Player.cs" />
+    <Compile Include="Gameplay\Objects\Characters\Player\PlayerMotionEngine.cs" />
+    <Compile Include="Gameplay\Objects\Display\InGameButtonBase.cs" />
+    <Compile Include="Gameplay\Objects\Display\PlayerEventPopup.cs" />
+    <Compile Include="Gameplay\Objects\Display\Race\CountdownPopup.cs" />
+    <Compile Include="Gameplay\Objects\Display\Race\PowerUpButton.cs" />
+    <Compile Include="Gameplay\Objects\Display\Race\PowerUpHelper.cs" />
+    <Compile Include="Gameplay\Objects\Display\Race\PowerUpTimer.cs" />
+    <Compile Include="Gameplay\Objects\Display\Race\QuitRaceButton.cs" />
+    <Compile Include="Gameplay\Objects\Display\Race\RaceDataDisplay.cs" />
+    <Compile Include="Gameplay\Objects\Display\Race\RaceInfoPopup.cs" />
+    <Compile Include="Gameplay\Objects\Display\Race\WaitingMessage.cs" />
+    <Compile Include="Gameplay\Objects\Display\Speedometer.cs" />
+    <Compile Include="Gameplay\Objects\Display\StatusDisplay.cs" />
+    <Compile Include="Gameplay\Objects\Display\Survival\PauseButton.cs" />
+    <Compile Include="Gameplay\Objects\Display\Survival\SurvivalDataDisplay.cs" />
+    <Compile Include="Gameplay\Objects\Display\Survival\TutorialRunner.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Background.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blackout.cs" />
+    <Compile Include="Gameplay\Objects\Environment\BlockMap.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\Block.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\BlockFactory.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\IceBlock.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\ObstructionBlock.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\RaceModePowerUpSmashBlock.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\SmashBlock.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\SpikeBlock.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\SpringBlock.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\SurvivalModeItemSmashBlock.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Collectables\Collectable.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Collectables\CollectableExitMotionEngine.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Collectables\CollectableFactory.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Collectables\GoldenTicket.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Collectables\ScoringCandy.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Flags\CheckpointFlag.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Flags\Flag.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Flags\FlagFactory.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Flags\GoalFlag.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Signposts\OneWaySignpost.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Signposts\RouteMarker.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Signposts\SignpostBase.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Signposts\SignpostFactory.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Signposts\SpeedLimitSignpost.cs" />
+    <Compile Include="Input\DragTapControls.cs" />
+    <Compile Include="Input\GamePadInputProcessor.cs" />
+    <Compile Include="Input\InGameButtonArea.cs" />
+    <Compile Include="Input\InputProcessorBase.cs" />
+    <Compile Include="Input\KeyboardInputProcessor.cs" />
+    <Compile Include="Input\ScreenSectionControls.cs" />
+    <Compile Include="Input\TouchControls.cs" />
+    <Compile Include="Interface\Content\AvatarContent.cs" />
+    <Compile Include="Interface\Content\ContentBase.cs" />
+    <Compile Include="Interface\Content\ImageContent.cs" />
+    <Compile Include="Interface\Content\ImageContentWithGlow.cs" />
+    <Compile Include="Interface\Content\SurvivalAreaCompleteContentFactory.cs" />
+    <Compile Include="Interface\Content\TextContent.cs" />
+    <Compile Include="Interface\Dialogs\Button.cs" />
+    <Compile Include="Interface\Dialogs\ButtonDialog.cs" />
+    <Compile Include="Interface\Dialogs\Carousel\AreaSelectionCarouselDialog.cs" />
+    <Compile Include="Interface\Dialogs\Carousel\AvatarSelectionCarouselDialog.cs" />
+    <Compile Include="Interface\Dialogs\Carousel\CarouselAreaImage.cs" />
+    <Compile Include="Interface\Dialogs\Carousel\CarouselAvatar.cs" />
+    <Compile Include="Interface\Dialogs\Carousel\CarouselDialog.cs" />
+    <Compile Include="Interface\Dialogs\Carousel\CarouselFlatImage.cs" />
+    <Compile Include="Interface\Dialogs\Carousel\ICarouselDialogItem.cs" />
+    <Compile Include="Interface\Dialogs\DialogAvatar.cs" />
+    <Compile Include="Interface\Dialogs\DisconnectedDialog.cs" />
+    <Compile Include="Interface\Dialogs\EditCharacter\ComponentSelectionCarouselDialog.cs" />
+    <Compile Include="Interface\Dialogs\EditCharacter\ComponentSetSelectionCarouselDialog.cs" />
+    <Compile Include="Interface\Dialogs\HelpScenes\BackDialog.cs" />
+    <Compile Include="Interface\Dialogs\KeyboardDialog.cs" />
+    <Compile Include="Interface\Dialogs\RaceFinishScene\ResultsAvatar.cs" />
+    <Compile Include="Interface\Dialogs\RaceFinishScene\ResultsDialog.cs" />
+    <Compile Include="Interface\Dialogs\RaceFinishScene\ResultsPopup.cs" />
+    <Compile Include="Interface\Dialogs\RaceGameplayScene\QuitRaceDialog.cs" />
+    <Compile Include="Interface\Dialogs\RaceJoinScene\CourseSelectionCarouselDialog.cs" />
+    <Compile Include="Interface\Dialogs\RaceJoinScene\JoinRaceOptionsDialog.cs" />
+    <Compile Include="Interface\Dialogs\RaceJoinScene\OpponentSelector.cs" />
+    <Compile Include="Interface\Dialogs\RaceJoinScene\RaceOpponentListDialog.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\ConsumablesDialog.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\PurchaseCompleteDialog.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\StoreCarouselItem.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\StorePurchaseDialog.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\StoreStatusDialog.cs" />
+    <Compile Include="Interface\Dialogs\SurvivalGameplayScene\NoLivesDialog.cs" />
+    <Compile Include="Interface\Dialogs\SurvivalGameplayScene\PauseDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\CharacterSelectionCarouselDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\MainMenuDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\NewContentUnlockedDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\OptionsDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\RateBuyReminderDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\ResetAreasCompleteDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\ResetAreasConfirmDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\StartMenuDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\SurvivalStartCarouselDialog.cs" />
+    <Compile Include="Interface\Objects\ComponentSetDisplayAvatar.cs" />
+    <Compile Include="Interface\Objects\EditCharacter\CustomisationDisplayAvatar.cs" />
+    <Compile Include="Interface\Objects\EditCharacter\CustomisationDisplayBlock.cs" />
+    <Compile Include="Interface\Objects\EditCharacter\CustomisationDisplayBlockMotionEngine.cs" />
+    <Compile Include="Interface\Translator.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\BaseClasses\ContentSceneWithBackDialog.cs" />
+    <Compile Include="Scenes\BaseClasses\FlatContentScene.cs" />
+    <Compile Include="Scenes\BaseClasses\MenuDialogScene.cs" />
+    <Compile Include="Scenes\BaseClasses\StaticSceneBase.cs" />
+    <Compile Include="Scenes\Gameplay\GameplaySceneBase.cs" />
+    <Compile Include="Scenes\Gameplay\Race\RaceFinishScene.cs" />
+    <Compile Include="Scenes\Gameplay\Race\RaceGameplayScene.cs" />
+    <Compile Include="Scenes\Gameplay\Race\RaceStartScene.cs" />
+    <Compile Include="Scenes\Gameplay\Survival\SurvivalAreaCompleteScene.cs" />
+    <Compile Include="Scenes\Gameplay\Survival\SurvivalGameplayScene.cs" />
+    <Compile Include="Scenes\NonGame\AvatarCustomisationScene.cs" />
+    <Compile Include="Scenes\NonGame\CreditsScene.cs" />
+    <Compile Include="Scenes\NonGame\LoadingScene.cs" />
+    <Compile Include="Scenes\NonGame\StoreScene.cs" />
+    <Compile Include="Scenes\NonGame\TitleScene.cs" />
+    <Compile Include="UrlProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -68,6 +226,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MonoGame\MonoGame-develop\MonoGame.Framework\MonoGame.Framework.Android.csproj">
+      <Project>{ba9476cf-99ba-4d03-92f2-73d2c5e58883}</Project>
+      <Name>MonoGame.Framework.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\MonoGame-develop\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
+      <Project>{713ee5ca-c850-42ad-ac67-b6546ac8bffb}</Project>
+      <Name>MonoGame.Framework.Net.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{e8d5ff41-f41a-4666-b4eb-f04df17bde5d}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

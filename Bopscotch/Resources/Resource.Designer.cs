@@ -26,6 +26,8 @@ namespace Bopscotch
 		
 		public static void UpdateIdValues()
 		{
+			global::Core.Resource.String.ApplicationName = global::Bopscotch.Resource.String.ApplicationName;
+			global::Core.Resource.String.Hello = global::Bopscotch.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

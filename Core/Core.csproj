@@ -43,14 +43,122 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\Engines\AnimationEngineBase.cs" />
+    <Compile Include="Animation\Engines\ColourAnimationEngine.cs" />
+    <Compile Include="Animation\Engines\IAnimationEngine.cs" />
+    <Compile Include="Animation\Engines\SkeletalAnimationEngine.cs" />
+    <Compile Include="Animation\Engines\SpriteSheetAnimationEngine.cs" />
+    <Compile Include="Animation\Engines\TransformationAnimationEngine.cs" />
+    <Compile Include="Animation\Sequencing\AnimationSequence.cs" />
+    <Compile Include="Animation\Sequencing\ColourKeyframe.cs" />
+    <Compile Include="Animation\Sequencing\IKeyframe.cs" />
+    <Compile Include="Animation\Sequencing\KeyframeBase.cs" />
+    <Compile Include="Animation\Sequencing\SkeletalKeyframe.cs" />
+    <Compile Include="Animation\Sequencing\SpriteSheetKeyframe.cs" />
+    <Compile Include="Animation\Sequencing\TransformationKeyframe.cs" />
+    <Compile Include="Animation\Skeletons\IBone.cs" />
+    <Compile Include="Animation\Skeletons\ISkeleton.cs" />
+    <Compile Include="Animation\Skeletons\StorableBone.cs" />
+    <Compile Include="Asset Management\AnimationDataManager.cs" />
+    <Compile Include="Asset Management\CollisionDataManager.cs" />
+    <Compile Include="Asset Management\EmitterFactoryManager.cs" />
+    <Compile Include="Asset Management\FileManager.cs" />
+    <Compile Include="Asset Management\MusicManager.cs" />
+    <Compile Include="Asset Management\SkeletonDataManager.cs" />
+    <Compile Include="Asset Management\SoundEffectManager.cs" />
+    <Compile Include="Asset Management\TextureManager.cs" />
+    <Compile Include="Effects\Particles\Emitter.cs" />
+    <Compile Include="Effects\Particles\EmitterFactory.cs" />
+    <Compile Include="Effects\Particles\Particle.cs" />
+    <Compile Include="Effects\Particles\ParticleController.cs" />
+    <Compile Include="Game Base\GameBase.cs" />
+    <Compile Include="Game Objects\Base Classes\DisposableSimpleDrawableObject.cs" />
+    <Compile Include="Game Objects\Base Classes\DisposableSkeleton.cs" />
+    <Compile Include="Game Objects\Base Classes\StorableSimpleDrawableObject.cs" />
+    <Compile Include="Game Objects\Base Classes\StorableSkeleton.cs" />
+    <Compile Include="Game Objects\Behaviours\Animation\IAnimated.cs" />
+    <Compile Include="Game Objects\Behaviours\Animation\IColourAnimatable.cs" />
+    <Compile Include="Game Objects\Behaviours\Animation\ISpriteSheetAnimatable.cs" />
+    <Compile Include="Game Objects\Behaviours\Animation\ITransformationAnimatable.cs" />
+    <Compile Include="Game Objects\Behaviours\Camera\ICameraLinked.cs" />
+    <Compile Include="Game Objects\Behaviours\Camera\ICameraRelative.cs" />
+    <Compile Include="Game Objects\Behaviours\Camera\ICameraRelativeWithOffCameraDispose.cs" />
+    <Compile Include="Game Objects\Behaviours\Collisions\ColliderType.cs" />
+    <Compile Include="Game Objects\Behaviours\Collisions\IBoxCollidable.cs" />
+    <Compile Include="Game Objects\Behaviours\Collisions\ICircularCollidable.cs" />
+    <Compile Include="Game Objects\Behaviours\Collisions\ICollidable.cs" />
+    <Compile Include="Game Objects\Behaviours\Collisions\ICompoundPolygonCollidable.cs" />
+    <Compile Include="Game Objects\Behaviours\Collisions\IPolygonCollidable.cs" />
+    <Compile Include="Game Objects\Behaviours\Effects\IHasParticleEffects.cs" />
+    <Compile Include="Game Objects\Behaviours\IGameObject.cs" />
+    <Compile Include="Game Objects\Behaviours\IHasLifeCycle.cs" />
+    <Compile Include="Game Objects\Behaviours\ILinkedToOtherObjects.cs" />
+    <Compile Include="Game Objects\Behaviours\IMobile.cs" />
+    <Compile Include="Game Objects\Behaviours\IPausable.cs" />
+    <Compile Include="Game Objects\Behaviours\ITemporary.cs" />
+    <Compile Include="Game Objects\Behaviours\IWorldObject.cs" />
+    <Compile Include="Game Objects\Behaviours\Rendering\ISimpleRenderable.cs" />
+    <Compile Include="Game Objects\Behaviours\Rendering\ITextureManaged.cs" />
+    <Compile Include="Game Objects\Behaviours\Serialization\IObjectCreator.cs" />
+    <Compile Include="Game Objects\Behaviours\Serialization\ISerializable.cs" />
+    <Compile Include="Game Objects\Behaviours\Serialization\ISerializableWithPostDeserialize.cs" />
+    <Compile Include="Game Objects\Controllers\AnimationController.cs" />
+    <Compile Include="Game Objects\Controllers\Camera\CameraControllerBase.cs" />
+    <Compile Include="Game Objects\Controllers\Camera\MobileCameraController.cs" />
+    <Compile Include="Game Objects\Controllers\Camera\MobileObjectTrackingCameraController.cs" />
+    <Compile Include="Game Objects\Controllers\Collisions\AllToAllCollisionController.cs" />
+    <Compile Include="Game Objects\Controllers\Collisions\CollisionControllerBase.cs" />
+    <Compile Include="Game Objects\Controllers\Collisions\OneToManyCollisionController.cs" />
+    <Compile Include="Game Objects\Controllers\MotionController.cs" />
+    <Compile Include="Game Objects\Controllers\PauseController.cs" />
+    <Compile Include="Game Objects\Controllers\Rendering\RenderController.cs" />
+    <Compile Include="Game Objects\Controllers\Rendering\RenderLayer.cs" />
+    <Compile Include="Game Objects\Tile Map\ITile.cs" />
+    <Compile Include="Game Objects\Tile Map\TileMap.cs" />
+    <Compile Include="Gamestate Management\AssetLoaderScene.cs" />
+    <Compile Include="Gamestate Management\Scene.cs" />
+    <Compile Include="Gamestate Management\SceneParameters.cs" />
+    <Compile Include="Gamestate Management\StorableScene.cs" />
+    <Compile Include="Input\TouchProcesser.cs" />
+    <Compile Include="Motion\Engines\BounceEntryMotionEngine.cs" />
+    <Compile Include="Motion\Engines\BounceExitMotionEngine.cs" />
+    <Compile Include="Motion\Engines\DecelerateEntryMotionEngine.cs" />
+    <Compile Include="Motion\Engines\EasingMotionEngineBase.cs" />
+    <Compile Include="Motion\Engines\LinearMotionEngine.cs" />
+    <Compile Include="Motion\Engines\TrackingMotionEngine.cs" />
+    <Compile Include="Motion\IMotionEngine.cs" />
+    <Compile Include="Renderable\Box.cs" />
+    <Compile Include="Renderable\RenderTools.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\Serializer.cs" />
+    <Compile Include="Shapes\Circle.cs" />
+    <Compile Include="Shapes\Polygon.cs" />
+    <Compile Include="Timing\GlobalTimerController.cs" />
+    <Compile Include="Timing\ITimerController.cs" />
+    <Compile Include="Timing\Timer.cs" />
+    <Compile Include="Timing\TimerController.cs" />
+    <Compile Include="Utility\Definitions.cs" />
+    <Compile Include="Utility\Random.cs" />
+    <Compile Include="Utility\Range.cs" />
+    <Compile Include="Utility\TextWriter.cs" />
+    <Compile Include="Utility\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MonoGame\MonoGame-develop\MonoGame.Framework\MonoGame.Framework.Android.csproj">
+      <Project>{ba9476cf-99ba-4d03-92f2-73d2c5e58883}</Project>
+      <Name>MonoGame.Framework.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\MonoGame-develop\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
+      <Project>{713ee5ca-c850-42ad-ac67-b6546ac8bffb}</Project>
+      <Name>MonoGame.Framework.Net.Android</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

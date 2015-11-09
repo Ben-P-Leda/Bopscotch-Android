@@ -1,31 +1,82 @@
 ﻿using System;
+using System.Threading;
+
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Provider;
+using Android.Net;
+
+using Microsoft.Xna.Framework;
 
 namespace Bopscotch
 {
-    [Activity(Label = "Bopscotch", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    [Activity(
+        Label = "Bopscotch",
+#if __ANDROID_11__
+        HardwareAccelerated = false,
+#endif
+        ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize,
+        MainLauncher = true,
+        ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape,
+        Icon = "@drawable/Icon")]
+    public class MainActivity : AndroidGameActivity
     {
-        int count = 1;
+        public static bool SwitchToBrowser;
+        public static bool AwaitingKeyRequest;
+        public static string KeyRequestResult;
+
+        public static ConnectivityManager NetManager;
+
+        private Game1 _game;
+        private Bundle _bundle;
+        private Thread _keyCheckThread = null;
 
         protected override void OnCreate(Bundle bundle)
         {
+            _bundle = bundle;
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            FrameLayout Layout = new FrameLayout(this);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            _game = new Game1();
+            SetContentView(_game.Services.GetService<View>());
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            Data.Profile.Settings.Identity = (Settings.Secure.GetString(this.ContentResolver, Settings.Secure.AndroidId));
+
+            UrlProvider.PackageName = ApplicationContext.PackageName;
+
+            SwitchToBrowser = false;
+            AwaitingKeyRequest = false;
+            KeyRequestResult = "";
+
+            _game.Run();
+
+            NetManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+        }
+
+        protected override void OnPause()
+        {
+            _game.HandleActivityPauseEvent();
+
+            Leda.Core.TextWriter.CleanDownForActivityPause();
+            Bopscotch.Data.Profile.PlayingRaceMode = false;
+            base.OnPause();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            SwitchToBrowser = false;
+
+            _game.HandleActivityResumeEvent();
         }
     }
 }
+
 
