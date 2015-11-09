@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<tutorial-steps>
+  <step x="640" y="1520">
+Green flags mark the start of a
+level, or a restart point when
+racing.
+  </step>
+  <step x="1360" y="1520">
+When above solid ground, tap the
+screen to jump. Jump the obstacle
+ahead!
+  </step>
+  <step x="2800" y="1520">
+To speed up, drag your finger
+across the screen in the direction
+you are going.
+  </step>
+  <step x="3200" y="1520">
+To slow down, drag your finger
+across the screen in the opposite
+direction to the way you are going.
+  </step>
+  <step x="3600" y="1520">
+Your maximum and minimum speeds
+are set by the coloured segments 
+on signs like this one.
+  </step>
+  <step x="4560" y="1520">
+Spring blocks go off when you 
+pass over them, making you jump
+extra high!
+  </step>
+  <step x="5760" y="1120">
+In adventure mode, collecting
+sweets will boost your score.
+  </step>
+  <step x="6720" y="1120">
+Crates can be smashed open by
+jumping into them, and may hold
+useful things!
+  </step>
+  <step x="7150" y="960" height="1">
+This crate held gold ticket. If a
+level is too tough, pause and use 
+a gold ticket to skip it!
+  </step>
+  <step x="7600" y="1120">
+One way signs will make you turn
+round if you try to go past in
+them the wrong way.
+  </step>
+  <step x="8560" y="1120">
+When moving over crates, tap the
+screen to break through them and
+drop down.
+  </step>
+  <step x="9440" y="1120">
+Turn round using one-way signs
+pointing the opposite direction
+to the way you are going.
+  </step>
+  <step x="8960" y="1380" width="5">
+Great! Now head back along the 
+lower level for some important 
+skills to master...
+  </step>
+  <step x="8320" y="1840">
+Notice how this speed sign limits 
+your speed to the green section 
+of the gauge...
+  </step>
+  <step x="7760" y="1840">
+You can chain jumps together by
+double-tapping as you are about
+to land. Try chain jumping the
+gaps ahead!
+  </step>
+  <step x="6480" y="2200" width="11">
+Not quite! Use the signs and spring 
+to go back and have another go...
+  </step>
+  <step x="6360" y="1840" height="5">
+Nice going! Now drop down and 
+continue for another vital skill...
+  </step>
+  <step x="4640" y="2320">
+Longer gaps need more speed to
+jump! After the sign, increase
+your speed then jump the gap.
+Mind the edge!
+  </step>
+  <step x="3140" y="2440" height="1" width="7">
+Unlucky! Use the signs and spring 
+to go back and try again...
+  </step>
+  <step x="3000" y="2320" height="5">
+Fantastic! You will need to change 
+speed both on the ground and in  
+the air to clear some levels.
+  </step>
+  <step x="2320" y="2320">
+These markers show the way to go 
+when racing. If you end up going 
+the wrong way, flags and one
+way signs will turn you round.
+  </step>
+  <step x="1600" y="2320">
+The checkered flag marks the end
+of a level, or a lap when racing.
+  </step>
+  <step x="800" y="2320">
+Tutorial complete! You are now
+ready to take on the Hilltops
+area, and race your friends.
+Good luck!
+  </step>
+</tutorial-steps>

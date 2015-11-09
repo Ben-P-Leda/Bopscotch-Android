@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mappings>
+  <popup name="popup-title" x="0" y="294" width="444" height="72" />
+  <popup name="popup-get-ready" x="312" y="0" width="306" height="51" />
+  <popup name="popup-countdown" x="419" y="171" width="215" height="53" />
+  <popup name="popup-race-not-finished" x="0" y="366" width="505" height="64" />
+  <popup name="popup-race-leading" x="0" y="68" width="355" height="37" />
+  <popup name="popup-race-catching-up" x="0" y="171" width="374" height="37" />
+  <popup name="popup-race-falling-back" x="0" y="210" width="418" height="37" />
+  <popup name="popup-race-draw" x="369" y="104" width="232" height="66" />
+  <popup name="popup-race-you-win" x="0" y="0" width="311" height="67" />
+  <popup name="popup-race-you-lose" x="0" y="106" width="368" height="64" />
+  <popup name="popup-death-1" x="438" y="225" width="157" height="51" />
+  <popup name="popup-clear-1" x="357" y="53" width="242" height="51" />
+  <popup name="popup-area-complete" x="0" y="248" width="437" height="45" />
+  <popup name="popup-tick-icon" x="596" y="225" width="38" height="33" />
+  <popup name="popup-race-wrong-way" x="506" y="385" width="287" height="46" />
+  <popup name="popup-race-last-lap" x="445" y="276" width="223" height="46" />
+  <popup name="popup-race-goal" x="619" y="0" width="148" height="51" />
+</mappings>

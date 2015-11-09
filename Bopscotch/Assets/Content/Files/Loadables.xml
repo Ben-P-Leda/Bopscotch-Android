@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<assets>
+  <textures>
+    <texture name="button-text-container" file="Textures/Interface/button-text-container" />
+    <texture name="button-icon-container" file="Textures/Interface/button-icon-container" />
+    <texture name="button-highlight" file="Textures/Interface/button-highlight" />
+    <texture name="button-highlight-no-caption" file="Textures/Interface/button-highlight-no-caption" />
+    <texture name="button-icons" file="Textures/Interface/button-icon-strip" />
+    <texture name="dialog-presenter" file="Textures/Interface/dialog-presenter" />
+    <texture name="in-dialog-podium" file="Textures/Interface/InDialog/podium" />
+    <texture name="iap-items" file="Textures/Interface/InDialog/iap-items" />
+    <texture name="icon-locked" file="Textures/Interface/Icons/padlock" />
+    <texture name="icon-tick" file="Textures/Interface/Icons/tick" />
+    <texture name="icon-lives" file="Textures/Interface/Icons/lives" />
+    <texture name="speedo-base" file="Textures/Interface/InGame/speedo-base" />
+    <texture name="speedo-segment" file="Textures/Interface/InGame/speedo-segment" />
+    <texture name="speedo-needle" file="Textures/Interface/InGame/speedo-needle" />
+    <texture name="speedo-center" file="Textures/Interface/InGame/speedo-center" />
+    <texture name="speedo-snowflake" file="Textures/Interface/InGame/freeze-speedo-snowflake" />
+    <texture name="clock-base" file="Textures/Interface/InGame/clock-base" />
+    <texture name="clock-needle" file="Textures/Interface/InGame/clock-needle" />
+    <texture name="tap-icon" file="Textures/Interface/InGame/tap-icon" />
+    <texture name="popups" file="Textures/Effects/popups" />
+    <texture name="particle-cloud" file="Textures/Effects/Particles/cloud" />
+    <texture name="particle-wood" file="Textures/Effects/Particles/wood" />
+    <texture name="particle-star" file="Textures/Effects/Particles/star" />
+    <texture name="glow-effect" file="Textures/Effects/glow-effect" />
+    <texture name="background-tutorial" file="Textures/Backgrounds/background-tutorial" />
+    <texture name="background-1" file="Textures/Backgrounds/background-1" />
+    <texture name="background-2" file="Textures/Backgrounds/background-2" />
+    <texture name="background-3" file="Textures/Backgrounds/background-3" />
+    <texture name="background-4" file="Textures/Backgrounds/background-4" />
+    <texture name="background-5" file="Textures/Backgrounds/background-5" />
+    <texture name="background-6" file="Textures/Backgrounds/background-6" />
+    <texture name="background-7" file="Textures/Backgrounds/background-7" />
+    <texture name="block-1" file="Textures/Blocks/Terrain/block-1" />
+    <texture name="block-spring" file="Textures/Blocks/Special/spring" />
+    <texture name="block-smash" file="Textures/Blocks/Special/smash-crate" />
+    <texture name="block-spike-outer" file="Textures/Blocks/Special/spike-outer" />
+    <texture name="block-spike-wheel" file="Textures/Blocks/Special/spike-wheel" />
+    <texture name="block-ice" file="Textures/Blocks/Special/ice" />
+    <texture name="block-obstruction-top-left" file="Textures\Blocks\Obstruction\top-left" />
+    <texture name="block-obstruction-top-right" file="Textures\Blocks\Obstruction\top-right" />
+    <texture name="block-obstruction-single-top" file="Textures\Blocks\Obstruction\single-top" />
+    <texture name="block-obstruction-double-top" file="Textures\Blocks\Obstruction\double-top" />
+    <texture name="block-obstruction-oblong-top" file="Textures\Blocks\Obstruction\oblong-top" />
+    <texture name="block-obstruction-circle-top" file="Textures\Blocks\Obstruction\circle-top" />
+    <texture name="block-obstruction-diamond" file="Textures\Blocks\Obstruction\diamond" />
+    <texture name="candy-1" file="Textures/Collectables/candy-1" />
+    <texture name="candy-2" file="Textures/Collectables/candy-2" />
+    <texture name="candy-3" file="Textures/Collectables/candy-3" />
+    <texture name="candy-4" file="Textures/Collectables/candy-4" />
+    <texture name="candy-5" file="Textures/Collectables/candy-5" />
+    <texture name="golden-ticket" file="Textures/Collectables/golden-ticket" />
+    <texture name="power-chilli" file="Textures/Powerups/chilli" />
+    <texture name="power-wheel" file="Textures/Powerups/wheel" />
+    <texture name="power-boots" file="Textures/Powerups/boots" />
+    <texture name="power-shades" file="Textures/Powerups/shades" />
+    <texture name="power-shell" file="Textures/Powerups/shell" />
+    <texture name="power-horn" file="Textures/Powerups/horn" />
+    <texture name="sign-one-way" file="Textures/Signs/sign-one-way" />
+    <texture name="sign-speed-1-1" file ="Textures/Signs/SpeedLimit/sign-speed-1-1" />
+    <texture name="sign-speed-1-2" file ="Textures/Signs/SpeedLimit/sign-speed-1-2" />
+    <texture name="sign-speed-1-3" file ="Textures/Signs/SpeedLimit/sign-speed-1-3" />
+    <texture name="sign-speed-1-4" file ="Textures/Signs/SpeedLimit/sign-speed-1-4" />
+    <texture name="sign-speed-2-2" file ="Textures/Signs/SpeedLimit/sign-speed-2-2" />
+    <texture name="sign-speed-2-3" file ="Textures/Signs/SpeedLimit/sign-speed-2-3" />
+    <texture name="sign-speed-2-4" file ="Textures/Signs/SpeedLimit/sign-speed-2-4" />
+    <texture name="sign-speed-3-3" file ="Textures/Signs/SpeedLimit/sign-speed-3-3" />
+    <texture name="sign-speed-3-4" file ="Textures/Signs/SpeedLimit/sign-speed-3-4" />
+    <texture name="sign-speed-4-4" file ="Textures/Signs/SpeedLimit/sign-speed-4-4" />
+    <texture name="down-curved-arrow" file ="Textures/Signs/RouteMarker/marker-down" />
+    <texture name="up-curved-arrow" file ="Textures/Signs/RouteMarker/marker-up" />
+    <texture name="straight-arrow" file ="Textures/Signs/RouteMarker/marker-straight" />
+    <texture name="flag-goal" file="Textures/Flags/flag-goal" />
+    <texture name="flag-checkpoint" file="Textures/Flags/flag-checkpoint" />
+    <texture name="signpost" file="Textures/Signs/sign-post-pole" />
+    <texture name="flagpole" file="Textures/Flags/flagpole" />
+    <texture name="player-bodies" file="Textures/Players/bodies" />
+    <texture name="player-eyes-male" file="Textures/Players/Eyes/male" />
+    <texture name="player-eyes-female" file="Textures/Players/Eyes/female" />
+    <texture name="player-eyes-anime" file="Textures/Players/Eyes/anime" />
+    <texture name="player-eyes-shades" file="Textures/Players/Eyes/shades" />
+    <texture name="player-eyes-glasses" file="Textures/Players/Eyes/glasses" />
+    <texture name="player-eyes-robot" file="Textures/Players/Eyes/robot" />
+    <texture name="player-gloves-yellow" file="Textures/Players/Gloves/yellow" />
+    <texture name="player-gloves-red" file="Textures/Players/Gloves/red" />
+    <texture name="player-gloves-white-slim" file="Textures/Players/Gloves/white-slim" />
+    <texture name="player-gloves-green" file="Textures/Players/Gloves/green" />
+    <texture name="player-gloves-merry-man" file="Textures/Players/Gloves/merry-man" />
+    <texture name="player-gloves-knight" file="Textures/Players/Gloves/knight" />
+    <texture name="player-gloves-pirate" file="Textures/Players/Gloves/pirate" />
+    <texture name="player-gloves-ninja" file="Textures/Players/Gloves/ninja" />
+    <texture name="player-gloves-mummy" file="Textures/Players/Gloves/mummy" />
+    <texture name="player-gloves-robot" file="Textures/Players/Gloves/robot" />
+    <texture name="player-gloves-xmas" file="Textures/Players/Gloves/xmas" />
+    <texture name="player-mouth-male" file="Textures/Players/Mouths/male" />
+    <texture name="player-mouth-female" file="Textures/Players/Mouths/female" />
+    <texture name="player-mouth-robot" file="Textures/Players/Mouths/robot" />
+    <texture name="player-shirt-merry-man" file="Textures/Players/Shirts/merry-man" />
+    <texture name="player-shirt-teacher" file="Textures/Players/Shirts/teacher" />
+    <texture name="player-shirt-pirate" file="Textures/Players/Shirts/pirate" />
+    <texture name="player-shirt-ninja" file="Textures/Players/Shirts/ninja" />
+    <texture name="player-shirt-mummy" file="Textures/Players/Shirts/mummy" />
+    <texture name="player-shirt-wizard" file="Textures/Players/Shirts/wizard" />
+    <texture name="player-shirt-punk" file="Textures/Players/Shirts/punk" />
+    <texture name="player-shirt-angel" file="Textures/Players/Shirts/angel" />
+    <texture name="player-shirt-robot" file="Textures/Players/Shirts/robot" />
+    <texture name="player-shirt-jackolantern" file="Textures/Players/Shirts/jackolantern" />
+    <texture name="player-shirt-xmas" file="Textures/Players/Shirts/xmas" />
+    <texture name="player-hat-merry-man" file="Textures/Players/Hats/merry-man" />
+    <texture name="player-hat-teacher" file="Textures/Players/Hats/teacher" />
+    <texture name="player-hat-knight" file="Textures/Players/Hats/knight" />
+    <texture name="player-hat-pirate" file="Textures/Players/Hats/pirate" />
+    <texture name="player-hat-ninja" file="Textures/Players/Hats/ninja" />
+    <texture name="player-hat-mummy" file="Textures/Players/Hats/mummy" />
+    <texture name="player-hat-wizard" file="Textures/Players/Hats/wizard" />
+    <texture name="player-hat-punk" file="Textures/Players/Hats/punk" />
+    <texture name="player-hat-angel" file="Textures/Players/Hats/angel" />
+    <texture name="player-hat-robot" file="Textures/Players/Hats/robot" />
+    <texture name="player-hat-jackolantern" file="Textures/Players/Hats/jackolantern" />
+    <texture name="player-hat-xmas" file="Textures/Players/Hats/xmas" />
+  </textures>
+  <sound-effects>
+    <sound-effect name="menu-select" file="SoundEffects/menu-select" />
+    <sound-effect name="menu-move" file="SoundEffects/menu-move" />
+    <sound-effect name="carousel-spin" file="SoundEffects/carousel-spin" />
+    <sound-effect name="race-countdown" file="SoundEffects/race-start-count" />
+    <sound-effect name="race-start" file="SoundEffects/race-start-go" />
+    <sound-effect name="race-results" file="SoundEffects/race-results" use-instance="true" />
+    <sound-effect name="race-winner" file="SoundEffects/race-winner" />
+    <sound-effect name="race-loser" file="SoundEffects/race-loser" />
+    <sound-effect name="player-move-bounce" file="SoundEffects/move-bounce" />
+    <sound-effect name="ice-crunch" file="SoundEffects/ice-crunch" />
+    <sound-effect name="player-jump" file="SoundEffects/player-jump" />
+    <sound-effect name="player-death" file="SoundEffects/player-death" />
+    <sound-effect name="crate-smash" file="SoundEffects/crate-smash" />
+    <sound-effect name="speed-sign-trigger" file="SoundEffects/speed-sign-trigger" />
+    <sound-effect name="speed-up" file="SoundEffects/speed-up" />
+    <sound-effect name="slow-down" file="SoundEffects/slow-down" />
+    <sound-effect name="turn-round" file="SoundEffects/turn-round" />
+    <sound-effect name="spring-launch" file="SoundEffects/spring-launch" />
+    <sound-effect name="generic-fanfare" file="SoundEffects/triumphant-noise" />
+    <sound-effect name="race-checkpoint" file="SoundEffects/checkpoint" />
+    <sound-effect name="power-up" file="SoundEffects/power-up" />
+    <sound-effect name="collect-candy" file="SoundEffects/collect-candy" />
+    <sound-effect name="level-clear" file="SoundEffects/level-clear" />
+    <sound-effect name="opponent-attack" file="SoundEffects/opponent-attack" />
+    <sound-effect name="freeze-speedo" file="SoundEffects/freeze-speedo" />
+  </sound-effects>
+  <music>
+    <tune name="title" file="Music/title" />
+    <tune name="race-gameplay" file="Music/race-gameplay" />
+    <tune name="survival-gameplay" file="Music/survival-gameplay" />
+    <tune name="avatar-build" file="Music/avatar-build" />
+  </music>
+  <custom>
+    <asset name="animationsequences" file="Content/Files/AnimationSequences.xml" />
+    <asset name="skeletons" file="Content/Files/Avatars/Skeletons.xml" />
+    <asset name="skeleton-skins" file="Content/Files/Avatars/Skins.xml" />
+    <asset name="emitterbehaviours" file="Content/Files/EmitterBehaviours.xml" />
+    <asset name="profile" />
+    <asset name="translations" />
+    <asset name="avatarcomponents" />
+    <asset name="popupmappings" />
+  </custom>
+</assets>

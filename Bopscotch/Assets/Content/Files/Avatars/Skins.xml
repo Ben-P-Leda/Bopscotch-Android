@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Player skin element frame sizes:
+Eye: 49x22
+Mouth: 50x29
+-->
+<skins>
+  <skin name="player-dusty-ingame">
+    <bone id="body" texture-name="player-bodies" frame-x="0" frame-y="0" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+    <bone id="eyes" texture-name="player-eyes-male" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+    <bone id="mouth" texture-name="player-mouth-male" frame-x="0" frame-y="0" frame-width="28" frame-height="17" origin-x="14.0" origin-y="6.5">
+      <tint red="0" green="0" blue="93" alpha="255" />
+    </bone>
+    <bone id="glove" texture-name="player-gloves-yellow" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+    <bone id="hat" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+    <bone id="shirt" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+  </skin>
+  <skin name="player-dusty-dialog">
+    <bone id="body" texture-name="player-bodies" frame-x="0" frame-y="0" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+    <bone id="eyes" texture-name="player-eyes-male" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="12.0" />
+    <bone id="mouth" texture-name="player-mouth-male" frame-x="0" frame-y="58" frame-width="50" frame-height="29" origin-x="25.0" origin-y="15.0">
+      <tint red="0" green="0" blue="93" alpha="255" />
+    </bone>
+    <bone id="left-glove" texture-name="player-gloves-yellow" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+    <bone id="right-glove" texture-name="player-gloves-yellow" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+    <bone id="hat" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+    <bone id="shirt" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+  </skin>
+
+  <skin name="player-dustin-ingame">
+    <bone id="body" texture-name="player-bodies" frame-x="0" frame-y="82" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+    <bone id="eyes" texture-name="player-eyes-male" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+    <bone id="mouth" texture-name="player-mouth-male" frame-x="0" frame-y="0" frame-width="28" frame-height="17" origin-x="14.0" origin-y="6.5">
+      <tint red="0" green="10" blue="0" alpha="255" />
+    </bone>
+    <bone id="glove" texture-name="player-gloves-red" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+    <bone id="hat" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+    <bone id="shirt" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+  </skin>
+  <skin name="player-dustin-dialog">
+    <bone id="body" texture-name="player-bodies" frame-x="0" frame-y="82" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+    <bone id="eyes" texture-name="player-eyes-male" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="12.0" />
+    <bone id="mouth" texture-name="player-mouth-male" frame-x="0" frame-y="58" frame-width="50" frame-height="29" origin-x="25.0" origin-y="15.0">
+      <tint red="0" green="10" blue="0" alpha="255" />
+    </bone>
+    <bone id="left-glove" texture-name="player-gloves-red" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+    <bone id="right-glove" texture-name="player-gloves-red" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+    <bone id="hat" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+    <bone id="shirt" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+  </skin>
+
+  <skin name="player-dustina-ingame">
+    <bone id="body" texture-name="player-bodies" frame-x="0" frame-y="164" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+    <bone id="eyes" texture-name="player-eyes-female" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+    <bone id="mouth" texture-name="player-mouth-female" frame-x="0" frame-y="0" frame-width="28" frame-height="17" origin-x="14.0" origin-y="6.5">
+      <tint red="206" green="62" blue="111" alpha="255" />
+    </bone>
+    <bone id="glove" texture-name="player-gloves-white-slim" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+    <bone id="hat" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+    <bone id="shirt" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+  </skin>
+  <skin name="player-dustina-dialog">
+    <bone id="body" texture-name="player-bodies" frame-x="0" frame-y="164" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+    <bone id="eyes" texture-name="player-eyes-female" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="12.0" />
+    <bone id="mouth" texture-name="player-mouth-female" frame-x="0" frame-y="58" frame-width="50" frame-height="29" origin-x="25.0" origin-y="15.0">
+      <tint red="206" green="62" blue="111" alpha="255" />
+    </bone>
+    <bone id="left-glove" texture-name="player-gloves-white-slim" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+    <bone id="right-glove" texture-name="player-gloves-white-slim" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+    <bone id="hat" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+    <bone id="shirt" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+  </skin>
+
+  <skin name="player-dasuto-ingame">
+    <bone id="body" texture-name="player-bodies" frame-x="0" frame-y="246" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+    <bone id="eyes" texture-name="player-eyes-anime" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+    <bone id="mouth" texture-name="player-mouth-male" frame-x="0" frame-y="0" frame-width="28" frame-height="17" origin-x="14.0" origin-y="6.5">
+      <tint red="168" green="154" blue="0" alpha="255" />
+    </bone>
+    <bone id="glove" texture-name="player-gloves-green" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+    <bone id="hat" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+    <bone id="shirt" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+  </skin>
+  <skin name="player-dasuto-dialog">
+    <bone id="body" texture-name="player-bodies" frame-x="0" frame-y="246" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+    <bone id="eyes" texture-name="player-eyes-anime" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="12.0" />
+    <bone id="mouth" texture-name="player-mouth-male" frame-x="0" frame-y="58" frame-width="50" frame-height="29" origin-x="25.0" origin-y="15.0">
+      <tint red="168" green="154" blue="0" alpha="255" />
+    </bone>
+    <bone id="left-glove" texture-name="player-gloves-green" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+    <bone id="right-glove" texture-name="player-gloves-green" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+    <bone id="hat" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+    <bone id="shirt" texture-name="" frame-x="0" frame-y="0" frame-width="0" frame-height="0" origin-x="0" origin-y="0" />
+  </skin>
+</skins>

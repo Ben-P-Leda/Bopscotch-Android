@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<skeletons>
+  <skeleton name="player-side">
+    <bone id="body" offset-x="0.0" offset-y="0.0" depth="0.5">
+      <bone id="eyes" offset-x="27.0" offset-y="-5.0" depth="-0.1" />
+      <bone id="mouth" offset-x="20.0" offset-y="10.5" depth="-0.1" />
+      <bone id="arm" offset-x="-10.0" offset-y="-5.0" depth ="-0.3">
+        <bone id="glove" offset-x="0.0" offset-y="20.0" depth="-0.1" rotation="270.0"/>
+      </bone>
+      <bone id="hat" offset-x="0.0" offset-y="0.0" depth="-0.3" />
+      <bone id="shirt" offset-x="0.0" offset-y="0.0" depth="-0.2" />
+    </bone>
+  </skeleton>
+
+  <skeleton name="player-front">
+    <bone id="body" offset-x="0.0" offset-y="0.0" depth="0.5">
+      <bone id="eyes" offset-x="0.0" offset-y="-4.0" depth="-0.1" />
+      <bone id="mouth" offset-x="0.0" offset-y="15" depth="-0.1" />
+      <bone id="left-glove" offset-x="-52.0" offset-y="10.0" depth="-0.1" />
+      <bone id="right-glove" offset-x="52.0" offset-y="10.0" depth="-0.1" />
+      <bone id="hat" offset-x="0.0" offset-y="0.0" depth="-0.3" />
+      <bone id="shirt" offset-x="0.0" offset-y="0.0" depth="-0.2" />
+    </bone>
+  </skeleton>
+</skeletons>

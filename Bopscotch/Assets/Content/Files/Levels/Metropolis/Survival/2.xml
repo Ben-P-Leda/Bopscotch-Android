@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<leveldata>
+  <background texture="background-4" />
+  <terrain>
+    <blocks>
+      <block x="1040" y="480" texture="block-1" />
+      <block x="1120" y="480" texture="block-1" />
+      <block x="1200" y="480" texture="block-1" />
+      <block x="1280" y="480" texture="block-1" />
+      <block x="1360" y="480" texture="block-1" />
+      <block x="1440" y="480" texture="block-1" />
+      <block x="1520" y="480" texture="block-1" />
+      <block x="1600" y="480" texture="block-1" />
+      <block x="1680" y="480" texture="block-1" />
+      <block x="1760" y="480" texture="block-1" />
+      <block x="1840" y="480" texture="block-1" />
+      <block x="1920" y="480" texture="block-1" />
+      <block x="2000" y="480" texture="block-1" />
+      <block x="2080" y="480" texture="block-1" />
+      <block x="2160" y="480" texture="block-1" />
+      <block x="2240" y="480" texture="block-1" />
+      <block x="2320" y="480" texture="block-1" />
+      <block x="2400" y="480" texture="block-1" />
+      <block x="2480" y="480" texture="block-1" />
+      <block x="2560" y="480" texture="block-1" />
+      <block x="2640" y="480" texture="block-1" />
+      <block x="2720" y="480" texture="block-1" />
+      <block x="2800" y="480" texture="block-1" />
+      <block x="2880" y="480" texture="block-1" />
+      <block x="2960" y="480" texture="block-1" />
+      <block x="3040" y="480" texture="block-1" />
+      <block x="3120" y="480" texture="block-1" />
+      <block x="3200" y="480" texture="block-1" />
+      <block x="3280" y="480" texture="block-1" />
+      <block x="3360" y="480" texture="block-1" />
+      <block x="3440" y="480" texture="block-1" />
+      <block x="3520" y="480" texture="block-1" />
+      <block x="3600" y="480" texture="block-1" />
+      <block x="3680" y="480" texture="block-1" />
+      <block x="3760" y="480" texture="block-1" />
+      <block x="3840" y="480" texture="block-1" />
+      <block x="3920" y="480" texture="block-1" />
+      <block x="4000" y="480" texture="block-1" />
+      <block x="4080" y="480" texture="block-1" />
+      <block x="4160" y="480" texture="block-1" />
+      <block x="4240" y="480" texture="block-1" />
+      <block x="4320" y="480" texture="block-1" />
+      <block x="4400" y="480" texture="block-1" />
+      <block x="4480" y="480" texture="block-1" />
+      <block x="5520" y="480" texture="block-1" />
+      <block x="5440" y="480" texture="block-1" />
+      <block x="5360" y="480" texture="block-1" />
+      <block x="5280" y="480" texture="block-1" />
+      <block x="5200" y="480" texture="block-1" />
+      <block x="5120" y="480" texture="block-1" />
+      <block x="5040" y="480" texture="block-1" />
+      <block x="4480" y="960" texture="block-1" />
+      <spring-block x="4960" y="960" texture="block-spring" />
+      <block x="1520" y="960" texture="block-1" />
+      <block x="1440" y="960" texture="block-1" />
+      <block x="1360" y="960" texture="block-1" />
+      <block x="1280" y="960" texture="block-1" />
+      <block x="1200" y="960" texture="block-1" />
+      <block x="1120" y="960" texture="block-1" />
+      <block x="1040" y="960" texture="block-1" />
+      <block x="1040" y="1440" texture="block-1" />
+      <block x="480" y="1440" texture="block-1" />
+      <block x="400" y="1440" texture="block-1" />
+      <block x="320" y="1440" texture="block-1" />
+      <block x="240" y="1440" texture="block-1" />
+      <block x="160" y="1440" texture="block-1" />
+      <block x="80" y="1440" texture="block-1" />
+      <block x="0" y="1440" texture="block-1" />
+      <spring-block x="560" y="1440" texture="block-spring" />
+      <obstruction-block x="560" y="960" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="480" y="960" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="400" y="960" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="320" y="960" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="240" y="960" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="160" y="960" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="80" y="960" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="0" y="960" texture="block-obstruction-oblong-top" />
+      <block x="1120" y="1440" texture="block-1" />
+      <block x="1200" y="1440" texture="block-1" />
+      <block x="1280" y="1440" texture="block-1" />
+      <block x="1360" y="1440" texture="block-1" />
+      <block x="1440" y="1440" texture="block-1" />
+      <block x="1520" y="1440" texture="block-1" />
+      <obstruction-block x="4960" y="1440" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5040" y="1440" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5120" y="1440" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5200" y="1440" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5280" y="1440" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5360" y="1440" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5440" y="1440" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5520" y="1440" texture="block-obstruction-oblong-top" />
+      <spring-block x="4960" y="1920" texture="block-spring" />
+      <block x="1440" y="1920" texture="block-1" />
+      <block x="1520" y="1920" texture="block-1" />
+      <block x="1360" y="1920" texture="block-1" />
+      <block x="1200" y="1920" texture="block-1" />
+      <block x="1280" y="1920" texture="block-1" />
+      <block x="1120" y="1920" texture="block-1" />
+      <block x="1040" y="1920" texture="block-1" />
+      <block x="1600" y="1920" texture="block-1" />
+      <block x="1680" y="1920" texture="block-1" />
+      <block x="1760" y="1920" texture="block-1" />
+      <block x="1840" y="1920" texture="block-1" />
+      <block x="1920" y="1920" texture="block-1" />
+      <block x="2000" y="1920" texture="block-1" />
+      <block x="2080" y="1920" texture="block-1" />
+      <block x="2160" y="1920" texture="block-1" />
+      <block x="2240" y="1920" texture="block-1" />
+      <block x="2320" y="1920" texture="block-1" />
+      <block x="2400" y="1920" texture="block-1" />
+      <block x="2480" y="1920" texture="block-1" />
+      <block x="2560" y="1920" texture="block-1" />
+      <block x="2640" y="1920" texture="block-1" />
+      <block x="2720" y="1920" texture="block-1" />
+      <block x="2800" y="1920" texture="block-1" />
+      <block x="1600" y="1440" texture="block-1" />
+      <block x="1680" y="1440" texture="block-1" />
+      <block x="1760" y="1440" texture="block-1" />
+      <block x="1840" y="1440" texture="block-1" />
+      <block x="1920" y="1440" texture="block-1" />
+      <block x="2000" y="1440" texture="block-1" />
+      <block x="2080" y="1440" texture="block-1" />
+      <block x="2160" y="1440" texture="block-1" />
+      <block x="2240" y="1440" texture="block-1" />
+      <block x="2320" y="1440" texture="block-1" />
+      <block x="2400" y="1440" texture="block-1" />
+      <block x="2480" y="1440" texture="block-1" />
+      <block x="2560" y="1440" texture="block-1" />
+      <block x="2640" y="1440" texture="block-1" />
+      <block x="2720" y="1440" texture="block-1" />
+      <block x="2800" y="1440" texture="block-1" />
+      <block x="2800" y="960" texture="block-1" />
+      <block x="2720" y="960" texture="block-1" />
+      <block x="2640" y="960" texture="block-1" />
+      <block x="2560" y="960" texture="block-1" />
+      <block x="2480" y="960" texture="block-1" />
+      <block x="2400" y="960" texture="block-1" />
+      <block x="2320" y="960" texture="block-1" />
+      <block x="2240" y="960" texture="block-1" />
+      <block x="2160" y="960" texture="block-1" />
+      <block x="2080" y="960" texture="block-1" />
+      <block x="2000" y="960" texture="block-1" />
+      <block x="1920" y="960" texture="block-1" />
+      <block x="1840" y="960" texture="block-1" />
+      <block x="1760" y="960" texture="block-1" />
+      <block x="1680" y="960" texture="block-1" />
+      <block x="1600" y="960" texture="block-1" />
+      <block x="2880" y="960" texture="block-1" />
+      <block x="2960" y="960" texture="block-1" />
+      <block x="3040" y="960" texture="block-1" />
+      <block x="3120" y="960" texture="block-1" />
+      <block x="3200" y="960" texture="block-1" />
+      <block x="3280" y="960" texture="block-1" />
+      <block x="3360" y="960" texture="block-1" />
+      <block x="3440" y="960" texture="block-1" />
+      <block x="3520" y="960" texture="block-1" />
+      <block x="3600" y="960" texture="block-1" />
+      <block x="3680" y="960" texture="block-1" />
+      <block x="3760" y="960" texture="block-1" />
+      <block x="3840" y="960" texture="block-1" />
+      <block x="3920" y="960" texture="block-1" />
+      <block x="4000" y="960" texture="block-1" />
+      <block x="4080" y="960" texture="block-1" />
+      <block x="4160" y="960" texture="block-1" />
+      <block x="4240" y="960" texture="block-1" />
+      <block x="4320" y="960" texture="block-1" />
+      <block x="4400" y="960" texture="block-1" />
+      <block x="2880" y="1440" texture="block-1" />
+      <block x="2960" y="1440" texture="block-1" />
+      <block x="3040" y="1440" texture="block-1" />
+      <block x="3120" y="1440" texture="block-1" />
+      <block x="3200" y="1440" texture="block-1" />
+      <block x="3280" y="1440" texture="block-1" />
+      <block x="3360" y="1440" texture="block-1" />
+      <block x="3440" y="1440" texture="block-1" />
+      <block x="3520" y="1440" texture="block-1" />
+      <block x="3600" y="1440" texture="block-1" />
+      <block x="3680" y="1440" texture="block-1" />
+      <block x="3840" y="1440" texture="block-1" />
+      <block x="3760" y="1440" texture="block-1" />
+      <block x="3920" y="1440" texture="block-1" />
+      <block x="4000" y="1440" texture="block-1" />
+      <block x="4080" y="1440" texture="block-1" />
+      <block x="4160" y="1440" texture="block-1" />
+      <block x="4240" y="1440" texture="block-1" />
+      <block x="4320" y="1440" texture="block-1" />
+      <block x="4400" y="1440" texture="block-1" />
+      <block x="2880" y="1920" texture="block-1" />
+      <block x="2960" y="1920" texture="block-1" />
+      <block x="3040" y="1920" texture="block-1" />
+      <block x="3120" y="1920" texture="block-1" />
+      <block x="3200" y="1920" texture="block-1" />
+      <block x="3280" y="1920" texture="block-1" />
+      <block x="3360" y="1920" texture="block-1" />
+      <block x="3440" y="1920" texture="block-1" />
+      <block x="3520" y="1920" texture="block-1" />
+      <block x="3600" y="1920" texture="block-1" />
+      <block x="3680" y="1920" texture="block-1" />
+      <block x="3760" y="1920" texture="block-1" />
+      <block x="3840" y="1920" texture="block-1" />
+      <block x="3920" y="1920" texture="block-1" />
+      <block x="4000" y="1920" texture="block-1" />
+      <block x="4080" y="1920" texture="block-1" />
+      <block x="4160" y="1920" texture="block-1" />
+      <block x="4240" y="1920" texture="block-1" />
+      <block x="4320" y="1920" texture="block-1" />
+      <block x="4400" y="1920" texture="block-1" />
+      <block x="4480" y="1920" texture="block-1" />
+      <block x="4480" y="1440" texture="block-1" />
+      <block x="5040" y="1920" texture="block-1" />
+      <block x="5120" y="1920" texture="block-1" />
+      <block x="5200" y="1920" texture="block-1" />
+      <block x="5280" y="1920" texture="block-1" />
+      <block x="5360" y="1920" texture="block-1" />
+      <block x="5440" y="1920" texture="block-1" />
+      <block x="5520" y="1920" texture="block-1" />
+      <block x="5040" y="960" texture="block-1" />
+      <block x="5120" y="960" texture="block-1" />
+      <block x="5200" y="960" texture="block-1" />
+      <block x="5280" y="960" texture="block-1" />
+      <block x="5360" y="960" texture="block-1" />
+      <block x="5440" y="960" texture="block-1" />
+      <block x="5520" y="960" texture="block-1" />
+      <obstruction-block x="2000" y="1840" texture="block-obstruction-double-top" />
+      <obstruction-block x="2560" y="1840" texture="block-obstruction-circle-top" />
+      <obstruction-block x="3120" y="1840" texture="block-obstruction-diamond" />
+      <obstruction-block x="4480" y="1840" texture="block-obstruction-single-top" />
+      <block x="4160" y="1360" texture="block-1" />
+      <obstruction-block x="4160" y="1280" texture="block-obstruction-double-top" />
+      <block x="3040" y="1360" texture="block-1" />
+      <obstruction-block x="2560" y="1360" texture="block-obstruction-top-right" />
+      <obstruction-block x="2480" y="1360" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2400" y="1360" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2320" y="1360" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2160" y="1360" texture="block-obstruction-top-left" />
+      <obstruction-block x="3040" y="1280" texture="block-obstruction-circle-top" />
+      <obstruction-block x="2240" y="1360" texture="block-obstruction-oblong-top" />
+      <block x="1520" y="1360" texture="block-1" />
+      <obstruction-block x="1040" y="1360" texture="block-obstruction-single-top" />
+      <obstruction-block x="1520" y="1280" texture="block-obstruction-diamond" />
+      <smash-block x="1280" y="640" texture="block-smash-crate">
+        <contains-item texture="candy-4" units="3" action="score" value="100" />
+        <contains-item texture="candy-5" units="2" action="score" value="150" />
+      </smash-block>
+      <block x="2000" y="560" texture="block-1" />
+      <block x="2000" y="640" texture="block-1" />
+      <obstruction-block x="2000" y="720" texture="block-obstruction-diamond" />
+      <block x="2400" y="880" texture="block-1" />
+      <obstruction-block x="2400" y="800" texture="block-obstruction-double-top" />
+      <block x="3120" y="880" texture="block-1" />
+      <obstruction-block x="3120" y="800" texture="block-obstruction-circle-top" />
+      <block x="4080" y="880" texture="block-1" />
+      <block x="4080" y="800" texture="block-1" />
+      <obstruction-block x="4080" y="720" texture="block-obstruction-diamond" />
+      <block x="4960" y="480" texture="block-1" />
+      <obstruction-block x="4080" y="400" texture="block-obstruction-double-top" />
+      <obstruction-block x="4000" y="400" texture="block-obstruction-double-top" />
+      <obstruction-block x="3920" y="400" texture="block-obstruction-double-top" />
+      <obstruction-block x="3840" y="400" texture="block-obstruction-double-top" />
+      <obstruction-block x="3440" y="400" texture="block-obstruction-diamond" />
+      <obstruction-block x="3360" y="400" texture="block-obstruction-diamond" />
+      <obstruction-block x="3280" y="400" texture="block-obstruction-diamond" />
+      <obstruction-block x="3200" y="400" texture="block-obstruction-diamond" />
+      <obstruction-block x="2560" y="400" texture="block-obstruction-top-right" />
+      <obstruction-block x="2480" y="400" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2400" y="400" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2320" y="400" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2240" y="400" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2160" y="400" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2080" y="400" texture="block-obstruction-top-left" />
+    </blocks>
+    <collectables>
+      <scoring-candy x="2240" y="1840" texture="candy-1" score="25" />
+      <scoring-candy x="2320" y="1840" texture="candy-1" score="25" />
+      <scoring-candy x="2960" y="1840" texture="candy-1" score="25" />
+      <scoring-candy x="2880" y="1840" texture="candy-1" score="25" />
+      <scoring-candy x="3680" y="1840" texture="candy-1" score="25" />
+      <scoring-candy x="3600" y="1840" texture="candy-1" score="25" />
+      <scoring-candy x="4000" y="1840" texture="candy-2" score="50" />
+      <scoring-candy x="4080" y="1840" texture="candy-2" score="50" />
+      <scoring-candy x="4160" y="1840" texture="candy-2" score="50" />
+      <scoring-candy x="4240" y="1840" texture="candy-2" score="50" />
+      <scoring-candy x="4320" y="1840" texture="candy-2" score="50" />
+      <scoring-candy x="5200" y="1840" texture="candy-3" score="75" />
+      <scoring-candy x="5280" y="1840" texture="candy-3" score="75" />
+      <scoring-candy x="3680" y="1360" texture="candy-2" score="50" />
+      <scoring-candy x="3600" y="1360" texture="candy-2" score="50" />
+      <scoring-candy x="3760" y="1360" texture="candy-2" score="50" />
+      <scoring-candy x="320" y="1360" texture="candy-3" score="75" />
+      <scoring-candy x="400" y="1360" texture="candy-3" score="75" />
+      <scoring-candy x="1920" y="1360" texture="candy-3" score="75" />
+      <scoring-candy x="1840" y="1360" texture="candy-3" score="75" />
+      <scoring-candy x="2720" y="880" texture="candy-4" score="100" />
+      <scoring-candy x="2800" y="880" texture="candy-4" score="100" />
+      <scoring-candy x="3520" y="880" texture="candy-4" score="100" />
+      <scoring-candy x="3600" y="880" texture="candy-4" score="100" />
+      <scoring-candy x="4400" y="880" texture="candy-4" score="100" />
+      <scoring-candy x="4480" y="880" texture="candy-4" score="100" />
+      <scoring-candy x="5280" y="880" texture="candy-3" score="75" />
+      <scoring-candy x="5200" y="880" texture="candy-3" score="75" />
+      <scoring-candy x="3680" y="400" texture="candy-3" score="75" />
+      <scoring-candy x="3600" y="400" texture="candy-3" score="75" />
+      <scoring-candy x="2960" y="400" texture="candy-3" score="75" />
+      <scoring-candy x="2880" y="400" texture="candy-3" score="75" />
+      <scoring-candy x="2800" y="400" texture="candy-3" score="75" />
+      <scoring-candy x="1520" y="400" texture="candy-5" score="150" />
+      <scoring-candy x="1600" y="400" texture="candy-5" score="150" />
+      <scoring-candy x="1680" y="400" texture="candy-5" score="150" />
+    </collectables>
+    <signposts>
+      <one-way-signpost x="5440" y="800" texture="sign-one-way" zone-top="-318" mirror="true" />
+      <one-way-signpost x="160" y="1280" texture="sign-one-way" zone-top="-238" mirror="false" />
+      <speed-limit-signpost x="1440" y="1760" texture="sign-speed-3-4" zone-top="-234" minimum-speed="2" maximum-speed="3" />
+      <one-way-signpost x="5440" y="1760" texture="sign-one-way" zone-top="-238" mirror="true" />
+    </signposts>
+    <flags>
+      <goal-flag x="1280" y="240" texture="flag-goal" zone-top="-260" left-activation="true" />
+      <checkpoint-flag x="1120" y="1680" texture="flag-checkpoint" zone-top="0" left-activation="false" index="0" />
+    </flags>
+  </terrain>
+  <player x="1200" y="1840" startfacingleft="false" />
+</leveldata>

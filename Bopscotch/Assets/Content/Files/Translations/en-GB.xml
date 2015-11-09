@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localisation>
+  <font name="komika-title-axis" scale="1.0" padding="0.0"/>
+  <translations>
+    <translation key="Start!">Start!</translation>
+    <translation key="Help">Help</translation>
+    <translation key="Options">Options</translation>
+    <translation key="Extras">Extras</translation>
+    <translation key="Character">Character</translation>
+    <translation key="Quit">Quit</translation>
+    <translation key="Adventure">Adventure</translation>
+    <translation key="Race">Race</translation>
+    <translation key="Back">Back</translation>
+    <translation key="OK">OK</translation>
+    <translation key="Cancel">Cancel</translation>
+    <translation key="Select Game Mode">Select Game Mode</translation>
+    <translation key="Select Area and Level">Select Area and Level</translation>
+    <translation key="Paused">Paused</translation>
+    <translation key="Continue">Continue</translation>
+    <translation key="Name:">Name:</translation>
+    <translation key="Change">Change</translation>
+    <translation key="Finding opponents...">Finding opponents...</translation>
+    <translation key="race-lap">Lap: [COMPLETED]/[TOTAL]</translation>
+    <translation key="race-quit">Quitting race in [TIME]</translation>
+    <translation key="Connection Lost!">Connection Lost!</translation>
+    <translation key="Race Results">Race Results</translation>
+    <translation key="Skip Level">Skip Level</translation>
+    <translation key="Score:">Score:</translation>
+    <translation key="Level:">Level:</translation>
+    <translation key="unit-count"> x [QUANTITY]</translation>
+    <translation key="area-complete-header">[AREA] completed</translation>
+    <translation key="area-locked">[AREA] area still locked</translation>
+    <translation key="area-newlyunlocked">[AREA] area now unlocked!</translation>
+    <translation key="area-unlocked">[AREA] area already unlocked</translation>
+    <translation key="ticket-locked">Golden ticket still locked</translation>
+    <translation key="ticket-newlyunlocked">Golden ticket awarded!</translation>
+    <translation key="ticket-unlocked">Golden ticket already awarded</translation>
+    <translation key="Locked">Locked</translation>
+    <translation key="Easy">Easy</translation>
+    <translation key="Tutorial">Tutorial</translation>
+    <translation key="Hilltops">Hilltops</translation>
+    <translation key="item-locked">[ITEM] still locked</translation>
+    <translation key="item-newlyunlocked">[ITEM] unlocked!</translation>
+    <translation key="item-unlocked">[ITEM] already unlocked</translation>
+    <translation key="power-boots-helper">Boots: bounce safely on buzzsaws</translation>
+    <translation key="power-chilli-helper">Chilli: move at top speed</translation>
+    <translation key="power-spring-helper">Spring: jump extra high</translation>
+    <translation key="power-umbrella-helper">Umbrella: glide to the ground</translation>
+    <translation key="power-wheel-helper">Wheel: turn round immediately</translation>
+    <translation key="power-shades-helper">Shades: Black out your opponent</translation>
+    <translation key="power-shell-helper">Shell: slow down your opponent</translation>
+    <translation key="power-horn-helper">Horn: force opponent to top speed</translation>
+    <translation key="lives-count">[COUNT] adventure lives</translation>
+    <translation key="next-life-time">, restoring in [MIN]:[SEC]</translation>
+    <translation key="no-wifi"> - wifi needed to race</translation>
+  </translations>
+</localisation>

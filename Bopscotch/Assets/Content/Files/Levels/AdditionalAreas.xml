@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<areas>
+  <area name="Tutorial">
+    <completion-unlockables>
+      <unlockable type="area" unlocked="false" name="Snowville" trial-unlockable="false" />
+    </completion-unlockables>
+  </area>
+  <area name="Metropolis">
+    <completion-unlockables>
+      <unlockable type="area" unlocked="false" name="Ghostberg" trial-unlockable="false" />
+    </completion-unlockables>
+  </area>
+  <area name="Ghostberg" level-count="10" selection-texture="background-6" difficulty-tag="Insane" speed-step="6" locked="true">
+    <completion-unlockables>
+      <unlockable type="avatar-costume" unlocked="false" name="Jack-o-lantern" trial-unlockable="false" />
+    </completion-unlockables>
+  </area>
+  <area name="Snowville" level-count="10" selection-texture="background-7" difficulty-tag="Simple" speed-step="3" locked="true">
+    <completion-unlockables>
+      <unlockable type="avatar-costume" unlocked="false" name="Xmas" trial-unlockable="false" />
+    </completion-unlockables>
+  </area>
+</areas>

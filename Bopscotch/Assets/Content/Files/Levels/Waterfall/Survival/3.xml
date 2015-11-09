@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<leveldata>
+  <background texture="background-3" />
+  <terrain>
+    <blocks>
+      <block x="0" y="320" texture="block-1" />
+      <block x="80" y="320" texture="block-1" />
+      <block x="160" y="320" texture="block-1" />
+      <block x="240" y="320" texture="block-1" />
+      <block x="320" y="320" texture="block-1" />
+      <block x="400" y="320" texture="block-1" />
+      <block x="480" y="320" texture="block-1" />
+      <block x="0" y="800" texture="block-1" />
+      <block x="80" y="800" texture="block-1" />
+      <block x="160" y="800" texture="block-1" />
+      <block x="240" y="800" texture="block-1" />
+      <block x="320" y="800" texture="block-1" />
+      <block x="400" y="800" texture="block-1" />
+      <block x="480" y="800" texture="block-1" />
+      <block x="560" y="800" texture="block-1" />
+      <block x="640" y="800" texture="block-1" />
+      <block x="960" y="800" texture="block-1" />
+      <block x="1040" y="800" texture="block-1" />
+      <spring-block x="720" y="800" texture="block-spring" />
+      <spring-block x="800" y="800" texture="block-spring" />
+      <spring-block x="880" y="800" texture="block-spring" />
+      <block x="1120" y="800" texture="block-1" />
+      <block x="1200" y="800" texture="block-1" />
+      <block x="1280" y="800" texture="block-1" />
+      <obstruction-block x="1040" y="320" texture="block-obstruction-diamond" />
+      <obstruction-block x="1120" y="400" texture="block-obstruction-diamond" />
+      <obstruction-block x="1200" y="480" texture="block-obstruction-diamond" />
+      <block x="1200" y="400" texture="block-1" />
+      <block x="1200" y="320" texture="block-1" />
+      <block x="1120" y="320" texture="block-1" />
+      <block x="1200" y="240" texture="block-1" />
+      <block x="1200" y="160" texture="block-1" />
+      <block x="1200" y="80" texture="block-1" />
+      <block x="1200" y="0" texture="block-1" />
+      <block x="1360" y="800" texture="block-1" />
+      <block x="1440" y="800" texture="block-1" />
+      <block x="1280" y="320" texture="block-1" />
+      <obstruction-block x="1280" y="400" texture="block-obstruction-diamond" />
+      <obstruction-block x="1360" y="320" texture="block-obstruction-diamond" />
+      <spike-block x="1520" y="800" texture="block-spike" />
+      <spike-block x="1600" y="800" texture="block-spike" />
+      <spike-block x="1680" y="800" texture="block-spike" />
+      <block x="1760" y="800" texture="block-1" />
+      <block x="1840" y="800" texture="block-1" />
+      <block x="1920" y="800" texture="block-1" />
+      <block x="2000" y="800" texture="block-1" />
+      <block x="2080" y="800" texture="block-1" />
+      <block x="2320" y="720" texture="block-1" />
+      <block x="2400" y="720" texture="block-1" />
+      <block x="2480" y="720" texture="block-1" />
+      <block x="2560" y="720" texture="block-1" />
+      <block x="2640" y="720" texture="block-1" />
+      <block x="2720" y="720" texture="block-1" />
+      <block x="2800" y="720" texture="block-1" />
+      <block x="2880" y="720" texture="block-1" />
+      <block x="2960" y="720" texture="block-1" />
+      <block x="2800" y="640" texture="block-1" />
+      <obstruction-block x="2720" y="640" texture="block-obstruction-top-left" />
+      <obstruction-block x="2800" y="560" texture="block-obstruction-circle-top" />
+      <obstruction-block x="2880" y="640" texture="block-obstruction-top-right" />
+      <block x="3040" y="720" texture="block-1" />
+      <block x="3120" y="720" texture="block-1" />
+      <block x="3200" y="720" texture="block-1" />
+      <block x="3280" y="720" texture="block-1" />
+      <block x="3440" y="560" texture="block-1" />
+      <block x="3520" y="560" texture="block-1" />
+      <block x="3600" y="560" texture="block-1" />
+      <block x="3680" y="560" texture="block-1" />
+      <block x="3760" y="560" texture="block-1" />
+      <block x="3920" y="400" texture="block-1" />
+      <block x="4000" y="400" texture="block-1" />
+      <block x="4080" y="400" texture="block-1" />
+      <block x="4160" y="400" texture="block-1" />
+      <block x="4240" y="400" texture="block-1" />
+      <obstruction-block x="3760" y="480" texture="block-obstruction-top-left" />
+      <block x="4400" y="320" texture="block-1" />
+      <block x="4480" y="320" texture="block-1" />
+      <block x="4560" y="320" texture="block-1" />
+      <block x="4640" y="320" texture="block-1" />
+      <block x="4720" y="320" texture="block-1" />
+      <obstruction-block x="4400" y="240" texture="block-obstruction-single-top" />
+      <spring-block x="5120" y="640" texture="block-spring" />
+      <spring-block x="4960" y="640" texture="block-spring" />
+      <spring-block x="5040" y="640" texture="block-spring" />
+      <block x="5200" y="640" texture="block-1" />
+      <block x="5280" y="640" texture="block-1" />
+      <block x="5360" y="640" texture="block-1" />
+      <block x="5440" y="640" texture="block-1" />
+      <smash-block x="5040" y="160" texture="block-smash-crate" />
+      <smash-block x="5600" y="400" texture="block-smash-crate" />
+      <block x="5520" y="640" texture="block-1" />
+      <block x="5600" y="640" texture="block-1" />
+      <block x="5680" y="640" texture="block-1" />
+      <obstruction-block x="1120" y="240" texture="block-obstruction-diamond" />
+      <obstruction-block x="1280" y="240" texture="block-obstruction-diamond" />
+      <spike-block x="5760" y="640" texture="block-spike" />
+      <spike-block x="5840" y="640" texture="block-spike" />
+      <spike-block x="5920" y="640" texture="block-spike" />
+      <spike-block x="6000" y="640" texture="block-spike" />
+      <spike-block x="6080" y="640" texture="block-spike" />
+      <block x="6160" y="640" texture="block-1" />
+      <block x="6240" y="640" texture="block-1" />
+      <block x="6320" y="640" texture="block-1" />
+      <block x="6400" y="640" texture="block-1" />
+      <block x="6480" y="640" texture="block-1" />
+      <obstruction-block x="6560" y="640" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="6640" y="640" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="6720" y="640" texture="block-obstruction-oblong-top" />
+      <block x="6800" y="640" texture="block-1" />
+      <block x="6880" y="640" texture="block-1" />
+      <block x="6960" y="640" texture="block-1" />
+      <block x="7040" y="640" texture="block-1" />
+      <block x="7120" y="640" texture="block-1" />
+      <block x="7200" y="640" texture="block-1" />
+      <block x="7280" y="640" texture="block-1" />
+      <block x="7360" y="640" texture="block-1" />
+      <block x="7440" y="640" texture="block-1" />
+      <block x="7440" y="560" texture="block-1" />
+      <block x="7440" y="480" texture="block-1" />
+      <block x="7440" y="400" texture="block-1" />
+      <block x="7440" y="320" texture="block-1" />
+      <block x="7440" y="240" texture="block-1" />
+    </blocks>
+    <collectables>
+      <scoring-candy x="1840" y="720" texture="candy-1" score="25" />
+      <scoring-candy x="1920" y="720" texture="candy-1" score="25" />
+      <scoring-candy x="2000" y="720" texture="candy-1" score="25" />
+      <scoring-candy x="2400" y="640" texture="candy-1" score="25" />
+      <scoring-candy x="2480" y="640" texture="candy-1" score="25" />
+      <scoring-candy x="2560" y="640" texture="candy-1" score="25" />
+      <scoring-candy x="3040" y="640" texture="candy-1" score="25" />
+      <scoring-candy x="3120" y="640" texture="candy-1" score="25" />
+      <scoring-candy x="3200" y="640" texture="candy-1" score="25" />
+      <scoring-candy x="4160" y="320" texture="candy-1" score="25" />
+      <scoring-candy x="4080" y="320" texture="candy-1" score="25" />
+      <scoring-candy x="4000" y="320" texture="candy-1" score="25" />
+      <scoring-candy x="5360" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="5440" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="5520" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="6240" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="6320" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="6400" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="6960" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="7040" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="7120" y="560" texture="candy-1" score="25" />
+      <scoring-candy x="720" y="720" texture="candy-1" score="25" />
+      <scoring-candy x="800" y="720" texture="candy-1" score="25" />
+      <scoring-candy x="880" y="720" texture="candy-1" score="25" />
+    </collectables>
+    <signposts>
+      <one-way-signpost x="400" y="640" texture="sign-one-way" zone-top="-238" mirror="false" />
+      <one-way-signpost x="7360" y="480" texture="sign-one-way" zone-top="-234" mirror="true" />
+    </signposts>
+    <flags>
+      <goal-flag x="240" y="80" texture="flag-goal" zone-top="0" left-activation="true" />
+      <checkpoint-flag x="80" y="560" texture="flag-checkpoint" zone-top="0" left-activation="false" index="0" />
+    </flags>
+  </terrain>
+  <player x="160" y="720" startfacingleft="false" />
+</leveldata>

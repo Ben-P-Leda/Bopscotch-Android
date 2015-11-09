@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<emitterbehaviours>
+    <emitterbehaviour name="cloud-burst">
+        <burstmetrics burstcount="1" burstinterval="0" particlesperburst="15" />
+        <lifespan minimum="750" maximum="1000" />
+        <speed>
+            <launch minimum="0.3" maximum="0.6" />
+            <delta minimum="0.95" maximum="0.975" />
+            <accelerator minimum="0.975" maximum="0.98" />
+        </speed>
+        <scale>
+            <launch minimum="0.6" maximum="0.8" />
+            <delta minimum="0.998" maximum="0.999" />
+            <accelerator minimum="0.998" maximum="0.999" />
+        </scale>
+        <fadepoints>
+            <fadepoint lifefraction="0.0" alphafraction="1.0" />
+            <fadepoint lifefraction="1.0" alphafraction="0.0" />
+        </fadepoints>
+    </emitterbehaviour>
+
+    <emitterbehaviour name="crate-smash">
+        <burstmetrics burstcount="1" burstinterval="0" particlesperburst="10" />
+        <lifespan minimum="350" maximum="500" />
+        <speed>
+            <launch minimum="0.3" maximum="0.6" />
+            <delta minimum="0.98" maximum="0.99" />
+            <accelerator minimum="1.0" maximum="1.0" />
+        </speed>
+        <scale>
+            <launch minimum="0.4" maximum="0.7" />
+            <delta minimum="1.0" maximum="1.0" />
+            <accelerator minimum="1.0" maximum="1.0" />
+        </scale>
+        <rotation>
+            <launch minimum="0.0" maximum="360.0" />
+            <delta minimum="0.2" maximum="0.5" />
+            <accelerator minimum="1.0" maximum="1.0" />
+        </rotation>
+        <fadepoints>
+            <fadepoint lifefraction="0.0" alphafraction="1.0" />
+            <fadepoint lifefraction="0.5" alphafraction="1.0" />
+            <fadepoint lifefraction="1.0" alphafraction="0.0" />
+        </fadepoints>
+        <tints>
+            <tint red="255" green="255" blue="255" alpha="255" />
+            <tint red="224" green="224" blue="224" alpha="255" />
+            <tint red="192" green="192" blue="192" alpha="255" />
+        </tints>
+    </emitterbehaviour>
+
+  <emitterbehaviour name="star-burst">
+    <burstmetrics burstcount="1" burstinterval="0" particlesperburst="15" />
+    <lifespan minimum="750" maximum="1250" />
+    <speed>
+      <launch minimum="0.2" maximum="0.5" />
+      <delta minimum="0.975" maximum="0.995" />
+      <accelerator minimum="0.998" maximum="0.999" />
+    </speed>
+    <scale>
+      <launch minimum="0.5" maximum="1.2" />
+      <delta minimum="0.998" maximum="0.999" />
+      <accelerator minimum="0.998" maximum="0.999" />
+    </scale>
+    <rotation>
+      <launch minimum="0" maximum="360" />
+      <delta minimum="0.1" maximum="0.5" />
+      <accelerator minimum="1.0" maximum="1.0" />
+    </rotation>
+    <fadepoints>
+      <fadepoint lifefraction="0.0" alphafraction="1.0" />
+      <fadepoint lifefraction="1.0" alphafraction="0.0" />
+    </fadepoints>
+  </emitterbehaviour>
+
+  <emitterbehaviour name="attack-hit">
+    <burstmetrics burstcount="1" burstinterval="0" particlesperburst="10" />
+    <lifespan minimum="500" maximum="750" />
+    <speed>
+      <launch minimum="0.3" maximum="0.6" />
+      <delta minimum="0.95" maximum="0.975" />
+      <accelerator minimum="0.975" maximum="0.98" />
+    </speed>
+    <scale>
+      <launch minimum="0.25" maximum="0.45" />
+      <delta minimum="0.998" maximum="0.999" />
+      <accelerator minimum="0.998" maximum="0.999" />
+    </scale>
+    <fadepoints>
+      <fadepoint lifefraction="0.0" alphafraction="1.0" />
+      <fadepoint lifefraction="1.0" alphafraction="0.0" />
+    </fadepoints>
+  </emitterbehaviour>
+</emitterbehaviours>

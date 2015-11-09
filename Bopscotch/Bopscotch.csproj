@@ -212,6 +212,161 @@
     <Compile Include="UrlProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Fonts\arial.xnb" />
+    <AndroidAsset Include="Assets\Content\Fonts\komika-title-axis.xnb" />
+    <AndroidAsset Include="Assets\Content\Music\avatar-build.xnb" />
+    <AndroidAsset Include="Assets\Content\Music\race-gameplay.xnb" />
+    <AndroidAsset Include="Assets\Content\Music\survival-gameplay.xnb" />
+    <AndroidAsset Include="Assets\Content\Music\title.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\carousel-spin.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\checkpoint.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\collect-candy.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\crate-smash.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\freeze-speedo.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\ice-crunch.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\level-clear.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\menu-move.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\menu-select.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\move-bounce.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\opponent-attack.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\player-death.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\player-jump.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\power-up.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\race-loser.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\race-results.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\race-start-count.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\race-start-go.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\race-winner.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\slow-down.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\speed-sign-trigger.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\speed-up.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\spring-launch.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\triumphant-noise.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\turn-round.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\leda-logo.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\load-spinner.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\WhitePixel.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-1.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-2.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-3.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-4.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-5.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-6.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-7.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-tutorial.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\circle-top.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\diamond.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\double-top.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\oblong-top.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\single-top.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\top-left.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\top-right.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Special\ice.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Special\smash-crate.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Special\spike-outer.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Special\spike-wheel.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Special\spring.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Terrain\block-1.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Collectables\candy-1.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Collectables\candy-2.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Collectables\candy-3.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Collectables\candy-4.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Collectables\candy-5.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Collectables\golden-ticket.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Effects\glow-effect.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Effects\popups.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Effects\Particles\cloud.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Effects\Particles\star.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Effects\Particles\wood.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Flags\flag-checkpoint.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Flags\flag-goal.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Flags\flagpole.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\button-highlight-no-caption.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\button-highlight.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\button-icon-container.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\button-icon-strip.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\button-text-container.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\dialog-presenter.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\edge-fader.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\Icons\lives.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\Icons\padlock.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\Icons\tick.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InDialog\help.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InDialog\iap-items.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InDialog\podium.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\clock-base.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\clock-needle.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\freeze-speedo-snowflake.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\speedo-base.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\speedo-center.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\speedo-needle.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\speedo-segment.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\tap-icon.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\bodies.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Eyes\anime.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Eyes\female.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Eyes\glasses.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Eyes\male.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Eyes\robot.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Eyes\shades.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\green.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\knight.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\merry-man.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\mummy.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\ninja.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\pirate.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\red.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\robot.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\white-slim.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\xmas.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Gloves\yellow.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\angel.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\jackolantern.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\knight.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\merry-man.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\mummy.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\ninja.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\pirate.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\punk.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\robot.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\teacher.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\wizard.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Hats\xmas.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Mouths\female.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Mouths\male.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Mouths\robot.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\angel.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\jackolantern.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\merry-man.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\mummy.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\ninja.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\pirate.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\punk.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\robot.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\teacher.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\wizard.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\Shirts\xmas.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Powerups\boots.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Powerups\chilli.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Powerups\horn.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Powerups\shades.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Powerups\shell.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Powerups\wheel.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\sign-one-way.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\sign-post-pole.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\RouteMarker\marker-down.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\RouteMarker\marker-straight.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\RouteMarker\marker-up.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-1-1.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-1-2.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-1-3.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-1-4.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-2-2.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-2-3.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-2-4.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-3-3.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-3-4.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-4-4.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -240,6 +395,413 @@
       <Project>{e8d5ff41-f41a-4666-b4eb-f04df17bde5d}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\AnimationSequences.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\EmitterBehaviours.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Loadables.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\PopupMappings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Avatars\Components.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Avatars\Costumes.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Avatars\Skeletons.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Avatars\Skins.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Content\en-GB\buyfull.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Content\en-GB\credits.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Content\en-GB\review.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\AdditionalAreas.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\DefaultAreas.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\RaceStage.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\4.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\5.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\6.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\7.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\8.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Ghostberg\Survival\9.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\RaceStage.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\10.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\11.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\12.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\13.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\14.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\15.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\16.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\17.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\18.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\19.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\20.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\21.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\22.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\23.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\24.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\25.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\26.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\27.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\28.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\29.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\4.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\5.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\6.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\7.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\8.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Hilltops\Survival\9.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\RaceStage.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\10.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\11.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\12.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\13.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\14.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\15.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\16.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\17.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\18.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\19.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\20.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\21.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\22.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\23.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\24.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\25.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\26.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\27.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\28.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\29.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\4.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\5.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\6.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\7.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\8.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Metropolis\Survival\9.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\RaceStage.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\4.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\5.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\6.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\7.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\8.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Snowville\Survival\9.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Tutorial\Survival\0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\RaceStage.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\10.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\11.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\12.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\13.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\14.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\15.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\16.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\17.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\18.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\19.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\20.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\21.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\22.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\23.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\24.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\25.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\26.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\27.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\28.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\29.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\4.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\5.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\6.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\7.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\8.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\9.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Translations\en-GB.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Tutorial\en-GB.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Music\avatar-build.wma" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Music\race-gameplay.wma" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Music\survival-gameplay.wma" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Music\title.wma" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

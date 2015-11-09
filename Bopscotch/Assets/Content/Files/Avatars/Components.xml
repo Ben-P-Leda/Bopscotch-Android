@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<avatar-components>
+    <component-set name="body" display-skeleton="player-side">
+        <component name="Blue" texture-name="player-bodies" unlocked="true">
+            <mappings>
+                <mapping skeleton="player-side" bone="body" frame-x="0" frame-y="0" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+                <mapping skeleton="player-front" bone="body" frame-x="0" frame-y="0" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+            </mappings>
+            <tint-overrides>
+                <tint-override bone="mouth" red="0" green="0" blue="93" alpha="255" />
+            </tint-overrides>
+        </component>
+        <component name="Green" texture-name="player-bodies" unlocked="true">
+            <mappings>
+                <mapping skeleton="player-side" bone="body" frame-x="0" frame-y="82" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+                <mapping skeleton="player-front" bone="body" frame-x="0" frame-y="82" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+            </mappings>
+            <tint-overrides>
+                <tint-override bone="mouth" red="0" green="10" blue="0" alpha="255" />
+            </tint-overrides>
+        </component>
+        <component name="Pink" texture-name="player-bodies" unlocked="true">
+            <mappings>
+                <mapping skeleton="player-side" bone="body" frame-x="0" frame-y="164" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+                <mapping skeleton="player-front" bone="body" frame-x="0" frame-y="164" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+            </mappings>
+            <tint-overrides>
+                <tint-override bone="mouth" red="206" green="62" blue="111" alpha="255" />
+            </tint-overrides>
+        </component>
+        <component name="Yellow" texture-name="player-bodies" unlocked="true">
+            <mappings>
+                <mapping skeleton="player-side" bone="body" frame-x="0" frame-y="246" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+                <mapping skeleton="player-front" bone="body" frame-x="0" frame-y="246" frame-width="82" frame-height="82" origin-x="41.0" origin-y="41.0" />
+            </mappings>
+            <tint-overrides>
+                <tint-override bone="mouth" red="168" green="154" blue="0" alpha="255" />
+            </tint-overrides>
+        </component>
+    </component-set>
+
+  <component-set name="eyes" display-skeleton="player-front">
+    <component name="Male" texture-name="player-eyes-male" unlocked="true">
+      <mappings>
+        <mapping skeleton="player-side" bone="eyes" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+        <mapping skeleton="player-front" bone="eyes" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="13.0" />
+      </mappings>
+    </component>
+    <component name="Female" texture-name="player-eyes-female" unlocked="true">
+      <mappings>
+        <mapping skeleton="player-side" bone="eyes" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+        <mapping skeleton="player-front" bone="eyes" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="13.0" />
+      </mappings>
+    </component>
+    <component name="Anime" texture-name="player-eyes-anime" unlocked="true">
+      <mappings>
+        <mapping skeleton="player-side" bone="eyes" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+        <mapping skeleton="player-front" bone="eyes" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="13.0" />
+      </mappings>
+    </component>
+    <component name="Shades" texture-name="player-eyes-shades" unlocked="false">
+      <mappings>
+        <mapping skeleton="player-side" bone="eyes" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+        <mapping skeleton="player-front" bone="eyes" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="13.0" />
+      </mappings>
+    </component>
+    <component name="Glasses" texture-name="player-eyes-glasses" unlocked="false">
+      <mappings>
+        <mapping skeleton="player-side" bone="eyes" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+        <mapping skeleton="player-front" bone="eyes" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="13.0" />
+      </mappings>
+    </component>
+    <component name="Robot" texture-name="player-eyes-robot" unlocked="false">
+      <mappings>
+        <mapping skeleton="player-side" bone="eyes" frame-x="0" frame-y="0" frame-width="80" frame-height="24" origin-x="52.0" origin-y="12.0" />
+        <mapping skeleton="player-front" bone="eyes" frame-x="0" frame-y="48" frame-width="80" frame-height="24" origin-x="39.0" origin-y="13.0" />
+      </mappings>
+    </component>
+  </component-set>
+
+  <component-set name="mouth" display-skeleton="player-front">
+    <component name="Male" texture-name="player-mouth-male" unlocked="true" tint-by-parent="true">
+      <mappings>
+        <mapping skeleton="player-side" bone="mouth" frame-x="0" frame-y="0" frame-width="28" frame-height="17" origin-x="14.0" origin-y="6.5" />
+        <mapping skeleton="player-front" bone="mouth" frame-x="0" frame-y="58" frame-width="50" frame-height="29" origin-x="25.0" origin-y="15.0" />
+      </mappings>
+    </component>
+    <component name="Female" texture-name="player-mouth-female" unlocked="true" tint-by-parent="true">
+      <mappings>
+        <mapping skeleton="player-side" bone="mouth" frame-x="0" frame-y="0" frame-width="28" frame-height="17" origin-x="14.0" origin-y="6.5" />
+        <mapping skeleton="player-front" bone="mouth" frame-x="0" frame-y="58" frame-width="50" frame-height="29" origin-x="25.0" origin-y="15.0" />
+      </mappings>
+    </component>
+    <component name="Robot" texture-name="player-mouth-robot" unlocked="false" tint-by-parent="false">
+      <mappings>
+        <mapping skeleton="player-side" bone="mouth" frame-x="0" frame-y="0" frame-width="28" frame-height="17" origin-x="14.0" origin-y="6.5" />
+        <mapping skeleton="player-front" bone="mouth" frame-x="0" frame-y="58" frame-width="50" frame-height="29" origin-x="25.0" origin-y="15.0" />
+      </mappings>
+    </component>
+  </component-set>
+
+  <component-set name="gloves" display-skeleton="player-side">
+      <component name="Yellow" texture-name="player-gloves-yellow" unlocked="true">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Red" texture-name="player-gloves-red" unlocked="true">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="White Slim" texture-name="player-gloves-white-slim" unlocked="true">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Green" texture-name="player-gloves-green" unlocked="true">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Merry Man" texture-name="player-gloves-merry-man" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Knight" texture-name="player-gloves-knight" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Pirate" texture-name="player-gloves-pirate" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Ninja" texture-name="player-gloves-ninja" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Mummy" texture-name="player-gloves-mummy" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Robot" texture-name="player-gloves-robot" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+      <component name="Xmas" texture-name="player-gloves-xmas" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="left-glove" frame-x="0" frame-y="0" frame-width="35" frame-height="45" origin-x="15.0" origin-y="9.0" />
+          <mapping skeleton="player-front" bone="right-glove" frame-x="35" frame-y="0" frame-width="35" frame-height="45" origin-x="20.0" origin-y="9.0" />
+        </mappings>
+      </component>
+    </component-set>
+
+    <component-set name="hat" display-skeleton="player-side" allow-none="true">
+      <component name="Merry Man" texture-name="player-hat-merry-man" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Teacher" texture-name="player-hat-teacher" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Knight" texture-name="player-hat-knight" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Pirate" texture-name="player-hat-pirate" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Ninja" texture-name="player-hat-ninja" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Mummy" texture-name="player-hat-mummy" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Wizard" texture-name="player-hat-wizard" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Punk" texture-name="player-hat-punk" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Angel" texture-name="player-hat-angel" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Robot" texture-name="player-hat-robot" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Jack-o-lantern" texture-name="player-hat-jackolantern" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+      <component name="Xmas" texture-name="player-hat-xmas" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
+    </component-set>
+
+    <component-set name="shirt" display-skeleton="player-side" allow-none="true">
+      <component name="Merry Man" texture-name="player-shirt-merry-man" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Teacher" texture-name="player-shirt-teacher" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Pirate" texture-name="player-shirt-pirate" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Ninja" texture-name="player-shirt-ninja" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Mummy" texture-name="player-shirt-mummy" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Wizard" texture-name="player-shirt-wizard" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Punk" texture-name="player-shirt-punk" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Angel" texture-name="player-shirt-angel" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Robot" texture-name="player-shirt-robot" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Jack-o-lantern" texture-name="player-shirt-jackolantern" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Xmas" texture-name="player-shirt-xmas" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+    </component-set>
+</avatar-components>

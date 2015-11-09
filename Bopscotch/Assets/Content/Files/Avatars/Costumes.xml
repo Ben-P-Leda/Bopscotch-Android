@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<costumes>
+  <costume name="Angel">
+    <component set="hat" name="Angel" />
+    <component set="shirt" name="Angel" />
+  </costume>
+  <costume name="Wizard">
+    <component set="hat" name="Wizard" />
+    <component set="shirt" name="Wizard" />
+  </costume>
+  <costume name="Mummy">
+    <component set="gloves" name="Mummy" />
+    <component set="hat" name="Mummy" />
+    <component set="shirt" name="Mummy" />
+  </costume>
+  <costume name="Teacher">
+    <component set="eyes" name="Glasses" />
+    <component set="hat" name="Teacher" />
+    <component set="shirt" name="Teacher" />
+  </costume>
+  <costume name="Merry Man">
+    <component set="gloves" name="Merry Man" />
+    <component set="hat" name="Merry Man" />
+    <component set="shirt" name="Merry Man" />
+  </costume>
+  <costume name="Knight">
+    <component set="gloves" name="Knight" />
+    <component set="hat" name="Knight" />
+  </costume>
+  <costume name="Pirate">
+    <component set="gloves" name="Pirate" />
+    <component set="hat" name="Pirate" />
+    <component set="shirt" name="Pirate" />
+  </costume>
+  <costume name="Ninja">
+    <component set="gloves" name="Ninja" />
+    <component set="hat" name="Ninja" />
+    <component set="shirt" name="Ninja" />
+  </costume>
+  <costume name="Punk">
+    <component set="eyes" name="Shades" />
+    <component set="hat" name="Punk" />
+    <component set="shirt" name="Punk" />
+  </costume>
+  <costume name="Robot">
+    <component set="eyes" name="Robot" />
+    <component set="mouth" name="Robot" />
+    <component set="gloves" name="Robot" />
+    <component set="hat" name="Robot" />
+    <component set="shirt" name="Robot" />
+  </costume>
+  <costume name="Jack-o-lantern">
+    <component set="hat" name="Jack-o-lantern" />
+    <component set="shirt" name="Jack-o-lantern" />
+  </costume>
+  <costume name="Xmas">
+    <component set="gloves" name="Xmas" />
+    <component set="hat" name="Xmas" />
+    <component set="shirt" name="Xmas" />
+  </costume>
+</costumes>

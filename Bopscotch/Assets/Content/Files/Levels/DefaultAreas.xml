@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<areas>
+  <area name="Tutorial" level-count="1" selection-texture="background-tutorial" difficulty-tag="n/a" speed-step="0" locked="false" no-race="true" >
+    <completion-unlockables>
+      <unlockable type="area" unlocked="false" name="Hilltops" trial-unlockable="true" />z
+      <unlockable type="golden-ticket" unlocked="false" units="1" trial-unlockable="true" />
+      <unlockable type="avatar-costume" unlocked="false" name="Teacher" trial-unlockable="true" />
+    </completion-unlockables>
+  </area>
+  <area name="Hilltops" level-count="30" selection-texture="background-1" difficulty-tag="Easy" speed-step="0" locked="true">
+    <completion-unlockables>
+      <unlockable type="area" unlocked="false" name="Waterfall" />
+      <unlockable type="golden-ticket" unlocked="false" units="1" />
+      <unlockable type="avatar-costume" unlocked="false" name="Merry Man" trial-unlockable="true" />
+      <unlockable type="avatar-costume" unlocked="false" name="Knight" trial-unlockable="true" />
+    </completion-unlockables>
+  </area>
+  <area name="Waterfall" level-count="30" selection-texture="background-3" difficulty-tag="Medium" speed-step="2" locked="true">
+    <completion-unlockables>
+      <unlockable type="area" unlocked="false" name="Metropolis" />
+      <unlockable type="golden-ticket" unlocked="false" units="1" />
+      <unlockable type="avatar-costume" unlocked="false" name="Pirate" />
+      <unlockable type="avatar-costume" unlocked="false" name="Ninja" />
+    </completion-unlockables>
+  </area>
+  <area name="Metropolis" level-count="30" selection-texture="background-4" difficulty-tag="Hard" speed-step="4" locked="true">
+    <completion-unlockables>
+      <unlockable type="avatar-costume" unlocked="false" name="Punk" />
+      <unlockable type="avatar-costume" unlocked="false" name="Robot" />
+    </completion-unlockables>
+  </area>
+</areas>

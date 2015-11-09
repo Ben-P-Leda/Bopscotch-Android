@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<elements>
+  <element type="text" x-position="800" y-position="10" scale="1.0">Credits</element>
+
+  <element type="text" x-position="500" y-position="120" scale="0.5">Program</element>
+  <element type="text" x-position="500" y-position="150" scale="0.65">Ben Pritchard</element>
+
+  <element type="text" x-position="1100" y-position="120" scale="0.5">Graphics</element>
+  <element type="text" x-position="1100" y-position="150" scale="0.65">Ben Pritchard</element>
+
+  <element type="text" x-position="500" y-position="240" scale="0.5">Music</element>
+  <element type="text" x-position="500" y-position="270" scale="0.65">Benoit Charcosset</element>
+  <element type="text" x-position="500" y-position="320" scale="0.65">Kevin MacLeod</element>
+
+  <element type="text" x-position="1100" y-position="240" scale="0.5">Sound Effects From</element>
+  <element type="text" x-position="1100" y-position="270" scale="0.65">www.freesound.org</element>
+  <element type="text" x-position="1100" y-position="320" scale="0.65">www.opengameart.org</element>
+
+  <element type="text" x-position="800" y-position="410" scale="0.5">Special Thanks</element>
+  <element type="text" x-position="400" y-position="440" scale="0.65">Emma Hill</element>
+  <element type="text" x-position="400" y-position="490" scale="0.65">Paul Harman</element>
+  <element type="text" x-position="800" y-position="440" scale="0.65">Monogame Team</element>
+  <element type="text" x-position="800" y-position="490" scale="0.65">Marine Studios</element>
+  <element type="text" x-position="1200" y-position="440" scale="0.65">Nokia UK</element>
+  <element type="text" x-position="1200" y-position="490" scale="0.65">Replay Events</element>
+
+  <element type="text" x-position="500" y-position="580" scale="0.5">Production Baby</element>
+  <element type="text" x-position="500" y-position="610" scale="0.65">Rose Eloise Pritchard</element>
+
+  <element type="text" x-position="1100" y-position="580" scale="0.5">Copyright 2014</element>
+  <element type="text" x-position="1100" y-position="610" scale="0.65">Leda Entertainment</element>
+  <element type="text" x-position="1100" y-position="660" scale="0.5">www.ledaentertainment.com</element>
+</elements>
