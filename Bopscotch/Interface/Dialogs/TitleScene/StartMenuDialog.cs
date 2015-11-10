@@ -94,7 +94,7 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
                     .Replace("[SEC]", (remaining.Seconds < 10 ? "0" : "") + remaining.Seconds.ToString());
             }
 
-            if (!_networkIsAvailable) { _statusMessage += Translator.Translation("no-wifi"); }
+            if (!_networkIsAvailable) { _statusMessage += " " + Translator.Translation("no-wifi"); }
 
             base.Update(millisecondsSinceLastUpdate);
         }

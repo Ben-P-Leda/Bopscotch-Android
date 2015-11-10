@@ -25,8 +25,10 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
         private ResultsPopup _outcomePopup;
         private Effects.GlowBurst _glowBurst;
         private SoundEffectInstance _resultsSoundInstance;
+        private bool _displayLivesAward;
 
         public Definitions.RaceOutcome Outcome { private get; set; }
+        public bool LivesAwarded { private get; set; }
 
         public ResultsDialog(Scene.ObjectRegistrationHandler objectRegistrationHandler)
             : base()
@@ -55,6 +57,10 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
                     _avatar.AnimationEngine.Sequence = AnimationDataManager.Sequences["player-front-win"];
                     SoundEffectManager.PlayEffect("race-winner");
                     _glowBurst.Visible = true;
+                    if (LivesAwarded)
+                    { 
+                        _displayLivesAward = true; 
+                    }
                     break;
                 case Definitions.RaceOutcome.OpponentPlayerWin:
                     _avatar.AnimationEngine.Sequence = AnimationDataManager.Sequences["player-front-lose"];
@@ -98,6 +104,7 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
             _resultsSoundInstance = SoundEffectManager.PlayEffect("race-results");
 
             _glowBurst.Visible = false;
+            _displayLivesAward = false;
         }
 
         private void SynchroniseComponentsWithDialog()
@@ -121,6 +128,13 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
 
             _avatar.Draw(spriteBatch);
             _glowBurst.Draw(spriteBatch);
+
+            if (_displayLivesAward)
+            {
+                TextWriter.Write(Translator.Translation("race-lives-award").Replace("[QUANTITY]", Data.Profile.Race_Win_Lives_Reward.ToString()), 
+                    spriteBatch, new Vector2(Definitions.Back_Buffer_Center.X, WorldPosition.Y + 480.0f), Color.White, Color.Black, 3.0f, 
+                    0.75f, 0.01f, TextWriter.Alignment.Center);
+            }
         }
 
         private const float Top_Y_When_Active = 100.0f;

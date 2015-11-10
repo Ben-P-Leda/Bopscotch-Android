@@ -32,7 +32,7 @@ namespace Bopscotch.Data
 
         public static PhoneSettings Settings { get { return Instance._settings; } }
 
-        public static int Lives { get { return Instance._livesRemaining; } }
+        public static int Lives { get { return Instance._livesRemaining; } set { Instance._livesRemaining = value; } }
         public static bool NotAtFullLives { get { return Lives < Maximum_Life_Count; } }
         public static DateTime NextLifeRestoreTime { get { return _instance._lastLivesUpdateTime.AddSeconds(Life_Restore_Interval); } }
         public static int GoldenTickets { get { return Instance._goldenTicketCount; } set { Instance._goldenTicketCount = value; } }
@@ -490,6 +490,9 @@ namespace Bopscotch.Data
         private const int Days_Before_Reminders_Start = 3;
         private const int Days_Between_Reminders = 2;
         private const int Maximum_Life_Count = 10;
-        private const int Life_Restore_Interval = 40;
+        private const int Life_Restore_Interval = 180;
+
+        public const int Race_Win_Lives_Max = 30;
+        public const int Race_Win_Lives_Reward = 3;
     }
 }

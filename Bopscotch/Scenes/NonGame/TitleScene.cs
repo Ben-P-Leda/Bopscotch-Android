@@ -27,7 +27,6 @@ namespace Bopscotch.Scenes.NonGame
         private string _firstDialog;
         private string _musicToStartOnDeactivation;
         private bool _doNotExitOnTitleDismiss;
-        private bool _returningFromRating;
 
         private NewContentUnlockedDialog _unlockNotificationDialog;
 
@@ -69,8 +68,6 @@ namespace Bopscotch.Scenes.NonGame
                     RenderDepth = 0.5f,
                     Scale = 0.65f
                 });
-
-            _returningFromRating = false;
         }
 
         private void HandlePopupAnimationComplete()
@@ -126,10 +123,6 @@ namespace Bopscotch.Scenes.NonGame
             {
                 Data.Profile.UnlockCostume("Angel");
                 DisplayRatingUnlockedContent();
-            }
-            else
-            {
-                _returningFromRating = true;
             }
         }
 
@@ -188,6 +181,7 @@ namespace Bopscotch.Scenes.NonGame
         {
             switch (selectedOption)
             {
+                case "Add Lives": NextSceneType = typeof(StoreScene); Deactivate(); break;
                 case "Adventure": Data.Profile.PlayingRaceMode = false; ActivateDialog("survival-levels"); break;
                 case "Race": HandleRaceStartSelection(); break;
                 case "Back": ActivateDialog("main"); break;

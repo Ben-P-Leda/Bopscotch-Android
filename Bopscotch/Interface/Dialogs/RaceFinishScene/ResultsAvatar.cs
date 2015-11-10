@@ -45,7 +45,7 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
                 Podium_Render_Depth);
         }
 
-        private const float Offset_From_Dialog_Top = 350.0f;
+        private const float Offset_From_Dialog_Top = 315.0f;
         private const int Render_Layer = 4;
         private const float Render_Depth = 0.05f;
 

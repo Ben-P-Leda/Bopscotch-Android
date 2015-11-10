@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Leda.Core.Asset_Management;
 
 using Bopscotch.Scenes.BaseClasses;
+using Bopscotch.Scenes.Gameplay.Survival;
 using Bopscotch.Interface.Dialogs;
 using Bopscotch.Interface.Dialogs.StoreScene;
 using Bopscotch.Interface.Content;
@@ -18,7 +19,8 @@ namespace Bopscotch.Scenes.NonGame
 {
     public class StoreScene : MenuDialogScene
     {
-        //private ListingInformation _products;
+        private bool _loadedProducts;
+        private bool _returnToGame;
 
         private PurchaseCompleteDialog _purchaseCompleteDialog;
         private ConsumablesDialog _consumablesDialog;
@@ -37,6 +39,7 @@ namespace Bopscotch.Scenes.NonGame
 
             BackgroundTextureName = Background_Texture_Name;
 
+            _loadedProducts = false;
             LoadProducts();
         }
 
@@ -54,19 +57,21 @@ namespace Bopscotch.Scenes.NonGame
 
         public override void Activate()
         {
+            _returnToGame = NextSceneParameters.Get<bool>("return-to-game");
+
             base.Activate();
 
             MusicManager.StopMusic();
 
-            //if ((_products == null) || (_products.ProductListings.Count < 1)) 
+            if (!_loadedProducts) 
             { 
                 ActivateDialog("store-status"); 
             }
-            //else 
-            //{ 
-            //    ActivateDialog("store-items");
-            //    _consumablesDialog.Activate();
-            //}
+            else 
+            { 
+                ActivateDialog("store-items");
+                _consumablesDialog.Activate();
+            }
         }
 
         private async void LoadProducts()
@@ -98,7 +103,14 @@ namespace Bopscotch.Scenes.NonGame
             }
             else
             {
-                NextSceneType = typeof(TitleScene);
+                if ((_returnToGame) && (Data.Profile.Lives > 0))
+                {
+                    NextSceneType = typeof(SurvivalGameplayScene);
+                }
+                else
+                {
+                    NextSceneType = typeof(TitleScene);
+                }
                 Deactivate();
             }
         }
@@ -136,6 +148,18 @@ namespace Bopscotch.Scenes.NonGame
 
         private void FulfillPurchase(string productCode)
         {
+            switch (productCode)
+            {
+                case "Bopscotch_Test_Product": Data.Profile.Lives += 1; Data.Profile.GoldenTickets += 1; break;
+                case "Bopscotch_10_Lives": Data.Profile.Lives += 10; break;
+                case "Bopscotch_20_Lives": Data.Profile.Lives += 20; break;
+                case "Bopscotch_50_Lives": Data.Profile.Lives += 50; break;
+                case "Bopscotch_2_Tickets": Data.Profile.GoldenTickets += 2; break;
+                case "Bopscotch_5_tickets": Data.Profile.GoldenTickets += 5; break;
+                case "Bopscotch_10_Tickets": Data.Profile.GoldenTickets += 10; break;
+            }
+
+            Data.Profile.Save();
         }
 
         private const string Background_Texture_Name = "background-1";

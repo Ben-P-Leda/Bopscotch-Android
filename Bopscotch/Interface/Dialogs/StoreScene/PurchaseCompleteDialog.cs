@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
+using Bopscotch.Interface;
 namespace Bopscotch.Interface.Dialogs.StoreScene
 {
     public class PurchaseCompleteDialog : ButtonDialog
@@ -21,7 +22,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
 
         public override void Activate()
         {
-            _boxCaption = "Purchased: " + ItemCode;
+            //_boxCaption = Translator.Translation("purchase-complete").Replace("[ITEM]", Products.ProductListings[ItemCode].Name);
             base.Activate();
         }
 

@@ -27,7 +27,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
         }
 
         private const int Dialog_Height = 300;
-        private const string Default_Caption = "Store not available";
+        private const string Default_Caption = "store-unavailable";
         private const float Top_Line_Y = 80.0f;
         private const float Line_Height = 50.0f;
     }

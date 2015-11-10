@@ -106,8 +106,23 @@ namespace Bopscotch.Scenes.Gameplay.Race
         {
             if (CurrentState == Status.Active)
             {
+                if (_progressCoordinator.Result == Definitions.RaceOutcome.OwnPlayerWin)
+                {
+                    AwardLivesForWin();
+                }
+
                 NextSceneParameters.Set(RaceFinishScene.Outcome_Parameter_Name, _progressCoordinator.Result);
                 SwitchToResultsScene();
+            }
+        }
+
+        private void AwardLivesForWin()
+        {
+            if (Data.Profile.Lives < Data.Profile.Race_Win_Lives_Max)
+            {
+                Data.Profile.Lives += Data.Profile.Race_Win_Lives_Reward;
+                Data.Profile.Save();
+                NextSceneParameters.Set("race-lives-awarded", true);
             }
         }
 
@@ -150,7 +165,14 @@ namespace Bopscotch.Scenes.Gameplay.Race
 
         private void HandleDisconnectAcknowledge(string buttonCaption)
         {
-            NextSceneParameters.Set(RaceFinishScene.Outcome_Parameter_Name, AllLapsCompleted ? Definitions.RaceOutcome.OwnPlayerWin : Definitions.RaceOutcome.Incomplete);
+            Definitions.RaceOutcome outcome = AllLapsCompleted ? Definitions.RaceOutcome.OwnPlayerWin : Definitions.RaceOutcome.Incomplete;
+
+            if (outcome == Definitions.RaceOutcome.OwnPlayerWin)
+            {
+                AwardLivesForWin();
+            }
+
+            NextSceneParameters.Set(RaceFinishScene.Outcome_Parameter_Name, outcome);
             SwitchToResultsScene();
         }
 

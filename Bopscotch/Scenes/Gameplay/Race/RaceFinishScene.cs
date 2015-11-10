@@ -49,9 +49,8 @@ namespace Bopscotch.Scenes.Gameplay.Race
         {
             base.Activate();
 
-            Definitions.RaceOutcome outcome = NextSceneParameters.Get<Definitions.RaceOutcome>(Outcome_Parameter_Name);
-
-            ((ResultsDialog)_dialogs["results"]).Outcome = outcome;
+            ((ResultsDialog)_dialogs["results"]).Outcome = NextSceneParameters.Get<Definitions.RaceOutcome>(Outcome_Parameter_Name);
+            ((ResultsDialog)_dialogs["results"]).LivesAwarded = NextSceneParameters.Get<bool>("race-lives-awarded");
         }
 
         protected override void CompleteActivation()

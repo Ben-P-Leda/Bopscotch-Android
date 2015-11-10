@@ -67,6 +67,11 @@ namespace Bopscotch.Scenes.Gameplay.Survival
                     Profile.PauseOnSceneActivation = false; 
                     Deactivate(); 
                     break;
+                case "Add Lives":
+                    NextSceneParameters.Set("return-to-game", true);
+                    NextSceneType = typeof(StoreScene);
+                    Deactivate();
+                    break;
             }
         }
 
@@ -89,6 +94,8 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         private void HandlePlayerDeath()
         {
+            Data.Profile.Save();
+
             if (Data.Profile.Lives < 1) { _noLivesDialog.Activate(); }
             else { RefreshScene(); }
         }
