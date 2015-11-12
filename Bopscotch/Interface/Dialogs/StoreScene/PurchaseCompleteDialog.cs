@@ -1,11 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 
+using System.Linq;
+using System.Collections.Generic;
+
+using Xamarin.InAppBilling;
+
 using Bopscotch.Interface;
+
 namespace Bopscotch.Interface.Dialogs.StoreScene
 {
     public class PurchaseCompleteDialog : ButtonDialog
     {
         public string ItemCode { private get; set; }
+        public IList<Product> Products { private get; set; }
 
         public PurchaseCompleteDialog(string caption)
             : base()
@@ -22,7 +29,10 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
 
         public override void Activate()
         {
-            //_boxCaption = Translator.Translation("purchase-complete").Replace("[ITEM]", Products.ProductListings[ItemCode].Name);
+            Product selected = Products.FirstOrDefault(x => x.ProductId == ItemCode);
+            string productName = selected == null ? selected.Title : ItemCode;
+
+            _boxCaption = Translator.Translation("purchase-complete").Replace("[ITEM]", productName);
             base.Activate();
         }
 

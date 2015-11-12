@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using System.Collections.Generic;
 
-//using Windows.ApplicationModel.Store;
+using Xamarin.InAppBilling;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -80,37 +80,38 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
             _cancelButtonCaption = "Back";
         }
 
-        //public void InitializeProducts(ListingInformation products)
-        //{
-        //    Dictionary<string, Point> iapImageMappings = new Dictionary<string, Point>()
-        //    {
-        //        { "Bopscotch_10_Lives", new Point(0,0) },
-        //        { "Bopscotch_20_Lives", new Point(0,1) },
-        //        { "Bopscotch_50_Lives", new Point(0,2) },
-        //        { "Bopscotch_2_Tickets", new Point(1,0) },
-        //        { "Bopscotch_5_Tickets", new Point(1,1) },
-        //        { "Bopscotch_10_Tickets", new Point(1,2) }
-        //    };
+        public void InitializeProducts(IList<Product> products)
+        {
+            Dictionary<string, Point> iapImageMappings = new Dictionary<string, Point>()
+            {
+                { "bopscotch_10_lives", new Point(1,0) },
+                { "bopscotch_20_lives", new Point(1,1) },
+                { "bopscotch_50_lives", new Point(1,2) },
+                { "bopscotch_2_tickets", new Point(0,0) },
+                { "bopscotch_5_tickets", new Point(0,1) },
+                { "bopscotch_10_tickets", new Point(0,2) }
+            };
 
-        //    _productInfo = new Dictionary<string, string>();
+            _productInfo = new Dictionary<string, string>();
 
-        //    foreach (KeyValuePair<string, ProductListing> kvp in products.ProductListings)
-        //    {
-        //        if (iapImageMappings.ContainsKey(kvp.Key))
-        //        {
-        //            AddItem(kvp.Key, iapImageMappings[kvp.Key]);
-        //            _productInfo.Add(kvp.Key, string.Format("{0} - {1}", kvp.Value.Name, kvp.Value.FormattedPrice));
-        //        }
-        //    }
-        //}
+            foreach (KeyValuePair<string, Point> kvp in iapImageMappings)
+            {
+                Product p = products.FirstOrDefault(x => x.ProductId == kvp.Key);
+                if (p != null)
+                {
+                    AddItem(kvp.Key, kvp.Value);
+                    _productInfo.Add(kvp.Key, string.Format("{0} - {1}", p.Title.Replace("(Bopscotch)", ""), p.Price));
+                }
+            }
+        }
 
         private void AddItem(string itemCode, Point matrixTopLeft)
         {
-            CarouselFlatImage area = new CarouselFlatImage(itemCode, Items_Texture);
-            area.RenderLayer = RenderLayer;
-            area.Frame = new Rectangle(0, 0, Item_Image_Width, Item_Image_Height);
+            CarouselFlatImage item = new CarouselFlatImage(itemCode, Items_Texture);
+            item.RenderLayer = RenderLayer;
+            item.Frame = new Rectangle(Item_Image_Width * matrixTopLeft.X, Item_Image_Height * matrixTopLeft.Y, Item_Image_Width, Item_Image_Height);
 
-            AddItem(area);
+            AddItem(item);
         }
 
         public override void Activate()
@@ -126,7 +127,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
         {
             base.Draw(spriteBatch);
 
-            TextWriter.Write(Selection, spriteBatch, _font, new Vector2(Definitions.Back_Buffer_Center.X, WorldPosition.Y + 275.0f),
+            TextWriter.Write(_productInfo[Selection], spriteBatch, _font, new Vector2(Definitions.Back_Buffer_Center.X, WorldPosition.Y + 275.0f),
                 TransitionTint(_textTint), TransitionTint(Color.Black), 3.0f, 0.75f, 0.1f, TextWriter.Alignment.Center);
         }
 
@@ -141,7 +142,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
         private const float Maximum_Item_Scale = 1.0f;
         private const float Minimum_Item_Scale = 0.75f;
 
-        private const float Carousel_Center_Y = 160.0f;
+        private const float Carousel_Center_Y = 140.0f;
         private const float Carousel_Horizontal_Radius = 270.0f;
         private const float Carousel_Vertical_Radius = 35.0f;
         private const int Purchase_Dialog_Height = 480;

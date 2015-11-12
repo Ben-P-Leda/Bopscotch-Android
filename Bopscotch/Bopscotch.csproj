@@ -174,10 +174,10 @@
     <Compile Include="Interface\Dialogs\RaceJoinScene\OpponentSelector.cs" />
     <Compile Include="Interface\Dialogs\RaceJoinScene\RaceOpponentListDialog.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\ConsumablesDialog.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\LoadingDialog.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\PurchaseCompleteDialog.cs" />
-    <Compile Include="Interface\Dialogs\StoreScene\StoreCarouselItem.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\StorePurchaseDialog.cs" />
-    <Compile Include="Interface\Dialogs\StoreScene\StoreStatusDialog.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\StoreClosedDialog.cs" />
     <Compile Include="Interface\Dialogs\SurvivalGameplayScene\NoLivesDialog.cs" />
     <Compile Include="Interface\Dialogs\SurvivalGameplayScene\PauseDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\CharacterSelectionCarouselDialog.cs" />
