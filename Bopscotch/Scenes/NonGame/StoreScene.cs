@@ -21,6 +21,7 @@ namespace Bopscotch.Scenes.NonGame
     {
         private bool _returnToGame;
 
+        private StorePurchaseDialog _itemsCarouselDialog;
         private PurchaseCompleteDialog _purchaseCompleteDialog;
         private ConsumablesDialog _consumablesDialog;
 
@@ -31,27 +32,41 @@ namespace Bopscotch.Scenes.NonGame
         public StoreScene()
             : base()
         {
-            _purchaseCompleteDialog = new PurchaseCompleteDialog("");
+            _itemsCarouselDialog = new StorePurchaseDialog(RegisterGameObject, UnregisterGameObject);
+            _itemsCarouselDialog.ActionCallback = ItemDialogActionButtonCallback;
+            _purchaseCompleteDialog = new PurchaseCompleteDialog();
             _purchaseCompleteDialog.SelectionCallback = PurchaseDialogButtonCallback;
             _consumablesDialog = new ConsumablesDialog();
 
             _dialogs.Add("loading-store", new LoadingDialog(ConnectToStore));
             _dialogs.Add("store-closed", new StoreClosedDialog());
-            _dialogs.Add("store-items", new StorePurchaseDialog(RegisterGameObject, UnregisterGameObject));
+            _dialogs.Add("store-items", _itemsCarouselDialog);
             _dialogs.Add("purchase-complete", _purchaseCompleteDialog);
             _dialogs.Add("consumables", _consumablesDialog);
 
             BackgroundTextureName = Background_Texture_Name;
-
-            _connection = new InAppBillingServiceConnection(Bopscotch.Game1.Activity, Store_Key);
-            _connection.OnConnected += LoadProducts;
-
-            MainActivity.BillingServiceConnection = _connection;
         }
 
         private void PurchaseDialogButtonCallback(string buttonCaption)
         {
-            if ((buttonCaption == "Back") && (_consumablesDialog.Active)) { _consumablesDialog.DismissWithReturnValue(""); }
+            if ((buttonCaption == "Back") && (_consumablesDialog.Active))
+            {
+                _consumablesDialog.DismissWithReturnValue(""); 
+            }
+        }
+
+        private void ItemDialogActionButtonCallback(string buttonCaption)
+        {
+            if (buttonCaption == "Back") 
+            {
+                _consumablesDialog.DismissWithReturnValue(""); 
+                _dialogs["store-items"].DismissWithReturnValue("Back");
+                
+            }
+            else if (buttonCaption == "Buy") 
+            { 
+                InitiatePurchase(((StorePurchaseDialog)_dialogs["store-items"]).Selection); 
+            }
         }
 
         private void HandlePurchaseFailure()
@@ -70,6 +85,11 @@ namespace Bopscotch.Scenes.NonGame
         {
             _returnToGame = NextSceneParameters.Get<bool>("return-to-game");
 
+            _connection = new InAppBillingServiceConnection(Bopscotch.Game1.Activity, Store_Key);
+            _connection.OnConnected += LoadProducts;
+
+            MainActivity.BillingServiceConnection = _connection;
+
             base.Activate();
 
             MusicManager.StopMusic();
@@ -79,7 +99,7 @@ namespace Bopscotch.Scenes.NonGame
 
         private void ConnectToStore()
         {
-            MainActivity.BillingServiceConnection.Connect();
+            _connection.Connect();
         }
 
         private async void LoadProducts()
@@ -127,31 +147,28 @@ namespace Bopscotch.Scenes.NonGame
                 ActivateDialog("store-closed");
             }
 
+            // TODO: Handle this better once done testing
             var purchases = _connection.BillingHandler.GetPurchases(ItemType.Product);
         }
 
         void BillingHandler_OnUserCanceled()
         {
             Android.Util.Log.Debug("Leda", "Purchase CANCELLED");
-            ActivateDialog("store-items");
         }
 
         void BillingHandler_OnPurchaseFailedValidation(Purchase purchase, string purchaseData, string purchaseSignature)
         {
             Android.Util.Log.Debug("Leda", "Purchase VALIDATION FAILED");
-            ActivateDialog("store-items");
         }
 
         void BillingHandler_OnProductPurchasedError(int responseCode, string sku)
         {
             Android.Util.Log.Debug("Leda", "Purchase ERROR");
-            ActivateDialog("store-items");
         }
 
         void BillingHandler_InAppBillingProcesingError(string message)
         {
             Android.Util.Log.Debug("Leda", "General ERROR");
-            ActivateDialog("store-items");
         }
 
         void BillingHandler_OnProductPurchased(int response, Purchase purchase, string purchaseData, string purchaseSignature)
@@ -163,18 +180,19 @@ namespace Bopscotch.Scenes.NonGame
 
             FulfillPurchase(productCode);
             _purchaseCompleteDialog.ItemCode = productCode;
+            _dialogs["store-items"].DismissWithReturnValue("");
             ActivateDialog("purchase-complete");
         }
 
         private void HandleActiveDialogExit(string selectedOption)
         {
-            if (selectedOption == "Buy")
-            {
-                InitiatePurchase(((StorePurchaseDialog)_dialogs["store-items"]).Selection);
-            }
-            else if (_lastActiveDialogName == "purchase-complete")
+            if (_lastActiveDialogName == "purchase-complete")
             {
                 ActivateDialog("store-items");
+            }
+            else if ((_lastActiveDialogName == "store-items") && (string.IsNullOrWhiteSpace(selectedOption)))
+            {
+            //    ActivateDialog("purchase-complete");
             }
             else if (!string.IsNullOrWhiteSpace(selectedOption))
             {
@@ -192,7 +210,12 @@ namespace Bopscotch.Scenes.NonGame
 
         private void InitiatePurchase(string selection)
         {
-            _connection.BillingHandler.BuyProduct(_products[selection]);
+            _purchaseCompleteDialog.ItemCode = selection;
+            _dialogs["store-items"].DismissWithReturnValue("");
+
+            //selection = ReservedTestProductIDs.Purchased;
+            //_connection.BillingHandler.BuyProduct(_products[selection]);
+
         }
 
         private void FulfillPurchase(string productCode)

@@ -14,7 +14,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
         public string ItemCode { private get; set; }
         public IList<Product> Products { private get; set; }
 
-        public PurchaseCompleteDialog(string caption)
+        public PurchaseCompleteDialog()
             : base()
         {
             Height = Dialog_Height;
@@ -23,8 +23,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
             AddButton("OK", new Vector2(Definitions.Back_Buffer_Center.X, 200), Button.ButtonIcon.Tick, Color.LawnGreen);
 
             _cancelButtonCaption = "OK";
-
-            _boxCaption = Translator.Translation(caption);
+            _boxCaption = "";
         }
 
         public override void Activate()

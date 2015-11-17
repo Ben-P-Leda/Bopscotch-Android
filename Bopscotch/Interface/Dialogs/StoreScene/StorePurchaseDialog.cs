@@ -27,6 +27,8 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
         private Timer _textTransitionTimer;
         private Color _textTint;
 
+        public ButtonSelectionHandler ActionCallback { private get; set; }
+
         public StorePurchaseDialog(Scene.ObjectRegistrationHandler registrationHandler, Scene.ObjectUnregistrationHandler unregistrationHandler)
             : base(registrationHandler, unregistrationHandler)
         {
@@ -63,7 +65,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
 
         private void HandleActionButtonPress(string action)
         {
-            DismissWithReturnValue(action);
+            ActionCallback(action);
         }
 
         protected override void SetupButtonLinkagesAndDefaultValues()
@@ -82,6 +84,8 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
 
         public void InitializeProducts(IList<Product> products)
         {
+            FlushItems();
+
             Dictionary<string, Point> iapImageMappings = new Dictionary<string, Point>()
             {
                 { "bopscotch_10_lives", new Point(1,0) },
@@ -110,6 +114,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
             CarouselFlatImage item = new CarouselFlatImage(itemCode, Items_Texture);
             item.RenderLayer = RenderLayer;
             item.Frame = new Rectangle(Item_Image_Width * matrixTopLeft.X, Item_Image_Height * matrixTopLeft.Y, Item_Image_Width, Item_Image_Height);
+            item.Origin = new Vector2(Item_Image_Width, Item_Image_Height) / 2.0f;
 
             AddItem(item);
         }
