@@ -2,12 +2,9 @@
 
 namespace Bopscotch.Interface.Dialogs.StoreScene
 {
-    public class StoreStatusDialog : ButtonDialog
+    public class StoreClosedDialog : ButtonDialog
     {
-        public StoreStatusDialog()
-            : this(Default_Caption) { }
-
-        public StoreStatusDialog(string caption)
+        public StoreClosedDialog()
             : base()
         {
             Height = Dialog_Height;
@@ -17,7 +14,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
 
             _cancelButtonCaption = "OK";
 
-            _boxCaption = Translator.Translation(caption);
+            _boxCaption = Translator.Translation(Dialog_Caption);
         }
 
         public override void Reset()
@@ -27,7 +24,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
         }
 
         private const int Dialog_Height = 300;
-        private const string Default_Caption = "store-unavailable";
+        private const string Dialog_Caption = "store-unavailable";
         private const float Top_Line_Y = 80.0f;
         private const float Line_Height = 50.0f;
     }

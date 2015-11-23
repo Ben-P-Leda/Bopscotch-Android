@@ -490,7 +490,7 @@ namespace Bopscotch.Data
         private const int Days_Before_Reminders_Start = 3;
         private const int Days_Between_Reminders = 2;
         private const int Maximum_Life_Count = 10;
-        private const int Life_Restore_Interval = 180;
+        private const int Life_Restore_Interval = 300;
 
         public const int Race_Win_Lives_Max = 30;
         public const int Race_Win_Lives_Reward = 3;

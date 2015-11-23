@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v4.3</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -174,10 +174,10 @@
     <Compile Include="Interface\Dialogs\RaceJoinScene\OpponentSelector.cs" />
     <Compile Include="Interface\Dialogs\RaceJoinScene\RaceOpponentListDialog.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\ConsumablesDialog.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\LoadingDialog.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\PurchaseCompleteDialog.cs" />
-    <Compile Include="Interface\Dialogs\StoreScene\StoreCarouselItem.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\StorePurchaseDialog.cs" />
-    <Compile Include="Interface\Dialogs\StoreScene\StoreStatusDialog.cs" />
+    <Compile Include="Interface\Dialogs\StoreScene\StoreClosedDialog.cs" />
     <Compile Include="Interface\Dialogs\SurvivalGameplayScene\NoLivesDialog.cs" />
     <Compile Include="Interface\Dialogs\SurvivalGameplayScene\PauseDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\CharacterSelectionCarouselDialog.cs" />
@@ -789,7 +789,9 @@
     <AndroidAsset Include="Assets\Content\Files\Levels\Waterfall\Survival\9.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Files\Translations\en-GB.xml" />
+    <AndroidAsset Include="Assets\Content\Files\Translations\en-GB.xml">
+      <SubType>Designer</SubType>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Files\Tutorial\en-GB.xml" />
