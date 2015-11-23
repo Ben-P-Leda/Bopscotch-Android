@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using Leda.Core;
 using Leda.Core.Asset_Management;
@@ -48,7 +49,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
             _spinnerRotation -= MathHelper.ToRadians(Spin_Degrees_Per_Millisecond) * millisecondsSinceLastUpdate;
         }
 
-        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
 

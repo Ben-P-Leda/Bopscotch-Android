@@ -51,7 +51,7 @@ namespace Bopscotch.Scenes.NonGame
         {
             if ((buttonCaption == "Back") && (_consumablesDialog.Active))
             {
-                _consumablesDialog.DismissWithReturnValue(""); 
+                _consumablesDialog.DismissWithReturnValue("Back"); 
             }
         }
 
@@ -59,7 +59,7 @@ namespace Bopscotch.Scenes.NonGame
         {
             if (buttonCaption == "Back") 
             {
-                _consumablesDialog.DismissWithReturnValue(""); 
+                _consumablesDialog.DismissWithReturnValue("Back"); 
                 _dialogs["store-items"].DismissWithReturnValue("Back");
                 
             }
@@ -67,11 +67,6 @@ namespace Bopscotch.Scenes.NonGame
             { 
                 InitiatePurchase(((StorePurchaseDialog)_dialogs["store-items"]).Selection); 
             }
-        }
-
-        private void HandlePurchaseFailure()
-        {
-            ActivateDialog("store-items");
         }
 
         protected override void CompletePostStartupLoadInitialization()
@@ -121,7 +116,7 @@ namespace Bopscotch.Scenes.NonGame
                 ReservedTestProductIDs.Unavailable
             }, ItemType.Product);
 
-            _dialogs["loading-store"].DismissWithReturnValue("");
+            _dialogs["loading-store"].DismissWithReturnValue("Loaded");
 
             if (products != null)
             {
@@ -149,26 +144,37 @@ namespace Bopscotch.Scenes.NonGame
 
             // TODO: Handle this better once done testing
             var purchases = _connection.BillingHandler.GetPurchases(ItemType.Product);
+            foreach (var p in purchases)
+            {
+                if (p.ProductId == ReservedTestProductIDs.Purchased)
+                {
+                    _connection.BillingHandler.ConsumePurchase(p);
+                }
+            }
         }
 
         void BillingHandler_OnUserCanceled()
         {
             Android.Util.Log.Debug("Leda", "Purchase CANCELLED");
+            FinishPurchaseProcess(false, "Purchase cancelled");
         }
 
         void BillingHandler_OnPurchaseFailedValidation(Purchase purchase, string purchaseData, string purchaseSignature)
         {
             Android.Util.Log.Debug("Leda", "Purchase VALIDATION FAILED");
+            FinishPurchaseProcess(false, "Validation failed");
         }
 
         void BillingHandler_OnProductPurchasedError(int responseCode, string sku)
         {
             Android.Util.Log.Debug("Leda", "Purchase ERROR");
+            FinishPurchaseProcess(false, "Error in purchase process");
         }
 
         void BillingHandler_InAppBillingProcesingError(string message)
         {
             Android.Util.Log.Debug("Leda", "General ERROR");
+            FinishPurchaseProcess(false, "Could not complete purchase");
         }
 
         void BillingHandler_OnProductPurchased(int response, Purchase purchase, string purchaseData, string purchaseSignature)
@@ -179,9 +185,23 @@ namespace Bopscotch.Scenes.NonGame
             _connection.BillingHandler.ConsumePurchase(purchase);
 
             FulfillPurchase(productCode);
-            _purchaseCompleteDialog.ItemCode = productCode;
+            FinishPurchaseProcess(true, productCode);
+        }
+
+        private void FinishPurchaseProcess(bool completedSuccessfully, string outcomeInfo)
+        {
+            _purchaseCompleteDialog.PurchaseSuccessful = completedSuccessfully;
+
+            if (completedSuccessfully)
+            {
+                _purchaseCompleteDialog.ItemCode = outcomeInfo;
+            }
+            else
+            {
+                _purchaseCompleteDialog.PurchaseOutcomeMessage = outcomeInfo;
+            }
+            
             _dialogs["store-items"].DismissWithReturnValue("");
-            ActivateDialog("purchase-complete");
         }
 
         private void HandleActiveDialogExit(string selectedOption)
@@ -192,9 +212,9 @@ namespace Bopscotch.Scenes.NonGame
             }
             else if ((_lastActiveDialogName == "store-items") && (string.IsNullOrWhiteSpace(selectedOption)))
             {
-            //    ActivateDialog("purchase-complete");
+                ActivateDialog("purchase-complete");
             }
-            else if (!string.IsNullOrWhiteSpace(selectedOption))
+            else if ((!string.IsNullOrWhiteSpace(selectedOption)) && (selectedOption != "Loaded"))
             {
                 if ((_returnToGame) && (Data.Profile.Lives > 0))
                 {
@@ -210,12 +230,7 @@ namespace Bopscotch.Scenes.NonGame
 
         private void InitiatePurchase(string selection)
         {
-            _purchaseCompleteDialog.ItemCode = selection;
-            _dialogs["store-items"].DismissWithReturnValue("");
-
-            //selection = ReservedTestProductIDs.Purchased;
-            //_connection.BillingHandler.BuyProduct(_products[selection]);
-
+            _connection.BillingHandler.BuyProduct(_products[selection]);
         }
 
         private void FulfillPurchase(string productCode)

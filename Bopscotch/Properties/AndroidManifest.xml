@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ledaentertainment.bopscotch" android:versionCode="15" android:versionName="1.2.1.6" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ledaentertainment.bopscotch" android:versionCode="17" android:versionName="1.2.1.9" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
 	<application android:label="Bopscotch" android:icon="@drawable/Icon"></application>
 	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />

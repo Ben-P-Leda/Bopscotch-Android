@@ -12,6 +12,8 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
     public class PurchaseCompleteDialog : ButtonDialog
     {
         public string ItemCode { private get; set; }
+        public string PurchaseOutcomeMessage { private get; set; }
+        public bool PurchaseSuccessful { private get; set; }
         public IList<Product> Products { private get; set; }
 
         public PurchaseCompleteDialog()
@@ -28,10 +30,17 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
 
         public override void Activate()
         {
-            Product selected = Products.FirstOrDefault(x => x.ProductId == ItemCode);
-            string productName = selected == null ? selected.Title : ItemCode;
+            if (PurchaseSuccessful)
+            {
+                Product selected = Products.FirstOrDefault(x => x.ProductId == ItemCode);
+                string productName = selected != null ? selected.Title : ItemCode;
 
-            _boxCaption = Translator.Translation("purchase-complete").Replace("[ITEM]", productName);
+                _boxCaption = Translator.Translation("purchase-complete").Replace("[ITEM]", productName);
+            }
+            else
+            {
+                _boxCaption = PurchaseOutcomeMessage;
+            }
             base.Activate();
         }
 

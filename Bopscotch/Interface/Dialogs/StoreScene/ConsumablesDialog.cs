@@ -15,6 +15,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
         {
             Height = Dialog_Height;
             TopYWhenActive = Bopscotch.Scenes.NonGame.StoreScene.Dialog_Margin;
+            _boxCaption = Translator.Translation("Bopscotch Store");
         }
 
         public override void Reset()
@@ -51,13 +52,13 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
             }
         }
 
-        private const int Dialog_Height = 150;
+        private const int Dialog_Height = 220;
         private const string Golden_Ticket_Texture = "golden-ticket";
         private const string Lives_Icon_Texture = "icon-lives";
         protected const float Render_Depth = 0.1f;
         protected const float Outline_Thickness = 3.0f;
         protected const float Text_Scale = 0.75f;
         protected const float Left_Margin = 100.0f;
-        protected const float Top_Margin = 35.0f;
+        protected const float Top_Margin = 105.0f;
     }
 }
