@@ -34,6 +34,7 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
             {
                 Product selected = Products.FirstOrDefault(x => x.ProductId == ItemCode);
                 string productName = selected != null ? selected.Title : ItemCode;
+                productName = productName.Replace(" (Bopscotch)", "");
 
                 _boxCaption = Translator.Translation("purchase-complete").Replace("[ITEM]", productName);
             }

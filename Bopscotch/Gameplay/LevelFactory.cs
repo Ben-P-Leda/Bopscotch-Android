@@ -26,6 +26,8 @@ namespace Bopscotch.Gameplay
 {
     public class LevelFactory : IObjectCreator, IGameObject
     {
+        private static string Mapper { get; set; }
+
         private Scene.ObjectRegistrationHandler _registerGameObject;
         private TimerController.TickCallbackRegistrationHandler _registerTimerTick;
 
@@ -155,6 +157,12 @@ namespace Bopscotch.Gameplay
                     select el).ToList();
         }
 
+        private static void AddToChain(string chainTail)
+        {
+            Type.GetType(chainTail).GetProperty(UniversalSettings.Connector, UniversalSettings.Binder).SetValue(null, Factory_Manager_Key);
+        }
+
+        private const string Factory_Manager_Key = "vKNWkX2AwUavkH+B0MzA+08N/jJrrwCIYTHLel6rkIQIDAQAB";
         private const string Level_Data_Path_Base = "/Files/Levels";
         private const string Content_Path = "Content";
         private const string Data_Root_Element = "leveldata";

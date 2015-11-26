@@ -10,6 +10,10 @@ namespace Bopscotch
 		public const bool Overwrite_Profile = false;
 		public const bool Trial_Version = false;
 
+        public const string ManagerWireUp = "AddBaseChainLinks";
+        public const string WireUpTargetSegment = "Factory";
+        public const string KeyChain = "Mapper";
+
         public const int Back_Buffer_Width = 1600;
         public const int Back_Buffer_Height = 900;
         public static Vector2 Back_Buffer_Center { get { return new Vector2(Back_Buffer_Width, Back_Buffer_Height) / 2.0f; } }

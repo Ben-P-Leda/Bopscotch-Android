@@ -11,6 +11,7 @@ using Leda.Core.Gamestate_Management;
 using Leda.Core.Asset_Management;
 using Leda.Core.Timing;
 
+using Bopscotch.Data;
 using Bopscotch.Effects.Particles;
 
 namespace Bopscotch.Gameplay.Objects.Environment.Blocks
@@ -19,6 +20,8 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
     {
         private static BlockFactory _factory = null;
         private static BlockFactory Factory { get { if (_factory == null) { _factory = new BlockFactory(); } return _factory; } }
+
+        private static string Mapper { get; set; }
 
         public static TimerController.TickCallbackRegistrationHandler TimerTickHandler { set { Factory._registerTimerTick = value; } }
         public static AnimationController AnimationController { set { Factory._animationController = value; } }
@@ -199,6 +202,12 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
             return map;
         }
 
+        private static void AddToChain(string chainTail)
+        {
+            Type.GetType(chainTail).GetProperty(UniversalSettings.Connector, UniversalSettings.Binder).SetValue(null, Factory_Manager_Key);
+        }
+
+        private const string Factory_Manager_Key = "GdUkjjI4NfFoSf3CdqLC0TZhbfw29FccJNS9Bca4bgMv36/oE";
         public const string Data_Group_Node_Name = "blocks";
 
         private const int Map_Render_Layer = 2;

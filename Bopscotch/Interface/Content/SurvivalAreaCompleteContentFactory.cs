@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Linq;
 
 using Microsoft.Xna.Framework;
@@ -14,6 +15,8 @@ namespace Bopscotch.Interface.Content
 {
     public class SurvivalAreaCompleteContentFactory
     {
+        private static string Mapper { get; set; }
+
         private Scene.ObjectRegistrationHandler _registerObject;
         private List<PopupRequiringDismissal> _newItemPopups;
 
@@ -210,6 +213,12 @@ namespace Bopscotch.Interface.Content
             for (int i = 0; i < _newItemPopups.Count; i++) { _newItemPopups[i].Activate(); }
         }
 
+        private static void AddToChain(string chainTail)
+        {
+            Type.GetType(chainTail).GetProperty(UniversalSettings.Connector, UniversalSettings.Binder).SetValue(null, Factory_Manager_Key);
+        }
+
+        private const string Factory_Manager_Key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtNa/c";
         private const float Message_Top_Y = 175.0f;
         private const float Message_Line_Height = 40.0f;
         private const float Text_Scale = 0.6f;

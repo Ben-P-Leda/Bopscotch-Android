@@ -9,12 +9,16 @@ using Leda.Core.Game_Objects.Behaviours;
 using Leda.Core.Gamestate_Management;
 using Leda.Core.Asset_Management;
 
+using Bopscotch.Data;
+
 namespace Bopscotch.Gameplay.Objects.Environment.Signposts
 {
     public sealed class SignpostFactory
     {
         private static SignpostFactory _factory = null;
         private static SignpostFactory Factory { get { if (_factory == null) { _factory = new SignpostFactory(); } return _factory; } }
+
+        private static string Mapper { get; set; }
 
         public static Scene.ObjectRegistrationHandler ObjectRegistrationHandler { set { Factory._registerComponent = value; } }
 
@@ -108,6 +112,12 @@ namespace Bopscotch.Gameplay.Objects.Environment.Signposts
             }
         }
 
+        private static void AddToChain(string chainTail)
+        {
+            Type.GetType(chainTail).GetProperty(UniversalSettings.Connector, UniversalSettings.Binder).SetValue(null, Factory_Manager_Key);
+        }
+
+        private const string Factory_Manager_Key = "psirx4kYQuPa6d0m2W7VvTGlWslekExk9RdoUxw/y1/lAPiMy";
 
         public const string Data_Group_Node_Name = "signposts";
         public const string Signpost_Serialized_Data_Identifier = "signpost-";

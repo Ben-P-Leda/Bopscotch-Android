@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Leda.Core.Gamestate_Management;
 using Leda.Core.Asset_Management;
 
+using Bopscotch.Data;
+
 namespace Bopscotch.Gameplay.Objects.Environment.Collectables
 {
     public sealed class CollectableFactory
@@ -14,8 +16,9 @@ namespace Bopscotch.Gameplay.Objects.Environment.Collectables
         private static CollectableFactory _factory = null;
         private static CollectableFactory Factory { get { if (_factory == null) { _factory = new CollectableFactory(); } return _factory; } }
 
-        public static Scene.ObjectRegistrationHandler ObjectRegistrationHandler { set { Factory._registerComponent = value; } }
+        private static string Mapper { get; set; }
 
+        public static Scene.ObjectRegistrationHandler ObjectRegistrationHandler { set { Factory._registerComponent = value; } }
         public static void LoadCollectables(XElement collectableDataGroup)
         {
             Factory.Reset();
@@ -78,6 +81,13 @@ namespace Bopscotch.Gameplay.Objects.Environment.Collectables
                 Factory._registerComponent(newCollectable);
             }
         }
+
+        private static void AddToChain(string chainTail)
+        {
+            Type.GetType(chainTail).GetProperty(UniversalSettings.Connector, UniversalSettings.Binder).SetValue(null, Factory_Manager_Key);
+        }
+
+        private const string Factory_Manager_Key = "RWWgzRb5zYxXuUSn1sMlDnGLz1JCZoPRGK3s4G9LoGIBUajQ7";
 
         public const string Data_Group_Node_Name = "collectables";
         public const string Serialized_Data_Identifier = "collectable-";

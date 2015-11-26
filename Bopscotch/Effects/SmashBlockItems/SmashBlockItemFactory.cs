@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
 
@@ -6,12 +7,15 @@ using Leda.Core.Gamestate_Management;
 using Leda.Core.Asset_Management;
 using Leda.Core.Timing;
 
+using Bopscotch.Data;
 using Bopscotch.Gameplay.Objects.Environment.Blocks;
 
 namespace Bopscotch.Effects.SmashBlockItems
 {
     public sealed class SmashBlockItemFactory
     {
+        private static string Mapper { get; set; }
+
         private Scene.ObjectRegistrationHandler _registerObject;
         private TimerController.TickCallbackRegistrationHandler _registerTimerTick;
 
@@ -58,6 +62,12 @@ namespace Bopscotch.Effects.SmashBlockItems
             }
         }
 
+        private static void AddToChain(string chainTail)
+        {
+            Type.GetType(chainTail).GetProperty(UniversalSettings.Connector, UniversalSettings.Binder).SetValue(null, Factory_Manager_Key);
+        }
+
+        private const string Factory_Manager_Key = "Yz42G1sGlhgQN1kAcUAWue9MaU/Ru8kYIj0DXbj7e0oGb+vwV";
         private const string Glowing_Item_Texture_Prefixes = "power,golden";
     }
 }

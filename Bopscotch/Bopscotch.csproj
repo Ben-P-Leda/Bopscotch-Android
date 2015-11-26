@@ -390,10 +390,6 @@
       <Project>{ba9476cf-99ba-4d03-92f2-73d2c5e58883}</Project>
       <Name>MonoGame.Framework.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame-develop\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
-      <Project>{713ee5ca-c850-42ad-ac67-b6546ac8bffb}</Project>
-      <Name>MonoGame.Framework.Net.Android</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{e8d5ff41-f41a-4666-b4eb-f04df17bde5d}</Project>
       <Name>Core</Name>

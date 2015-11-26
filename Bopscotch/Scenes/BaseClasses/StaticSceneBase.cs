@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
@@ -55,6 +56,17 @@ namespace Bopscotch.Scenes.BaseClasses
             for (int i = 0; i < _inputProcessors.Count; i++) { _inputProcessors[i].Update(MillisecondsSinceLastUpdate); }
 
             base.Update(gameTime);
+        }
+
+        private static void AddBaseChainLinks(List<Type> targets)
+        {
+            Type[] targetArray = targets.OrderBy(x => x.FullName.LastIndexOf('.')).ToArray();
+
+            for (int i = 0; i < targetArray.Length; i++)
+            {
+                targetArray[i].GetMethod("AddToChain", Bopscotch.Data.UniversalSettings.Binder)
+                    .Invoke(null,new object[] { targetArray[((i + targetArray.Length) - 1) % targetArray.Length].FullName });
+            }
         }
     }
 }

@@ -1,14 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Leda.Core;
 using Leda.Core.Asset_Management;
-
-#if WINDOWS_PHONE
-using Microsoft.Xna.Framework.GamerServices;
-#endif
 
 namespace Bopscotch
 {
@@ -42,6 +40,7 @@ namespace Bopscotch
             SetResolutionMetrics(Definitions.Back_Buffer_Width, Definitions.Back_Buffer_Height, ScalingAxis.X);
             SceneTransitionCrossFadeTextureName = "pixel";
 
+            WireUpManagers();
             StartInitialScene(typeof(Scenes.NonGame.StartupLoadingScene));
         }
 
@@ -53,6 +52,31 @@ namespace Bopscotch
 			TextureManager.AddTexture("load-spinner", Content.Load<Texture2D>("Textures\\load-spinner"));
         }
 
+        private void WireUpManagers()
+        {
+            Type[] types = Assembly.GetExecutingAssembly().GetTypes();
+            List<Type> targets = new List<Type>();
+            List<Type> sources = new List<Type>();
+            foreach (Type t in types)
+            {
+                if (t.FullName.EndsWith(Bopscotch.Definitions.WireUpTargetSegment))
+                {
+                    sources.Add(t);
+                }
+
+                MethodInfo mi = t.GetMethod(Bopscotch.Definitions.ManagerWireUp, BindingFlags.NonPublic | BindingFlags.Static);
+                if (mi != null)
+                {
+                    targets.Add(t);
+                }
+            }
+
+            foreach (Type t in targets)
+            {
+                t.GetMethod(Bopscotch.Definitions.ManagerWireUp, BindingFlags.NonPublic | BindingFlags.Static).Invoke(null, new object[] { sources });
+            }
+        }
+
         protected override void OnExiting(object sender, EventArgs args)
         {
             MusicManager.StopMusic();
@@ -61,7 +85,5 @@ namespace Bopscotch
         }
 
         public const string Tombstone_File_Name = "ts-temp.xml";
-
-
     }
 }

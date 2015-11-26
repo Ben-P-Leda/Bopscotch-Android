@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Xml.Linq;
 
 using Microsoft.Xna.Framework;
 
@@ -14,6 +15,8 @@ namespace Bopscotch.Gameplay.Objects.Characters
     {
         private static CharacterFactory _factory = null;
         private static CharacterFactory Factory { get { if (_factory == null) { _factory = new CharacterFactory(); } return _factory; } }
+
+        private static string Mapper { get; set; }
 
         public static TimerController.TickCallbackRegistrationHandler TimerTickHandler { set { Factory.RegisterTimerTick = value; } }
         public static Scene.ObjectRegistrationHandler ObjectRegistrationHandler { set { Factory._registerComponent = value; } }
@@ -52,6 +55,12 @@ namespace Bopscotch.Gameplay.Objects.Characters
             return player;
         }
 
+        private static void AddToChain(string chainTail)
+        {
+            Type.GetType(chainTail).GetProperty(UniversalSettings.Connector, UniversalSettings.Binder).SetValue(null, Factory_Manager_Key);
+        }
+
+        private const string Factory_Manager_Key = "DE7qlnz6/Hd4UrP0eicW3UCPre1+bx+boicOye/1DgC56Db9x";
         public const string Player_Data_Node_Name = "player";
     }
 }

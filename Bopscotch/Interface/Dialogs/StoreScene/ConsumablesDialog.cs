@@ -34,22 +34,15 @@ namespace Bopscotch.Interface.Dialogs.StoreScene
 
         private void RenderConsumableInfo(SpriteBatch spriteBatch, string iconName, float iconScale, int totalUnits, float centerX)
         {
-            try
-            {
-                string text = Translator.Translation("unit-count").Replace("[QUANTITY]", totalUnits.ToString());
-                float width = (TextureManager.Textures[iconName].Width * iconScale) + TextWriter.Dimensions(text).X;
-                Vector2 position = new Vector2(centerX - (width / 2.0f), WorldPosition.Y + Top_Margin);
+            string text = Translator.Translation("unit-count").Replace("[QUANTITY]", totalUnits.ToString());
+            float width = (TextureManager.Textures[iconName].Width * iconScale) + TextWriter.Dimensions(text).X;
+            Vector2 position = new Vector2(centerX - (width / 2.0f), WorldPosition.Y + Top_Margin);
 
-                spriteBatch.Draw(TextureManager.Textures[iconName], GameBase.ScreenPosition(position), null, Color.White, 0.0f, Vector2.Zero,
-                    GameBase.ScreenScale(iconScale), SpriteEffects.None, Render_Depth);
+            spriteBatch.Draw(TextureManager.Textures[iconName], GameBase.ScreenPosition(position), null, Color.White, 0.0f, Vector2.Zero, 
+                GameBase.ScreenScale(iconScale), SpriteEffects.None, Render_Depth);
 
-                TextWriter.Write(text, spriteBatch, position + new Vector2(TextureManager.Textures[iconName].Width * iconScale, 0.0f), Color.White,
-                    Color.Black, Outline_Thickness, Text_Scale, Render_Depth, TextWriter.Alignment.Left);
-            }
-            catch (System.Exception ex)
-            {
-                Android.Util.Log.Debug("Leda", ex.Message);
-            }
+            TextWriter.Write(text, spriteBatch, position + new Vector2(TextureManager.Textures[iconName].Width * iconScale, 0.0f), Color.White, 
+                Color.Black, Outline_Thickness, Text_Scale, Render_Depth, TextWriter.Alignment.Left);
         }
 
         private const int Dialog_Height = 220;

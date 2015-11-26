@@ -7,12 +7,16 @@ using Microsoft.Xna.Framework;
 using Leda.Core.Gamestate_Management;
 using Leda.Core.Asset_Management;
 
+using Bopscotch.Data;
+
 namespace Bopscotch.Gameplay.Objects.Environment.Flags
 {
     public sealed class FlagFactory
     {
         private static FlagFactory _factory = null;
         private static FlagFactory Factory { get { if (_factory == null) { _factory = new FlagFactory(); } return _factory; } }
+
+        private static string Mapper { get; set; }
 
         public static Scene.ObjectRegistrationHandler ObjectRegistrationHandler { set { Factory._registerComponent = value; } }
 
@@ -76,6 +80,12 @@ namespace Bopscotch.Gameplay.Objects.Environment.Flags
             }
         }
 
+        private static void AddToChain(string chainTail)
+        {
+            Type.GetType(chainTail).GetProperty(UniversalSettings.Connector, UniversalSettings.Binder).SetValue(null, Factory_Manager_Key);
+        }
+
+        private const string Factory_Manager_Key = "nyXT7ouDrH6KXpuhPuMWUO9IiI32qn2dTeEV6EzqGd1Z4EB+m";
         public const string Data_Group_Node_Name = "flags";
         public const string Serialized_Data_Identifier = "flag-";
     }

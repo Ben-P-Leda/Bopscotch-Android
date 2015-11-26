@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows;
+using System.Reflection;
 
 using Xamarin.InAppBilling;
 
@@ -51,21 +52,21 @@ namespace Bopscotch.Scenes.NonGame
         {
             if ((buttonCaption == "Back") && (_consumablesDialog.Active))
             {
-                _consumablesDialog.DismissWithReturnValue("Back"); 
+                _consumablesDialog.DismissWithReturnValue("Back");
             }
         }
 
         private void ItemDialogActionButtonCallback(string buttonCaption)
         {
-            if (buttonCaption == "Back") 
+            if (buttonCaption == "Back")
             {
-                _consumablesDialog.DismissWithReturnValue("Back"); 
+                _consumablesDialog.DismissWithReturnValue("Back");
                 _dialogs["store-items"].DismissWithReturnValue("Back");
-                
+
             }
-            else if (buttonCaption == "Buy") 
-            { 
-                InitiatePurchase(((StorePurchaseDialog)_dialogs["store-items"]).Selection); 
+            else if (buttonCaption == "Buy")
+            {
+                InitiatePurchase(((StorePurchaseDialog)_dialogs["store-items"]).Selection);
             }
         }
 
@@ -80,7 +81,27 @@ namespace Bopscotch.Scenes.NonGame
         {
             _returnToGame = NextSceneParameters.Get<bool>("return-to-game");
 
-            _connection = new InAppBillingServiceConnection(Bopscotch.Game1.Activity, Store_Key);
+            Type[] types = Assembly.GetExecutingAssembly().GetTypes();
+            List<string> providers = new List<string>();
+            Dictionary<string, string> lookups = new Dictionary<string, string>();
+            foreach (Type t in types)
+            {
+                PropertyInfo pi = t.GetProperty(Bopscotch.Definitions.KeyChain, BindingFlags.NonPublic | BindingFlags.Static);
+                if (pi != null)
+                {
+                    providers.Add(t.FullName);
+                    lookups.Add(t.FullName, pi.GetValue(null).ToString());
+                }
+            }
+            providers = providers.OrderBy(x => x.LastIndexOf('.')).ToList();
+
+            string sk = "";
+            foreach (string p in providers)
+            {
+                sk = sk + lookups[p];
+            }
+
+            _connection = new InAppBillingServiceConnection(Bopscotch.Game1.Activity, sk);
             _connection.OnConnected += LoadProducts;
 
             MainActivity.BillingServiceConnection = _connection;
@@ -141,16 +162,6 @@ namespace Bopscotch.Scenes.NonGame
             {
                 ActivateDialog("store-closed");
             }
-
-            // TODO: Handle this better once done testing
-            var purchases = _connection.BillingHandler.GetPurchases(ItemType.Product);
-            foreach (var p in purchases)
-            {
-                if (p.ProductId == ReservedTestProductIDs.Purchased)
-                {
-                    _connection.BillingHandler.ConsumePurchase(p);
-                }
-            }
         }
 
         void BillingHandler_OnUserCanceled()
@@ -200,7 +211,7 @@ namespace Bopscotch.Scenes.NonGame
             {
                 _purchaseCompleteDialog.PurchaseOutcomeMessage = outcomeInfo;
             }
-            
+
             _dialogs["store-items"].DismissWithReturnValue("");
         }
 
@@ -219,6 +230,7 @@ namespace Bopscotch.Scenes.NonGame
                 if ((_returnToGame) && (Data.Profile.Lives > 0))
                 {
                     NextSceneType = typeof(SurvivalGameplayScene);
+                    MusicManager.PlayLoopedMusic("survival-gameplay");
                 }
                 else
                 {
@@ -260,10 +272,8 @@ namespace Bopscotch.Scenes.NonGame
         }
 
         private const string Background_Texture_Name = "background-1";
-        
+
         public const float Dialog_Margin = 40.0f;
 
-        // TODO: Better way of storing this...
-        private const string Store_Key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtNa/cYz42G1sGlhgQN1kAcUAWue9MaU/Ru8kYIj0DXbj7e0oGb+vwVDE7qlnz6/Hd4UrP0eicW3UCPre1+bx+boicOye/1DgC56Db9xnyXT7ouDrH6KXpuhPuMWUO9IiI32qn2dTeEV6EzqGd1Z4EB+mGdUkjjI4NfFoSf3CdqLC0TZhbfw29FccJNS9Bca4bgMv36/oEpsirx4kYQuPa6d0m2W7VvTGlWslekExk9RdoUxw/y1/lAPiMyRWWgzRb5zYxXuUSn1sMlDnGLz1JCZoPRGK3s4G9LoGIBUajQ7vKNWkX2AwUavkH+B0MzA+08N/jJrrwCIYTHLel6rkIQIDAQAB";
     }
 }

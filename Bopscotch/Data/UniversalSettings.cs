@@ -126,7 +126,11 @@ namespace Bopscotch.Data
             return "";
         }
 
+        public static System.Reflection.BindingFlags Binder { get { return System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static; } }
+
         private const string Settings_ID = "profile-settings";
         private const float Default_Control_Sensitivity = 40.0f;
+
+        public const string Connector = "Mapper";
     }
 }
