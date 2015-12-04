@@ -24,6 +24,7 @@
     <texture name="particle-cloud" file="Textures/Effects/Particles/cloud" />
     <texture name="particle-wood" file="Textures/Effects/Particles/wood" />
     <texture name="particle-star" file="Textures/Effects/Particles/star" />
+    <texture name="particle-fireball" file="Textures/Effects/Particles/fireball" />
     <texture name="glow-effect" file="Textures/Effects/glow-effect" />
     <texture name="background-tutorial" file="Textures/Backgrounds/background-tutorial" />
     <texture name="background-1" file="Textures/Backgrounds/background-1" />
@@ -33,12 +34,14 @@
     <texture name="background-5" file="Textures/Backgrounds/background-5" />
     <texture name="background-6" file="Textures/Backgrounds/background-6" />
     <texture name="background-7" file="Textures/Backgrounds/background-7" />
+    <texture name="background-8" file="Textures/Backgrounds/background-8" />
     <texture name="block-1" file="Textures/Blocks/Terrain/block-1" />
     <texture name="block-spring" file="Textures/Blocks/Special/spring" />
     <texture name="block-smash" file="Textures/Blocks/Special/smash-crate" />
     <texture name="block-spike-outer" file="Textures/Blocks/Special/spike-outer" />
     <texture name="block-spike-wheel" file="Textures/Blocks/Special/spike-wheel" />
     <texture name="block-ice" file="Textures/Blocks/Special/ice" />
+    <texture name="block-bomb" file="Textures/Blocks/Special/bomb" />
     <texture name="block-obstruction-top-left" file="Textures\Blocks\Obstruction\top-left" />
     <texture name="block-obstruction-top-right" file="Textures\Blocks\Obstruction\top-right" />
     <texture name="block-obstruction-single-top" file="Textures\Blocks\Obstruction\single-top" />

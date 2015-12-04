@@ -15,6 +15,7 @@ namespace Bopscotch.Effects.Particles
         private List<Color> _attackHitColours;
 
         public delegate void CloudBurstEffectInitiator(IWorldObject targetObject);
+        public delegate void FireballEffectInitiator(IWorldObject targetObject);
 
         public AdditiveLayerParticleEffectManager(CameraControllerBase cameraController)
             : base(Render_Layer, cameraController)
@@ -32,6 +33,11 @@ namespace Bopscotch.Effects.Particles
             Emitter effectEmitter = CreateEffectAtObjectPosition("attack-hit", "particle-cloud", player);
             effectEmitter.Tints = _attackHitColours;
             effectEmitter.Activate();
+        }
+
+        public void LaunchFireball(IWorldObject targetObject)
+        {
+            CreateEffectAtObjectPosition("cloud-burst", "particle-fireball", targetObject).Activate();
         }
 
         public const int Render_Layer = 3;

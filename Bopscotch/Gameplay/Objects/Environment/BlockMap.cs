@@ -7,6 +7,7 @@ using System.Xml.Linq;
 
 using Leda.Core.Game_Objects.Behaviours;
 using Leda.Core.Serialization;
+using Leda.Core.Gamestate_Management;
 
 using Bopscotch.Gameplay.Objects.Environment.Blocks;
 
@@ -15,6 +16,7 @@ namespace Bopscotch.Gameplay.Objects.Environment
     public class BlockMap : TileMap, ISerializable
     {
         private List<Vector2> _smashedBlockWorldPositions;
+        private List<BombBlock> _bombBlocks;
 
         public string ID { get { return "block-map"; } set { } }
 
@@ -22,6 +24,31 @@ namespace Bopscotch.Gameplay.Objects.Environment
             : base(mapWidth, mapHeight, tileWidth, tileHeight, renderLayer)
         {
             _smashedBlockWorldPositions = new List<Vector2>();
+            _bombBlocks = new List<BombBlock>();
+        }
+
+        public void WireUpBombBlockBlastColliders(Scene.ObjectRegistrationHandler registerObject)
+        {   
+            for (int x = 0; x < MapDimensions.X; x++)
+            {
+                for (int y =0; y <MapDimensions.Y; y++)
+                {
+                    BombBlock block = GetTile(x, y) as BombBlock;
+                    if (block != null)
+                    {
+                        _bombBlocks.Add(block);
+                        registerObject(block.BlastCollider);
+                    }
+                }
+            }
+        }
+
+        public void ClearDownBombBlocks()
+        {
+            for (int i = 0; i < _bombBlocks.Count; i++)
+            {
+                _bombBlocks[i].Reset();
+            }
         }
 
         public void RecordBlockHasBeenSmashed(SmashBlock smashedBlock)
