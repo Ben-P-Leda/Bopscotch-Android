@@ -116,6 +116,8 @@
     <Compile Include="Gameplay\Objects\Environment\BlockMap.cs" />
     <Compile Include="Gameplay\Objects\Environment\Blocks\Block.cs" />
     <Compile Include="Gameplay\Objects\Environment\Blocks\BlockFactory.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\BombBlock.cs" />
+    <Compile Include="Gameplay\Objects\Environment\Blocks\BombBlockBlastCollider.cs" />
     <Compile Include="Gameplay\Objects\Environment\Blocks\IceBlock.cs" />
     <Compile Include="Gameplay\Objects\Environment\Blocks\ObstructionBlock.cs" />
     <Compile Include="Gameplay\Objects\Environment\Blocks\RaceModePowerUpSmashBlock.cs" />
@@ -370,6 +372,9 @@
     <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-3-3.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-3-4.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-4-4.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-8.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Blocks\Special\bomb.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Effects\Particles\fireball.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -809,6 +814,9 @@
       <Visible>False</Visible>
       <Version>2.2</Version>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\0.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

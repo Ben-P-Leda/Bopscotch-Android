@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Leda.Core.Game_Objects.Behaviours;
 using Leda.Core.Game_Objects.Tile_Map;
 using Leda.Core.Game_Objects.Controllers;
+using Leda.Core.Game_Objects.Controllers.Collisions;
 using Leda.Core.Gamestate_Management;
 using Leda.Core.Asset_Management;
 using Leda.Core.Timing;
@@ -35,7 +36,8 @@ namespace Bopscotch.Gameplay
         public BlockMap Map { get; private set; }
         public AnimationController AnimationController { set { BlockFactory.AnimationController = value; } }
         public SmashBlock.SmashCallbackMethod SmashBlockCallback { set { BlockFactory.SmashBlockCallback = value; } }
-        public AdditiveLayerParticleEffectManager.CloudBurstEffectInitiator SmashBlockRegenrationCallback { set { BlockFactory.SmashBlockRegerationCallback = value; } }
+        public AdditiveLayerParticleEffectManager.CloudBurstEffectInitiator SmashBlockRegenerationCallback { set { BlockFactory.SmashBlockRegerationCallback = value; } }
+        public AdditiveLayerParticleEffectManager.FireballEffectInitiator BombBlockDetonationCallback { set { BlockFactory.BombBlockDetonationCallback = value; } }
 
         public Point BackgroundDimensions { private get; set; }
 
@@ -126,7 +128,11 @@ namespace Bopscotch.Gameplay
             _registerGameObject(inGameBackground);
 
             Map.ViewportDimensionsInTiles = new Point(
-                (BackgroundDimensions.X / Definitions.Grid_Cell_Pixel_Size) + 1, (BackgroundDimensions.Y / Definitions.Grid_Cell_Pixel_Size) + 3);
+                (BackgroundDimensions.X / Definitions.Grid_Cell_Pixel_Size) + 1, 
+                (BackgroundDimensions.Y / Definitions.Grid_Cell_Pixel_Size) + 3);
+
+            Map.WireUpBombBlockBlastColliders(_registerGameObject);
+
             _registerGameObject(Map);
 
             Player.Map = Map;
