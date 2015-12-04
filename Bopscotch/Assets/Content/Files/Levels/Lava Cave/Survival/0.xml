@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<leveldata>
+  <background texture="background-8" />
+  <terrain>
+    <blocks>
+      <block x="80" y="480" texture="block-1" />
+      <block x="0" y="480" texture="block-1" />
+      <block x="160" y="480" texture="block-1" />
+      <block x="240" y="480" texture="block-1" />
+      <block x="320" y="480" texture="block-1" />
+      <block x="400" y="480" texture="block-1" />
+      <block x="480" y="480" texture="block-1" />
+      <block x="640" y="480" texture="block-1" />
+      <block x="720" y="480" texture="block-1" />
+      <block x="800" y="480" texture="block-1" />
+      <block x="560" y="480" texture="block-1" />
+      <block x="1040" y="480" texture="block-1" />
+      <block x="1120" y="480" texture="block-1" />
+      <block x="1200" y="480" texture="block-1" />
+      <block x="1280" y="480" texture="block-1" />
+      <block x="1360" y="480" texture="block-1" />
+      <block x="1440" y="480" texture="block-1" />
+      <block x="1520" y="480" texture="block-1" />
+      <block x="1600" y="480" texture="block-1" />
+      <block x="1680" y="480" texture="block-1" />
+      <block x="1760" y="480" texture="block-1" />
+      <block x="1840" y="480" texture="block-1" />
+      <block x="1920" y="480" texture="block-1" />
+      <bomb-block x="2000" y="480" texture="block-bomb" />
+      <bomb-block x="2080" y="480" texture="block-bomb" />
+      <bomb-block x="2160" y="480" texture="block-bomb" />
+      <bomb-block x="2240" y="480" texture="block-bomb" />
+      <bomb-block x="2320" y="480" texture="block-bomb" />
+      <block x="2400" y="480" texture="block-1" />
+      <block x="2480" y="480" texture="block-1" />
+      <block x="2720" y="480" texture="block-1" />
+      <block x="2800" y="480" texture="block-1" />
+      <bomb-block x="2880" y="480" texture="block-bomb" />
+      <bomb-block x="2960" y="480" texture="block-bomb" />
+      <block x="3040" y="480" texture="block-1" />
+      <block x="3120" y="480" texture="block-1" />
+      <block x="3200" y="480" texture="block-1" />
+      <bomb-block x="3280" y="480" texture="block-bomb" />
+      <bomb-block x="3360" y="480" texture="block-bomb" />
+      <block x="3440" y="480" texture="block-1" />
+      <block x="3520" y="480" texture="block-1" />
+      <block x="3760" y="480" texture="block-1" />
+      <block x="3840" y="480" texture="block-1" />
+      <block x="3920" y="480" texture="block-1" />
+      <block x="4000" y="480" texture="block-1" />
+      <block x="4080" y="480" texture="block-1" />
+      <block x="4160" y="480" texture="block-1" />
+      <block x="0" y="800" texture="block-1" />
+      <block x="80" y="800" texture="block-1" />
+      <block x="160" y="800" texture="block-1" />
+      <block x="240" y="800" texture="block-1" />
+      <block x="320" y="800" texture="block-1" />
+      <block x="400" y="800" texture="block-1" />
+      <block x="480" y="800" texture="block-1" />
+      <block x="560" y="800" texture="block-1" />
+      <block x="640" y="800" texture="block-1" />
+      <block x="720" y="800" texture="block-1" />
+      <block x="800" y="800" texture="block-1" />
+      <block x="880" y="800" texture="block-1" />
+      <block x="960" y="800" texture="block-1" />
+      <block x="1040" y="800" texture="block-1" />
+      <block x="1120" y="800" texture="block-1" />
+      <block x="1200" y="800" texture="block-1" />
+      <block x="1280" y="800" texture="block-1" />
+      <block x="1360" y="800" texture="block-1" />
+      <block x="1440" y="800" texture="block-1" />
+      <bomb-block x="1520" y="800" texture="block-bomb" />
+      <bomb-block x="1600" y="800" texture="block-bomb" />
+      <block x="1680" y="800" texture="block-1" />
+      <block x="1760" y="800" texture="block-1" />
+      <block x="1840" y="800" texture="block-1" />
+      <block x="1920" y="800" texture="block-1" />
+      <block x="2000" y="800" texture="block-1" />
+      <block x="2080" y="800" texture="block-1" />
+      <block x="2160" y="800" texture="block-1" />
+      <block x="2240" y="800" texture="block-1" />
+      <block x="2320" y="800" texture="block-1" />
+      <block x="2400" y="800" texture="block-1" />
+      <block x="2480" y="800" texture="block-1" />
+      <block x="2560" y="800" texture="block-1" />
+      <block x="2640" y="800" texture="block-1" />
+      <block x="2720" y="800" texture="block-1" />
+      <block x="2800" y="800" texture="block-1" />
+      <block x="2880" y="800" texture="block-1" />
+      <block x="2960" y="800" texture="block-1" />
+      <block x="3040" y="800" texture="block-1" />
+      <block x="3120" y="800" texture="block-1" />
+      <block x="3200" y="800" texture="block-1" />
+      <block x="3280" y="800" texture="block-1" />
+      <block x="3360" y="800" texture="block-1" />
+      <block x="3440" y="800" texture="block-1" />
+      <block x="3520" y="800" texture="block-1" />
+      <block x="3600" y="800" texture="block-1" />
+      <block x="3680" y="800" texture="block-1" />
+      <block x="3760" y="800" texture="block-1" />
+      <block x="3840" y="800" texture="block-1" />
+      <block x="3920" y="800" texture="block-1" />
+      <block x="4000" y="800" texture="block-1" />
+      <block x="4080" y="800" texture="block-1" />
+      <block x="4160" y="800" texture="block-1" />
+    </blocks>
+    <flags>
+      <checkpoint-flag x="320" y="240" texture="flag-checkpoint" zone-top="0" left-activation="false" index="0" />
+    </flags>
+    <signposts>
+      <speed-limit-signpost x="560" y="320" texture="sign-speed-1-4" zone-top="-214" minimum-speed="0" maximum-speed="3" />
+      <one-way-signpost x="80" y="640" texture="sign-one-way" zone-top="-244" mirror="false" />
+      <one-way-signpost x="4080" y="640" texture="sign-one-way" zone-top="-244" mirror="true" />
+      <one-way-signpost x="4080" y="320" texture="sign-one-way" zone-top="-244" mirror="true" />
+    </signposts>
+  </terrain>
+  <player x="400" y="400" startfacingleft="false" />
+</leveldata>
