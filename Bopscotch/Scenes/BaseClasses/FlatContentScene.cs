@@ -2,6 +2,7 @@
 
 using Microsoft.Xna.Framework;
 
+using Leda.Core;
 using Leda.Core.Game_Objects.Behaviours;
 
 using Bopscotch.Interface.Content;
@@ -57,5 +58,47 @@ namespace Bopscotch.Scenes.BaseClasses
 
             for (int i = 0; i < _objectsWithGlowEffect.Count; i++) { _objectsWithGlowEffect[i].UpdateGlow(MillisecondsSinceLastUpdate); }
         }
+
+        protected void FlushContent()
+        {
+            for (int i=_contentElements.Count - 1; i>= 0; i--)
+            {
+                UnregisterGameObject(_contentElements[i]);
+            }
+        }
+
+        protected TextContent CreateTextElement(string text, Vector2 position, TextWriter.Alignment alignment, float scale)
+        {
+            TextContent element = new TextContent(text, position)
+            {
+                RenderDepth = Default_Render_Depth,
+                RenderLayer = Default_Render_Layer,
+                Scale = scale,
+                Alignment = alignment
+            };
+
+            RegisterGameObject(element);
+
+            return element;
+        }
+
+        protected ImageContent CreateImageElement(string textureName, Vector2 position, Rectangle frame, Vector2 origin, float scale)
+        {
+            ImageContent element = new ImageContent(textureName, position)
+            {
+                RenderDepth = Default_Render_Depth,
+                RenderLayer = Default_Render_Layer,
+                Frame = frame,
+                Origin = origin,
+                Scale = scale
+            };
+
+            RegisterGameObject(element);
+
+            return element;
+        }
+
+        private const int Default_Render_Layer = 2;
+        protected const float Default_Render_Depth = 0.5f;
     }
 }

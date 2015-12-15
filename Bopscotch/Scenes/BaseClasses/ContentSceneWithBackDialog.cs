@@ -2,14 +2,9 @@
 
 using Microsoft.Xna.Framework;
 
-#if WINDOWS_PHONE
-using Microsoft.Xna.Framework.GamerServices;
-#endif
-
-using Leda.Core;
-using Leda.Core.Asset_Management;
 using Leda.Core.Game_Objects.Controllers;
 
+using Bopscotch.Effects;
 using Bopscotch.Scenes.BaseClasses;
 using Bopscotch.Interface;
 using Bopscotch.Interface.Content;
@@ -17,121 +12,48 @@ using Bopscotch.Interface.Dialogs;
 
 namespace Bopscotch.Scenes.NonGame
 {
-    public abstract class ContentSceneWithBackDialog : FlatContentScene
+    public abstract class ContentSceneWithControlDialog : FlatContentScene
     {
-        private BackDialog _backDialog;
         private MotionController _motionController;
 
-        protected bool _maintainsTitleSceneMusic;
-        protected string _contentFileName;
+        protected ButtonDialog Dialog { private get; set; }
+        protected FullScreenColourOverlay Overlay { get; private set; }
 
-        public ContentSceneWithBackDialog()
+        public ContentSceneWithControlDialog()
             : base()
         {
             _motionController = new MotionController();
 
-            RegisterGameObject(new Effects.FullScreenColourOverlay() { Tint = Color.Black, TintFraction = 0.5f });
-
-            _maintainsTitleSceneMusic = true;            
+            Overlay = new FullScreenColourOverlay();
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
-            _backDialog = new BackDialog();
-            _backDialog.InputSources = _inputProcessors;
-            _backDialog.SelectionCallback = HandleBackDialogDismiss;
+            if (Dialog != null)
+            {
+                Dialog.InputSources = _inputProcessors;
+                _motionController.AddMobileObject(Dialog);
+                RegisterGameObject(Dialog);
+            }
 
-            _motionController.AddMobileObject(_backDialog);
-
-            RegisterGameObject(_backDialog);
-
-            CreateContent(_contentFileName);
+            RegisterGameObject(Overlay);
         }
 
         protected override void Reset()
         {
-            _backDialog.Reset();
+            if (Dialog != null)
+            {
+                Dialog.Reset();
+            }
 
             base.Reset();
         }
 
-        private void HandleBackDialogDismiss(string buttonCaption)
-        {
-            NextSceneType = typeof(TitleScene);
-
-			if (buttonCaption == "Rate") { NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, TitleScene.Rate_Game_Dialog); }
-			if (buttonCaption == "Full Game") { NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "purchase"); }
-            if (_maintainsTitleSceneMusic) { NextSceneParameters.Set("music-already-running", true); }
-
-            Deactivate();
-        }
-
-        protected void CreateContent(string fileName)
-        {
-            XDocument content = FileManager.LoadXMLContentFile(string.Format(fileName, Translator.CultureCode));
-
-            foreach (XElement element in content.Element("elements").Elements("element"))
-            {
-                switch (element.Attribute("type").Value)
-                {
-                    case "text": CreateTextElementFromXml(element); break;
-                    case "image": CreateImageElementFromXml(element); break;
-                }
-            }
-        }
-
-        private TextContent CreateTextElementFromXml(XElement source)
-        {
-            TextContent element = new TextContent(
-                Translator.Translation(source.Value.Trim()),
-                new Vector2((float)source.Attribute("x-position"), (float)source.Attribute("y-position")));
-
-            element.RenderDepth = Element_Render_Depth;
-
-            if (source.Attribute("scale") != null) { element.Scale = (float)source.Attribute("scale"); }
-            if (source.Attribute("alignment") != null)
-            {
-                switch (source.Attribute("alignment").Value)
-                {
-                    case "left": element.Alignment = TextWriter.Alignment.Left; break;
-                    case "right": element.Alignment = TextWriter.Alignment.Right; break;
-                }
-            }
-
-            RegisterGameObject(element);
-
-            return element;
-        }
-
-        private ImageContent CreateImageElementFromXml(XElement source)
-        {
-            ImageContent element = new ImageContent(source.Value.Trim(), new Vector2((float)source.Attribute("x-position"), (float)source.Attribute("y-position")));
-
-            if (source.Attribute("scale") != null) { element.Scale = (float)source.Attribute("scale"); }
-
-            if (source.Element("frame") != null)
-            {
-                element.Frame = new Rectangle((int)source.Element("frame").Attribute("x"), (int)source.Element("frame").Attribute("y"),
-                    (int)source.Element("frame").Attribute("width"), (int)source.Element("frame").Attribute("height"));
-            }
-
-            if (source.Element("origin") != null)
-            {
-                element.Origin = new Vector2((float)source.Element("origin").Attribute("x"), (float)source.Element("origin").Attribute("y"));
-            }
-
-            element.RenderDepth = Element_Render_Depth;
-
-            RegisterGameObject(element);
-
-            return element;
-        }
-
         public override void Activate()
         {
-            _backDialog.Activate();
+            Dialog.Activate();
 
             base.Activate();
         }
@@ -147,9 +69,7 @@ namespace Bopscotch.Scenes.NonGame
         {
             base.HandleBackButtonPress();
 
-            if (CurrentState == Status.Active) { _backDialog.Cancel(); }
+            if (CurrentState == Status.Active) { Dialog.Cancel(); }
         }
-
-        private const float Element_Render_Depth = 0.5f;
     }
 }

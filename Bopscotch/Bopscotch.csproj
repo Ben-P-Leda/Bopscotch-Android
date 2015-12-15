@@ -81,6 +81,9 @@
     <Compile Include="Effects\Popups\MappingManager.cs" />
     <Compile Include="Effects\Popups\PopupBase.cs" />
     <Compile Include="Effects\Popups\PopupRequiringDismissal.cs" />
+    <Compile Include="Effects\Popups\Ranking\RankingLetter.cs" />
+    <Compile Include="Effects\Popups\Ranking\RankingPopupBase.cs" />
+    <Compile Include="Effects\Popups\Ranking\RankingStar.cs" />
     <Compile Include="Effects\SmashBlockItems\SmashBlockGlowingItem.cs" />
     <Compile Include="Effects\SmashBlockItems\SmashBlockItem.cs" />
     <Compile Include="Effects\SmashBlockItems\SmashBlockItemFactory.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="Gameplay\Controllers\PlayerTrackingCameraController.cs" />
     <Compile Include="Gameplay\Coordination\RacePowerUpCoordinator.cs" />
     <Compile Include="Gameplay\Coordination\RaceProgressCoordinator.cs" />
+    <Compile Include="Gameplay\Coordination\SurvivalRankingCoordinator.cs" />
     <Compile Include="Gameplay\LevelFactory.cs" />
     <Compile Include="Gameplay\Objects\Behaviours\ICanHaveGlowEffect.cs" />
     <Compile Include="Gameplay\Objects\Behaviours\IRaceRestartPoint.cs" />
@@ -175,6 +179,7 @@
     <Compile Include="Interface\Dialogs\RaceJoinScene\JoinRaceOptionsDialog.cs" />
     <Compile Include="Interface\Dialogs\RaceJoinScene\OpponentSelector.cs" />
     <Compile Include="Interface\Dialogs\RaceJoinScene\RaceOpponentListDialog.cs" />
+    <Compile Include="Interface\Dialogs\RankingScene\NavigationDialog.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\ConsumablesDialog.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\LoadingDialog.cs" />
     <Compile Include="Interface\Dialogs\StoreScene\PurchaseCompleteDialog.cs" />
@@ -183,6 +188,7 @@
     <Compile Include="Interface\Dialogs\SurvivalGameplayScene\NoLivesDialog.cs" />
     <Compile Include="Interface\Dialogs\SurvivalGameplayScene\PauseDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\CharacterSelectionCarouselDialog.cs" />
+    <Compile Include="Interface\Dialogs\TitleScene\InfoMenuDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\MainMenuDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\NewContentUnlockedDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\OptionsDialog.cs" />
@@ -212,6 +218,7 @@
     <Compile Include="Scenes\NonGame\AvatarCustomisationScene.cs" />
     <Compile Include="Scenes\NonGame\CreditsScene.cs" />
     <Compile Include="Scenes\NonGame\LoadingScene.cs" />
+    <Compile Include="Scenes\NonGame\RankingScene.cs" />
     <Compile Include="Scenes\NonGame\StoreScene.cs" />
     <Compile Include="Scenes\NonGame\TitleScene.cs" />
     <Compile Include="UrlProvider.cs" />
@@ -375,6 +382,10 @@
     <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-8.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Blocks\Special\bomb.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Effects\Particles\fireball.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\bomb-explode.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\bomb-trigger.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Effects\award-stars.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Effects\ranking-letters.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>

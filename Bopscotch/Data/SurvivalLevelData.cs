@@ -16,10 +16,18 @@ namespace Bopscotch.Data
     {
         public string ID { get { return Level_Data_ID; } set { } }
         public int PointsScoredThisLevel { get; set; }
+        public int TotalCandiesOnLevel { private get; set; }
+        public int AttemptsAtLevel { get; set; }
+
+        public float CandyCollectionFraction { get { return _candiesCollected / TotalCandiesOnLevel; } }
+
+        private float _candiesCollected;
 
         public SurvivalLevelData()
             : base()
         {
+            _candiesCollected = 0;
+
             PointsScoredThisLevel = 0;
         }
 
@@ -30,6 +38,9 @@ namespace Bopscotch.Data
             serializer.AddDataItem("level-index", Profile.CurrentAreaData.LastSelectedLevel);
             serializer.AddDataItem("play-state", CurrentPlayState);
             serializer.AddDataItem("accrued-score", PointsScoredThisLevel);
+            serializer.AddDataItem("total-candies", TotalCandiesOnLevel);
+            serializer.AddDataItem("candies-collected", _candiesCollected);
+            serializer.AddDataItem("attempts-count", AttemptsAtLevel);
 
             return serializer.SerializedData;
         }
@@ -41,6 +52,9 @@ namespace Bopscotch.Data
             Profile.CurrentAreaData.LastSelectedLevel = serializer.GetDataItem<int>("level-index");
             CurrentPlayState = serializer.GetDataItem<PlayState>("play-state");
             PointsScoredThisLevel = serializer.GetDataItem<int>("accrued-score");
+            TotalCandiesOnLevel = serializer.GetDataItem<int>("total-candies");
+            _candiesCollected = serializer.GetDataItem<int>("candies-collected");
+            AttemptsAtLevel = serializer.GetDataItem<int>("attempts-count");
         }
 
         public void UpdateFromItemCollection(Collectable collectedItem)
@@ -48,17 +62,26 @@ namespace Bopscotch.Data
             if (collectedItem is ScoringCandy) 
             { 
                 AddScoreForUnits(((ScoringCandy)collectedItem).ScoreValue, 1);
+                _candiesCollected++;
                 SoundEffectManager.PlayEffect("collect-candy");
             }
-
-            if (collectedItem is GoldenTicket) { HandleGoldenTicketCollection(collectedItem); }
+            else if (collectedItem is GoldenTicket) 
+            { 
+                HandleGoldenTicketCollection(collectedItem); 
+            }
         }
 
         private void HandleGoldenTicketCollection(IWorldObject ticketSource)
         {
             Profile.GoldenTickets++;
-            if (ticketSource is GoldenTicket) { Profile.CurrentAreaData.CollectGoldenTicketFromOpenLevel(ticketSource.WorldPosition); }
-            if (ticketSource is SmashBlock) { Profile.CurrentAreaData.CollectGoldenTicketFromSmashCrate(ticketSource.WorldPosition); }
+            if (ticketSource is GoldenTicket) 
+            { 
+                Profile.CurrentAreaData.CollectGoldenTicketFromOpenLevel(ticketSource.WorldPosition); 
+            }
+            else if (ticketSource is SmashBlock) 
+            { 
+                Profile.CurrentAreaData.CollectGoldenTicketFromSmashCrate(ticketSource.WorldPosition); 
+            }
 
             SoundEffectManager.PlayEffect("generic-fanfare");
         }
@@ -79,13 +102,19 @@ namespace Bopscotch.Data
             {
                 switch (smashedBlock.Contents[i].AffectsItem)
                 {
-                    case SmashBlockItemData.AffectedItem.Score: AddScoreForUnits(smashedBlock.Contents[i].Value, smashedBlock.Contents[i].Count); break;
-                    case SmashBlockItemData.AffectedItem.GoldenTicket: HandleGoldenTicketCollection(smashedBlock); break;
+                    case SmashBlockItemData.AffectedItem.Score: 
+                        AddScoreForUnits(smashedBlock.Contents[i].Value, smashedBlock.Contents[i].Count);
+                        _candiesCollected += smashedBlock.Contents[i].Count;
+                        break;
+                    case SmashBlockItemData.AffectedItem.GoldenTicket: 
+                        HandleGoldenTicketCollection(smashedBlock); 
+                        break;
                 }
             }
         }
 
-        private const string Level_Data_ID = "survival-level-data";
+        public const string Level_Data_ID = "survival-level-data";
+
         private const float Score_Speed_Scaler = 0.625f;
     }
 }

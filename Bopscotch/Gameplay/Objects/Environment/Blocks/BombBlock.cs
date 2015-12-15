@@ -3,6 +3,7 @@
 using Microsoft.Xna.Framework;
 
 using Leda.Core.Timing;
+using Leda.Core.Asset_Management;
 
 using Bopscotch.Effects.Particles;
 
@@ -50,6 +51,7 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
             if (Visible)
             {
                 _actionTimer.NextActionDuration = Impact_Detonation_Delay;
+                SoundEffectManager.PlayEffect("bomb-trigger");
             }
         }
 
@@ -90,6 +92,8 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
             {
                 _actionTimer.NextActionDuration = Regeneration_Delay;
             }
+
+            SoundEffectManager.PlayEffect("bomb-explode");
         }
 
         private void TriggerNext(int direction)
@@ -129,8 +133,8 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
 
         public new const string Data_Node_Name = "bomb-block";
 
-        private const float Impact_Detonation_Delay = 200.0f;
-        private const float Chain_Detonation_Delay = 65.0f;
+        private const float Impact_Detonation_Delay = 450.0f;
+        private const float Chain_Detonation_Delay = 35.0f;
         private const float Regeneration_Delay = 5000.0f;
     }
 }

@@ -23,6 +23,7 @@ namespace Bopscotch.Data
         public bool DoesNotHaveRaceCourse { get; set; }
         public int LastSelectedLevel { get; set; }
         public List<int> LevelScores { get; private set; }
+        public List<Definitions.SurvivalRank> LevelRanks { get; private set; }
         public XElement ContentToUnlockOnCompletion { get; private set; }
 
         public bool Completed { get { return (LevelScores.Count >= _levelCount); } }
@@ -42,6 +43,7 @@ namespace Bopscotch.Data
             DoesNotHaveRaceCourse = false;
 
             LevelScores = new List<int>();
+            LevelRanks = new List<Definitions.SurvivalRank>();
 
             _levelCount = levelCount;
             _worldPositionsOfGoldenTicketsCollectedFromOpenLevel = new List<Vector2>();
@@ -74,8 +76,18 @@ namespace Bopscotch.Data
                 el.Add(new XAttribute("last-level", LastSelectedLevel));
 
                 XElement scoreElement = new XElement("scores");
-                foreach (int i in LevelScores) { scoreElement.Add(new XElement("score", i)); }
+                foreach (int i in LevelScores) 
+                { 
+                    scoreElement.Add(new XElement("score", i)); 
+                }
                 el.Add(scoreElement);
+
+                XElement rankElement = new XElement("rankings");
+                for (int i = 0; i < _levelCount; i++)
+                {
+                    rankElement.Add(new XElement("rank", i<LevelRanks.Count ? LevelRanks[i] : Definitions.SurvivalRank.NotSet));
+                }
+                el.Add(rankElement);
 
                 if (ContentToUnlockOnCompletion != null) { el.Add(ContentToUnlockOnCompletion); }
 
@@ -106,10 +118,13 @@ namespace Bopscotch.Data
             return ticketData;
         }
 
-        public void UpdateCurrentLevelScore(int score)
+        public void UpdateCurrentLevelResults(int score, Definitions.SurvivalRank rank)
         {
             while (LevelScores.Count <= LastSelectedLevel) { LevelScores.Add(0); }
             LevelScores[LastSelectedLevel] = score;
+
+            while (LevelRanks.Count <= LastSelectedLevel) { LevelRanks.Add(Definitions.SurvivalRank.NotSet); }
+            if ((int)LevelRanks[LastSelectedLevel] < (int)rank) { LevelRanks[LastSelectedLevel] = rank; }
         }
 
         public void UpdateLevelSelection(int stepDirection)
@@ -184,6 +199,14 @@ namespace Bopscotch.Data
             if ((dataSource.Element("scores") != null) && (dataSource.Element("scores").Elements("score") != null))
             {
                 foreach (XElement s in dataSource.Element("scores").Elements("score")) { container.LevelScores.Add((int)s); }
+            }
+            if ((dataSource.Element("rankings") != null) && (dataSource.Element("rankings").Elements("rank") != null))
+            {
+                foreach (XElement r in dataSource.Element("rankings").Elements("rank")) 
+                {
+                    Definitions.SurvivalRank rank = (Definitions.SurvivalRank)Enum.Parse(typeof(Definitions.SurvivalRank), r.Value);
+                    container.LevelRanks.Add(rank); 
+                }
             }
 
             if (dataSource.Element("tickets-from-level") != null) { container.SetCollectedTicketsFromLevel(dataSource.Element("tickets-from-level")); }

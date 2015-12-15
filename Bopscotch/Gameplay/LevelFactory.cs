@@ -44,6 +44,8 @@ namespace Bopscotch.Gameplay
         public int RaceLapCount { get; private set; }
         public string RaceAreaName { private get; set; }
 
+        public int TotalCandiesOnLevel { get { return CollectableFactory.CandyCount + BlockFactory.SmashBlockCandyCount; } }
+
         public LevelFactory(Scene.ObjectRegistrationHandler registerGameObject, 
             TimerController.TickCallbackRegistrationHandler registerTimerTick)
         {

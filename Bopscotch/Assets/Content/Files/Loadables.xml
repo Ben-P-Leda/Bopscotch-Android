@@ -21,6 +21,8 @@
     <texture name="clock-needle" file="Textures/Interface/InGame/clock-needle" />
     <texture name="tap-icon" file="Textures/Interface/InGame/tap-icon" />
     <texture name="popups" file="Textures/Effects/popups" />
+    <texture name="ranking-stars" file="Textures/Effects/award-stars" />
+    <texture name="ranking-letters" file="Textures/Effects/ranking-letters" />
     <texture name="particle-cloud" file="Textures/Effects/Particles/cloud" />
     <texture name="particle-wood" file="Textures/Effects/Particles/wood" />
     <texture name="particle-star" file="Textures/Effects/Particles/star" />
@@ -150,6 +152,8 @@
     <sound-effect name="level-clear" file="SoundEffects/level-clear" />
     <sound-effect name="opponent-attack" file="SoundEffects/opponent-attack" />
     <sound-effect name="freeze-speedo" file="SoundEffects/freeze-speedo" />
+    <sound-effect name="bomb-trigger" file="SoundEffects/bomb-trigger" />
+    <sound-effect name="bomb-explode" file="SoundEffects/bomb-explode" />
   </sound-effects>
   <music>
     <tune name="title" file="Music/title" />

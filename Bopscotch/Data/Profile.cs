@@ -61,6 +61,7 @@ namespace Bopscotch.Data
         public static bool AvatarCostumeUnlocked(string name) { return Instance.CheckForAvatarCostumeUnlock(name); }
         public static void FlagAsRated() { Instance.HandleRatingTrigger(); }
         public static void ResetAreas() { Instance.ResetAllAreas(); }
+        public static AreaDataContainer GetDataForNamedArea(string areaName) { return Instance._areaLevelData[areaName]; }
 
         private bool _rateBuyRemindersOn;
         private bool _hasRated;

@@ -191,7 +191,14 @@ namespace Bopscotch.Scenes.Gameplay
         {
             _levelFactory.LoadAndInitializeLevel();
 
-            if (Data.Profile.PlayingRaceMode) { ((Data.RaceLevelData)_levelData).LapsToComplete = _levelFactory.RaceLapCount; }
+            if (Data.Profile.PlayingRaceMode) 
+            { 
+                ((Data.RaceLevelData)_levelData).LapsToComplete = _levelFactory.RaceLapCount; 
+            }
+            else
+            {
+                ((Data.SurvivalLevelData)_levelData).TotalCandiesOnLevel = _levelFactory.TotalCandiesOnLevel;
+            }
         }
 
         protected virtual void HandlePlayerEvent()

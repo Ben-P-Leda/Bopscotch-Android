@@ -58,6 +58,7 @@ namespace Bopscotch.Scenes.NonGame
             _dialogs.Add("areas-reset", new ResetAreasCompleteDialog());
             _dialogs.Add("unlocks", _unlockNotificationDialog);
             _dialogs.Add(Race_Aborted_Dialog, new DisconnectedDialog("Connection Broken - Race Aborted!"));
+            _dialogs.Add("info", new InfoMenuDialog());
 
             BackgroundTextureName = Background_Texture_Name;
 
@@ -101,6 +102,7 @@ namespace Bopscotch.Scenes.NonGame
             _dialogs["areas-reset"].ExitCallback = HandleConfirmationDialogClose;
             _dialogs["unlocks"].ExitCallback = HandleConfirmationDialogClose;
             _dialogs[Race_Aborted_Dialog].ExitCallback = HandleConfirmationDialogClose;
+            _dialogs["info"].ExitCallback = HandleInfoDialogActionSelection;
         }
 
         private void HandleReminderDialogActionSelection(string selectedOption)
@@ -132,12 +134,23 @@ namespace Bopscotch.Scenes.NonGame
             {
                 case "Start!": ActivateDialog("start"); break;
                 case "Character": ActivateDialog("characters"); break;
-                case "About": NextSceneType = typeof(CreditsScene); Deactivate(); break;
+                case "Info": ActivateDialog("info"); break;
                 case "Options": ActivateDialog("options"); break;
-                case "More Games": OpenLedaPageOnStore(); ActivateDialog("main"); break;
                 case "Store": NextSceneType = typeof(StoreScene); Deactivate(); break;
-                case "Rate": DisplayRatingUnlockedContent(); break;
+                case "Rate": RateGame(); break;
                 case "Quit": ExitGame(); break;
+            }
+        }
+
+        private void HandleInfoDialogActionSelection(string selectedOption)
+        {
+            switch (selectedOption)
+            {
+                case "Rankings": NextSceneType = typeof(RankingScene); Deactivate(); break;
+                case "About": NextSceneType = typeof(CreditsScene); Deactivate(); break;
+                case "More Games": OpenLedaPageOnStore(); ActivateDialog("main"); break;
+                case "Rate Game": RateGame(); break;
+                case "Back": ActivateDialog("main"); break;
             }
         }
 
