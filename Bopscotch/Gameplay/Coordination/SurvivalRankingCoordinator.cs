@@ -1,9 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Xml.Linq;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Leda.Core;
 using Leda.Core.Gamestate_Management;
 using Leda.Core.Game_Objects.Behaviours;
+using Leda.Core.Serialization;
 
 using Bopscotch.Interface;
 using Bopscotch.Data;
@@ -11,7 +14,7 @@ using Bopscotch.Effects.Popups.Ranking;
 
 namespace Bopscotch.Gameplay.Coordination
 {
-    public class SurvivalRankingCoordinator : ISimpleRenderable
+    public class SurvivalRankingCoordinator : ISimpleRenderable, ISerializable
     {
         public delegate void RankSequenceCallback();
 
@@ -19,8 +22,10 @@ namespace Bopscotch.Gameplay.Coordination
         private RankingStar[] _rankingStars;
         private RankingLetter _rankingLetter;
 
+        public string ID { get { return "ranking-coordinator"; } set { } }
         public bool Visible { get; set; }
         public int RenderLayer { get { return Render_Layer; } set { } }
+        public bool LevelCompleted { get; set; }
 
         public SurvivalRankingCoordinator(RankSequenceCallback completionCallback, Scene.ObjectRegistrationHandler registrationHandler)
         {
@@ -50,8 +55,7 @@ namespace Bopscotch.Gameplay.Coordination
         public void Reset()
         {
             Visible = false;
-
-            _registerObject(this);
+            LevelCompleted = false;
 
             for (int i = 0; i < Ranking_Star_Count; i++)
             {
@@ -123,6 +127,23 @@ namespace Bopscotch.Gameplay.Coordination
             TextWriter.Write(Translator.Translation("Your Ranking:"), spriteBatch, new Vector2(Definitions.Back_Buffer_Center.X, Prompt_Line),
                 Color.White, Color.Black, 3.0f, 0.7f, 0.1f, TextWriter.Alignment.Center);
         }
+
+        public XElement Serialize()
+        {
+            Serializer serializer = new Serializer(this);
+
+            serializer.AddDataItem("level-complete", LevelCompleted);
+
+            return serializer.SerializedData;
+        }
+
+        public void Deserialize(XElement serializedData)
+        {
+            Serializer serializer = new Serializer(serializedData);
+
+            LevelCompleted = serializer.GetDataItem<bool>("level-complete");
+        }
+
 
         private const int Render_Layer = 4;
         private const int Ranking_Star_Count = 3;

@@ -11,7 +11,7 @@ namespace Bopscotch.Interface.Dialogs
         {
             Height = Dialog_Height;
             TopYWhenActive = Definitions.Back_Buffer_Height - (Dialog_Height + Bottom_Margin);
-
+                
             _cancelButtonCaption = "Back";
         }
 
@@ -45,7 +45,6 @@ namespace Bopscotch.Interface.Dialogs
                 case "Twitter": webUrl = "http://www.twitter.com/ledaentertain"; break;
                 case "Leda": webUrl = "http://www.ledaentertainment.com/games"; break;
                 case "Rate": return RateGame();
-                case "Full Game": _activeButtonCaption = buttonCaption; return true; break;
                 case "Back": return true;
             }
 

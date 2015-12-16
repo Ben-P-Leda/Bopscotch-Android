@@ -122,6 +122,11 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private void HandleLevelCleared()
         {
             StatusDisplay.FreezeDisplayedScore = true;
+            _rankingCoordinator.LevelCompleted = true;
+
+            Definitions.SurvivalRank rank = _rankingCoordinator.GetRankForLevel(LevelData);
+            Profile.CurrentAreaData.UpdateCurrentLevelResults(LevelData.PointsScoredThisLevel, rank);
+            Profile.Save();
 
             if (Profile.CurrentAreaData.Name == "Tutorial")
             {
@@ -129,18 +134,15 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             }
             else
             {
-                Definitions.SurvivalRank rank = _rankingCoordinator.GetRankForLevel(LevelData);
-
-                Profile.CurrentAreaData.UpdateCurrentLevelResults(LevelData.PointsScoredThisLevel, rank);
-                Profile.CurrentAreaData.StepToNextLevel();
-                Profile.Save();
-
                 _rankingCoordinator.DisplayRanking(rank);
             }
         }
 
         private void CloseCurrentLevel()
         {
+            Profile.CurrentAreaData.StepToNextLevel();
+            Profile.Save();
+
             if (Profile.CurrentAreaData.Completed) 
             { 
                 CompleteArea(); 
@@ -195,6 +197,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             _attemptsAtCurrentLevel = NextSceneParameters.Get<int>("attempt-count");
 
             _levelComplete = false;
+            _rankingCoordinator.Reset();
             _levelData = new SurvivalLevelData();
             ((SurvivalLevelData)_levelData).AttemptsAtLevel = _attemptsAtCurrentLevel;
 
@@ -204,11 +207,13 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             RaceAreaName = "";
 
             base.Activate();
-            _rankingCoordinator.Reset();
 
             if (Profile.PauseOnSceneActivation)
             {
-                EnablePause();
+                if (!_rankingCoordinator.LevelCompleted)
+                {
+                    EnablePause();
+                }
                 Profile.PauseOnSceneActivation = false;
             }
 
@@ -216,6 +221,10 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             {
                 ((PlayerMotionEngine)_player.MotionEngine).DifficultySpeedBoosterUnit = Profile.CurrentAreaData.SpeedStep;
                 _readyPopup.Activate(); 
+            }
+            else if (_rankingCoordinator.LevelCompleted)
+            {
+                HandleLevelCleared();
             }
         }
 
@@ -226,6 +235,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             RegisterGameObject(_pauseButton);
             RegisterGameObject(_readyPopup);
             RegisterGameObject(_pauseDialog);
+            RegisterGameObject(_rankingCoordinator);
 
             if (Profile.CurrentAreaData.Name == "Tutorial") { RegisterGameObject(_tutorialRunner); }
             else { RegisterGameObject(_noLivesDialog); }

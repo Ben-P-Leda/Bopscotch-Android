@@ -2,7 +2,7 @@
 <areas>
   <area name="Tutorial" level-count="1" selection-texture="background-tutorial" difficulty-tag="n/a" speed-step="0" locked="false" no-race="true" >
     <completion-unlockables>
-      <unlockable type="area" unlocked="false" name="Hilltops" trial-unlockable="true" />z
+      <unlockable type="area" unlocked="false" name="Hilltops" trial-unlockable="true" />
       <unlockable type="golden-ticket" unlocked="false" units="1" trial-unlockable="true" />
       <unlockable type="avatar-costume" unlocked="false" name="Teacher" trial-unlockable="true" />
     </completion-unlockables>

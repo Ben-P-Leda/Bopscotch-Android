@@ -360,13 +360,6 @@ namespace Bopscotch.Scenes.NonGame
             base.HandleBackButtonPress();
         }
 
-        public override void HandleFastResume()
-        {
-            base.HandleFastResume();
-
-             ActivateDialog("main");
-        }
-
         private const string Background_Texture_Name = "background-1";
         private const string Title_Texture_Name = "popup-title";
         private const string Default_First_Dialog = "main";

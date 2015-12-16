@@ -3,10 +3,6 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Collections.Generic;
 
-#if WINDOWS_PHONE
-using Microsoft.Xna.Framework.GamerServices;
-#endif
-
 using Leda.Core;
 using Leda.Core.Game_Objects.Behaviours;
 using Leda.Core.Serialization;
@@ -487,7 +483,7 @@ namespace Bopscotch.Data
         private const string Profile_FileName = "profile.xml";
         private const string Default_Areas_FileName = "Content/Files/Levels/DefaultAreas.xml";
         private const string Additional_Areas_FileName = "Content/Files/Levels/AdditionalAreas.xml";
-        private const string Difficulty_Sequence_CSV = "n/a,easy,simple,medium,hard,insane";
+        private const string Difficulty_Sequence_CSV = "n/a,easy,simple,moderate,medium,hard,insane";
         private const int Days_Before_Reminders_Start = 3;
         private const int Days_Between_Reminders = 2;
         private const int Maximum_Life_Count = 10;
