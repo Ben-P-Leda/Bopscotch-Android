@@ -269,6 +269,7 @@ namespace Bopscotch.Gameplay.Objects.Characters.Player
         public void Deserialize(XElement serializedData)
         {
             Serializer serializer = new Serializer(serializedData);
+            serializer.KnownSerializedObjects.Add(_speedChangeLockoutTimer);
 
             Speed = serializer.GetDataItem<float>("speed");
             _gravity = serializer.GetDataItem<float>("gravity");

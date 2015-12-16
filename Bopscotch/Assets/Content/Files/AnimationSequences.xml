@@ -153,6 +153,13 @@
       <keyframe duration="500" rotation="0.0" scale="1.0" />
     </keyframes>
   </sequence>
+  
+    <sequence name="image-popup-entry-fast" type="transformation" loops="no">
+    <keyframes>
+      <keyframe duration="1" rotation="0.0" scale="0.0" />
+      <keyframe duration="125" rotation="0.0" scale="1.0" />
+    </keyframes>
+  </sequence>
 
   <sequence name="image-popup-entry-with-bounce" type="transformation" loops="no">
     <keyframes>
@@ -310,6 +317,20 @@
       <keyframe duration="250" rotation="120.0" scale="1.0" />
       <keyframe duration="250" rotation="240.0" scale="1.0" />
       <keyframe duration="250" rotation="0.0" scale="1.0" />
+    </keyframes>
+  </sequence>
+
+  <sequence name="rock" type="transformation" loops="yes">
+    <keyframes>
+      <keyframe duration="250" rotation="10.0" scale="1.0" />
+      <keyframe duration="500" rotation="-10.0" scale="1.0" />
+      <keyframe duration="250" rotation="0.0" scale="1.0" />
+    </keyframes>
+  </sequence>
+
+  <sequence name="hold" type="transformation" loops="no">
+    <keyframes>
+      <keyframe duration="1000" rotation="0.0" scale="1.0" />
     </keyframes>
   </sequence>
 

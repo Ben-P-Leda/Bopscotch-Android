@@ -109,6 +109,11 @@ namespace Leda.Core
 				(int)(font.MeasureString(text).Y * scale * Platform_Scale_Modifier));
         }
 
+        public static Vector2 CalculateTextDimensions(string text, float scale)
+        {
+            return _font.MeasureString(text) * scale * Platform_Scale_Modifier;
+        }
+
 		// Required by Android to make sure spritefont does not corrupt
 		public static void CleanDownForActivityPause()
 		{

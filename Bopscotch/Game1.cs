@@ -27,6 +27,7 @@ namespace Bopscotch
             AddScene(new Scenes.NonGame.StartupLoadingScene());
             AddScene(new Scenes.NonGame.TitleScene());
             AddScene(new Scenes.NonGame.CreditsScene());
+            AddScene(new Scenes.NonGame.RankingScene());
             AddScene(new Scenes.NonGame.StoreScene());
             AddScene(new Scenes.NonGame.AvatarCustomisationScene());
             AddScene(new Scenes.Gameplay.Survival.SurvivalGameplayScene());

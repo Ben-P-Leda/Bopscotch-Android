@@ -14,15 +14,7 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
             Height = Dialog_Height;
             TopYWhenActive = Top_Y_When_Active;
 
-            _defaultButtonCaption = "Start!";
-            _cancelButtonCaption = "Quit";
-        }
-
-        public override void Activate()
-        {
-            ClearButtons();
-
-            AddButton("About", new Vector2(Definitions.Left_Button_Column_X, 85), Button.ButtonIcon.Help, Color.DodgerBlue, 0.7f);
+            AddButton("Info", new Vector2(Definitions.Left_Button_Column_X, 85), Button.ButtonIcon.Help, Color.DodgerBlue, 0.7f);
             AddButton("Options", new Vector2(Definitions.Left_Button_Column_X, 215), Button.ButtonIcon.Options, Color.DodgerBlue, 0.7f);
             AddButton("Character", new Vector2(Definitions.Right_Button_Column_X, 215), Button.ButtonIcon.Character, Color.DodgerBlue, 0.7f);
             AddButton("Start!", new Vector2(Definitions.Back_Buffer_Center.X, 360), Button.ButtonIcon.Play, Color.LawnGreen);
@@ -34,7 +26,8 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
             AddIconButton("Leda", new Vector2(Definitions.Back_Buffer_Width - (Social_Button_Spacing * 3.0f), Social_Button_Y), Button.ButtonIcon.Website, Color.DodgerBlue, 0.6f);
             AddIconButton("Rate", new Vector2(Definitions.Back_Buffer_Width - (Social_Button_Spacing * 2.0f), Social_Button_Y), Button.ButtonIcon.Rate, Color.Orange, 0.6f);
 
-            base.Activate();
+            _defaultButtonCaption = "Start!";
+            _cancelButtonCaption = "Quit";
         }
 
         protected override void ActivateButton(string caption)

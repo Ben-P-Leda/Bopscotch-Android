@@ -30,6 +30,8 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
         public static AdditiveLayerParticleEffectManager.CloudBurstEffectInitiator SmashBlockRegerationCallback { set { Factory._smashBlockRegenerationCallback = value; } }
         public static AdditiveLayerParticleEffectManager.FireballEffectInitiator BombBlockDetonationCallback { set { Factory._bombBlockDetonationCallback = value; } }
 
+        public static int SmashBlockCandyCount { get { return _factory._smashBlockCandyCount; } }
+
         public static BlockMap CreateLevelBlockMap(XElement blockDataGroup) 
         {
             return Factory.GenerateBlockMap(blockDataGroup); 
@@ -47,6 +49,7 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
         private AnimationController _animationController;
 
         private List<BombBlock> _bombs;
+        private int _smashBlockCandyCount;
 
         private void Reset()
         {
@@ -55,6 +58,7 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
         private BlockMap GenerateBlockMap(XElement blockDataGroup)
         {
             _bombs = new List<BombBlock>();
+            _smashBlockCandyCount = 0;
 
             List<Block> blocks = new List<Block>();
             Point worldDimensions = Point.Zero;
@@ -168,7 +172,10 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
             foreach (XElement el in node.Elements("contains-item")) 
             {
                 Data.SmashBlockItemData item = CreateSmashBlockItem(el, newSmashBlock.WorldPosition);
-                if (item != null) { newSmashBlock.Contents.Add(item); }
+                if (item != null) 
+                { 
+                    newSmashBlock.Contents.Add(item);
+                }
             }
 
             return newSmashBlock;
@@ -188,7 +195,7 @@ namespace Bopscotch.Gameplay.Objects.Environment.Blocks
             switch (node.Attribute("action").Value)
             {
                 case "add-ticket": itemData.AffectsItem = Data.SmashBlockItemData.AffectedItem.GoldenTicket; break;
-                case "score": itemData.AffectsItem = Data.SmashBlockItemData.AffectedItem.Score; break;
+                case "score": itemData.AffectsItem = Data.SmashBlockItemData.AffectedItem.Score; _smashBlockCandyCount += itemData.Count; break;
             }
 
             itemData.Value = (int)node.Attribute("value");

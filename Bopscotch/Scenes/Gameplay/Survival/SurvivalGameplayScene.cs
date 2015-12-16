@@ -10,6 +10,7 @@ using Leda.Core.Game_Objects.Behaviours;
 
 using Bopscotch.Scenes.NonGame;
 using Bopscotch.Data;
+using Bopscotch.Gameplay.Coordination;
 using Bopscotch.Gameplay.Objects.Display.Survival;
 using Bopscotch.Gameplay.Objects.Characters.Player;
 using Bopscotch.Gameplay.Objects.Environment.Blocks;
@@ -26,7 +27,9 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private PauseDialog _pauseDialog;
         private NoLivesDialog _noLivesDialog;
         private TutorialRunner _tutorialRunner;
+        private SurvivalRankingCoordinator _rankingCoordinator;
         private bool _levelComplete;
+        private int _attemptsAtCurrentLevel;
 
         private SurvivalLevelData LevelData { get { return (SurvivalLevelData)_levelData; } }
         private SurvivalDataDisplay StatusDisplay { get { return (SurvivalDataDisplay)_statusDisplay; } set { _statusDisplay = value; } }
@@ -41,6 +44,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             _pauseDialog = new PauseDialog();
             _noLivesDialog = new NoLivesDialog();
             _tutorialRunner = new TutorialRunner();
+            _rankingCoordinator = new SurvivalRankingCoordinator(CloseCurrentLevel, RegisterGameObject);
 
             _pauseDialog.InputSources.Add(_inputProcessor);
             _pauseDialog.ExitCallback = HandleDialogClose;
@@ -63,6 +67,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
                     break;
                 case "Quit":
                     NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "start");
+                    NextSceneParameters.Set("music-already-running", false);
                     NextSceneType = typeof(TitleScene); 
                     Profile.PauseOnSceneActivation = false; 
                     Deactivate(); 
@@ -96,12 +101,20 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         {
             Data.Profile.Save();
 
-            if (Data.Profile.Lives < 1) { _noLivesDialog.Activate(); }
-            else { RefreshScene(); }
+            if (Data.Profile.Lives < 1) 
+            { 
+                _noLivesDialog.Activate(); 
+            }
+            else 
+            {
+                _attemptsAtCurrentLevel++;
+                RefreshScene(); 
+            }
         }
 
         private void RefreshScene()
         {
+            NextSceneParameters.Set("attempt-count", _attemptsAtCurrentLevel);
             NextSceneType = typeof(SurvivalGameplayScene); 
             Deactivate();
         }
@@ -109,12 +122,36 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private void HandleLevelCleared()
         {
             StatusDisplay.FreezeDisplayedScore = true;
-            Profile.CurrentAreaData.UpdateCurrentLevelScore(LevelData.PointsScoredThisLevel);
+            _rankingCoordinator.LevelCompleted = true;
+
+            Definitions.SurvivalRank rank = _rankingCoordinator.GetRankForLevel(LevelData);
+            Profile.CurrentAreaData.UpdateCurrentLevelResults(LevelData.PointsScoredThisLevel, rank);
+            Profile.Save();
+
+            if (Profile.CurrentAreaData.Name == "Tutorial")
+            {
+                CloseCurrentLevel();
+            }
+            else
+            {
+                _rankingCoordinator.DisplayRanking(rank);
+            }
+        }
+
+        private void CloseCurrentLevel()
+        {
             Profile.CurrentAreaData.StepToNextLevel();
             Profile.Save();
 
-            if (Profile.CurrentAreaData.Completed) { CompleteArea(); }
-            else { RefreshScene(); }
+            if (Profile.CurrentAreaData.Completed) 
+            { 
+                CompleteArea(); 
+            }
+            else 
+            {
+                _attemptsAtCurrentLevel = 0;
+                RefreshScene(); 
+            }
         }
 
         private void CompleteArea()
@@ -148,14 +185,22 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             _pauseButton.Initialize();
             _pauseButton.DisplayEdgePositions = new Vector2(GameBase.SafeDisplayArea.X + GameBase.SafeDisplayArea.Width, 0.0f);
             _inputProcessor.AddButtonArea(PauseButton.In_Game_Button_Name, _pauseButton.Center, _pauseButton.Radius, true);
+
+            _rankingCoordinator.Initialize();
         }
 
         public override void Activate()
         {
             Profile.SyncPlayerLives();
+            if (LevelData != null) { ObjectsToSerialize.Remove(LevelData); }
+
+            _attemptsAtCurrentLevel = NextSceneParameters.Get<int>("attempt-count");
 
             _levelComplete = false;
+            _rankingCoordinator.Reset();
             _levelData = new SurvivalLevelData();
+            ((SurvivalLevelData)_levelData).AttemptsAtLevel = _attemptsAtCurrentLevel;
+
             ObjectsToSerialize.Add(LevelData);
             StatusDisplay.CurrentLevelData = LevelData;
             StatusDisplay.FreezeDisplayedScore = false;
@@ -165,7 +210,10 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
             if (Profile.PauseOnSceneActivation)
             {
-                EnablePause();
+                if (!_rankingCoordinator.LevelCompleted)
+                {
+                    EnablePause();
+                }
                 Profile.PauseOnSceneActivation = false;
             }
 
@@ -173,6 +221,10 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             {
                 ((PlayerMotionEngine)_player.MotionEngine).DifficultySpeedBoosterUnit = Profile.CurrentAreaData.SpeedStep;
                 _readyPopup.Activate(); 
+            }
+            else if (_rankingCoordinator.LevelCompleted)
+            {
+                HandleLevelCleared();
             }
         }
 
@@ -183,6 +235,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             RegisterGameObject(_pauseButton);
             RegisterGameObject(_readyPopup);
             RegisterGameObject(_pauseDialog);
+            RegisterGameObject(_rankingCoordinator);
 
             if (Profile.CurrentAreaData.Name == "Tutorial") { RegisterGameObject(_tutorialRunner); }
             else { RegisterGameObject(_noLivesDialog); }
@@ -321,8 +374,6 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         protected override void HandleSmashBlockSmash(SmashBlock smashedBlock)
         {
-            // TODO: add extra score etc
-
             LevelData.UpdateFromSmashBlockContents(smashedBlock);
             base.HandleSmashBlockSmash(smashedBlock);
         }
@@ -341,6 +392,13 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         {
             if (_nextSceneType != typeof(SurvivalGameplayScene)) { MusicManager.StopMusic(); }
             base.CompleteDeactivation();
+        }
+
+        protected override void HandlePostDeserializationResaturation()
+        {
+            base.HandlePostDeserializationResaturation();
+
+            _attemptsAtCurrentLevel = ((SurvivalLevelData)_levelData).AttemptsAtLevel;
         }
 
         private const string Ready_Popup_Texture = "popup-get-ready";
