@@ -141,20 +141,31 @@ namespace Bopscotch.Interface.Dialogs.Carousel
 
         protected override void CheckForAndHandleSelection(Input.InputProcessorBase inputSource)
         {
-            if ((inputSource.SelectionTriggered) && (!Rotating))
+            if (!Rotating)
             {
-                if (inputSource.SelectionLocation != Vector2.Zero) { base.CheckForAndHandleSelection(inputSource); }
-                else if (_nonSpinButtonCaptions.Contains(_activeButtonCaption)) 
+                if (inputSource.SelectionTriggered)
                 {
-                    if ((!(inputSource is GamePadInputProcessor)) ||
-                        (!((GamePadInputProcessor)inputSource).SelectionIsByStartButton) ||
-                        (!_captionsForButtonsNotActivatedByGamepadStartButton.Contains(_activeButtonCaption)))
+                    if (inputSource.SelectionLocation != Vector2.Zero) { base.CheckForAndHandleSelection(inputSource); }
+                    else if (_nonSpinButtonCaptions.Contains(_activeButtonCaption))
                     {
-                        ActionButtonPressHandler(_activeButtonCaption);
-                        if (!string.IsNullOrEmpty(ActivateSelectionSoundEffectName)) { SoundEffectManager.PlayEffect(ActivateSelectionSoundEffectName); }
+                        if ((!(inputSource is GamePadInputProcessor)) ||
+                            (!((GamePadInputProcessor)inputSource).SelectionIsByStartButton) ||
+                            (!_captionsForButtonsNotActivatedByGamepadStartButton.Contains(_activeButtonCaption)))
+                        {
+                            ActionButtonPressHandler(_activeButtonCaption);
+                            if (!string.IsNullOrEmpty(ActivateSelectionSoundEffectName)) { SoundEffectManager.PlayEffect(ActivateSelectionSoundEffectName); }
+                        }
                     }
+                    else { HandleStepSelection(_activeButtonCaption); }
                 }
-                else { HandleStepSelection(_activeButtonCaption); }
+                else if (inputSource.MoveLeft)
+                {
+                    HandleStepSelection("previous");
+                }
+                else if (inputSource.MoveRight)
+                {
+                    HandleStepSelection("next");
+                }
             }
         }
 

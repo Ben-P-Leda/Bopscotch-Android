@@ -26,7 +26,7 @@ using Bopscotch.Scenes.NonGame;
 
 namespace Bopscotch.Scenes.Gameplay
 {
-    public class GameplaySceneBase : StorableScene
+    public abstract class GameplaySceneBase : StorableScene
     {
         protected Input.TouchControls _inputProcessor;
 
@@ -46,7 +46,6 @@ namespace Bopscotch.Scenes.Gameplay
         protected PlayerTrackingCameraController _cameraController;
         protected Speedometer _speedometer;
         protected Player _player;
-        protected LevelData _levelData;
         protected StatusDisplay _statusDisplay;
         protected PlayerEventPopup _playerEventPopup;
 
@@ -190,16 +189,10 @@ namespace Bopscotch.Scenes.Gameplay
         private void SetForNewLevelStart()
         {
             _levelFactory.LoadAndInitializeLevel();
-
-            if (Data.Profile.PlayingRaceMode) 
-            { 
-                ((Data.RaceLevelData)_levelData).LapsToComplete = _levelFactory.RaceLapCount; 
-            }
-            else
-            {
-                ((Data.SurvivalLevelData)_levelData).TotalCandiesOnLevel = _levelFactory.TotalCandiesOnLevel;
-            }
+            SetLevelMetrics(_levelFactory);
         }
+
+        protected abstract void SetLevelMetrics(LevelFactory levelFactory);
 
         protected virtual void HandlePlayerEvent()
         {

@@ -372,7 +372,7 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
         }
 
         private const float Text_Render_Depth = 0.141f;
-        private const int Milliseconds_Between_Send_Attempts = 1000;
+        private const int Milliseconds_Between_Send_Attempts = 480;
 
         private const int Maximum_Opponents = 4;
         private const float Button_X_Margin = 220.0f;

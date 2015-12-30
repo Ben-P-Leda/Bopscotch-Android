@@ -86,14 +86,17 @@ namespace Bopscotch.Interface.Dialogs.RankingScene
             return buttonCaption == "Back";
         }
 
-        private void HandleAreaStep(int direction)
+        public void HandleAreaStep(int direction)
         {
-            _selectedAreaIndex += direction;
+            if ((_selectedAreaIndex + direction > -1) && (_selectedAreaIndex + direction < _areaNames.Count))
+            {
+                _selectedAreaIndex += direction;
 
-            PagingComplete = false;
-            PageChangeCallback(_areaNames[_selectedAreaIndex]);
+                PagingComplete = false;
+                PageChangeCallback(_areaNames[_selectedAreaIndex]);
 
-            SetPagingButtonStates();
+                SetPagingButtonStates();
+            }
         }
 
         private const int Dialog_Height = 150;

@@ -10,6 +10,7 @@ using Leda.Core.Game_Objects.Behaviours;
 
 using Bopscotch.Scenes.NonGame;
 using Bopscotch.Data;
+using Bopscotch.Gameplay;
 using Bopscotch.Gameplay.Coordination;
 using Bopscotch.Gameplay.Objects.Display.Survival;
 using Bopscotch.Gameplay.Objects.Characters.Player;
@@ -22,6 +23,8 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 {
     public class SurvivalGameplayScene : GameplaySceneBase
     {
+        private SurvivalLevelData _levelData;
+
         private PopupRequiringDismissal _readyPopup;
         private PauseButton _pauseButton;
         private PauseDialog _pauseDialog;
@@ -31,7 +34,6 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private bool _levelComplete;
         private int _attemptsAtCurrentLevel;
 
-        private SurvivalLevelData LevelData { get { return (SurvivalLevelData)_levelData; } }
         private SurvivalDataDisplay StatusDisplay { get { return (SurvivalDataDisplay)_statusDisplay; } set { _statusDisplay = value; } }
 
         public SurvivalGameplayScene()
@@ -124,8 +126,8 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             StatusDisplay.FreezeDisplayedScore = true;
             _rankingCoordinator.LevelCompleted = true;
 
-            Definitions.SurvivalRank rank = _rankingCoordinator.GetRankForLevel(LevelData);
-            Profile.CurrentAreaData.UpdateCurrentLevelResults(LevelData.PointsScoredThisLevel, rank);
+            Definitions.SurvivalRank rank = _rankingCoordinator.GetRankForLevel(_levelData);
+            Profile.CurrentAreaData.UpdateCurrentLevelResults(_levelData.PointsScoredThisLevel, rank);
             Profile.Save();
 
             if (Profile.CurrentAreaData.Name == "Tutorial")
@@ -170,7 +172,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         private void HandleCollectableCollection(Collectable collectedItem)
         {
-            LevelData.UpdateFromItemCollection(collectedItem);
+            _levelData.UpdateFromItemCollection(collectedItem);
         }
 
         public override void HandleAssetLoadCompletion(Type loaderSceneType)
@@ -192,17 +194,17 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         public override void Activate()
         {
             Profile.SyncPlayerLives();
-            if (LevelData != null) { ObjectsToSerialize.Remove(LevelData); }
+            if (_levelData != null) { ObjectsToSerialize.Remove(_levelData); }
 
             _attemptsAtCurrentLevel = NextSceneParameters.Get<int>("attempt-count");
 
             _levelComplete = false;
             _rankingCoordinator.Reset();
             _levelData = new SurvivalLevelData();
-            ((SurvivalLevelData)_levelData).AttemptsAtLevel = _attemptsAtCurrentLevel;
+            _levelData.AttemptsAtLevel = _attemptsAtCurrentLevel;
 
-            ObjectsToSerialize.Add(LevelData);
-            StatusDisplay.CurrentLevelData = LevelData;
+            ObjectsToSerialize.Add(_levelData);
+            StatusDisplay.CurrentLevelData = _levelData;
             StatusDisplay.FreezeDisplayedScore = false;
             RaceAreaName = "";
 
@@ -226,6 +228,13 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             {
                 HandleLevelCleared();
             }
+        }
+
+        protected override void SetLevelMetrics(LevelFactory levelFactory)
+        {
+            _levelData.TotalCandiesOnLevel = levelFactory.TotalCandiesOnLevel;
+            _levelData.RankACandyFraction = levelFactory.RankACandyFraction;
+            _levelData.RankBCandyFraction = levelFactory.RankBCandyFraction;
         }
 
         protected override void RegisterStaticGameObjects()
@@ -359,13 +368,13 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         {
             if ((!_paused) && (_player.CanMoveHorizontally))
             {
-                LevelData.UpdateScoreForMovement(millisecondsSinceLastUpdate, ((PlayerMotionEngine)_player.MotionEngine).Speed);
+                _levelData.UpdateScoreForMovement(millisecondsSinceLastUpdate, ((PlayerMotionEngine)_player.MotionEngine).Speed);
             }
         }
 
         protected override Serializer Deserialize(Serializer serializer)
         {
-            serializer.KnownSerializedObjects.Add(LevelData);
+            serializer.KnownSerializedObjects.Add(_levelData);
             serializer.KnownSerializedObjects.Add(_readyPopup);
             serializer.KnownSerializedObjects.Add(_playerEventPopup);
 
@@ -374,7 +383,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         protected override void HandleSmashBlockSmash(SmashBlock smashedBlock)
         {
-            LevelData.UpdateFromSmashBlockContents(smashedBlock);
+            _levelData.UpdateFromSmashBlockContents(smashedBlock);
             base.HandleSmashBlockSmash(smashedBlock);
         }
 

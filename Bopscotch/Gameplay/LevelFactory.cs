@@ -45,6 +45,8 @@ namespace Bopscotch.Gameplay
         public string RaceAreaName { private get; set; }
 
         public int TotalCandiesOnLevel { get { return CollectableFactory.CandyCount + BlockFactory.SmashBlockCandyCount; } }
+        public float RankACandyFraction { get; private set; }
+        public float RankBCandyFraction { get; private set; }
 
         public LevelFactory(Scene.ObjectRegistrationHandler registerGameObject, 
             TimerController.TickCallbackRegistrationHandler registerTimerTick)
@@ -66,8 +68,18 @@ namespace Bopscotch.Gameplay
         public void LoadAndInitializeLevel()
         {
             XElement levelData = LoadLevelData();
-            RaceLapCount = (Data.Profile.PlayingRaceMode ? GetLapsForRace(levelData) : 0);
 
+            if (Data.Profile.PlayingRaceMode)
+            {
+                RaceLapCount = GetLapsForRace(levelData);
+            }
+            else
+            {
+                XElement rankFractionElement = levelData.Element(Rank_Fraction_Data_Element);
+                RankACandyFraction = GetCandyFractionForRanking(rankFractionElement, "a", Rank_A_Candy_Fraction);
+                RankBCandyFraction = GetCandyFractionForRanking(rankFractionElement, "b", Rank_B_Candy_Fraction);
+            }
+            
             WireUpCallElementFactoryCallbacks();
 
             Map = BlockFactory.CreateLevelBlockMap(levelData.Element(Terrain_Data_Element).Element(BlockFactory.Data_Group_Node_Name));
@@ -123,6 +135,18 @@ namespace Bopscotch.Gameplay
             return (int)levelData.Element(Race_Data_Element);
         }
 
+        private float GetCandyFractionForRanking(XElement rankData, string attributeName, float defaultValue)
+        {
+            float value = defaultValue;
+
+            if ((rankData != null) && (rankData.Attribute(attributeName) != null))
+            {
+                value = (float)rankData.Attribute(attributeName);
+            }
+
+            return value;
+        }
+
         private void FinalizeLevelSetup(XElement levelData)
         {
             Background inGameBackground = new Background();
@@ -175,8 +199,11 @@ namespace Bopscotch.Gameplay
         private const string Content_Path = "Content";
         private const string Data_Root_Element = "leveldata";
         private const string Background_Data_Element = "background";
+        private const string Rank_Fraction_Data_Element = "rank-fractions";
         private const string Terrain_Data_Element = "terrain";
         private const string Player_Data_Element = "player";
         private const string Race_Data_Element = "race-laps";
+        private const float Rank_B_Candy_Fraction = 0.75f;
+        private const float Rank_A_Candy_Fraction = 0.875f;
     }
 }
