@@ -169,7 +169,10 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
             {
                 // otherwise, start sending invites to the selected opponent
                 _selectedOpponent = selected;
-                _communicator.Message = string.Concat("cmd=invite&target=", _selectedOpponent.ID);
+                _communicator.Message = string.Format("cmd=invite&target={0}&name={1}&slot={2}",
+                    _selectedOpponent.ID,
+                    Data.Profile.Settings.RaceName,
+                    Data.Profile.Settings.SelectedAvatarSlot);
 
                 // Some stuff to allow testing...
                 if ((Data.Profile.Settings.TestingRaceMode) && (selected.Name == "test-opp")) { DismissWithReturnValue(selected.ID); }
@@ -207,10 +210,12 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
             _communicator.SendOnMessageChange = true;
             _communicator.SendInterval = Milliseconds_Between_Send_Attempts;
             _communicator.OtherPlayerRaceID = "";
+            _communicator.OtherPlayerName = "a friend";
+            _communicator.OtherPlayerAvatarSlot = 0;
 
             ReturnToWaitingForInvite();
 
-            if (Data.Profile.Settings.TestingRaceMode) { AddOpponentToList("test-opponent", "test-opp"); }
+            if (Data.Profile.Settings.TestingRaceMode) { AddOpponentToList("test-opponent", "test-opp", 0); }
 
             _timer.NextActionDuration = Check_Wifi_Message_Delay;
         }
@@ -223,7 +228,7 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
         private bool RequestIsValid(Dictionary<string, string> data)
         {
             return ((data.ContainsKey("id")) && (data.ContainsKey("cmd")) && 
-                ((_opponents.ContainsKey(data["id"])) || (data["cmd"] == "join") || (data["cmd"] == "accept")));
+                ((_opponents.ContainsKey(data["id"])) || (data["cmd"] == "join") || (data["cmd"] == "invite")));
         }
 
         private bool RequestIsFromSelectedOpponent(Dictionary<string, string> data)
@@ -272,9 +277,9 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
         private void HandleJoinRequest(Dictionary<string, string> data)
         {
             // If join is from unknown source, add to the list
-            if ((_opponents.Count < Maximum_Opponents) && (data.ContainsKey("id")) && (data.ContainsKey("name")))
+            if ((_opponents.Count < Maximum_Opponents) && (JoinerDataIsValid(data)))
             {
-                AddOpponentToList(data["id"], data["name"]);
+                AddOpponentToList(data["id"], data["name"], GetAvatarSlot(data));
             }
 
             // If join is from an opponent that was inviting but has now switched back to join, switch the state back to joining
@@ -284,7 +289,31 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
             }
         }
 
-        private void AddOpponentToList(string id, string name)
+        private bool JoinerDataIsValid(Dictionary<string, string> data)
+        {
+            if (!data.ContainsKey("id")) { return false; }
+            if (!data.ContainsKey("name")) { return false; }
+
+            return true;
+        }
+
+        private int GetAvatarSlot(Dictionary<string,string> data)
+        {
+            int slot = 0;
+
+            if (data.ContainsKey("slot"))
+            {
+                int commsSlot = -1;
+                if (int.TryParse(data["slot"], out commsSlot))
+                {
+                    slot = commsSlot;
+                }
+            }
+
+            return slot;
+        }
+
+        private void AddOpponentToList(string id, string name, int avatarSlot)
         {
             if (!_opponents.ContainsKey(id))
             {
@@ -294,13 +323,17 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
                             Button_Top_Offset + (OpponentSelector.Height * _opponents.Count)),
                         _displayLeftLimit,
                         id, 
-                        name));
+                        name,
+                        avatarSlot));
             }
         }
 
         private void HandleInvitationRequest(Dictionary<string, string> data)
         {
-            if (RequestIsForUs(data) && (!_opponents.ContainsKey(data["id"]))) { AddOpponentToList(data["id"], data["name"]); }
+            if ((JoinerDataIsValid(data)) && (RequestIsForUs(data)) && (!_opponents.ContainsKey(data["id"]))) 
+            {
+                AddOpponentToList(data["id"], data["name"], GetAvatarSlot(data)); 
+            }
 
             // Request is valid and targeting us, switch inviting opponent to "is inviting" state
             if ((RequestIsForUs(data)) && (!RequestIsFromSelectedOpponent(data)))
@@ -321,7 +354,9 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
         {
             foreach (KeyValuePair<string, OpponentSelector> kvp in _opponents) { kvp.Value.Suspended = false; }
 
-            _communicator.Message = string.Concat("cmd=join&name=", Data.Profile.Settings.RaceName);
+            _communicator.Message = string.Format("cmd=join&name={0}&slot={1}", 
+                Data.Profile.Settings.RaceName,
+                Data.Profile.Settings.SelectedAvatarSlot);
         }
 
         private void HandleInvitationAccepted(Dictionary<string, string> data)
@@ -337,6 +372,8 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
                     // ... and start sending "acknowledge" messages back
                     _communicator.Message = string.Concat("cmd=inv-ack&target=", _selectedOpponent.ID);
 
+                    _communicator.OtherPlayerAvatarSlot = _selectedOpponent.AvatarSlot;
+                    _communicator.OtherPlayerName = _selectedOpponent.Name;
                     DismissWithReturnValue(_selectedOpponent.ID);
                 }
             }
@@ -360,7 +397,12 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
             {
                 if (RequestIsForUs(data)) 
                 {
-                    if (Active) { DismissWithReturnValue(_selectedOpponent.ID); }
+                    if (Active) 
+                    {
+                        _communicator.OtherPlayerAvatarSlot = _selectedOpponent.AvatarSlot;
+                        _communicator.OtherPlayerName = _selectedOpponent.Name;
+                        DismissWithReturnValue(_selectedOpponent.ID); 
+                    }
                 }
                 else
                 {

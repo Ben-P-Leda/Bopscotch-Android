@@ -47,9 +47,18 @@ namespace Bopscotch.Scenes.Gameplay.Race
         private int _startCoundown;
         private Timer _startSequenceTimer;
 
+        private Bopscotch.Gameplay.Objects.Characters.RaceOpponent _opponentMarker;
+
         public Communication.ICommunicator Communicator 
         { 
-            set { if (value is Communication.InterDeviceCommunicator) { _communicator = (Communication.InterDeviceCommunicator)value; } } 
+            set 
+            { 
+                if (value is Communication.InterDeviceCommunicator)
+                { 
+                    _communicator = (Communication.InterDeviceCommunicator)value;
+                    _opponentMarker.Communicator = _communicator;
+                } 
+            } 
         }
 
         public bool AllLapsCompleted { get { return (_progressCoordinator.LapsCompleted >= _levelData.LapsToComplete); } }
@@ -92,6 +101,9 @@ namespace Bopscotch.Scenes.Gameplay.Race
             _disconnectedDialog = new DisconnectedDialog();
             _disconnectedDialog.SelectionCallback = HandleDisconnectAcknowledge;
             _disconnectedDialog.InputSources.Add(_inputProcessor);
+
+            _opponentMarker = new Bopscotch.Gameplay.Objects.Characters.RaceOpponent();
+            _opponentMarker.ParticleManager = _additiveParticleEffectManager;
         }
 
         private void HandlePlayerEventAnimationComplete()
@@ -147,6 +159,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
             }
             else 
             {
+                _opponentMarker.StartMovement();
                 _raceStarted = true;
 
                 SoundEffectManager.PlayEffect("race-start"); 
@@ -235,6 +248,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
                 _player.PlayerEventCallback = HandlePlayerEvent;
                 ((PlayerMotionEngine)_player.MotionEngine).DifficultySpeedBoosterUnit = NextSceneParameters.Get<int>(Course_Speed_Parameter);
 
+                _opponentMarker.SetForRaceStart(_player.WorldPosition, _player.Mirror);
                 SetCoordinatorsForRace(NextSceneParameters.Get<string>(Course_Area_Parameter));
                 SetUpOpponentAttackEffects();
                 _waitingMessage.Activate();
@@ -251,6 +265,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
             base.RegisterStaticGameObjects();
 
             RegisterGameObject(_quitRaceButton);
+            RegisterGameObject(_opponentMarker);
         }
 
         protected override void SetInterfaceDisplayObjectsForGame()
@@ -366,7 +381,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
             }
         }
 
-
         private void HandleRaceGoalAchieved()
         {
             if (_exitTimer.CurrentActionProgress == 1.0f) { _exitTimer.NextActionDuration = Exit_Sequence_Duration_In_Milliseconds; }
@@ -438,6 +452,10 @@ namespace Bopscotch.Scenes.Gameplay.Race
             if ((CurrentState == Status.Active) && (!_paused) && (!Data.Profile.Settings.TestingRaceMode))
             {
                 _paused = true;
+                if (_quitRaceDialog.Active)
+                {
+                    _quitRaceDialog.DismissWithReturnValue("cancel");
+                }
                 _disconnectedDialog.Activate();
             }
         }
@@ -496,8 +514,21 @@ namespace Bopscotch.Scenes.Gameplay.Race
 
         protected override void HandleBackButtonPress()
         {
-            if ((CurrentState == Status.Active) && (_quitRaceDialog.Active)) { _quitRaceDialog.DismissWithReturnValue("cancel"); }
-            else { StartQuitRaceSequence(); }
+            if (!_disconnectedDialog.Active)
+            {
+                if ((CurrentState == Status.Active) && (_quitRaceDialog.Active))
+                {
+                    _quitRaceDialog.DismissWithReturnValue("cancel");
+                }
+                else
+                {
+                    StartQuitRaceSequence();
+                }
+            }
+            else
+            {
+                _disconnectedDialog.DismissWithReturnValue("OK");
+            }
         }
 
         protected override void CompleteDeactivation()
@@ -517,13 +548,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
         {
             ExitFollowingFocusLoss();
         }
-
-#if IOS
-		public override void HandleGameResigned()
-		{
-			ExitFollowingFocusLoss();
-		}
-#endif
 
         private void ExitFollowingFocusLoss()
         {

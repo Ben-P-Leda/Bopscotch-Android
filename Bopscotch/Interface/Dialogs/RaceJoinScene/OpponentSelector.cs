@@ -16,6 +16,7 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
 
         public string ID { get; private set; }
         public string Name { get; private set; }
+        public int AvatarSlot { get; private set; }
 
         public OpponentSelectionState State { get { return _state; } set { _state = value; UpdateSelectionState(); } }
         public bool IsInvited { get { return ((State == OpponentSelectionState.HasBeenInvited) || (State == OpponentSelectionState.IsInviting)); } }
@@ -39,11 +40,12 @@ namespace Bopscotch.Interface.Dialogs.RaceJoinScene
 
         public bool TimedOut { get { return (_millisecondsSinceLastCommunication > Milliseconds_Before_Time_Out); } }
 
-        public OpponentSelector(Vector2 relativeCenterPosition, float leftDisplayLimit, string id, string name)
+        public OpponentSelector(Vector2 relativeCenterPosition, float leftDisplayLimit, string id, string name, int avatarSlot)
             : base(Unselected_Caption_Text, false, relativeCenterPosition)
         {
             ID = id;
             Name = name;
+            AvatarSlot = avatarSlot;
 
             Scale = Button_Scale;
 

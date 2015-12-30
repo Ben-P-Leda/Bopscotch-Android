@@ -125,6 +125,7 @@
     <texture name="player-hat-robot" file="Textures/Players/Hats/robot" />
     <texture name="player-hat-jackolantern" file="Textures/Players/Hats/jackolantern" />
     <texture name="player-hat-xmas" file="Textures/Players/Hats/xmas" />
+    <texture name="race-p2-cloud" file="Textures/Players/race-cloud" />
   </textures>
   <sound-effects>
     <sound-effect name="menu-select" file="SoundEffects/menu-select" />

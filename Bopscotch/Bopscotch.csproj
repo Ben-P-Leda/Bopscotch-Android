@@ -100,6 +100,7 @@
     <Compile Include="Gameplay\Objects\Characters\CharacterFactory.cs" />
     <Compile Include="Gameplay\Objects\Characters\Player\Player.cs" />
     <Compile Include="Gameplay\Objects\Characters\Player\PlayerMotionEngine.cs" />
+    <Compile Include="Gameplay\Objects\Characters\RaceOpponent.cs" />
     <Compile Include="Gameplay\Objects\Display\InGameButtonBase.cs" />
     <Compile Include="Gameplay\Objects\Display\PlayerEventPopup.cs" />
     <Compile Include="Gameplay\Objects\Display\Race\CountdownPopup.cs" />
@@ -386,6 +387,7 @@
     <AndroidAsset Include="Assets\Content\SoundEffects\bomb-trigger.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Effects\award-stars.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Effects\ranking-letters.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Players\race-cloud.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
