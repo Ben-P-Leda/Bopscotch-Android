@@ -8,6 +8,8 @@ using Leda.Core.Game_Objects.Behaviours;
 using Leda.Core.Timing;
 using Leda.Core.Asset_Management;
 
+using Bopscotch.Data;
+using Bopscotch.Gameplay;
 using Bopscotch.Gameplay.Coordination;
 using Bopscotch.Gameplay.Objects.Characters.Player;
 using Bopscotch.Gameplay.Objects.Environment;
@@ -21,6 +23,8 @@ namespace Bopscotch.Scenes.Gameplay.Race
 {
     public class RaceGameplayScene : GameplaySceneBase
     {
+        private RaceLevelData _levelData;
+
         private Communication.InterDeviceCommunicator _communicator;
         private CountdownPopup _countdownPopup;
         private RaceInfoPopup _positionStatusPopup;
@@ -48,9 +52,8 @@ namespace Bopscotch.Scenes.Gameplay.Race
             set { if (value is Communication.InterDeviceCommunicator) { _communicator = (Communication.InterDeviceCommunicator)value; } } 
         }
 
-        public bool AllLapsCompleted { get { return (_progressCoordinator.LapsCompleted >= LevelData.LapsToComplete); } }
+        public bool AllLapsCompleted { get { return (_progressCoordinator.LapsCompleted >= _levelData.LapsToComplete); } }
 
-        private Data.RaceLevelData LevelData { get { return (Data.RaceLevelData)_levelData; } }
         private RaceDataDisplay StatusDisplay { get { return (RaceDataDisplay)_statusDisplay; } set { _statusDisplay = value; } }
 
         public RaceGameplayScene()
@@ -217,7 +220,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
         public override void Activate()
         {
             _raceStarted = false;
-            _levelData = new Data.RaceLevelData();
+            _levelData = new RaceLevelData();
 
             RaceAreaName = NextSceneParameters.Get<string>(Course_Area_Parameter);
 
@@ -236,6 +239,11 @@ namespace Bopscotch.Scenes.Gameplay.Race
                 SetUpOpponentAttackEffects();
                 _waitingMessage.Activate();
             }
+        }
+
+        protected override void SetLevelMetrics(LevelFactory levelFactory)
+        {
+            _levelData.LapsToComplete = levelFactory.RaceLapCount; 
         }
 
         protected override void RegisterStaticGameObjects()
@@ -291,7 +299,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
             _progressCoordinator.Player = _player;
             _progressCoordinator.StatusPopup = _positionStatusPopup;
             _progressCoordinator.StatusDisplay = StatusDisplay;
-            _progressCoordinator.LapsToComplete = LevelData.LapsToComplete;
+            _progressCoordinator.LapsToComplete = _levelData.LapsToComplete;
             _progressCoordinator.SetRestartPoint();
 
             _timerController.RegisterUpdateCallback(_progressCoordinator.SequenceTimerTick);
@@ -346,8 +354,15 @@ namespace Bopscotch.Scenes.Gameplay.Race
                 if (AllLapsCompleted) { HandleRaceGoalAchieved(); }
 
                 _opaqueParticleEffectManager.LaunchFlagStars(_player.LastRaceRestartPointTouched);
-                if (_progressCoordinator.LapsCompleted == LevelData.LapsToComplete) { _raceEventPopup.StartPopupForRaceInfo("popup-race-goal"); }
-                else if (_progressCoordinator.LapsCompleted + 1 == LevelData.LapsToComplete) { _raceEventPopup.StartPopupForRaceInfo("popup-race-last-lap"); }
+
+                if (_progressCoordinator.LapsCompleted == _levelData.LapsToComplete) 
+                { 
+                    _raceEventPopup.StartPopupForRaceInfo("popup-race-goal"); 
+                }
+                else if (_progressCoordinator.LapsCompleted + 1 == _levelData.LapsToComplete) 
+                { 
+                    _raceEventPopup.StartPopupForRaceInfo("popup-race-last-lap"); 
+                }
             }
         }
 
@@ -411,7 +426,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
 
         private void CheckAndHandleOpponentUpdates()
         {
-            if ((_exitTimer.CurrentActionProgress == 1.0f) && (_communicator.OtherPlayerData.LapsCompleted >= LevelData.LapsToComplete))
+            if ((_exitTimer.CurrentActionProgress == 1.0f) && (_communicator.OtherPlayerData.LapsCompleted >= _levelData.LapsToComplete))
             {
                 _exitTimer.NextActionDuration = Exit_Sequence_Duration_In_Milliseconds -
                     (_communicator.OtherPlayerData.TotalRaceTimeElapsedInMilliseconds - _communicator.OtherPlayerData.LastCheckpointTimeInMilliseconds);

@@ -69,7 +69,18 @@ namespace Bopscotch.Gameplay.Coordination
 
         public Definitions.SurvivalRank GetRankForLevel(SurvivalLevelData levelData)
         {
-            return CalculateRank(levelData.CandyCollectionFraction, levelData.AttemptsAtLevel);
+            Definitions.SurvivalRank rank = Definitions.SurvivalRank.C;
+
+            if ((levelData.CandyCollectionFraction >= levelData.RankACandyFraction) && (levelData.AttemptsAtLevel < Rank_A_Lives_Used))
+            {
+                rank = Definitions.SurvivalRank.A;
+            }
+            else if ((levelData.CandyCollectionFraction >= levelData.RankBCandyFraction) || (levelData.AttemptsAtLevel < Rank_B_Lives_Used)) 
+            { 
+                rank = Definitions.SurvivalRank.B;
+            }
+
+            return rank;
         }
 
         public void DisplayRanking(Definitions.SurvivalRank rank)
@@ -115,13 +126,6 @@ namespace Bopscotch.Gameplay.Coordination
             _rankingStars[0].NextAction = _rankingLetter.Activate;
         }
 
-        private Definitions.SurvivalRank CalculateRank(float candyCollectionFraction, int livesUsed)
-        {
-            if ((candyCollectionFraction >= Rank_A_Candy_Fraction) && (livesUsed < Rank_A_Lives_Used)) { return Definitions.SurvivalRank.A; }
-            else if ((candyCollectionFraction >= Rank_B_Candy_Fraction) || (livesUsed < Rank_B_Lives_Used)) { return Definitions.SurvivalRank.B; }
-            else  { return Definitions.SurvivalRank.C; }
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             TextWriter.Write(Translator.Translation("Your Ranking:"), spriteBatch, new Vector2(Definitions.Back_Buffer_Center.X, Prompt_Line),
@@ -147,8 +151,6 @@ namespace Bopscotch.Gameplay.Coordination
 
         private const int Render_Layer = 4;
         private const int Ranking_Star_Count = 3;
-        private const float Rank_B_Candy_Fraction = 0.75f;
-        private const float Rank_A_Candy_Fraction = 0.875f;
         private const float Rank_B_Lives_Used = 4;
         private const float Rank_A_Lives_Used = 1;
         private const float Display_Line = -100.0f;

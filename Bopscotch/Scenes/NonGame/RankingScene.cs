@@ -21,14 +21,13 @@ namespace Bopscotch.Scenes.NonGame
         private Timer _faderTimer;
         private bool _fadingOut;
         private bool _fadeInProgress;
+        private int _lastSwipeDirection;
 
         public RankingScene()
             : base()
         {
             _selectedArea = "Hilltops";
             _faderTimer = new Timer("", CompleteFadeTransition);
-
-            BackgroundTextureName = Background_Texture_Name;
 
             Overlay.Tint = Color.Black;
             Overlay.TintFraction = 0.0f;
@@ -89,6 +88,7 @@ namespace Bopscotch.Scenes.NonGame
             _faderTimer.Reset();
             _fadingOut = false;
             _fadeInProgress = false;
+            _lastSwipeDirection = 0;
 
             Overlay.TintFraction = 0.0f;
 
@@ -167,11 +167,33 @@ namespace Bopscotch.Scenes.NonGame
             {
                 Overlay.TintFraction = _fadingOut ? _faderTimer.CurrentActionProgress : 1.0f - _faderTimer.CurrentActionProgress;
             }
+            else
+            {
+                if (_inputProcessors[0].MoveLeft)
+                {
+                    if (_lastSwipeDirection > -1)
+                    {
+                        _navigationDialog.HandleAreaStep(-1);
+                        _lastSwipeDirection = -1;
+                    }
+                }
+                else if (_inputProcessors[0].MoveRight)
+                {
+                    if (_lastSwipeDirection < 1)
+                    {
+                        _navigationDialog.HandleAreaStep(1);
+                        _lastSwipeDirection = 1;
+                    }
+                }
+                else
+                {
+                    _lastSwipeDirection = 0;
+                }
+            }
 
             base.Update(gameTime);
         }
 
-        private const string Background_Texture_Name = "background-4";
         private const float Title_Y_Position = 10.0f;
         private const float Table_Top_Y = 90.0f;
         private const float Table_Line_Height = 40.0f;

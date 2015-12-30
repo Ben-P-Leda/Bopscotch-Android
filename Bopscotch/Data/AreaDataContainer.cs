@@ -124,7 +124,10 @@ namespace Bopscotch.Data
             LevelScores[LastSelectedLevel] = score;
 
             while (LevelRanks.Count <= LastSelectedLevel) { LevelRanks.Add(Definitions.SurvivalRank.NotSet); }
-            if ((int)LevelRanks[LastSelectedLevel] < (int)rank) { LevelRanks[LastSelectedLevel] = rank; }
+            if ((LevelRanks[LastSelectedLevel] == Definitions.SurvivalRank.NotSet) || ((int)LevelRanks[LastSelectedLevel] > (int)rank))
+            { 
+                LevelRanks[LastSelectedLevel] = rank; 
+            }
         }
 
         public void UpdateLevelSelection(int stepDirection)
