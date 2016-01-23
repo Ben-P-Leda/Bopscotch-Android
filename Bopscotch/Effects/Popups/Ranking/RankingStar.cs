@@ -6,6 +6,8 @@ namespace Bopscotch.Effects.Popups.Ranking
     {
         private SequenceStep _step;
 
+        public float SoundPitch { private get; set; }
+
         public RankingStar() : base()
         {
             TextureName = Texture_Name;
@@ -14,6 +16,8 @@ namespace Bopscotch.Effects.Popups.Ranking
         public override void Activate()
         {
             base.Activate();
+
+            SoundEffectManager.PlayEffect(Activation_Sound, SoundPitch);
 
             StartStep(SequenceStep.Entering, Entry_Animation_Sequence);
         }
@@ -44,5 +48,6 @@ namespace Bopscotch.Effects.Popups.Ranking
         private const string Entry_Animation_Sequence = "image-popup-entry-fast";
         private const string Bounce_Animation_Sequence = "quadruple-bounce";
         private const string Rock_Animation_Sequence = "rock";
+        private const string Activation_Sound = "ranking-star";
     }
 }

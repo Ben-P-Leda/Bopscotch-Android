@@ -27,7 +27,7 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            TextWriter.Write("This will clear all scores,", spriteBatch, 
+            TextWriter.Write("This will clear all scores, ranks,", spriteBatch, 
                 new Vector2(Definitions.Back_Buffer_Center.X, 80.0f + WorldPosition.Y), Color.White, Color.Black, 3.0f, 0.7f, 0.1f, TextWriter.Alignment.Center);
             TextWriter.Write("unlocked levels and gold tickets!", spriteBatch,
                 new Vector2(Definitions.Back_Buffer_Center.X, 130.0f + WorldPosition.Y), Color.White, Color.Black, 3.0f, 0.7f, 0.1f, TextWriter.Alignment.Center);

@@ -34,7 +34,7 @@ namespace Bopscotch.Gameplay.Coordination
             _rankingStars = new RankingStar[Ranking_Star_Count];
             for (int i = 0; i < Ranking_Star_Count; i++)
             {
-                _rankingStars[i] = new RankingStar();
+                _rankingStars[i] = new RankingStar() { SoundPitch = (i - Ranking_Star_Count) * 0.2f };
             }
 
             _rankingLetter = new RankingLetter();
@@ -75,7 +75,7 @@ namespace Bopscotch.Gameplay.Coordination
             {
                 rank = Definitions.SurvivalRank.A;
             }
-            else if ((levelData.CandyCollectionFraction >= levelData.RankBCandyFraction) || (levelData.AttemptsAtLevel < Rank_B_Lives_Used)) 
+            else if ((levelData.CandyCollectionFraction >= levelData.RankBCandyFraction) && (levelData.AttemptsAtLevel < Rank_B_Lives_Used)) 
             { 
                 rank = Definitions.SurvivalRank.B;
             }
@@ -151,7 +151,7 @@ namespace Bopscotch.Gameplay.Coordination
 
         private const int Render_Layer = 4;
         private const int Ranking_Star_Count = 3;
-        private const float Rank_B_Lives_Used = 4;
+        private const float Rank_B_Lives_Used = 10;
         private const float Rank_A_Lives_Used = 1;
         private const float Display_Line = -100.0f;
         private const float Prompt_Line = 150.0f;

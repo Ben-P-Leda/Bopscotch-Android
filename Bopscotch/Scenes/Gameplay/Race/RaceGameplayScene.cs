@@ -47,7 +47,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
         private int _startCoundown;
         private Timer _startSequenceTimer;
 
-        private Bopscotch.Gameplay.Objects.Characters.RaceOpponent _opponentMarker;
+        //private Bopscotch.Gameplay.Objects.Characters.RaceOpponent _opponentMarker;
 
         public Communication.ICommunicator Communicator 
         { 
@@ -56,7 +56,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
                 if (value is Communication.InterDeviceCommunicator)
                 { 
                     _communicator = (Communication.InterDeviceCommunicator)value;
-                    _opponentMarker.Communicator = _communicator;
+                    //_opponentMarker.Communicator = _communicator;
                 } 
             } 
         }
@@ -102,8 +102,8 @@ namespace Bopscotch.Scenes.Gameplay.Race
             _disconnectedDialog.SelectionCallback = HandleDisconnectAcknowledge;
             _disconnectedDialog.InputSources.Add(_inputProcessor);
 
-            _opponentMarker = new Bopscotch.Gameplay.Objects.Characters.RaceOpponent();
-            _opponentMarker.ParticleManager = _additiveParticleEffectManager;
+            //_opponentMarker = new Bopscotch.Gameplay.Objects.Characters.RaceOpponent();
+            //_opponentMarker.ParticleManager = _additiveParticleEffectManager;
         }
 
         private void HandlePlayerEventAnimationComplete()
@@ -159,7 +159,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
             }
             else 
             {
-                _opponentMarker.StartMovement();
+                //_opponentMarker.StartMovement();
                 _raceStarted = true;
 
                 SoundEffectManager.PlayEffect("race-start"); 
@@ -248,7 +248,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
                 _player.PlayerEventCallback = HandlePlayerEvent;
                 ((PlayerMotionEngine)_player.MotionEngine).DifficultySpeedBoosterUnit = NextSceneParameters.Get<int>(Course_Speed_Parameter);
 
-                _opponentMarker.SetForRaceStart(_player.WorldPosition, _player.Mirror);
+                //_opponentMarker.SetForRaceStart(_player.WorldPosition, _player.Mirror);
                 SetCoordinatorsForRace(NextSceneParameters.Get<string>(Course_Area_Parameter));
                 SetUpOpponentAttackEffects();
                 _waitingMessage.Activate();
@@ -265,7 +265,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
             base.RegisterStaticGameObjects();
 
             RegisterGameObject(_quitRaceButton);
-            RegisterGameObject(_opponentMarker);
+            //RegisterGameObject(_opponentMarker);
         }
 
         protected override void SetInterfaceDisplayObjectsForGame()

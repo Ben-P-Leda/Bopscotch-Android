@@ -305,7 +305,6 @@
     <AndroidAsset Include="Assets\Content\Textures\Interface\Icons\padlock.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Interface\Icons\tick.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Interface\InDialog\help.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Interface\InDialog\iap-items.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Interface\InDialog\podium.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\clock-base.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Interface\InGame\clock-needle.xnb" />
@@ -388,6 +387,8 @@
     <AndroidAsset Include="Assets\Content\Textures\Effects\award-stars.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Effects\ranking-letters.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Players\race-cloud.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundEffects\ranking-star.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Interface\InDialog\iap-items.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -396,9 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -447,7 +445,9 @@
     <AndroidAsset Include="Assets\Content\Files\Content\en-GB\review.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Files\Levels\AdditionalAreas.xml" />
+    <AndroidAsset Include="Assets\Content\Files\Levels\AdditionalAreas.xml">
+      <SubType>Designer</SubType>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Files\Levels\DefaultAreas.xml">
@@ -830,6 +830,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -90,6 +90,7 @@ namespace Bopscotch.Gameplay.Objects.Characters
 
             _displayPosition = startPosition;
             Visible = true;
+            Mirror = facingLeft;
         }
 
         public void StartMovement()

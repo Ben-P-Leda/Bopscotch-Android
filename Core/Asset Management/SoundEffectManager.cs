@@ -33,10 +33,22 @@ namespace Leda.Core.Asset_Management
 
         public static SoundEffectInstance PlayEffect(string effectName)
         {
+            return PlayEffect(effectName, 0.0f);
+        }
+
+        public static SoundEffectInstance PlayEffect(string effectName, float pitch)
+        {
             if ((!Muted) && (!MuteDueToObscuring))
             {
-				if ((_effectInstances != null) && (_effectInstances.ContainsKey(effectName))) { _effectInstances[effectName].Play(); return _effectInstances[effectName]; }
-				if ((_effects != null) && (_effects.ContainsKey(effectName))) { _effects[effectName].Play(); }
+                if ((_effectInstances != null) && (_effectInstances.ContainsKey(effectName)))
+                {
+                    _effectInstances[effectName].Play();
+                    return _effectInstances[effectName];
+                }
+                else if ((_effects != null) && (_effects.ContainsKey(effectName)))
+                {
+                    _effects[effectName].Play(1.0f, pitch, 0.0f);
+                }
             }
 
             return null;

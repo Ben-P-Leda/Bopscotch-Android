@@ -203,7 +203,7 @@ namespace Bopscotch.Gameplay
         private const string Terrain_Data_Element = "terrain";
         private const string Player_Data_Element = "player";
         private const string Race_Data_Element = "race-laps";
-        private const float Rank_B_Candy_Fraction = 0.75f;
-        private const float Rank_A_Candy_Fraction = 0.875f;
+        private const float Rank_B_Candy_Fraction = 0.70f;
+        private const float Rank_A_Candy_Fraction = 0.85f;
     }
 }

@@ -115,7 +115,10 @@ namespace Bopscotch.Gameplay.Coordination
                 LapsCompleted++;
                 _lastLapStartTime = TotalRaceTimeElapsedInMilliseconds;
 
-                UpdatePositionStatus(false);
+                if (LapsCompleted < LapsToComplete)
+                {
+                    UpdatePositionStatus(false);
+                }
                 return true;
             }
 
