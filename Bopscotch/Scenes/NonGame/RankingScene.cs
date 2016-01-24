@@ -176,7 +176,7 @@ namespace Bopscotch.Scenes.NonGame
                 {
                     if (_lastSwipeDirection > -1)
                     {
-                        _navigationDialog.HandleAreaStep(-1);
+                        _navigationDialog.HandleAreaStep(1);
                         _lastSwipeDirection = -1;
                     }
                 }
@@ -184,7 +184,7 @@ namespace Bopscotch.Scenes.NonGame
                 {
                     if (_lastSwipeDirection < 1)
                     {
-                        _navigationDialog.HandleAreaStep(1);
+                        _navigationDialog.HandleAreaStep(-1);
                         _lastSwipeDirection = 1;
                     }
                 }

@@ -52,7 +52,7 @@ namespace Bopscotch.Data
 
         public string GetDifficultyTag(string areaName, string difficultyTag)
         {
-            if (areaName == "Snowville") { difficultyTag = "Nasty"; }
+            if (areaName == "Snowville") { difficultyTag = "Tricky"; }
 
             return difficultyTag;
         }
