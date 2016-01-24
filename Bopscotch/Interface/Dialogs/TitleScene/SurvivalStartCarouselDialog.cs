@@ -174,7 +174,7 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
 
             if ((Data.Profile.CurrentAreaData.Name != "Tutorial")
                 && (Data.Profile.CurrentAreaData.LevelRanks != null)
-                && (Data.Profile.CurrentAreaData.LevelRanks.Count >= Data.Profile.CurrentAreaData.LastSelectedLevel))
+                && (Data.Profile.CurrentAreaData.LevelRanks.Count > Data.Profile.CurrentAreaData.LastSelectedLevel))
             {
                 Definitions.SurvivalRank rank = Data.Profile.CurrentAreaData.LevelRanks[Data.Profile.CurrentAreaData.LastSelectedLevel];
                 rankValue = rank < 0 ? 0 : 3 - (int)rank;

@@ -135,27 +135,30 @@ namespace Bopscotch.Scenes.NonGame
 
             for (int i=0; i < ranks.Count; i++)
             {
-                float x = i % 2 == 1 ? rightSide : leftSide;
-                float y = ((i / 2) * Table_Line_Height) + Table_Top_Y;
-
-                CreateTextElement((i + 1).ToString() + ":" , new Vector2(x, y), TextWriter.Alignment.Right, 0.6f);
-
-                if (scores.Count > i)
+                if (((scores.Count > i) && (scores[i] > 0)) || (ranks[i] != Definitions.SurvivalRank.NotSet))
                 {
-                    cumulativeScore += scores[i];
-                    CreateTextElement(cumulativeScore.ToString(), new Vector2(x, y), TextWriter.Alignment.Left, 0.6f);
+                    float x = i % 2 == 1 ? rightSide : leftSide;
+                    float y = ((i / 2) * Table_Line_Height) + Table_Top_Y;
 
-                    if (ranks[i] != Definitions.SurvivalRank.NotSet)
-                    {
-                        Rectangle rankFrame = new Rectangle(160 * (int)ranks[i], 0, 160, 200);
-                        CreateImageElement("ranking-letters", new Vector2(x + Rank_Offset, y + Vertical_Offset), rankFrame, Vector2.Zero, 0.2f);
+                    CreateTextElement((i + 1).ToString() + ":", new Vector2(x, y), TextWriter.Alignment.Right, 0.6f);
 
-                        Rectangle starFrame = new Rectangle(0, 0, 120 * (3 - (int)ranks[i]), 120);
-                        CreateImageElement("ranking-stars", new Vector2(x + Stars_Offset, y + Vertical_Offset), starFrame, Vector2.Zero, 0.3f);
-                    }
-                    else
+                    if (scores.Count > i)
                     {
-                        CreateTextElement(Translator.Translation("(unranked)"), new Vector2(x + Rank_Offset, y), TextWriter.Alignment.Left, 0.6f);
+                        cumulativeScore += scores[i];
+                        CreateTextElement(cumulativeScore.ToString(), new Vector2(x, y), TextWriter.Alignment.Left, 0.6f);
+
+                        if (ranks[i] != Definitions.SurvivalRank.NotSet)
+                        {
+                            Rectangle rankFrame = new Rectangle(160 * (int)ranks[i], 0, 160, 200);
+                            CreateImageElement("ranking-letters", new Vector2(x + Rank_Offset, y + Vertical_Offset), rankFrame, Vector2.Zero, 0.2f);
+
+                            Rectangle starFrame = new Rectangle(0, 0, 120 * (3 - (int)ranks[i]), 120);
+                            CreateImageElement("ranking-stars", new Vector2(x + Stars_Offset, y + Vertical_Offset), starFrame, Vector2.Zero, 0.3f);
+                        }
+                        else
+                        {
+                            CreateTextElement(Translator.Translation("(unranked)"), new Vector2(x + Rank_Offset, y), TextWriter.Alignment.Left, 0.6f);
+                        }
                     }
                 }
             }
@@ -173,7 +176,7 @@ namespace Bopscotch.Scenes.NonGame
                 {
                     if (_lastSwipeDirection > -1)
                     {
-                        _navigationDialog.HandleAreaStep(-1);
+                        _navigationDialog.HandleAreaStep(1);
                         _lastSwipeDirection = -1;
                     }
                 }
@@ -181,7 +184,7 @@ namespace Bopscotch.Scenes.NonGame
                 {
                     if (_lastSwipeDirection < 1)
                     {
-                        _navigationDialog.HandleAreaStep(1);
+                        _navigationDialog.HandleAreaStep(-1);
                         _lastSwipeDirection = 1;
                     }
                 }

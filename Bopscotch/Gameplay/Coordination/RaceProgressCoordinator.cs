@@ -115,7 +115,10 @@ namespace Bopscotch.Gameplay.Coordination
                 LapsCompleted++;
                 _lastLapStartTime = TotalRaceTimeElapsedInMilliseconds;
 
-                UpdatePositionStatus(false);
+                if (LapsCompleted < LapsToComplete)
+                {
+                    UpdatePositionStatus(false);
+                }
                 return true;
             }
 
@@ -288,12 +291,12 @@ namespace Bopscotch.Gameplay.Coordination
             }
         }
 
-        private const int Race_Resurrect_Sequence_Duration_In_Milliseconds = 750;
         private const int Race_Start_Sequence_Duration_In_Milliseconds = 3500;
         private const int Attack_Lag_In_Milliseconds = 2000;
-
         private const string Leading_Texture_Name = "popup-race-leading";
         private const string Catching_Up_Texture_Name = "popup-race-catching-up";
         private const string Falling_Back_Texture_Name = "popup-race-falling-back";
+
+        public const int Race_Resurrect_Sequence_Duration_In_Milliseconds = 750;
     }
 }

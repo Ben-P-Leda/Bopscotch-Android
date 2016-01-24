@@ -2,8 +2,12 @@
 <areas>
   <area name="Tutorial">
     <completion-unlockables>
-      <unlockable type="area" unlocked="false" name="Snowville" trial-unlockable="false" />
       <unlockable type="area" unlocked="false" name="Lava Cave" trial-unlockable="false" />
+    </completion-unlockables>
+  </area>
+  <area name="Hilltops">
+    <completion-unlockables>
+      <unlockable type="area" unlocked="false" name="Snowville" trial-unlockable="false" />
     </completion-unlockables>
   </area>
   <area name="Metropolis">
@@ -16,7 +20,7 @@
       <unlockable type="avatar-costume" unlocked="false" name="Jack-o-lantern" trial-unlockable="false" />
     </completion-unlockables>
   </area>
-  <area name="Snowville" level-count="10" selection-texture="background-7" difficulty-tag="Moderate" speed-step="3" locked="true">
+  <area name="Snowville" level-count="10" selection-texture="background-7" difficulty-tag="Tricky" speed-step="3" locked="true">
     <completion-unlockables>
       <unlockable type="avatar-costume" unlocked="false" name="Xmas" trial-unlockable="false" />
     </completion-unlockables>

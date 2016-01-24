@@ -125,12 +125,11 @@ namespace Bopscotch.Scenes.NonGame
             Android.Util.Log.Debug("Leda", "Connected to Play Store...");
 
             IList<Product> products = await MainActivity.BillingServiceConnection.BillingHandler.QueryInventoryAsync(new List<string> {
-                "bopscotch_10_lives",
-                "bopscotch_20_lives",
+                "bopscotch_15_lives",
+                "bopscotch_30_lives",
                 "bopscotch_50_lives",
                 "bopscotch_2_tickets",
                 "bopscotch_5_tickets",
-                "bopscotch_10_tickets",
                 ReservedTestProductIDs.Purchased,
                 ReservedTestProductIDs.Canceled,
                 ReservedTestProductIDs.Refunded,
@@ -249,12 +248,11 @@ namespace Bopscotch.Scenes.NonGame
         {
             switch (productCode)
             {
-                case "bopscotch_10_lives": Data.Profile.Lives += 10; break;
-                case "bopscotch_20_lives": Data.Profile.Lives += 20; break;
-                case "bopscotch_50_lives": Data.Profile.Lives += 50; break;
-                case "bopscotch_2_tickets": Data.Profile.GoldenTickets += 2; break;
-                case "bopscotch_5_tickets": Data.Profile.GoldenTickets += 5; break;
-                case "bopscotch_10_tickets": Data.Profile.GoldenTickets += 10; break;
+                case "bopscotch_15_lives": Data.Profile.Lives += 15; break;                 // £0.79 - $0.99
+                case "bopscotch_30_lives": Data.Profile.Lives += 30; break;                 // £1.49 - $1.99
+                case "bopscotch_50_lives": Data.Profile.Lives += 50; break;                 // £2.29 - $2.99
+                case "bopscotch_2_tickets": Data.Profile.GoldenTickets += 2; break;         // £0.79
+                case "bopscotch_5_tickets": Data.Profile.GoldenTickets += 5; break;         // £1.49
             }
 
             Data.Profile.Save();

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <leveldata>
   <background texture="background-4" />
+  <rank-fractions a="0.575" b="0.5" />
   <terrain>
     <blocks>
       <block x="0" y="4240" texture="block-1" />

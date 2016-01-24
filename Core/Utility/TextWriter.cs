@@ -128,16 +128,16 @@ namespace Leda.Core
 			if (!string.IsNullOrEmpty(FontFile)) { _font = GameBase.Instance.Content.Load<SpriteFont>(FontFile); }
 		}
 
+        public static Vector2 Dimensions(string toRender)
+        {
+            return _font.MeasureString(toRender);
+        }
+
         public enum Alignment
         {
             Left,
             Center,
             Right
-        }
-
-        public static Vector2 Dimensions(string toRender)
-        {
-            return _font.MeasureString(toRender);
         }
 
         private const float Outline_Render_Depth_Offset = 0.000001f;
