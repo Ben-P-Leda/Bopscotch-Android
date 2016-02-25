@@ -25,6 +25,9 @@
       <unlockable type="avatar-costume" unlocked="false" name="Xmas" trial-unlockable="false" />
     </completion-unlockables>
   </area>
-  <area name="Lava Cave" level-count="10" selection-texture="background-8" difficulty-tag="Simple" speed-step="5" locked="true">
+  <area name="Lava Cave" level-count="10" selection-texture="background-8" difficulty-tag="Simple" speed-step="1" locked="true">
+     <completion-unlockables>
+       <unlockable type="avatar-costume" unlocked="false" name="Xmas" trial-unlockable="false" />
+    </completion-unlockables>
   </area>
 </areas>

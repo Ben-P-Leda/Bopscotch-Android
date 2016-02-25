@@ -190,6 +190,12 @@
       <block x="5040" y="640" texture="block-1" />
       <block x="5040" y="560" texture="block-1" />
       <block x="5040" y="480" texture="block-1" />
+      <block x="5040" y="400" texture="block-1" />
+      <block x="5040" y="320" texture="block-1" />
+      <block x="5040" y="240" texture="block-1" />
+      <block x="5040" y="160" texture="block-1" />
+      <block x="5040" y="80" texture="block-1" />
+      <block x="5040" y="0" texture="block-1" />
     </blocks>
     <collectables>
       <scoring-candy x="1360" y="800" texture="candy-3" score="25" />

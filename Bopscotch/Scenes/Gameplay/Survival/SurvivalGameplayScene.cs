@@ -30,6 +30,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private PauseDialog _pauseDialog;
         private NoLivesDialog _noLivesDialog;
         private TutorialRunner _tutorialRunner;
+        private TutorialDialog _tutorialDialog;
         private SurvivalRankingCoordinator _rankingCoordinator;
         private bool _levelComplete;
         private int _attemptsAtCurrentLevel;
@@ -45,6 +46,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             _pauseButton = new PauseButton();
             _pauseDialog = new PauseDialog();
             _noLivesDialog = new NoLivesDialog();
+            _tutorialDialog = new TutorialDialog();
             _tutorialRunner = new TutorialRunner();
             _rankingCoordinator = new SurvivalRankingCoordinator(CloseCurrentLevel, RegisterGameObject);
 
@@ -53,6 +55,9 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
             _noLivesDialog.InputSources.Add(_inputProcessor);
             _noLivesDialog.ExitCallback = HandleDialogClose;
+
+            _tutorialDialog.InputSources.Add(_inputProcessor);
+            _tutorialDialog.ExitCallback = HandleDialogClose;
 
             _playerEventPopup.AnimationCompletionHandler = HandlePlayerEventAnimationComplete;
         }
@@ -78,6 +83,11 @@ namespace Bopscotch.Scenes.Gameplay.Survival
                     NextSceneParameters.Set("return-to-game", true);
                     NextSceneType = typeof(StoreScene);
                     Deactivate();
+                    break;
+                case "OK":
+                    _paused = false;
+                    _tutorialRunner.ClearCurrentStep();
+
                     break;
             }
         }
@@ -214,7 +224,14 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             {
                 if (!_rankingCoordinator.LevelCompleted)
                 {
-                    EnablePause();
+                    if (Profile.CurrentAreaData.Name == "Tutorial")
+                    {
+                        _tutorialRunner.CheckForStepTrigger(_player.WorldPosition);
+                    }
+                    if (!_paused)
+                    {
+                        EnablePause();
+                    }
                 }
                 Profile.PauseOnSceneActivation = false;
             }
@@ -246,8 +263,14 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             RegisterGameObject(_pauseDialog);
             RegisterGameObject(_rankingCoordinator);
 
-            if (Profile.CurrentAreaData.Name == "Tutorial") { RegisterGameObject(_tutorialRunner); }
-            else { RegisterGameObject(_noLivesDialog); }
+            if (Profile.CurrentAreaData.Name == "Tutorial") 
+            { 
+                RegisterGameObject(_tutorialDialog); 
+            }
+            else
+            {
+                RegisterGameObject(_noLivesDialog); 
+            }
         }
 
         protected override void HandlePlayerEvent()
@@ -296,11 +319,8 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         {
             if (Profile.CurrentAreaData.Name == "Tutorial")
             {
-                if (!RecoveredFromTombstone) { _tutorialRunner.SetForTombstoneRecovery(); }
                 _tutorialRunner.Initialize();
-                _tutorialRunner.DisplayArea = GameBase.SafeDisplayArea;
                 _tutorialRunner.PauseTrigger = HoldForTutorialStep;
-                _tutorialRunner.Visible = true;
 
                 _player.TutorialStepTrigger = _tutorialRunner.CheckForStepTrigger;
                 _statusDisplay.Visible = false;
@@ -322,12 +342,15 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         protected override void HandleInGameButtonPress()
         {
-            if (_inputProcessor.LastInGameButtonPressed == PauseButton.In_Game_Button_Name) { AttemptToPauseGame(); }
+            if (_inputProcessor.LastInGameButtonPressed == PauseButton.In_Game_Button_Name)
+            { 
+                AttemptToPauseGame(); 
+            }
         }
 
         protected bool AttemptToPauseGame()
         {
-            if ((!_paused || (_tutorialRunner.DisplayingHelp && !_pauseDialog.Active)) && (!_noLivesDialog.Active))
+            if ((!_paused || (_tutorialRunner.DisplayingHelp && !_pauseDialog.Active)) && (!_noLivesDialog.Visible) && (!_tutorialDialog.Visible))
             {
                 if (CurrentState == Status.Deactivating) { Profile.PauseOnSceneActivation = true; }
                 else { EnablePause(); }
@@ -347,13 +370,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         private void HandleActionTrigger()
         {
-            if (!_paused && _readyPopup.AwaitingDismissal) { BeginPlay(); }
-
-            if (_paused && !_pauseDialog.Visible && _tutorialRunner.DisplayingHelp && _tutorialRunner.StepCanBeDismissed) 
-            { 
-                _paused = false;
-                _tutorialRunner.ClearCurrentStep(); 
-            }
+            if ((!_paused) && (_readyPopup.AwaitingDismissal)) { BeginPlay(); }
         }
 
         private void BeginPlay()
@@ -389,11 +406,20 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         protected override void HandleBackButtonPress()
         {
-            if ((!AttemptToPauseGame()) && (_pauseDialog.Active)) { _pauseDialog.Cancel(); }
+            if ((!AttemptToPauseGame()) && (_pauseDialog.Active))
+            {
+                _pauseDialog.Cancel(); 
+            }
+            else if (_tutorialDialog.Active)
+            {
+                _tutorialDialog.Cancel();
+            }
         }
 
         private void HoldForTutorialStep()
         {
+            _tutorialDialog.StepText = _tutorialRunner.StepText;
+            _tutorialDialog.Activate();
             _paused = true;
         }
 

@@ -29,8 +29,6 @@ namespace Bopscotch.Scenes.BaseClasses
 
         protected override void CompletePostStartupLoadInitialization()
         {
-            base.CompletePostStartupLoadInitialization();
-
             RegisterDialogs();
         }
 

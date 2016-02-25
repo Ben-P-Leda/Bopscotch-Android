@@ -77,8 +77,6 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         protected override void CompletePostStartupLoadInitialization()
         {
-            base.CompletePostStartupLoadInitialization();
-
             _congratulationsPopup.MappingName = Popup_Texture_Name;
         }
 
@@ -89,7 +87,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             _congratulationsPopup.Reset();
 
             FlushGameObjects();
-            RegisterGameObject(new Background() { TextureReference = Profile.CurrentAreaData.SelectionTexture });
+            CreateBackgroundForScene(Profile.CurrentAreaData.SelectionTexture, new int[] { 0, 1, 2 });
             RegisterGameObject(new Effects.FullScreenColourOverlay() { TintFraction = 0.75f });
             RegisterGameObject(_congratulationsPopup);
 

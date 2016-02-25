@@ -19,7 +19,6 @@
     <texture name="speedo-snowflake" file="Textures/Interface/InGame/freeze-speedo-snowflake" />
     <texture name="clock-base" file="Textures/Interface/InGame/clock-base" />
     <texture name="clock-needle" file="Textures/Interface/InGame/clock-needle" />
-    <texture name="tap-icon" file="Textures/Interface/InGame/tap-icon" />
     <texture name="popups" file="Textures/Effects/popups" />
     <texture name="ranking-stars" file="Textures/Effects/award-stars" />
     <texture name="ranking-letters" file="Textures/Effects/ranking-letters" />
@@ -28,15 +27,30 @@
     <texture name="particle-star" file="Textures/Effects/Particles/star" />
     <texture name="particle-fireball" file="Textures/Effects/Particles/fireball" />
     <texture name="glow-effect" file="Textures/Effects/glow-effect" />
-    <texture name="background-tutorial" file="Textures/Backgrounds/background-tutorial" />
-    <texture name="background-1" file="Textures/Backgrounds/background-1" />
-    <texture name="background-2" file="Textures/Backgrounds/background-2" />
-    <texture name="background-3" file="Textures/Backgrounds/background-3" />
-    <texture name="background-4" file="Textures/Backgrounds/background-4" />
-    <texture name="background-5" file="Textures/Backgrounds/background-5" />
-    <texture name="background-6" file="Textures/Backgrounds/background-6" />
-    <texture name="background-7" file="Textures/Backgrounds/background-7" />
-    <texture name="background-8" file="Textures/Backgrounds/background-8" />
+    <texture name="anim-background-tutorial" file="Textures/Backgrounds/Island/back" />
+    <texture name="anim-background-tutorial-segments" file="Textures/Backgrounds/Island/segments" />
+    <texture name="thumb-background-tutorial" file="Textures/Backgrounds/Island/thumbnail" />
+    <texture name="anim-background-1" file="Textures/Backgrounds/Hilltops/back" />
+    <texture name="anim-background-1-segments" file="Textures/Backgrounds/Hilltops/segments" />
+    <texture name="thumb-background-1" file="Textures/Backgrounds/Hilltops/thumbnail" />
+    <texture name="anim-background-2" file="Textures/Backgrounds/Stadium/back" />
+    <texture name="anim-background-2-segments" file="Textures/Backgrounds/Stadium/segments" />
+    <texture name="anim-background-3" file="Textures/Backgrounds/Waterfall/back" />
+    <texture name="anim-background-3-segments" file="Textures/Backgrounds/Waterfall/segments" />
+    <texture name="thumb-background-3" file="Textures/Backgrounds/Waterfall/thumbnail" />
+    <texture name="anim-background-4" file="Textures/Backgrounds/Metropolis/back" />
+    <texture name="anim-background-4-segments" file="Textures/Backgrounds/Metropolis/segments" />
+    <texture name="thumb-background-4" file="Textures/Backgrounds/Metropolis/thumbnail" />
+    <texture name="anim-background-6" file="Textures/Backgrounds/Ghostberg/back" />
+    <texture name="anim-background-6-segments" file="Textures/Backgrounds/Ghostberg/segments" />
+    <texture name="thumb-background-6" file="Textures/Backgrounds/Ghostberg/thumbnail" />
+    <texture name="anim-background-7" file="Textures/Backgrounds/Snowville/back" />
+    <texture name="anim-background-7-segments" file="Textures/Backgrounds/Snowville/segments" />
+    <texture name="thumb-background-7" file="Textures/Backgrounds/Snowville/thumbnail" />
+    <texture name="anim-background-8" file="Textures/Backgrounds/Lava Cave/back" />
+    <texture name="anim-background-8-segments" file="Textures/Backgrounds/Lava Cave/segments" />
+    <texture name="thumb-background-8" file="Textures/Backgrounds/Lava Cave/thumbnail" />
+    <texture name="anim-background-clouds" file="Textures/Backgrounds/clouds" />
     <texture name="block-1" file="Textures/Blocks/Terrain/block-1" />
     <texture name="block-spring" file="Textures/Blocks/Special/spring" />
     <texture name="block-smash" file="Textures/Blocks/Special/smash-crate" />

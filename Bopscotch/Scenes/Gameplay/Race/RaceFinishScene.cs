@@ -20,8 +20,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
             _animationController = new AnimationController();
 
             _dialogs.Add("results", new ResultsDialog(RegisterGameObject) { ExitCallback = ReturnToTitleScene } );
-
-            BackgroundTextureName = Background_Texture_Name;
         }
 
         private void ReturnToTitleScene(string buttonCaption)
@@ -35,6 +33,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
         protected override void CompletePostStartupLoadInitialization()
         {
             base.CompletePostStartupLoadInitialization();
+            CreateBackgroundForScene(Background_Texture_Name, new int[] { 0, 1, 2, 3 });
 
             ((ResultsDialog)_dialogs["results"]).InitializeComponents();
         }

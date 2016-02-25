@@ -188,6 +188,7 @@
     <Compile Include="Interface\Dialogs\StoreScene\StoreClosedDialog.cs" />
     <Compile Include="Interface\Dialogs\SurvivalGameplayScene\NoLivesDialog.cs" />
     <Compile Include="Interface\Dialogs\SurvivalGameplayScene\PauseDialog.cs" />
+    <Compile Include="Interface\Dialogs\SurvivalGameplayScene\TutorialDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\CharacterSelectionCarouselDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\InfoMenuDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\MainMenuDialog.cs" />
@@ -222,6 +223,10 @@
     <Compile Include="Scenes\NonGame\RankingScene.cs" />
     <Compile Include="Scenes\NonGame\StoreScene.cs" />
     <Compile Include="Scenes\NonGame\TitleScene.cs" />
+    <Compile Include="Scenes\Objects\AnimatedBackground.cs" />
+    <Compile Include="Scenes\Objects\AnimatedBackgroundCloud.cs" />
+    <Compile Include="Scenes\Objects\AnimatedBackgroundSegment.cs" />
+    <Compile Include="Scenes\Objects\IAnimatedBackgroundComponent.cs" />
     <Compile Include="UrlProvider.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,14 +264,6 @@
     <AndroidAsset Include="Assets\Content\Textures\leda-logo.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\load-spinner.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\WhitePixel.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-1.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-2.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-3.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-4.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-5.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-6.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-7.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-tutorial.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\circle-top.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\diamond.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Blocks\Obstruction\double-top.xnb" />
@@ -379,7 +376,6 @@
     <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-3-3.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-3-4.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Signs\SpeedLimit\sign-speed-4-4.xnb" />
-    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\background-8.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Blocks\Special\bomb.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Effects\Particles\fireball.xnb" />
     <AndroidAsset Include="Assets\Content\SoundEffects\bomb-explode.xnb" />
@@ -389,6 +385,30 @@
     <AndroidAsset Include="Assets\Content\Textures\Players\race-cloud.xnb" />
     <AndroidAsset Include="Assets\Content\SoundEffects\ranking-star.xnb" />
     <AndroidAsset Include="Assets\Content\Textures\Interface\InDialog\iap-items.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Ghostberg\back.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Ghostberg\segments.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Ghostberg\thumbnail.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Hilltops\back.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Hilltops\segments.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Hilltops\thumbnail.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Island\back.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Island\segments.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Island\thumbnail.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Lava Cave\back.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Lava Cave\segments.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Lava Cave\thumbnail.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Metropolis\back.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Metropolis\segments.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Metropolis\thumbnail.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Snowville\back.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Snowville\segments.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Snowville\thumbnail.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Stadium\back.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Stadium\segments.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Waterfall\back.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Waterfall\segments.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\Waterfall\thumbnail.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\Backgrounds\clouds.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -829,9 +849,6 @@
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\0.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-ldpi\icon.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon.png" />
@@ -840,6 +857,40 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\RaceStage.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\4.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\5.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\6.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\7.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\8.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Files\Levels\Lava Cave\Survival\9.xml" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

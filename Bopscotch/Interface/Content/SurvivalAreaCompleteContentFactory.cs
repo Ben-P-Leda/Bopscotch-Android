@@ -82,11 +82,11 @@ namespace Bopscotch.Interface.Content
                 });
 
             _registerObject(
-                new ImageContent(Profile.AreaSelectionTexture(name), new Vector2(Unlock_Image_X, yPosition))
+                new ImageContent("thumb-" + Profile.AreaSelectionTexture(name), new Vector2(Unlock_Image_X, yPosition))
                 {
                     FadeFraction = 0.0f,
                     FadeFractionModifier = LockStateFadeModifier(lockState),
-                    Scale = 0.15f
+                    Scale = 0.5f
                 });
         }
 
