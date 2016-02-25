@@ -22,6 +22,7 @@ using Bopscotch.Gameplay.Objects.Environment.Signposts;
 using Bopscotch.Gameplay.Objects.Environment.Flags;
 using Bopscotch.Gameplay.Objects.Characters;
 using Bopscotch.Gameplay.Objects.Characters.Player;
+using Bopscotch.Scenes.Objects;
 
 namespace Bopscotch.Gameplay
 {
@@ -149,8 +150,12 @@ namespace Bopscotch.Gameplay
 
         private void FinalizeLevelSetup(XElement levelData)
         {
-            Background inGameBackground = new Background();
-            inGameBackground.TextureReference = levelData.Element(Background_Data_Element).Attribute("texture").Value;
+            string backgroundName = levelData.Element(Background_Data_Element).Attribute("texture").Value;
+            int bgSeed = Profile.PlayingRaceMode ? RaceAreaName.Length : Profile.CurrentAreaData.LastSelectedLevel;
+
+            AnimatedBackground inGameBackground = new AnimatedBackground(backgroundName, Map.MapWorldDimensions, bgSeed);
+            inGameBackground.CreateComponents();
+
             _registerGameObject(inGameBackground);
 
             Map.ViewportDimensionsInTiles = new Point(

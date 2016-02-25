@@ -266,7 +266,11 @@
       <block x="3360" y="1680" texture="block-1" />
       <block x="3280" y="1680" texture="block-1" />
       <block x="3200" y="1680" texture="block-1" />
-      <smash-block x="3520" y="1360" texture="block-smash-crate" />
+      <smash-block x="3520" y="1360" texture="block-smash-crate">
+        <contains-item texture="golden-ticket" units="1" action="add-ticket" value="1" />
+        <contains-item texture="candy-1" units="4" action="score" value="25" />
+        <contains-item texture="candy-3" units="3" action="score" value="75" />
+      </smash-block>
       <block x="4640" y="1440" texture="block-1" />
       <block x="4720" y="1440" texture="block-1" />
       <block x="4800" y="1440" texture="block-1" />
@@ -349,10 +353,15 @@
       <obstruction-block x="0" y="3680" texture="block-obstruction-diamond" />
       <obstruction-block x="0" y="3600" texture="block-obstruction-diamond" />
       <obstruction-block x="0" y="3520" texture="block-obstruction-diamond" />
+      <block x="3120" y="1680" texture="block-1" />
+      <block x="400" y="4080" texture="block-1" />
+      <block x="480" y="4160" texture="block-1" />
+      <block x="960" y="4240" texture="block-1" />
+      <block x="1040" y="4320" texture="block-1" />
     </blocks>
     <signposts>
-      <speed-limit-signpost x="3440" y="5360" texture="sign-speed-2-4" zone-top="0" minimum-speed="1" maximum-speed="3" />
-      <one-way-signpost x="80" y="5200" texture="sign-one-way" zone-top="0" mirror="false" />
+      <speed-limit-signpost x="3440" y="5360" texture="sign-speed-2-4" zone-top="-306" minimum-speed="1" maximum-speed="3" />
+      <one-way-signpost x="80" y="5200" texture="sign-one-way" zone-top="-412" mirror="false" />
       <one-way-signpost x="3760" y="4400" texture="sign-one-way" zone-top="-346" mirror="true" />
       <one-way-signpost x="80" y="3840" texture="sign-one-way" zone-top="-484" mirror="false" />
       <one-way-signpost x="7280" y="2560" texture="sign-one-way" zone-top="-242" mirror="true" />
@@ -360,8 +369,93 @@
     </signposts>
     <flags>
       <checkpoint-flag x="4000" y="5280" texture="flag-checkpoint" zone-top="0" left-activation="true" index="0" />
-      <goal-flag x="8640" y="160" texture="flag-goal" zone-top="0" left-activation="false" />
+      <goal-flag x="8640" y="160" texture="flag-goal" zone-top="-132" left-activation="false" />
     </flags>
+    <collectables>
+      <scoring-candy x="3280" y="5440" texture="candy-1" score="25" />
+      <scoring-candy x="3200" y="5440" texture="candy-1" score="25" />
+      <scoring-candy x="2720" y="5280" texture="candy-2" score="50" />
+      <scoring-candy x="2640" y="5280" texture="candy-2" score="50" />
+      <scoring-candy x="1360" y="5440" texture="candy-2" score="50" />
+      <scoring-candy x="1440" y="5440" texture="candy-2" score="50" />
+      <scoring-candy x="1520" y="5440" texture="candy-2" score="50" />
+      <scoring-candy x="160" y="5280" texture="candy-1" score="25" />
+      <scoring-candy x="240" y="5280" texture="candy-1" score="25" />
+      <scoring-candy x="320" y="5280" texture="candy-1" score="25" />
+      <scoring-candy x="400" y="5280" texture="candy-1" score="25" />
+      <scoring-candy x="480" y="5280" texture="candy-1" score="25" />
+      <scoring-candy x="560" y="5280" texture="candy-1" score="25" />
+      <scoring-candy x="1120" y="4880" texture="candy-2" score="50" />
+      <scoring-candy x="1200" y="4880" texture="candy-2" score="50" />
+      <scoring-candy x="1280" y="4880" texture="candy-2" score="50" />
+      <scoring-candy x="1920" y="4880" texture="candy-3" score="75" />
+      <scoring-candy x="2000" y="4880" texture="candy-3" score="75" />
+      <scoring-candy x="2480" y="4720" texture="candy-3" score="75" />
+      <scoring-candy x="2400" y="4720" texture="candy-3" score="75" />
+      <scoring-candy x="2960" y="4640" texture="candy-4" score="100" />
+      <scoring-candy x="3040" y="4640" texture="candy-4" score="100" />
+      <scoring-candy x="3360" y="4480" texture="candy-1" score="25" />
+      <scoring-candy x="3440" y="4480" texture="candy-1" score="25" />
+      <scoring-candy x="3520" y="4480" texture="candy-1" score="25" />
+      <scoring-candy x="3600" y="4480" texture="candy-1" score="25" />
+      <scoring-candy x="3680" y="4480" texture="candy-1" score="25" />
+      <scoring-candy x="2880" y="4240" texture="candy-2" score="50" />
+      <scoring-candy x="2960" y="4240" texture="candy-2" score="50" />
+      <scoring-candy x="2240" y="4240" texture="candy-2" score="50" />
+      <scoring-candy x="2160" y="4240" texture="candy-2" score="50" />
+      <scoring-candy x="1200" y="4240" texture="candy-2" score="50" />
+      <scoring-candy x="1280" y="4240" texture="candy-2" score="50" />
+      <scoring-candy x="1360" y="4240" texture="candy-2" score="50" />
+      <scoring-candy x="640" y="4080" texture="candy-3" score="75" />
+      <scoring-candy x="720" y="4080" texture="candy-3" score="75" />
+      <scoring-candy x="800" y="4080" texture="candy-3" score="75" />
+      <scoring-candy x="160" y="3920" texture="candy-4" score="100" />
+      <scoring-candy x="240" y="3920" texture="candy-4" score="100" />
+      <scoring-candy x="640" y="3680" texture="candy-2" score="50" />
+      <scoring-candy x="720" y="3680" texture="candy-2" score="50" />
+      <scoring-candy x="1120" y="3360" texture="candy-5" score="150" />
+      <scoring-candy x="1040" y="3360" texture="candy-5" score="150" />
+      <scoring-candy x="1200" y="3360" texture="candy-5" score="150" />
+      <scoring-candy x="1920" y="3280" texture="candy-1" score="25" />
+      <scoring-candy x="2000" y="3280" texture="candy-1" score="25" />
+      <scoring-candy x="2080" y="3280" texture="candy-1" score="25" />
+      <scoring-candy x="2160" y="3280" texture="candy-1" score="25" />
+      <scoring-candy x="2240" y="3280" texture="candy-1" score="25" />
+      <scoring-candy x="2320" y="3280" texture="candy-1" score="25" />
+      <scoring-candy x="3360" y="3040" texture="candy-2" score="50" />
+      <scoring-candy x="3440" y="3040" texture="candy-2" score="50" />
+      <scoring-candy x="4000" y="3040" texture="candy-2" score="50" />
+      <scoring-candy x="4080" y="3040" texture="candy-2" score="50" />
+      <scoring-candy x="4560" y="2800" texture="candy-1" score="25" />
+      <scoring-candy x="4640" y="2800" texture="candy-1" score="25" />
+      <scoring-candy x="4720" y="2800" texture="candy-1" score="25" />
+      <scoring-candy x="5760" y="2640" texture="candy-1" score="25" />
+      <scoring-candy x="5840" y="2640" texture="candy-1" score="25" />
+      <scoring-candy x="5920" y="2640" texture="candy-1" score="25" />
+      <scoring-candy x="6320" y="2160" texture="candy-2" score="50" />
+      <scoring-candy x="6400" y="2160" texture="candy-2" score="50" />
+      <scoring-candy x="5600" y="2080" texture="candy-4" score="100" />
+      <scoring-candy x="4880" y="1920" texture="candy-3" score="75" />
+      <scoring-candy x="4960" y="1920" texture="candy-3" score="75" />
+      <scoring-candy x="4320" y="1760" texture="candy-5" score="150" />
+      <scoring-candy x="3680" y="1600" texture="candy-1" score="25" />
+      <scoring-candy x="3600" y="1600" texture="candy-1" score="25" />
+      <scoring-candy x="3520" y="1600" texture="candy-1" score="25" />
+      <scoring-candy x="3440" y="1600" texture="candy-1" score="25" />
+      <scoring-candy x="3360" y="1600" texture="candy-1" score="25" />
+      <scoring-candy x="4240" y="1360" texture="candy-2" score="50" />
+      <scoring-candy x="4800" y="1360" texture="candy-2" score="50" />
+      <scoring-candy x="5280" y="1200" texture="candy-3" score="75" />
+      <scoring-candy x="5360" y="1200" texture="candy-3" score="75" />
+      <scoring-candy x="6000" y="1040" texture="candy-3" score="75" />
+      <scoring-candy x="6080" y="1040" texture="candy-3" score="75" />
+      <scoring-candy x="6640" y="1040" texture="candy-5" score="150" />
+      <scoring-candy x="7360" y="1040" texture="candy-3" score="75" />
+      <scoring-candy x="7280" y="1040" texture="candy-3" score="75" />
+      <scoring-candy x="8080" y="720" texture="candy-2" score="50" />
+      <scoring-candy x="8000" y="720" texture="candy-2" score="50" />
+      <scoring-candy x="7920" y="720" texture="candy-2" score="50" />
+    </collectables>
   </terrain>
   <player x="3920" y="5440" startfacingleft="true" />
 </leveldata>

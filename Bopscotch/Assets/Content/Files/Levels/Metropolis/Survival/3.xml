@@ -36,21 +36,15 @@
       <block x="2160" y="1280" texture="block-1" />
       <block x="2240" y="1280" texture="block-1" />
       <block x="2320" y="1280" texture="block-1" />
-      <block x="2400" y="1280" texture="block-1" />
-      <block x="2480" y="1280" texture="block-1" />
       <block x="2560" y="1200" texture="block-1" />
       <block x="2640" y="1200" texture="block-1" />
       <block x="2720" y="1200" texture="block-1" />
       <block x="2800" y="1200" texture="block-1" />
-      <block x="2880" y="1200" texture="block-1" />
-      <block x="2960" y="1200" texture="block-1" />
       <block x="3040" y="1120" texture="block-1" />
       <block x="3120" y="1120" texture="block-1" />
       <block x="3200" y="1120" texture="block-1" />
       <block x="3280" y="1120" texture="block-1" />
       <block x="3360" y="1120" texture="block-1" />
-      <block x="3440" y="1120" texture="block-1" />
-      <block x="3520" y="1120" texture="block-1" />
       <block x="3600" y="1040" texture="block-1" />
       <block x="3680" y="1040" texture="block-1" />
       <block x="3760" y="1040" texture="block-1" />
@@ -73,8 +67,6 @@
       <block x="5120" y="1200" texture="block-1" />
       <block x="5200" y="1200" texture="block-1" />
       <block x="5280" y="1200" texture="block-1" />
-      <block x="5360" y="1200" texture="block-1" />
-      <block x="5440" y="1200" texture="block-1" />
       <block x="5520" y="1120" texture="block-1" />
       <block x="5600" y="1120" texture="block-1" />
       <block x="5680" y="1120" texture="block-1" />
@@ -90,16 +82,10 @@
       <block x="6480" y="1200" texture="block-1" />
       <block x="6560" y="1200" texture="block-1" />
       <block x="6640" y="1200" texture="block-1" />
-      <block x="6720" y="1200" texture="block-1" />
-      <block x="6800" y="1200" texture="block-1" />
       <block x="6880" y="1120" texture="block-1" />
       <block x="6960" y="1120" texture="block-1" />
-      <block x="7040" y="1120" texture="block-1" />
-      <block x="7120" y="1120" texture="block-1" />
       <block x="7200" y="1040" texture="block-1" />
       <block x="7280" y="1040" texture="block-1" />
-      <block x="7360" y="1040" texture="block-1" />
-      <block x="7440" y="1040" texture="block-1" />
       <block x="7520" y="960" texture="block-1" />
       <block x="7600" y="960" texture="block-1" />
       <block x="7680" y="960" texture="block-1" />
@@ -210,7 +196,7 @@
       <block x="8160" y="1040" texture="block-1" />
       <block x="8240" y="1040" texture="block-1" />
       <block x="8320" y="1040" texture="block-1" />
-      <block x="8400" y="960" texture="block-1" />
+      <block x="8480" y="1040" texture="block-1" />
       <block x="8480" y="960" texture="block-1" />
       <block x="8560" y="960" texture="block-1" />
       <block x="8640" y="960" texture="block-1" />
@@ -236,13 +222,6 @@
       <obstruction-block x="7440" y="480" texture="block-obstruction-top-left" />
       <obstruction-block x="7840" y="400" texture="block-obstruction-top-left" />
       <obstruction-block x="8320" y="320" texture="block-obstruction-top-left" />
-      <obstruction-block x="7440" y="960" texture="block-obstruction-top-left" />
-      <obstruction-block x="7120" y="1040" texture="block-obstruction-top-left" />
-      <obstruction-block x="6800" y="1120" texture="block-obstruction-top-left" />
-      <obstruction-block x="5440" y="1120" texture="block-obstruction-top-left" />
-      <obstruction-block x="3520" y="1040" texture="block-obstruction-top-left" />
-      <obstruction-block x="2960" y="1120" texture="block-obstruction-top-left" />
-      <obstruction-block x="2480" y="1200" texture="block-obstruction-top-left" />
       <obstruction-block x="1360" y="640" texture="block-obstruction-top-right" />
       <obstruction-block x="2560" y="560" texture="block-obstruction-top-right" />
       <obstruction-block x="2640" y="640" texture="block-obstruction-top-right" />
@@ -260,15 +239,28 @@
         <contains-item texture="candy-3" units="3" action="score" value="75" />
         <contains-item texture="candy-5" units="2" action="score" value="150" />
       </smash-block>
+      <block x="3040" y="1200" texture="block-1" />
+      <block x="2560" y="1280" texture="block-1" />
+      <block x="3600" y="1120" texture="block-1" />
+      <block x="5520" y="1200" texture="block-1" />
+      <block x="6880" y="1200" texture="block-1" />
+      <block x="7200" y="1120" texture="block-1" />
+      <block x="7520" y="1040" texture="block-1" />
+      <obstruction-block x="7440" y="1040" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="7360" y="1040" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="6800" y="1200" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="6720" y="1200" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5440" y="1200" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="5360" y="1200" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="3440" y="1120" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="3520" y="1120" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2960" y="1200" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2880" y="1200" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2400" y="1280" texture="block-obstruction-oblong-top" />
+      <obstruction-block x="2480" y="1280" texture="block-obstruction-oblong-top" />
+      <block x="7040" y="1120" texture="block-1" />
+      <block x="7120" y="1120" texture="block-1" />
     </blocks>
-    <signposts>
-      <one-way-signpost x="160" y="720" texture="sign-one-way" zone-top="-296" mirror="false" />
-      <speed-limit-signpost x="7840" y="800" texture="sign-speed-1-3" zone-top="-240" minimum-speed="0" maximum-speed="2" />
-    </signposts>
-    <flags>
-      <checkpoint-flag x="8880" y="720" texture="flag-checkpoint" zone-top="0" left-activation="true" index="0" />
-      <goal-flag x="8880" y="80" texture="flag-goal" zone-top="-290" left-activation="false" />
-    </flags>
     <collectables>
       <scoring-candy x="8240" y="960" texture="candy-5" score="150" />
       <scoring-candy x="8160" y="960" texture="candy-5" score="150" />
@@ -323,6 +315,14 @@
       <scoring-candy x="8640" y="240" texture="candy-4" score="100" />
       <scoring-candy x="8560" y="240" texture="candy-4" score="100" />
     </collectables>
+    <signposts>
+      <one-way-signpost x="160" y="720" texture="sign-one-way" zone-top="-296" mirror="false" />
+      <speed-limit-signpost x="7840" y="800" texture="sign-speed-1-3" zone-top="-240" minimum-speed="0" maximum-speed="2" />
+    </signposts>
+    <flags>
+      <checkpoint-flag x="8880" y="720" texture="flag-checkpoint" zone-top="0" left-activation="true" index="0" />
+      <goal-flag x="8880" y="80" texture="flag-goal" zone-top="-290" left-activation="false" />
+    </flags>
   </terrain>
   <player x="8800" y="880" startfacingleft="true" />
 </leveldata>

@@ -24,7 +24,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
         public RaceStartScene()
             : base()
         {
-            BackgroundTextureName = Background_Texture_Name;
         }
 
         public override void HandleAssetLoadCompletion(Type loaderSceneType)
@@ -54,6 +53,12 @@ namespace Bopscotch.Scenes.Gameplay.Race
 
             _dialogs.Add("disconnected", new DisconnectedDialog());
             _dialogs["disconnected"].SelectionCallback = HandleDisconnectionDialogClose;
+        }
+
+        protected override void CompletePostStartupLoadInitialization()
+        {
+            base.CompletePostStartupLoadInitialization();
+            CreateBackgroundForScene(Background_Texture_Name, new int[] { 0, 1, 2 });
         }
 
         private void HandleOpponentStepButtonTouch(string buttonCaption)

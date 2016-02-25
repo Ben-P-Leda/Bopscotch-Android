@@ -36,7 +36,7 @@ namespace Bopscotch.Interface.Dialogs.Carousel
                     Color.Lerp(Color.Black, Color.White, DistanceFadeModifier), 
                     0.0f, 
                     new Vector2(TextureManager.Textures[Lock_Texture].Width, TextureManager.Textures[Lock_Texture].Height) / 2.0f,
-                    GameBase.ScreenScale(base.Scale / Definitions.Background_Texture_Thumbnail_Scale), 
+                    GameBase.ScreenScale(base.Scale), 
                     SpriteEffects.None, 
                     _overlayRenderDepth);
             }

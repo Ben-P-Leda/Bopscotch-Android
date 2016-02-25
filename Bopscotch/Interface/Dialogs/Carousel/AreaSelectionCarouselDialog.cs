@@ -70,9 +70,9 @@ namespace Bopscotch.Interface.Dialogs.Carousel
 
         protected void AddArea(string areaName, string textureName, bool locked)
         {
-            CarouselFlatImage area = new CarouselAreaImage(areaName, textureName, locked);
+            CarouselFlatImage area = new CarouselAreaImage(areaName, "thumb-" + textureName, locked);
             area.RenderLayer = RenderLayer;
-            area.MasterScale = Definitions.Background_Texture_Thumbnail_Scale;
+            area.MasterScale = 1.0f;
 
             AddItem(area);
         }

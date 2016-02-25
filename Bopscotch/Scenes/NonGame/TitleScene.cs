@@ -31,7 +31,6 @@ namespace Bopscotch.Scenes.NonGame
         private NewContentUnlockedDialog _unlockNotificationDialog;
 
         private PopupRequiringDismissal _titlePopup;
-        //private BackgroundSnow _snowController;
 
         public TitleScene()
             : base()
@@ -41,9 +40,6 @@ namespace Bopscotch.Scenes.NonGame
             _titlePopup = new PopupRequiringDismissal();
             _titlePopup.AnimationCompletionHandler = HandlePopupAnimationComplete;
             RegisterGameObject(_titlePopup);
-
-            //_snowController = new BackgroundSnow();
-            //RegisterGameObject(_snowController);
 
             _unlockNotificationDialog = new NewContentUnlockedDialog();
 
@@ -59,8 +55,6 @@ namespace Bopscotch.Scenes.NonGame
             _dialogs.Add("unlocks", _unlockNotificationDialog);
             _dialogs.Add(Race_Aborted_Dialog, new DisconnectedDialog("Connection Broken - Race Aborted!"));
             _dialogs.Add("info", new InfoMenuDialog());
-
-            BackgroundTextureName = Background_Texture_Name;
 
             RegisterGameObject(
                 new TextContent(Translator.Translation("Leda Entertainment Presents"), new Vector2(Definitions.Back_Buffer_Center.X, 60.0f))
@@ -87,9 +81,9 @@ namespace Bopscotch.Scenes.NonGame
         protected override void CompletePostStartupLoadInitialization()
         {
             base.CompletePostStartupLoadInitialization();
+            CreateBackgroundForScene(Background_Texture_Name, new int[] { 0, 1, 2, 3 });
 
             _titlePopup.MappingName = Title_Texture_Name;
-            //_snowController.CreateSnowflakes();
 
             _dialogs["reminder"].ExitCallback = HandleReminderDialogActionSelection;
             _dialogs["main"].ExitCallback = HandleMainDialogActionSelection;
@@ -348,7 +342,6 @@ namespace Bopscotch.Scenes.NonGame
         public override void Update(GameTime gameTime)
         {
             _animationController.Update(MillisecondsSinceLastUpdate);
-            //_snowController.Update(MillisecondsSinceLastUpdate);
 
             base.Update(gameTime);
         }

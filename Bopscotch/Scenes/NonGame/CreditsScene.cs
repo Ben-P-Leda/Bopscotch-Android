@@ -18,8 +18,6 @@ namespace Bopscotch.Scenes.NonGame
         public CreditsScene()
             : base()
         {
-            BackgroundTextureName = Background_Texture_Name;
-
             Overlay.Tint = Color.Black;
             Overlay.TintFraction = 0.5f;
         }
@@ -44,6 +42,11 @@ namespace Bopscotch.Scenes.NonGame
             {
                 CreateTextElementFromXml(element);
             }
+        }
+
+        protected override void CompletePostStartupLoadInitialization()
+        {
+            CreateBackgroundForScene(Background_Texture_Name, new int[] { 0, 1, 2, 3 });
         }
 
         private TextContent CreateTextElementFromXml(XElement source)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Linq;
 
 using Microsoft.Xna.Framework;
 
@@ -7,6 +8,7 @@ using Leda.Core.Asset_Management;
 using Leda.Core.Timing;
 
 using Bopscotch.Data;
+using Bopscotch.Scenes.Objects;
 using Bopscotch.Scenes.BaseClasses;
 using Bopscotch.Interface;
 using Bopscotch.Interface.Dialogs.RankingScene;
@@ -22,6 +24,8 @@ namespace Bopscotch.Scenes.NonGame
         private bool _fadingOut;
         private bool _fadeInProgress;
         private int _lastSwipeDirection;
+
+        private Dictionary<string, AnimatedBackground> _areas;
 
         public RankingScene()
             : base()
@@ -64,6 +68,38 @@ namespace Bopscotch.Scenes.NonGame
             base.Initialize();
         }
 
+        protected override void CompletePostStartupLoadInitialization()
+        {
+            CreateAreaBackgrounds();
+            SetActiveBackground();
+        }
+
+        private void CreateAreaBackgrounds()
+        {
+            _areas = new Dictionary<string, AnimatedBackground>();
+            foreach (XElement a in Data.Profile.SimpleAreaData)
+            {
+                if (!Unranked_Areas.Contains(a.Attribute("name").Value.ToLower()))
+                {
+                    string area = a.Attribute("name").Value;
+                    AreaDataContainer areaData = Profile.GetDataForNamedArea(area);
+
+                    _areas.Add(area, AnimatedBackground.Create(areaData.SelectionTexture, new int[] { 0, 1, 2 }));
+                }
+            }
+        }
+
+        private void SetActiveBackground()
+        {
+            if (_animBackground != null)
+            {
+                UnregisterGameObject(_animBackground);
+            }
+
+            _animBackground = _areas[_selectedArea];
+            RegisterGameObject(_animBackground);
+        }
+
         private void HandleNavigationDialogDismiss(string buttonCaption)
         {
             NextSceneType = typeof(TitleScene);
@@ -104,7 +140,7 @@ namespace Bopscotch.Scenes.NonGame
             AreaDataContainer areaData = Profile.GetDataForNamedArea(_selectedArea);
             if (areaData != null)
             {
-                _background.TextureReference = areaData.SelectionTexture;
+                SetActiveBackground();
 
                 if (areaData.Locked)
                 {
@@ -204,5 +240,6 @@ namespace Bopscotch.Scenes.NonGame
         private const float Stars_Offset = 400.0f;
         private const float Vertical_Offset = 12.5f;
         private const float Page_Fade_Duration = 200.0f;
+        private const string Unranked_Areas = "tutorial";
     }
 }

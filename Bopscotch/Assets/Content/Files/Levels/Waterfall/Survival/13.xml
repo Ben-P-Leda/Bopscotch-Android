@@ -184,14 +184,12 @@
       <block x="1200" y="1680" texture="block-1" />
       <spike-block x="1600" y="1680" texture="block-spike" />
       <spike-block x="1680" y="1680" texture="block-spike" />
-      <spike-block x="1360" y="1680" texture="block-spike" />
-      <spike-block x="1280" y="1680" texture="block-spike" />
       <spike-block x="1440" y="1680" texture="block-spike" />
       <spike-block x="1520" y="1680" texture="block-spike" />
       <block x="1840" y="1760" texture="block-1" />
       <block x="1120" y="1680" texture="block-1" />
-      <block x="1040" y="1680" texture="block-1" />
-      <block x="960" y="1680" texture="block-1" />
+      <block x="1280" y="1680" texture="block-1" />
+      <block x="1360" y="1680" texture="block-1" />
       <block x="0" y="1360" texture="block-1" />
       <block x="80" y="1360" texture="block-1" />
       <block x="160" y="1360" texture="block-1" />
@@ -200,7 +198,7 @@
       <block x="400" y="1360" texture="block-1" />
       <block x="2000" y="1760" texture="block-1" />
       <block x="2320" y="1760" texture="block-1" />
-      <spring-block x="560" y="1680" texture="block-spring" />
+      <spring-block x="800" y="1680" texture="block-spring" />
       <spring-block x="640" y="1680" texture="block-spring" />
       <spring-block x="720" y="1680" texture="block-spring" />
       <spring-block x="5680" y="1760" texture="block-spring" />

@@ -206,6 +206,11 @@ namespace Leda.Core.Game_Objects.Base_Classes
 
         public void SkinBones(XElement skinsData)
         {
+            foreach (KeyValuePair<string, IBone> kvp in Bones)
+            {
+                kvp.Value.ClearSkin();
+            }
+
             foreach (XElement skin in skinsData.Elements("bone"))
             {
                 if (Bones.ContainsKey(skin.Attribute("id").Value))
