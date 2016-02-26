@@ -101,11 +101,12 @@ namespace Bopscotch.Scenes.NonGame
 
         private void HandleReminderDialogActionSelection(string selectedOption)
         {
-            switch (selectedOption)
+            if (selectedOption == "Rate Game")
             {
-                case "Rate Game": RateGame(); break;
-                case "Back": ActivateDialog("main"); break;
+                RateGame();
             }
+
+            ActivateDialog("main");
         }
 
         private void RateGame()
@@ -143,7 +144,7 @@ namespace Bopscotch.Scenes.NonGame
                 case "Rankings": NextSceneType = typeof(RankingScene); Deactivate(); break;
                 case "About": NextSceneType = typeof(CreditsScene); Deactivate(); break;
                 case "More Games": OpenLedaPageOnStore(); ActivateDialog("main"); break;
-                case "Rate Game": RateGame(); break;
+                case "Rate Game": RateGame(); ActivateDialog("info"); break;
                 case "Back": ActivateDialog("main"); break;
             }
         }
