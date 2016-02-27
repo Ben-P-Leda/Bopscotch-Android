@@ -65,7 +65,7 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
         public override void Activate()
         {
             base.Activate();
-            Data.Profile.UpdateReminderDate();
+            Data.Profile.UpdateReminderDetails();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -61,6 +61,7 @@ namespace Bopscotch.Data
 
         private bool _rateBuyRemindersOn;
         private bool _hasRated;
+        private int _playsBeforeNextReminder;
         private DateTime _nextReminderDate;
         private DateTime _lastLivesUpdateTime;
 
@@ -80,13 +81,8 @@ namespace Bopscotch.Data
         }
 
         public static void UnlockCostume(string costumeName) { Instance.UnlockAvatarCostume(costumeName); }
-
-        public static void UpdateReminderDate()
-        {
-            Instance._nextReminderDate = DateTime.Now.AddDays(Days_Between_Reminders);
-            Instance._rateBuyRemindersOn = false;
-            Instance.SaveData();
-        }
+        public static void DecreasePlaysToNextRatingReminder() { Instance.DecreasePlaysBeforeReminder(); }
+        public static void UpdateReminderDetails() { Instance.UpdateReminderParameters(); }
 
         private Dictionary<string, AreaDataContainer> _areaLevelData;
         private string _currentArea;
@@ -193,6 +189,15 @@ namespace Bopscotch.Data
             _settings = serializer.GetDataItem<PhoneSettings>("config-settings");
 
             _hasRated = serializer.GetDataItem<bool>("has-rated");
+
+            if (serializedData.Elements("dataitem").Any(x => x.Attribute("name").Value == "reminder-plays"))
+            {
+                _playsBeforeNextReminder = serializer.GetDataItem<int>("reminder-plays");
+            }
+            else
+            {
+                _playsBeforeNextReminder = Initial_Plays_Before_Rating_Reminder;
+            }
             _nextReminderDate = serializer.GetDataItem<DateTime>("next-reminder");
             _livesElementAdded = serializer.GetDataItem<bool>("lives-added");
             _livesRemaining = serializer.GetDataItem<int>("lives-remaining");
@@ -230,6 +235,7 @@ namespace Bopscotch.Data
             _currentArea = _areaLevelData.Keys.First();
 
             _nextReminderDate = DateTime.Now.AddDays(Days_Before_Reminders_Start);
+            _playsBeforeNextReminder = Initial_Plays_Before_Rating_Reminder;
         }
 
         private void CreateAreaData(XDocument areaData)
@@ -266,8 +272,46 @@ namespace Bopscotch.Data
         {
             _rateBuyRemindersOn = true;
 
-			if (_hasRated) { _rateBuyRemindersOn = false; }
-            if ((DateTime.Now < _nextReminderDate) && (DateTime.Now.AddDays(Days_Before_Reminders_Start) > _nextReminderDate)) { _rateBuyRemindersOn = false; }
+			if (_hasRated)
+            { 
+                _rateBuyRemindersOn = false; 
+            }
+            else if ((DateTime.Now < _nextReminderDate) && (DateTime.Now.AddDays(Days_Before_Reminders_Start) > _nextReminderDate))
+            {
+                _rateBuyRemindersOn = false;
+            }
+
+            if ((!_hasRated) && (_playsBeforeNextReminder < 1))
+            {
+                _rateBuyRemindersOn = true;
+            }
+        }
+
+        private void DecreasePlaysBeforeReminder()
+        {
+            if (!_hasRated)
+            {
+                Instance._playsBeforeNextReminder = Math.Max(Instance._playsBeforeNextReminder - 1, 0);
+                SaveData();
+                SetRateOrBuyReminderFlag();
+            }
+        }
+
+        private void UpdateReminderParameters()
+        {
+            if ((DateTime.Now < _nextReminderDate) && (DateTime.Now.AddDays(Days_Before_Reminders_Start) > _nextReminderDate))
+            {
+                _nextReminderDate = DateTime.Now.AddDays(Days_Between_Reminders);
+                _rateBuyRemindersOn = false;
+            }
+
+            if (_playsBeforeNextReminder < 1)
+            {
+                _playsBeforeNextReminder = Plays_Between_Rating_Reminders;
+                _rateBuyRemindersOn = false;
+            }
+
+            SaveData();
         }
 
         private void SaveData()
@@ -286,6 +330,7 @@ namespace Bopscotch.Data
 
             serializer.AddDataItem("config-settings", _settings);
             serializer.AddDataItem("has-rated", _hasRated);
+            serializer.AddDataItem("reminder-plays", _playsBeforeNextReminder);
             serializer.AddDataItem("next-reminder",_nextReminderDate);
             serializer.AddDataItem("lives-added", true);
             serializer.AddDataItem("lives-remaining", _livesRemaining);
@@ -484,8 +529,10 @@ namespace Bopscotch.Data
         private const string Default_Areas_FileName = "Content/Files/Levels/DefaultAreas.xml";
         private const string Additional_Areas_FileName = "Content/Files/Levels/AdditionalAreas.xml";
         private const string Difficulty_Sequence_CSV = "n/a,easy,simple,medium,tricky,hard,insane";
-        private const int Days_Before_Reminders_Start = 3;
-        private const int Days_Between_Reminders = 2;
+        private const int Days_Before_Reminders_Start = 10;
+        private const int Days_Between_Reminders = 5;
+        private const int Initial_Plays_Before_Rating_Reminder = 5;
+        private const int Plays_Between_Rating_Reminders = 20;
         private const int Maximum_Life_Count = 20;
         private const int Life_Restore_Interval = 180;
 

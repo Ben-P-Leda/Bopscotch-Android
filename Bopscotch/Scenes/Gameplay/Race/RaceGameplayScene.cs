@@ -47,8 +47,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
         private int _startCoundown;
         private Timer _startSequenceTimer;
 
-        //private Bopscotch.Gameplay.Objects.Characters.RaceOpponent _opponentMarker;
-
         public Communication.ICommunicator Communicator 
         { 
             set 
@@ -56,7 +54,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
                 if (value is Communication.InterDeviceCommunicator)
                 { 
                     _communicator = (Communication.InterDeviceCommunicator)value;
-                    //_opponentMarker.Communicator = _communicator;
                 } 
             } 
         }
@@ -101,9 +98,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
             _disconnectedDialog = new DisconnectedDialog();
             _disconnectedDialog.SelectionCallback = HandleDisconnectAcknowledge;
             _disconnectedDialog.InputSources.Add(_inputProcessor);
-
-            //_opponentMarker = new Bopscotch.Gameplay.Objects.Characters.RaceOpponent();
-            //_opponentMarker.ParticleManager = _additiveParticleEffectManager;
         }
 
         private void HandlePlayerEventAnimationComplete()
@@ -159,7 +153,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
             }
             else 
             {
-                //_opponentMarker.StartMovement();
                 _raceStarted = true;
 
                 SoundEffectManager.PlayEffect("race-start"); 
