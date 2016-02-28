@@ -127,6 +127,7 @@
     <texture name="player-shirt-robot" file="Textures/Players/Shirts/robot" />
     <texture name="player-shirt-jackolantern" file="Textures/Players/Shirts/jackolantern" />
     <texture name="player-shirt-xmas" file="Textures/Players/Shirts/xmas" />
+    <texture name="player-shirt-miner" file="Textures/Players/Shirts/miner" />
     <texture name="player-hat-merry-man" file="Textures/Players/Hats/merry-man" />
     <texture name="player-hat-teacher" file="Textures/Players/Hats/teacher" />
     <texture name="player-hat-knight" file="Textures/Players/Hats/knight" />
@@ -139,7 +140,7 @@
     <texture name="player-hat-robot" file="Textures/Players/Hats/robot" />
     <texture name="player-hat-jackolantern" file="Textures/Players/Hats/jackolantern" />
     <texture name="player-hat-xmas" file="Textures/Players/Hats/xmas" />
-    <texture name="race-p2-cloud" file="Textures/Players/race-cloud" />
+    <texture name="player-hat-miner" file="Textures/Players/Hats/miner" />
   </textures>
   <sound-effects>
     <sound-effect name="menu-select" file="SoundEffects/menu-select" />

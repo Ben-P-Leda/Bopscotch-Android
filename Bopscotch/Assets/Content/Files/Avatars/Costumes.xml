@@ -58,4 +58,8 @@
     <component set="hat" name="Xmas" />
     <component set="shirt" name="Xmas" />
   </costume>
+  <costume name="Miner">
+    <component set="hat" name="Miner" />
+    <component set="shirt" name="Miner" />
+  </costume>
 </costumes>

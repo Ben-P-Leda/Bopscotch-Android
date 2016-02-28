@@ -252,6 +252,12 @@
           <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
         </mappings>
       </component>
+      <component name="Miner" texture-name="player-hat-miner" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="hat" frame-x="0" frame-y="0" frame-width="111" frame-height="94" origin-x="63.5" origin-y="74.5" />
+          <mapping skeleton="player-front" bone="hat" frame-x="111" frame-y="0" frame-width="110" frame-height="94" origin-x="61.5" origin-y="74.5" />
+        </mappings>
+      </component>
     </component-set>
 
     <component-set name="shirt" display-skeleton="player-side" allow-none="true">
@@ -316,6 +322,12 @@
         </mappings>
       </component>
       <component name="Xmas" texture-name="player-shirt-xmas" unlocked="false">
+        <mappings>
+          <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
+          <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
+        </mappings>
+      </component>
+      <component name="Miner" texture-name="player-shirt-miner" unlocked="false">
         <mappings>
           <mapping skeleton="player-side" bone="shirt" frame-x="96" frame-y="0" frame-width="81" frame-height="46" origin-x="41.5" origin-y="3.5" />
           <mapping skeleton="player-front" bone="shirt" frame-x="0" frame-y="0" frame-width="96" frame-height="46" origin-x="45.5" origin-y="4.5" />
