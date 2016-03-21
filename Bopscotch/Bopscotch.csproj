@@ -41,6 +41,9 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>Components\facebook-sdk-6.2.2\lib\android\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -88,6 +91,11 @@
     <Compile Include="Effects\SmashBlockItems\SmashBlockItem.cs" />
     <Compile Include="Effects\SmashBlockItems\SmashBlockItemFactory.cs" />
     <Compile Include="Effects\SmashBlockItems\SmashBlockItemMotionEngine.cs" />
+    <Compile Include="Facebook\AndroidFacebookAdapter.cs" />
+    <Compile Include="Facebook\AndroidFacebookAuthorizationActivity.cs" />
+    <Compile Include="Facebook\Definitions.cs" />
+    <Compile Include="Facebook\FacebookAdapterBase.cs" />
+    <Compile Include="Facebook\IFacebookAdapter.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Gameplay\Controllers\PlayerTrackingCameraController.cs" />
     <Compile Include="Gameplay\Coordination\RacePowerUpCoordinator.cs" />
@@ -844,6 +852,10 @@
     <AndroidAsset Include="Assets\Content\Music\title.wma" />
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="facebook-sdk">
+      <Visible>False</Visible>
+      <Version>6.2.2</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="xamarin.inappbilling">
       <Visible>False</Visible>
       <Version>2.2</Version>

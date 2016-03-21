@@ -8,10 +8,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Leda.Core;
 using Leda.Core.Asset_Management;
 
+using Leda.FacebookAdapter;
+
 namespace Bopscotch
 {
     public class Game1 : GameBase
     {
+        public static IFacebookAdapter FacebookAdapter;
+
 		public Game1()
 			: base(Orientation.Landscape)
         {
@@ -36,6 +40,13 @@ namespace Bopscotch
             AddScene(new Scenes.Gameplay.Race.RaceGameplayScene() { Communicator = communicator });
             AddScene(new Scenes.Gameplay.Race.RaceFinishScene());
 
+            FacebookAdapter.ActionCallback = CompleteFacebookAction;
+            FacebookAdapter.ApplicationName = "Bopscotch";
+            FacebookAdapter.Caption = "Bounce, jump, smash, munch";
+            FacebookAdapter.Description = "For Windows Phone, Android and iOS. Visit www.ledaentertainment.com for more on this and our other games!";
+            FacebookAdapter.Link = "http://www.ledaentertainment.com/games/bopscotch";
+            FacebookAdapter.ImageUrl = "http://www.ledaentertainment.com/images/icons/facebook/bopscotch_fb_tile.png";
+
             base.Initialize();
 
             SetResolutionMetrics(Definitions.Back_Buffer_Width, Definitions.Back_Buffer_Height, ScalingAxis.X);
@@ -51,6 +62,10 @@ namespace Bopscotch
             TextureManager.AddTexture("leda-logo", Content.Load<Texture2D>("Textures\\leda-logo"));
             TextureManager.AddTexture("pixel", Content.Load<Texture2D>("Textures\\WhitePixel"));
 			TextureManager.AddTexture("load-spinner", Content.Load<Texture2D>("Textures\\load-spinner"));
+        }
+
+        private void CompleteFacebookAction(ActionResult actionResult)
+        {
         }
 
         private void WireUpManagers()

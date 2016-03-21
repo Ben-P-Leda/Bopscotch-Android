@@ -15,13 +15,12 @@ using Xamarin.InAppBilling;
 
 using Microsoft.Xna.Framework;
 
+using Leda.FacebookAdapter;
+
 namespace Bopscotch
 {
     [Activity(
         Label = "Bopscotch",
-#if __ANDROID_11__
-        HardwareAccelerated = false,
-#endif
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize,
         MainLauncher = true,
         ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape,
@@ -37,10 +36,18 @@ namespace Bopscotch
         private Game1 _game;
         private Bundle _bundle;
 
+        private AndroidFacebookAdapter _fbAdapter;
+
         protected override void OnCreate(Bundle bundle)
         {
             _bundle = bundle;
             base.OnCreate(bundle);
+
+            _fbAdapter = new Leda.FacebookAdapter.AndroidFacebookAdapter()
+            {
+                ApplicationId = "251583331847146",
+                Activity = this
+            };
 
             FrameLayout Layout = new FrameLayout(this);
 
@@ -52,6 +59,8 @@ namespace Bopscotch
             UrlProvider.PackageName = ApplicationContext.PackageName;
 
             SwitchToBrowser = false;
+
+            Game1.FacebookAdapter = _fbAdapter;
 
             _game.Run();
 
@@ -79,17 +88,19 @@ namespace Bopscotch
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            Android.Util.Log.Debug("Leda", "Purchase op. done, sending result to handler...");
-            try
-            {
-                BillingServiceConnection.BillingHandler.HandleActivityResult(requestCode, resultCode, data);
-            }
-            catch (Exception ex)
-            {
-                Android.Util.Log.Debug("Leda", "Failed! with exception message: " + ex.Message);
-            }
+            //Android.Util.Log.Debug("Leda", "Purchase op. done, sending result to handler...");
+            //try
+            //{
+            //    BillingServiceConnection.BillingHandler.HandleActivityResult(requestCode, resultCode, data);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Android.Util.Log.Debug("Leda", "Failed! with exception message: " + ex.Message);
+            //}
 
             base.OnActivityResult(requestCode, resultCode, data);
+
+            _fbAdapter.HandleAuthorizationActivityClose(resultCode, data);
         }
 
         protected override void OnDestroy()
