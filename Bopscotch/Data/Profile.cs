@@ -24,13 +24,20 @@ namespace Bopscotch.Data
             }
         }
 
+        private static int LifeRestoreInterval 
+        {
+            get { return Game1.FacebookAdapter.IsLoggedIn ? Enhanced_Life_Restore_Interval : Normal_Life_Restore_Interval; } 
+        }
+
+        public static string FacebookToken { get; set; }
+
 		public static bool HasRated { get { return Instance._hasRated; } }
 
         public static PhoneSettings Settings { get { return Instance._settings; } }
 
         public static int Lives { get { return Instance._livesRemaining; } set { Instance._livesRemaining = value; } }
         public static bool NotAtFullLives { get { return Lives < Maximum_Life_Count; } }
-        public static DateTime NextLifeRestoreTime { get { return _instance._lastLivesUpdateTime.AddSeconds(Life_Restore_Interval); } }
+        public static DateTime NextLifeRestoreTime { get { return _instance._lastLivesUpdateTime.AddSeconds(LifeRestoreInterval); } }
         public static int GoldenTickets { get { return Instance._goldenTicketCount; } set { Instance._goldenTicketCount = value; } }
         public static bool PlayingRaceMode { get; set; }
         public static bool PauseOnSceneActivation { get; set; }
@@ -150,6 +157,8 @@ namespace Bopscotch.Data
             _goldenTicketCount = 0;
             _newlyUnlockedItems = new List<XElement>();
             _unlockedAvatarComponents = new List<XElement>();
+
+            FacebookToken = "";
         }
 
         private Profile GetProfile()
@@ -204,6 +213,11 @@ namespace Bopscotch.Data
             _lastLivesUpdateTime = serializer.GetDataItem<DateTime>("lives-updated");
             _goldenTicketCount = serializer.GetDataItem<int>("golden-tickets");
             _currentArea = serializer.GetDataItem<string>("last-area");
+
+            if (serializedData.Elements("dataitem").Any(x => x.Attribute("name").Value == "fb-token"))
+            {
+                FacebookToken = serializer.GetDataItem<string>("fb-token");
+            }
 
             LoadAreaDataFromXml(serializer.GetDataElement("survival-area-data"));
             LoadAvatarComponentDataFromXml(serializer.GetDataElement("avatar-component-data"));
@@ -337,6 +351,8 @@ namespace Bopscotch.Data
             serializer.AddDataItem("lives-updated", _lastLivesUpdateTime);
             serializer.AddDataItem("golden-tickets", _goldenTicketCount);
             serializer.AddDataItem("last-area", _currentArea);
+            serializer.AddDataItem("fb-token", FacebookToken);
+
             serializer.AddDataElement(SerializedAreaData);
             serializer.AddDataElement(SerializedAvatarComponentData);
 
@@ -503,13 +519,13 @@ namespace Bopscotch.Data
             {
                 bool updated = false;
 
-                while (_lastLivesUpdateTime.AddSeconds(Life_Restore_Interval) < DateTime.Now)
+                while (_lastLivesUpdateTime.AddSeconds(LifeRestoreInterval) < DateTime.Now)
                 {
                     _livesRemaining++;
                     updated = true;
 
                     if (_livesRemaining == Maximum_Life_Count) { _lastLivesUpdateTime = DateTime.Now; }
-                    else { _lastLivesUpdateTime = _lastLivesUpdateTime.AddSeconds(Life_Restore_Interval); }
+                    else { _lastLivesUpdateTime = _lastLivesUpdateTime.AddSeconds(LifeRestoreInterval); }
                 }
 
                 if (updated) { SaveData(); }
@@ -534,7 +550,8 @@ namespace Bopscotch.Data
         private const int Initial_Plays_Before_Rating_Reminder = 5;
         private const int Plays_Between_Rating_Reminders = 20;
         private const int Maximum_Life_Count = 20;
-        private const int Life_Restore_Interval = 180;
+        private const int Normal_Life_Restore_Interval = 180;
+        private const int Enhanced_Life_Restore_Interval = 135;
 
         public const int Race_Win_Lives_Max = 40;
         public const int Race_Win_Lives_Reward = 5;

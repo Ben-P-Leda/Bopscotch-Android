@@ -242,8 +242,28 @@ namespace Bopscotch.Scenes.NonGame
 
         private void HandleOptionsDialogClose(string selectedOption)
         {
-            if (selectedOption == "Reset Game") { ActivateDialog("reset-areas"); }
-            else { ActivateDialog("main"); }
+            switch (selectedOption)
+            {
+                case "Reset Game":
+                    ActivateDialog("reset-areas");
+                    break;
+                case "Facebook":
+                    HandleFirstFacebookLogin();
+                    break;
+                default:
+                    ActivateDialog("main");
+                    break;
+            }
+        }
+
+        private void HandleFirstFacebookLogin()
+        {
+            _unlockNotificationDialog.PrepareForActivation();
+            _unlockNotificationDialog.AddItem("Facebook connection reward");
+            _unlockNotificationDialog.AddItem("New Costume - Wizard");
+
+            if (CurrentState == Status.Active) { ActivateDialog("unlocks"); }
+            else { _firstDialog = "unlocks"; }
         }
 
         private void HandleResetAreasConfirmDialogClose(string selectedOption)
@@ -316,7 +336,7 @@ namespace Bopscotch.Scenes.NonGame
             else if (string.IsNullOrEmpty(_firstDialog)) { _firstDialog = Default_First_Dialog; }
             else if ((_firstDialog == "start") && (Data.Profile.RateBuyRemindersOn)) { _firstDialog = Reminder_Dialog; }
 
-            if (_firstDialog != "unlocks") { UnlockFullVersionContent(); }
+            UnlockIfUpgradingFromLegacy();
 
             _titlePopup.Activate(); 
             _doNotExitOnTitleDismiss = false;
@@ -324,25 +344,33 @@ namespace Bopscotch.Scenes.NonGame
             base.CompleteActivation();
         }
 
-        private void UnlockFullVersionContent()
+        private void UnlockIfUpgradingFromLegacy()
         {
-            _unlockNotificationDialog.PrepareForActivation();
-
             if ((Data.Profile.AreaIsLocked("Waterfall")) && (Data.Profile.AreaHasBeenCompleted("Hilltops")))
             {
                 Data.Profile.UnlockNamedArea("Waterfall");
-                _unlockNotificationDialog.AddItem("New Levels - Waterfall Area");
             }
-
-            if (!Data.Profile.AvatarCostumeUnlocked("Wizard"))
-            {
-                Data.Profile.UnlockCostume("Wizard");
-                Data.Profile.UnlockCostume("Mummy");
-                _unlockNotificationDialog.AddItem("New Costumes - Wizard, Mummy");
-            }
-
-            if (_unlockNotificationDialog.HasContent) { _firstDialog = "unlocks"; }
         }
+
+        //private void UnlockFullVersionContent()
+        //{
+        //    _unlockNotificationDialog.PrepareForActivation();
+
+        //    if ((Data.Profile.AreaIsLocked("Waterfall")) && (Data.Profile.AreaHasBeenCompleted("Hilltops")))
+        //    {
+        //        Data.Profile.UnlockNamedArea("Waterfall");
+        //        _unlockNotificationDialog.AddItem("New Levels - Waterfall Area");
+        //    }
+
+        //    //if (!Data.Profile.AvatarCostumeUnlocked("Wizard"))
+        //    //{
+        //    //    Data.Profile.UnlockCostume("Wizard");
+        //    //    Data.Profile.UnlockCostume("Mummy");
+        //    //    _unlockNotificationDialog.AddItem("New Costumes - Wizard, Mummy");
+        //    //}
+
+        //    if (_unlockNotificationDialog.HasContent) { _firstDialog = "unlocks"; }
+        //}
 
         public override void Update(GameTime gameTime)
         {

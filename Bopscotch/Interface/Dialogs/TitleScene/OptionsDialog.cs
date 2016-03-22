@@ -106,6 +106,8 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
                 if (Game1.FacebookAdapter.IsLoggedIn)
                 {
                     Game1.FacebookAdapter.AttemptLogout();
+                    Data.Profile.FacebookToken = "";
+                    Data.Profile.Save();
                     _buttons["FacebookSwitch"].IconBackgroundTint = Color.Red;
                 }
                 else
@@ -123,6 +125,11 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
             if ((actionResult == ActionResult.LoginSuccessful) || (actionResult == ActionResult.LoginAlreadyLoggedIn))
             {
                 _buttons["FacebookSwitch"].IconBackgroundTint = Color.LawnGreen;
+
+                Data.Profile.FacebookToken = Game1.FacebookAdapter.AccessToken;
+                Data.Profile.Save();
+
+                HandleFirstLogin();
             }
             else
             {
@@ -130,6 +137,14 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
             }
         }
 
+        private void HandleFirstLogin()
+        {
+            if (!Data.Profile.AvatarCostumeUnlocked("Wizard"))
+            {
+                Data.Profile.UnlockCostume("Wizard");
+                DismissWithReturnValue("Facebook");
+            }
+        }
 
         public override void Draw(SpriteBatch spriteBatch)
         {

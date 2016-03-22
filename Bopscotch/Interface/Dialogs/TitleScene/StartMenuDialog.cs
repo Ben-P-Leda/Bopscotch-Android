@@ -21,6 +21,7 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
         private bool _networkIsAvailable;
         private bool _displayingStoreOption;
         private string _statusMessage;
+        private string _facebookMessage;
 
         public StartMenuDialog()
             : base()
@@ -50,8 +51,7 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
             TopYWhenActive = Top_Y_When_Active;
 
             SetUpButtons();
-
-            if (!_networkIsAvailable) { _statusMessage = Translator.Translation("no-wifi"); }
+            SetUpFacebookMessage();
 
             base.Activate();
         }
@@ -62,20 +62,33 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
 
             if (_displayingStoreOption)
             {
-                AddButton("Add Lives", new Vector2(Definitions.Left_Button_Column_X, 200), Button.ButtonIcon.Store, Color.Orange);
+                AddButton("Add Lives", new Vector2(Definitions.Left_Button_Column_X, 170), Button.ButtonIcon.Store, Color.Orange);
             }
             else
             {
-                AddButton("Adventure", new Vector2(Definitions.Left_Button_Column_X, 200), Button.ButtonIcon.Adventure, Color.LawnGreen);
+                AddButton("Adventure", new Vector2(Definitions.Left_Button_Column_X, 170), Button.ButtonIcon.Adventure, Color.LawnGreen);
             }
 
-            AddButton("Race", new Vector2(Definitions.Right_Button_Column_X, 200), Button.ButtonIcon.Race, Color.LawnGreen);
-            AddButton("Back", new Vector2(Definitions.Back_Buffer_Center.X, 320.0f), Button.ButtonIcon.Back, Color.Red, 0.7f);
+            AddButton("Race", new Vector2(Definitions.Right_Button_Column_X, 170), Button.ButtonIcon.Race, Color.LawnGreen);
+            AddButton("Back", new Vector2(Definitions.Back_Buffer_Center.X, 290.0f), Button.ButtonIcon.Back, Color.Red, 0.7f);
 
             if (!_networkIsAvailable)
             {
                 DisableButton("Race");
                 _buttons["Race"].IconBackgroundTint = Color.Gray;
+            }
+        }
+
+        private void SetUpFacebookMessage()
+        {
+            _facebookMessage = "";
+
+            if (!Game1.FacebookAdapter.IsLoggedIn)
+            {
+                if (!Data.Profile.NotAtFullLives)
+                {
+                    _facebookMessage = "sign in to facebook to restore lives faster";
+                }
             }
         }
 
@@ -113,8 +126,17 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
         {
             if (!string.IsNullOrEmpty(_statusMessage))
             {
+                float yPos = string.IsNullOrEmpty(_facebookMessage) ? 350.0f : 330.0f;
+
                 TextWriter.Write(
-                    Translator.Translation(_statusMessage), spriteBatch, new Vector2(Definitions.Back_Buffer_Center.X, 380.0f + WorldPosition.Y), 
+                    Translator.Translation(_statusMessage), spriteBatch, new Vector2(Definitions.Back_Buffer_Center.X, yPos + WorldPosition.Y), 
+                    Color.White, Color.Black, 3.0f, 0.7f, 0.1f, TextWriter.Alignment.Center);
+            }
+
+            if (!string.IsNullOrEmpty(_facebookMessage))
+            {
+                TextWriter.Write(
+                    Translator.Translation(_facebookMessage), spriteBatch, new Vector2(Definitions.Back_Buffer_Center.X, 375.0f + WorldPosition.Y),
                     Color.White, Color.Black, 3.0f, 0.7f, 0.1f, TextWriter.Alignment.Center);
             }
 

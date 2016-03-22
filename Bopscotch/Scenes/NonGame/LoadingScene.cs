@@ -158,6 +158,23 @@ namespace Bopscotch.Scenes.NonGame
                     break;
             }
         }
+
+        protected override void CompleteDeactivation()
+        {
+            if (!Game1.FacebookAdapter.IsLoggedIn)
+            {
+                if (!string.IsNullOrEmpty(Game1.FacebookAdapter.AccessToken))
+                {
+                    Game1.FacebookAdapter.AttemptLogin(Game1.FacebookAdapter.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(Data.Profile.FacebookToken))
+                {
+                    Game1.FacebookAdapter.AttemptLogin(Data.Profile.FacebookToken);
+                }
+            }
+
+            base.CompleteDeactivation();
+        }
 		
         private const string Asset_File_Name_And_Path = "Content/Files/Loadables.xml";
         private const string Logo_Texture = "leda-logo";
