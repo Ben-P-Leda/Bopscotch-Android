@@ -9,6 +9,7 @@ namespace Leda.FacebookAdapter
         string AccessToken { get; set; }
         bool IsLoggedIn { get; }
         ActionResult LastActionResult { get; }
+        bool ActionInProgress { get; }
 
         string ApplicationName { set; }
         string Caption { set; }

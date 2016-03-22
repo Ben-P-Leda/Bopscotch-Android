@@ -22,7 +22,9 @@ namespace Leda.FacebookAdapter
 
 		public void AttemptLogin()
 		{
-			var webAuth = new Intent(Activity, typeof(FBWebViewAuthActivity));
+            ActionInProgress = true;
+
+			Intent webAuth = new Intent(Activity, typeof(FBWebViewAuthActivity));
 			webAuth.PutExtra("AppId", ApplicationId);
 			webAuth.PutExtra("ExtendedPermissions", "user_about_me,publish_actions");
 			Activity.StartActivityForResult(webAuth, 0);
@@ -30,8 +32,16 @@ namespace Leda.FacebookAdapter
 
 		public void HandleAuthorizationActivityClose(Result activityResult, Intent data)
 		{
-			if (activityResult == Result.Ok) { FinishLogin(data.GetStringExtra("AccessToken"), data.GetBooleanExtra("ManualLoginRequired", true)); }
-			else { CompleteAction(ActionResult.LoginCancelled); }
+            ActionInProgress = false;
+
+			if (activityResult == Result.Ok) 
+            { 
+                FinishLogin(data.GetStringExtra("AccessToken"), data.GetBooleanExtra("ManualLoginRequired", true)); 
+            }
+			else 
+            { 
+                CompleteAction(ActionResult.LoginCancelled); 
+            }
 
 			GC.Collect();
 		}

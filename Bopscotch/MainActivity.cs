@@ -88,19 +88,25 @@ namespace Bopscotch
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            //Android.Util.Log.Debug("Leda", "Purchase op. done, sending result to handler...");
-            //try
-            //{
-            //    BillingServiceConnection.BillingHandler.HandleActivityResult(requestCode, resultCode, data);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Android.Util.Log.Debug("Leda", "Failed! with exception message: " + ex.Message);
-            //}
+            if (!Game1.FacebookAdapter.ActionInProgress)
+            {
+                Android.Util.Log.Debug("Leda", "Purchase op. done, sending result to handler...");
+                try
+                {
+                    BillingServiceConnection.BillingHandler.HandleActivityResult(requestCode, resultCode, data);
+                }
+                catch (Exception ex)
+                {
+                    Android.Util.Log.Debug("Leda", "Failed! with exception message: " + ex.Message);
+                }
+            }
 
             base.OnActivityResult(requestCode, resultCode, data);
 
-            _fbAdapter.HandleAuthorizationActivityClose(resultCode, data);
+            if (Game1.FacebookAdapter.ActionInProgress)
+            {
+                _fbAdapter.HandleAuthorizationActivityClose(resultCode, data);
+            }
         }
 
         protected override void OnDestroy()

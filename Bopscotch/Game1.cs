@@ -40,7 +40,6 @@ namespace Bopscotch
             AddScene(new Scenes.Gameplay.Race.RaceGameplayScene() { Communicator = communicator });
             AddScene(new Scenes.Gameplay.Race.RaceFinishScene());
 
-            FacebookAdapter.ActionCallback = CompleteFacebookAction;
             FacebookAdapter.ApplicationName = "Bopscotch";
             FacebookAdapter.Caption = "Bounce, jump, smash, munch";
             FacebookAdapter.Description = "For Windows Phone, Android and iOS. Visit www.ledaentertainment.com for more on this and our other games!";
@@ -62,10 +61,6 @@ namespace Bopscotch
             TextureManager.AddTexture("leda-logo", Content.Load<Texture2D>("Textures\\leda-logo"));
             TextureManager.AddTexture("pixel", Content.Load<Texture2D>("Textures\\WhitePixel"));
 			TextureManager.AddTexture("load-spinner", Content.Load<Texture2D>("Textures\\load-spinner"));
-        }
-
-        private void CompleteFacebookAction(ActionResult actionResult)
-        {
         }
 
         private void WireUpManagers()

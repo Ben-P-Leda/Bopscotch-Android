@@ -17,6 +17,7 @@ namespace Leda.FacebookAdapter
 		public string AccessToken { get; set; }
 		public bool IsLoggedIn { get { return _loggedIn; } }
 		public ActionResult LastActionResult { get; private set; }
+        public bool ActionInProgress { get; protected set; }
 
 		public string ApplicationName { private get; set; }
 		public string Caption { private get; set; }
@@ -24,22 +25,23 @@ namespace Leda.FacebookAdapter
 		public string Link { private get; set; }
 		public string ImageUrl { private get; set; }
 
-		protected bool ConnectedToNetwork
-		{
-			get { return true; }
-		}
+		protected bool ConnectedToNetwork { get { return true; } }
 
 		public FacebookAdapterBase()
 		{
 			ActionCallback = null;
 			AccessToken = string.Empty;
 			LastActionResult = ActionResult.None;
+            ActionInProgress = false;
 		}
 
 		protected void CompleteAction(ActionResult actionResult)
 		{
 			LastActionResult = actionResult;
-			if (ActionCallback != null) { ActionCallback(actionResult); }
+			if (ActionCallback != null) 
+            { 
+                ActionCallback(actionResult); 
+            }
 		}
 
 		protected void FinishLogin(string accessToken, bool manualLoginRequired)
@@ -54,58 +56,75 @@ namespace Leda.FacebookAdapter
 
 		private void AttemptToCreateActionClient(string accessToken, bool manualLoginRequired, string toPost)
 		{
-            if (!ConnectedToNetwork) 
-            { 
-                CompleteAction(ActionResult.PostError); 
-                return; 
+            if (!ActionInProgress)
+            {
+                if (!ConnectedToNetwork)
+                {
+                    CompleteAction(ActionResult.PostError);
+                    return;
+                }
+
+                ActionInProgress = true;
+
+                _actionClient = new FacebookClient(accessToken);
+                _actionClient.GetTaskAsync("me?fields=id")
+                    .ContinueWith(t =>
+                        {
+                            ActionInProgress = false;
+                            if (t.IsFaulted)
+                            {
+                                CompleteAction(string.IsNullOrEmpty(toPost) ? ActionResult.PostError : ActionResult.LoginError);
+                            }
+                            else
+                            {
+                                _loggedIn = true;
+                                AccessToken = accessToken;
+
+                                if (!string.IsNullOrEmpty(toPost))
+                                {
+                                    AttemptPost(toPost);
+                                }
+                                else
+                                {
+                                    CompleteAction(manualLoginRequired ? ActionResult.LoginSuccessful : ActionResult.LoginAlreadyLoggedIn);
+                                }
+                            }
+                        });
             }
-
-			_actionClient = new FacebookClient(accessToken);
-			_actionClient.GetTaskAsync("me?fields=id")
-				.ContinueWith(t =>
-					{
-						if (t.IsFaulted)
-						{
-							CompleteAction(string.IsNullOrEmpty(toPost) ? ActionResult.PostError : ActionResult.LoginError);
-						}
-						else
-						{
-							_loggedIn = true;
-							AccessToken = accessToken;
-
-							if (!string.IsNullOrEmpty(toPost)) { AttemptPost(toPost); }
-							else { CompleteAction(manualLoginRequired ? ActionResult.LoginSuccessful : ActionResult.LoginAlreadyLoggedIn); }
-						}
-					});
 		}
 			
 		public virtual void AttemptPost(string toPost)
 		{
-			if (_loggedIn)
-			{
-                _actionClient.PostTaskAsync("me/feed",
-                    new
-                    {
-                        message = toPost,
-                        name = ApplicationName,
-                        caption = Caption,
-                        description = Description,
-                        link = Link,
-                        picture = ImageUrl
-                    })
-                    .ContinueWith(t =>
-                    {
-                        CompleteAction(t.IsFaulted ? ActionResult.PostError : ActionResult.PostSuccessful);
-                    });
-			}
-			else if (!string.IsNullOrEmpty(AccessToken))
-			{
-				AttemptToCreateActionClient(AccessToken, false, toPost);
-			}
-			else
-			{
-				CompleteAction(ActionResult.PostNotLoggedIn);
-			}
+            if (!ActionInProgress)
+            {
+                if (_loggedIn)
+                {
+                    ActionInProgress = true;
+                    _actionClient.PostTaskAsync("me/feed",
+                        new
+                        {
+                            message = toPost,
+                            name = ApplicationName,
+                            caption = Caption,
+                            description = Description,
+                            link = Link,
+                            picture = ImageUrl
+                        })
+                        .ContinueWith(t =>
+                        {
+                            ActionInProgress = false;
+                            CompleteAction(t.IsFaulted ? ActionResult.PostError : ActionResult.PostSuccessful);
+                        });
+                }
+                else if (!string.IsNullOrEmpty(AccessToken))
+                {
+                    AttemptToCreateActionClient(AccessToken, false, toPost);
+                }
+                else
+                {
+                    CompleteAction(ActionResult.PostNotLoggedIn);
+                }
+            }
 		}
 
 		public virtual void AttemptLogout()
@@ -119,29 +138,36 @@ namespace Leda.FacebookAdapter
 
         public virtual void AttemptGetOwnDetails()
         {
-            IDictionary<string,object> result;
+            if (!ActionInProgress)
+            {
+                IDictionary<string, object> result;
 
-            if (_loggedIn)
-            {
-                _actionClient.GetTaskAsync("me?fields=first_name,last_name,link").ContinueWith(t =>
+                if (_loggedIn)
                 {
-                    if (!t.IsFaulted)
+                    ActionInProgress = true;
+
+                    _actionClient.GetTaskAsync("me?fields=first_name,last_name,link").ContinueWith(t =>
                     {
-                        result = (IDictionary<string, object>)t.Result;
-                        string myDetails = string.Format("Your name is: {0} {1} and your Facebook profile Url is: {3}",
-                                                          (string)result["first_name"], (string)result["last_name"],
-                                                          (string)result["link"]);
-                        Console.WriteLine(myDetails);
-                    }
-                });
-            }
-            else if (!string.IsNullOrEmpty(AccessToken))
-            {
-                AttemptToCreateActionClient(AccessToken, false, "");
-            }
-            else
-            {
-                CompleteAction(ActionResult.PostNotLoggedIn);
+                        if (!t.IsFaulted)
+                        {
+                            ActionInProgress = false;
+
+                            result = (IDictionary<string, object>)t.Result;
+                            string myDetails = string.Format("Your name is: {0} {1} and your Facebook profile Url is: {3}",
+                                                              (string)result["first_name"], (string)result["last_name"],
+                                                              (string)result["link"]);
+                            Console.WriteLine(myDetails);
+                        }
+                    });
+                }
+                else if (!string.IsNullOrEmpty(AccessToken))
+                {
+                    AttemptToCreateActionClient(AccessToken, false, "");
+                }
+                else
+                {
+                    CompleteAction(ActionResult.PostNotLoggedIn);
+                }
             }
         }
 	}
