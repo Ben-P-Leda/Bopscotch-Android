@@ -7,10 +7,14 @@ using Leda.Core.Gamestate_Management;
 
 using Leda.FacebookAdapter;
 
+using Bopscotch.Facebook;
+
 namespace Bopscotch.Interface.Dialogs.TitleScene
 {
     public class OptionsDialog : ButtonDialog
     {
+        public FacebookLoginManager FacebookLoginManager { private get; set; }
+
         public OptionsDialog()
             : base()
         {
@@ -32,6 +36,8 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
 
         public override void Activate()
         {
+            FacebookLoginManager.ConnectToDialog(this, _buttons["FacebookSwitch"]);
+
             base.Activate();
 
             SetSwitchButtonStates();
@@ -77,7 +83,7 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
                 case "MusicSwitch": MusicManager.Muted = !MusicManager.Muted; break;
                 case "SoundSwitch": SoundEffectManager.Muted = !SoundEffectManager.Muted; break;
                 case "HelperSwitch": Data.Profile.Settings.ShowPowerUpHelpers = !Data.Profile.Settings.ShowPowerUpHelpers; break;
-                case "FacebookSwitch": SetFacebookConnectionState(); break;
+                case "FacebookSwitch": FacebookLoginManager.SetFacebookConnectionState(); break;
             }
 
             Data.Profile.Save();
@@ -97,53 +103,6 @@ namespace Bopscotch.Interface.Dialogs.TitleScene
             }
 
             return false;
-        }
-
-        private void SetFacebookConnectionState()
-        {
-            if (!Game1.FacebookAdapter.ActionInProgress)
-            {
-                if (Game1.FacebookAdapter.IsLoggedIn)
-                {
-                    Game1.FacebookAdapter.AttemptLogout();
-                    Data.Profile.FacebookToken = "";
-                    Data.Profile.Save();
-                    _buttons["FacebookSwitch"].IconBackgroundTint = Color.Red;
-                }
-                else
-                {
-                    _buttons["FacebookSwitch"].IconBackgroundTint = Color.Gray;
-                    Game1.FacebookAdapter.ActionCallback = CompleteFacebookConnectionAttempt;
-                    Game1.FacebookAdapter.AttemptLogin();
-                }
-            }
-        }
-
-        private void CompleteFacebookConnectionAttempt(ActionResult actionResult)
-        {
-            Game1.FacebookAdapter.ActionCallback = null;
-            if ((actionResult == ActionResult.LoginSuccessful) || (actionResult == ActionResult.LoginAlreadyLoggedIn))
-            {
-                _buttons["FacebookSwitch"].IconBackgroundTint = Color.LawnGreen;
-
-                Data.Profile.FacebookToken = Game1.FacebookAdapter.AccessToken;
-                Data.Profile.Save();
-
-                HandleFirstLogin();
-            }
-            else
-            {
-                _buttons["FacebookSwitch"].IconBackgroundTint = Color.Red;
-            }
-        }
-
-        private void HandleFirstLogin()
-        {
-            if (!Data.Profile.AvatarCostumeUnlocked("Wizard"))
-            {
-                Data.Profile.UnlockCostume("Wizard");
-                DismissWithReturnValue("Facebook");
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -18,6 +18,7 @@ using Bopscotch.Interface.Dialogs.TitleScene;
 using Bopscotch.Interface.Content;
 using Bopscotch.Effects;
 using Bopscotch.Effects.Popups;
+using Bopscotch.Facebook;
 
 namespace Bopscotch.Scenes.NonGame
 {
@@ -32,10 +33,13 @@ namespace Bopscotch.Scenes.NonGame
 
         private PopupRequiringDismissal _titlePopup;
 
+        private FacebookLoginManager _facebookLoginManager;
+
         public TitleScene()
             : base()
         {
             _animationController = new AnimationController();
+            _facebookLoginManager = new FacebookLoginManager();
 
             _titlePopup = new PopupRequiringDismissal();
             _titlePopup.AnimationCompletionHandler = HandlePopupAnimationComplete;
@@ -44,11 +48,11 @@ namespace Bopscotch.Scenes.NonGame
             _unlockNotificationDialog = new NewContentUnlockedDialog();
 
             _dialogs.Add("reminder", new RateBuyReminderDialog());
-            _dialogs.Add("main", new MainMenuDialog());
+            _dialogs.Add("main", new MainMenuDialog() { FacebookLoginManager = _facebookLoginManager });
             _dialogs.Add("start", new StartMenuDialog());
             _dialogs.Add("survival-levels", new SurvivalStartCarouselDialog(RegisterGameObject, UnregisterGameObject));
             _dialogs.Add("characters", new CharacterSelectionCarouselDialog(RegisterGameObject, UnregisterGameObject));
-            _dialogs.Add("options", new OptionsDialog());
+            _dialogs.Add("options", new OptionsDialog() { FacebookLoginManager = _facebookLoginManager });
             _dialogs.Add("keyboard", new KeyboardDialog());
             _dialogs.Add("reset-areas", new ResetAreasConfirmDialog());
             _dialogs.Add("areas-reset", new ResetAreasCompleteDialog());
@@ -136,6 +140,7 @@ namespace Bopscotch.Scenes.NonGame
                 case "Options": ActivateDialog("options"); break;
                 case "Store": NextSceneType = typeof(StoreScene); Deactivate(); break;
                 case "Rate": RateGame("main"); break;
+                case "Facebook": HandleFirstFacebookLogin(); break;
                 case "Quit": ExitGame(); break;
             }
         }

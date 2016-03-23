@@ -95,6 +95,7 @@
     <Compile Include="Facebook\AndroidFacebookAuthorizationActivity.cs" />
     <Compile Include="Facebook\Definitions.cs" />
     <Compile Include="Facebook\FacebookAdapterBase.cs" />
+    <Compile Include="Facebook\FacebookLoginManager.cs" />
     <Compile Include="Facebook\IFacebookAdapter.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Gameplay\Controllers\PlayerTrackingCameraController.cs" />
