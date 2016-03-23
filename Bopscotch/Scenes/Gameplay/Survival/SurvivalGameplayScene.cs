@@ -95,7 +95,11 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private void HandleLevelSkip()
         {
             if ((_readyPopup.Visible) && (!_readyPopup.BeingDismissed)) { _readyPopup.Dismiss(); }
-            Profile.GoldenTickets--;
+
+            if (Data.Profile.CurrentAreaData.Name != "Tutorial")
+            {
+                Profile.GoldenTickets--;
+            }
             _player.TriggerLevelSkip();
             _paused = false;
         }
@@ -364,7 +368,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private void EnablePause()
         {
             _paused = true;
-            _pauseDialog.SkipLevelButtonDisabled = ((Profile.GoldenTickets < 1) || (Data.Profile.CurrentAreaData.Name == "Tutorial") || (_levelComplete));
+            _pauseDialog.SkipLevelButtonDisabled = (((Profile.GoldenTickets < 1) && (Data.Profile.CurrentAreaData.Name != "Tutorial")) || (_levelComplete));
             _pauseDialog.Activate();
         }
 
