@@ -172,6 +172,16 @@ namespace Leda.Core.Serialization
             return target;
         }
 
+        public T GetDataItem<T>(string name, T defaultValue)
+        {
+            if (_serializedData.Elements("dataitem").Any(x => x.Attribute("name").Value == "name"))
+            {
+                defaultValue = GetDataItem<T>("reminder-plays");
+            }
+
+            return defaultValue;
+        }
+
         public void GetDataForStaticListOfSerializables(string listName, List<ISerializable> targetList)
         {
             List<XElement> dataItems = (from el
