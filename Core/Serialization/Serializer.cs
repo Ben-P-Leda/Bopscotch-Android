@@ -19,11 +19,11 @@ namespace Leda.Core.Serialization
 
         public XElement SerializedData { get { return _serializedData; } }
 
-        public List<ISerializable> KnownSerializedObjects 
-        { 
-            set 
-            { 
-                _knownSerializedObjects = value; 
+        public List<ISerializable> KnownSerializedObjects
+        {
+            set
+            {
+                _knownSerializedObjects = value;
             }
             get
             {
@@ -172,6 +172,16 @@ namespace Leda.Core.Serialization
             return target;
         }
 
+        public T GetDataItem<T>(string name, T defaultValue)
+        {
+            if (_serializedData.Elements("dataitem").Any(x => x.Attribute("name").Value == name))
+            {
+                defaultValue = GetDataItem<T>(name);
+            }
+
+            return defaultValue;
+        }
+
         public void GetDataForStaticListOfSerializables(string listName, List<ISerializable> targetList)
         {
             List<XElement> dataItems = (from el
@@ -185,8 +195,8 @@ namespace Leda.Core.Serialization
                 {
                     List<XElement> objectData = (from el
                         in dataItems[0].Elements("object")
-                        where ( (string)el.Attribute("id") == targetList[i].ID && (string)el.Attribute("type") == targetList[i].GetType().ToString())
-                        select el).ToList();
+                                                 where ((string)el.Attribute("id") == targetList[i].ID && (string)el.Attribute("type") == targetList[i].GetType().ToString())
+                                                 select el).ToList();
 
                     if (objectData.Count > 0) { targetList[i].Deserialize(objectData[0]); }
                 }
@@ -209,7 +219,7 @@ namespace Leda.Core.Serialization
                     components[i] = components[i].Substring(components[i].IndexOf(":") + 1);
                 }
                 return new Vector2(
-                    (float)Convert.ToDouble(components[0]), 
+                    (float)Convert.ToDouble(components[0]),
                     (float)Convert.ToDouble(components[1].Trim('}')));
             }
             catch

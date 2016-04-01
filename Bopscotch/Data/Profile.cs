@@ -24,7 +24,7 @@ namespace Bopscotch.Data
             }
         }
 
-		public static bool HasRated { get { return Instance._hasRated; } }
+        public static bool HasRated { get { return Instance._hasRated; } }
 
         public static PhoneSettings Settings { get { return Instance._settings; } }
 
@@ -83,12 +83,14 @@ namespace Bopscotch.Data
         public static void UnlockCostume(string costumeName) { Instance.UnlockAvatarCostume(costumeName); }
         public static void DecreasePlaysToNextRatingReminder() { Instance.DecreasePlaysBeforeReminder(); }
         public static void UpdateReminderDetails() { Instance.UpdateReminderParameters(); }
+        public static bool AwardIapReward() { return Instance.CheckForIapReward(); }
 
         private Dictionary<string, AreaDataContainer> _areaLevelData;
         private string _currentArea;
         private bool _livesElementAdded;
         private int _livesRemaining;
         private int _goldenTicketCount;
+        private int _iapCount;
         private List<XElement> _newlyUnlockedItems;
         private List<XElement> _unlockedAvatarComponents;
 
@@ -190,14 +192,9 @@ namespace Bopscotch.Data
 
             _hasRated = serializer.GetDataItem<bool>("has-rated");
 
-            if (serializedData.Elements("dataitem").Any(x => x.Attribute("name").Value == "reminder-plays"))
-            {
-                _playsBeforeNextReminder = serializer.GetDataItem<int>("reminder-plays");
-            }
-            else
-            {
-                _playsBeforeNextReminder = Initial_Plays_Before_Rating_Reminder;
-            }
+            _playsBeforeNextReminder = serializer.GetDataItem<int>("reminder-plays", Initial_Plays_Before_Rating_Reminder);
+            _iapCount = serializer.GetDataItem<int>("iap-count", 0);
+
             _nextReminderDate = serializer.GetDataItem<DateTime>("next-reminder");
             _livesElementAdded = serializer.GetDataItem<bool>("lives-added");
             _livesRemaining = serializer.GetDataItem<int>("lives-remaining");
@@ -246,9 +243,9 @@ namespace Bopscotch.Data
                 {
                     _areaLevelData.Add(el.Attribute("name").Value, AreaDataContainer.CreateFromXml(el));
                 }
-                else if (el.Element("completion-unlockables") != null) 
-                { 
-                    _areaLevelData[el.Attribute("name").Value].SetCompletionUnlockables(el.Element("completion-unlockables")); 
+                else if (el.Element("completion-unlockables") != null)
+                {
+                    _areaLevelData[el.Attribute("name").Value].SetCompletionUnlockables(el.Element("completion-unlockables"));
                 }
             }
         }
@@ -267,14 +264,14 @@ namespace Bopscotch.Data
             }
             SaveData();
         }
-		
+
         private void SetRateOrBuyReminderFlag()
         {
             _rateBuyRemindersOn = true;
 
-			if (_hasRated)
-            { 
-                _rateBuyRemindersOn = false; 
+            if (_hasRated)
+            {
+                _rateBuyRemindersOn = false;
             }
             else if ((DateTime.Now < _nextReminderDate) && (DateTime.Now.AddDays(Days_Before_Reminders_Start) > _nextReminderDate))
             {
@@ -314,6 +311,22 @@ namespace Bopscotch.Data
             SaveData();
         }
 
+        private bool CheckForIapReward()
+        {
+            bool awardReward = false;
+
+            if (!CheckForAvatarCostumeUnlock("Mummy"))
+            {
+                _iapCount++;
+                if (_iapCount > 2)
+                {
+                    awardReward = true;
+                }
+            }
+
+            return awardReward;
+        }
+
         private void SaveData()
         {
             XDocument profileData = new XDocument(new XDeclaration("1.0", "utf", "yes"));
@@ -331,7 +344,8 @@ namespace Bopscotch.Data
             serializer.AddDataItem("config-settings", _settings);
             serializer.AddDataItem("has-rated", _hasRated);
             serializer.AddDataItem("reminder-plays", _playsBeforeNextReminder);
-            serializer.AddDataItem("next-reminder",_nextReminderDate);
+            serializer.AddDataItem("iap-count", _iapCount);
+            serializer.AddDataItem("next-reminder", _nextReminderDate);
             serializer.AddDataItem("lives-added", true);
             serializer.AddDataItem("lives-remaining", _livesRemaining);
             serializer.AddDataItem("lives-updated", _lastLivesUpdateTime);
@@ -466,7 +480,7 @@ namespace Bopscotch.Data
 
         private void HandleRatingTrigger()
         {
-            _hasRated = true; 
+            _hasRated = true;
             _rateBuyRemindersOn = false;
 
             SaveData();
