@@ -207,6 +207,7 @@
     <Compile Include="Interface\Dialogs\TitleScene\ResetAreasConfirmDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\StartMenuDialog.cs" />
     <Compile Include="Interface\Dialogs\TitleScene\SurvivalStartCarouselDialog.cs" />
+    <Compile Include="Interface\KeyboardHelper.cs" />
     <Compile Include="Interface\Objects\ComponentSetDisplayAvatar.cs" />
     <Compile Include="Interface\Objects\EditCharacter\CustomisationDisplayAvatar.cs" />
     <Compile Include="Interface\Objects\EditCharacter\CustomisationDisplayBlock.cs" />

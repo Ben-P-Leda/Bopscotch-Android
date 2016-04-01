@@ -139,7 +139,8 @@ namespace Bopscotch.Scenes.NonGame
                 case "Info": ActivateDialog("info"); break;
                 case "Options": ActivateDialog("options"); break;
                 case "Store": NextSceneType = typeof(StoreScene); Deactivate(); break;
-                case "Rate": RateGame("main"); break;
+                //case "Rate": RateGame("main"); break;
+                case "Rate": KeyboardHelper.BeginShowKeyboardInput("Test","Test","Test",null); break;
                 case "Facebook": HandleFirstFacebookLogin(); break;
                 case "Quit": ExitGame(); break;
             }
