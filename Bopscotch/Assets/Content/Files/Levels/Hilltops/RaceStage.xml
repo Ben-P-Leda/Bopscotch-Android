@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <leveldata>
-    <race-laps>3</race-laps>
+    <race-laps>1</race-laps>
     <background texture="background-1" />
     <terrain>
         <blocks>
