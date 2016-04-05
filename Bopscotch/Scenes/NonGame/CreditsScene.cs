@@ -9,7 +9,7 @@ using Leda.Core.Asset_Management;
 using Bopscotch.Scenes.BaseClasses;
 using Bopscotch.Interface;
 using Bopscotch.Interface.Content;
-using Bopscotch.Interface.Dialogs;
+using Bopscotch.Interface.Dialogs.Generic;
 
 namespace Bopscotch.Scenes.NonGame
 {

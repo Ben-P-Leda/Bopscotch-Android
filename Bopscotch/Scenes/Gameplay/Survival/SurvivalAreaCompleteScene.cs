@@ -17,17 +17,20 @@ using Bopscotch.Scenes.NonGame;
 using Bopscotch.Data;
 using Bopscotch.Interface;
 using Bopscotch.Interface.Content;
+using Bopscotch.Interface.Dialogs.Generic;
 using Bopscotch.Gameplay.Objects.Environment;
 
 namespace Bopscotch.Scenes.Gameplay.Survival
 {
-    public class SurvivalAreaCompleteScene : FlatContentScene
+    public class SurvivalAreaCompleteScene : ContentSceneWithControlDialog
     {
         private AnimationController _animationController;
         private Effects.Popups.PopupRequiringDismissal _congratulationsPopup;
         private Timer _textFadeTimer;
 
         private SurvivalAreaCompleteContentFactory _contentFactory;
+
+        private ShareExitDialog _shareExitDialog;
 
         private bool _displayReminderOnExit;
 
@@ -41,10 +44,16 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             GlobalTimerController.GlobalTimer.RegisterUpdateCallback(_textFadeTimer.Tick);
 
             _congratulationsPopup = new Effects.Popups.PopupRequiringDismissal();
-            _congratulationsPopup.DisplayPosition = new Vector2(Definitions.Back_Buffer_Center.X, 150.0f);
+            _congratulationsPopup.DisplayPosition = new Vector2(Definitions.Back_Buffer_Center.X, 135.0f);
             _congratulationsPopup.AnimationCompletionHandler = HandlePopupAnimationComplete;
 
             _contentFactory = new SurvivalAreaCompleteContentFactory(RegisterGameObject);
+
+            _shareExitDialog = new ShareExitDialog();
+            _shareExitDialog.SelectionCallback = HandleDialogDismiss;
+            Dialog = _shareExitDialog;
+
+            Overlay.TintFraction = 0.75f;
         }
 
         private void HandleTimerActionComplete()
@@ -75,6 +84,14 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             base.UnregisterGameObject(toUnregister);
         }
 
+        private void HandleDialogDismiss(string buttonCaption)
+        {
+            if (buttonCaption == "Exit")
+            {
+                ExitScene();
+            }
+        }
+
         protected override void CompletePostStartupLoadInitialization()
         {
             _congratulationsPopup.MappingName = Popup_Texture_Name;
@@ -88,8 +105,22 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
             FlushGameObjects();
             CreateBackgroundForScene(Profile.CurrentAreaData.SelectionTexture, new int[] { 0, 1, 2 });
-            RegisterGameObject(new Effects.FullScreenColourOverlay() { TintFraction = 0.75f });
+            RegisterGameObject(Overlay);
             RegisterGameObject(_congratulationsPopup);
+            RegisterGameObject(_shareExitDialog);
+
+            if ((ContentHasBeenUnlocked) && (Data.Profile.CurrentAreaData.Name != "Tutorial"))
+            {
+                _shareExitDialog.ShareOptionEnabled = true;
+                _shareExitDialog.ShareDialogText = "Share your achievement for 10 extra lives!";
+                _shareExitDialog.ShareDialogDefaultValue = "I completed the " + Data.Profile.CurrentAreaData.Name + " area in Bopscotch!";
+                _shareExitDialog.SharePostText = "I just completed the " + Data.Profile.CurrentAreaData.Name + " area in Bopscotch! Ddownload Bopscotch now for FREE on Android, iPhone, iPad and Windows Phone and see if you can do it too - or challenge me to a race!";
+                _shareExitDialog.AwardShareReward = AwardLivesForSharing;
+            }
+            else
+            {
+                _shareExitDialog.ShareOptionEnabled = false;
+            }
 
             _contentFactory.CreateContentForHeaderMessage();
 
@@ -109,6 +140,12 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             SoundEffectManager.PlayEffect("race-winner");
 
             base.Activate();
+        }
+
+        private void AwardLivesForSharing()
+        {
+            Data.Profile.Lives += 10;
+            Data.Profile.Save();
         }
 
         private bool CurrentAreaHasUnlockableContent
@@ -138,9 +175,6 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         public override void Update(GameTime gameTime)
         {
-            for (int i = 0; i < _inputProcessors.Count; i++) { _inputProcessors[i].Update(MillisecondsSinceLastUpdate); }
-            CheckAndHandleClear();
-
             if (_congratulationsPopup.AwaitingDismissal) { ContentFadeFraction = _textFadeTimer.CurrentActionProgress; }
 
             _animationController.Update(MillisecondsSinceLastUpdate);
@@ -165,11 +199,6 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
             NextSceneType = typeof(TitleScene);
             Deactivate();
-        }
-
-        protected override void HandleBackButtonPress()
-        {
-            ExitScene();
         }
 
         private const string Popup_Texture_Name = "popup-area-complete";

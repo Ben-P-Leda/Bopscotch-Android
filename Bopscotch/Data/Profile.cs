@@ -566,5 +566,7 @@ namespace Bopscotch.Data
 
         public const int Race_Win_Lives_Max = 40;
         public const int Race_Win_Lives_Reward = 5;
+
+        public const int Share_Lives_Reward = 3;
     }
 }
