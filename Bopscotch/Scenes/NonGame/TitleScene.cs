@@ -139,8 +139,7 @@ namespace Bopscotch.Scenes.NonGame
                 case "Info": ActivateDialog("info"); break;
                 case "Options": ActivateDialog("options"); break;
                 case "Store": NextSceneType = typeof(StoreScene); Deactivate(); break;
-                //case "Rate": RateGame("main"); break;
-                case "Rate": KeyboardHelper.BeginShowKeyboardInput("Test","Test","Test",null); break;
+                case "Rate": RateGame("main"); break;
                 case "Facebook": HandleFirstFacebookLogin(); break;
                 case "Quit": ExitGame(); break;
             }
@@ -211,6 +210,7 @@ namespace Bopscotch.Scenes.NonGame
             {
                 case "Start!":
                     Data.Profile.DecreasePlaysToNextRatingReminder();
+                    NextSceneParameters.Set("clear-progress-flag", true);
                     NextSceneType = typeof(Gameplay.Survival.SurvivalGameplayScene);
                     _musicToStartOnDeactivation = "survival-gameplay";
                     _titlePopup.Dismiss();
@@ -329,6 +329,8 @@ namespace Bopscotch.Scenes.NonGame
         {
             if (!NextSceneParameters.Get<bool>("music-already-running")) { MusicManager.PlayLoopedMusic("title"); }
 
+            Android.Util.Log.Debug("LEDA-FB-1", NextSceneParameters.Get<bool>("has-made-progress").ToString());
+
             _musicToStartOnDeactivation = "";
 
             base.Activate();
@@ -341,6 +343,8 @@ namespace Bopscotch.Scenes.NonGame
             if (_firstDialog == Rate_Game_Dialog) { DisplayRatingUnlockedContent(); }
             else if (string.IsNullOrEmpty(_firstDialog)) { _firstDialog = Default_First_Dialog; }
             else if ((_firstDialog == "start") && (Data.Profile.RateBuyRemindersOn)) { _firstDialog = Reminder_Dialog; }
+
+            Android.Util.Log.Debug("LEDA-FB-2", NextSceneParameters.Get<bool>("has-made-progress").ToString());
 
             UnlockIfUpgradingFromLegacy();
 
@@ -357,26 +361,6 @@ namespace Bopscotch.Scenes.NonGame
                 Data.Profile.UnlockNamedArea("Waterfall");
             }
         }
-
-        //private void UnlockFullVersionContent()
-        //{
-        //    _unlockNotificationDialog.PrepareForActivation();
-
-        //    if ((Data.Profile.AreaIsLocked("Waterfall")) && (Data.Profile.AreaHasBeenCompleted("Hilltops")))
-        //    {
-        //        Data.Profile.UnlockNamedArea("Waterfall");
-        //        _unlockNotificationDialog.AddItem("New Levels - Waterfall Area");
-        //    }
-
-        //    //if (!Data.Profile.AvatarCostumeUnlocked("Wizard"))
-        //    //{
-        //    //    Data.Profile.UnlockCostume("Wizard");
-        //    //    Data.Profile.UnlockCostume("Mummy");
-        //    //    _unlockNotificationDialog.AddItem("New Costumes - Wizard, Mummy");
-        //    //}
-
-        //    if (_unlockNotificationDialog.HasContent) { _firstDialog = "unlocks"; }
-        //}
 
         public override void Update(GameTime gameTime)
         {

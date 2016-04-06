@@ -34,6 +34,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private SurvivalRankingCoordinator _rankingCoordinator;
         private bool _levelComplete;
         private int _attemptsAtCurrentLevel;
+        private bool _hasMadeProgress;
 
         private SurvivalDataDisplay StatusDisplay { get { return (SurvivalDataDisplay)_statusDisplay; } set { _statusDisplay = value; } }
 
@@ -75,6 +76,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
                 case "Quit":
                     NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "start");
                     NextSceneParameters.Set("music-already-running", false);
+                    NextSceneParameters.Set("has-made-progress", _hasMadeProgress);
                     NextSceneType = typeof(TitleScene); 
                     Profile.PauseOnSceneActivation = false; 
                     Deactivate(); 
@@ -141,7 +143,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             _rankingCoordinator.LevelCompleted = true;
 
             Definitions.SurvivalRank rank = _rankingCoordinator.GetRankForLevel(_levelData);
-            Profile.CurrentAreaData.UpdateCurrentLevelResults(_levelData.PointsScoredThisLevel, rank);
+            _hasMadeProgress = Profile.CurrentAreaData.UpdateCurrentLevelResults(_levelData.PointsScoredThisLevel, rank);
             Profile.Save();
 
             if (Profile.CurrentAreaData.Name == "Tutorial")
@@ -160,7 +162,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             Profile.Save();
 
             if (Profile.CurrentAreaData.Completed) 
-            { 
+            {
                 CompleteArea(); 
             }
             else 
@@ -211,6 +213,10 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             if (_levelData != null) { ObjectsToSerialize.Remove(_levelData); }
 
             _attemptsAtCurrentLevel = NextSceneParameters.Get<int>("attempt-count");
+            if (NextSceneParameters.Get<bool>("clear-progress-flag"))
+            {
+                _hasMadeProgress = false;
+            }
 
             _levelComplete = false;
             _rankingCoordinator.Reset();

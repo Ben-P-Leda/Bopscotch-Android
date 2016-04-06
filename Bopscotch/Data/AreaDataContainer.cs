@@ -125,8 +125,10 @@ namespace Bopscotch.Data
             return ticketData;
         }
 
-        public void UpdateCurrentLevelResults(int score, Definitions.SurvivalRank rank)
+        public bool UpdateCurrentLevelResults(int score, Definitions.SurvivalRank rank)
         {
+            bool hasProgressed = LevelScores.Count <= LastSelectedLevel;
+
             while (LevelScores.Count <= LastSelectedLevel) { LevelScores.Add(0); }
             LevelScores[LastSelectedLevel] = score;
 
@@ -135,6 +137,8 @@ namespace Bopscotch.Data
             { 
                 LevelRanks[LastSelectedLevel] = rank; 
             }
+
+            return hasProgressed;
         }
 
         public void UpdateLevelSelection(int stepDirection)
