@@ -95,6 +95,7 @@
     <Compile Include="Facebook\AndroidFacebookAuthorizationActivity.cs" />
     <Compile Include="Facebook\Definitions.cs" />
     <Compile Include="Facebook\FacebookAdapterBase.cs" />
+    <Compile Include="Facebook\FacebookConfigFactory.cs" />
     <Compile Include="Facebook\FacebookLoginManager.cs" />
     <Compile Include="Facebook\IFacebookAdapter.cs" />
     <Compile Include="Facebook\ShareAction.cs" />

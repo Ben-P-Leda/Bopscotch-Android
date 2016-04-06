@@ -13,6 +13,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
     public class RaceFinishScene : MenuDialogScene
     {
         private AnimationController _animationController;
+        private Bopscotch.Facebook.ShareAction _exitShareAction;
 
         public RaceFinishScene()
             : base()
@@ -26,6 +27,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
         {
             NextSceneParameters.Clear();
             NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "start");
+            NextSceneParameters.Set("share-action", _exitShareAction);
             NextSceneType = typeof(TitleScene);
             Deactivate();
         }
@@ -48,8 +50,20 @@ namespace Bopscotch.Scenes.Gameplay.Race
         {
             base.Activate();
 
-            ((ResultsDialog)_dialogs["results"]).Outcome = NextSceneParameters.Get<Definitions.RaceOutcome>(Outcome_Parameter_Name);
-            ((ResultsDialog)_dialogs["results"]).LivesAwarded = NextSceneParameters.Get<bool>("race-lives-awarded");
+            Definitions.RaceOutcome outcome = NextSceneParameters.Get<Definitions.RaceOutcome>(Outcome_Parameter_Name);
+            bool awardLives = NextSceneParameters.Get<bool>("race-lives-awarded");
+
+            ((ResultsDialog)_dialogs["results"]).Outcome = outcome;
+            ((ResultsDialog)_dialogs["results"]).LivesAwarded = awardLives;
+
+            if (outcome == Definitions.RaceOutcome.OwnPlayerWin)
+            {
+                _exitShareAction = awardLives ? Bopscotch.Facebook.ShareAction.RaceWonAddLives : Bopscotch.Facebook.ShareAction.RaceWon;
+            }
+            else
+            {
+                _exitShareAction = Facebook.ShareAction.None;
+            }
         }
 
         protected override void CompleteActivation()

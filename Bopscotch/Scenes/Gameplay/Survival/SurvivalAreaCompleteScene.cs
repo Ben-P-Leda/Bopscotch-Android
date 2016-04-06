@@ -92,7 +92,14 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             RegisterGameObject(new Effects.FullScreenColourOverlay() { TintFraction = 0.75f });
             RegisterGameObject(_congratulationsPopup);
 
-            _exitShareAction = ContentHasBeenUnlocked ? Bopscotch.Facebook.ShareAction.AreaComplete : Bopscotch.Facebook.ShareAction.None;
+            if ((Profile.CurrentAreaData.Name != "Tutorial") && (ContentHasBeenUnlocked))
+            {
+                _exitShareAction = Facebook.ShareAction.AreaComplete;
+            }
+            else
+            {
+                _exitShareAction = Facebook.ShareAction.None;
+            }
 
             _contentFactory.CreateContentForHeaderMessage();
 

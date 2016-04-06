@@ -34,12 +34,14 @@ namespace Bopscotch.Scenes.NonGame
         private PopupRequiringDismissal _titlePopup;
 
         private FacebookLoginManager _facebookLoginManager;
+        private FacebookConfigurator _facebookConfigurator;
 
         public TitleScene()
             : base()
         {
             _animationController = new AnimationController();
             _facebookLoginManager = new FacebookLoginManager();
+            _facebookConfigurator = new FacebookConfigurator();
 
             _titlePopup = new PopupRequiringDismissal();
             _titlePopup.AnimationCompletionHandler = HandlePopupAnimationComplete;
@@ -342,7 +344,10 @@ namespace Bopscotch.Scenes.NonGame
             else if (string.IsNullOrEmpty(_firstDialog)) { _firstDialog = Default_First_Dialog; }
             else if ((_firstDialog == "start") && (Data.Profile.RateBuyRemindersOn)) { _firstDialog = Reminder_Dialog; }
 
-            Android.Util.Log.Debug("LEDA-FB-2", NextSceneParameters.Get<Bopscotch.Facebook.ShareAction>("share-action").ToString());
+            if ((NextSceneParameters.Get<ShareAction>("share-action") != ShareAction.None) && (Game1.FacebookAdapter.IsLoggedIn))
+            {
+                LaunchFacebookShareModal(NextSceneParameters.Get<ShareAction>("share-action"));
+            }
 
             UnlockIfUpgradingFromLegacy();
 
@@ -350,6 +355,34 @@ namespace Bopscotch.Scenes.NonGame
             _doNotExitOnTitleDismiss = false;
 
             base.CompleteActivation();
+        }
+
+        private void LaunchFacebookShareModal(ShareAction shareAction)
+        {
+            _facebookConfigurator.ConfigureForShareAction(shareAction);
+
+            Bopscotch.Interface.KeyboardHelper.BeginShowKeyboardInput(
+                Translator.Translation("Share on Facebook"),
+                Translator.Translation(_facebookConfigurator.ModalPrompt),
+                Translator.Translation(_facebookConfigurator.ModalDefaultText),
+                ShareResult);
+        }
+
+        private void ShareResult(IAsyncResult result)
+        {
+            string message = Bopscotch.Interface.KeyboardHelper.EndShowKeyboardInput(result);
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                Game1.FacebookAdapter.Caption = "www.ledaentertainment.com";
+                Game1.FacebookAdapter.Description = _facebookConfigurator.PostText;
+                Game1.FacebookAdapter.AttemptPost(message);
+
+                if (_facebookConfigurator.LivesToAdd > 0)
+                {
+                    Data.Profile.Lives += _facebookConfigurator.LivesToAdd;
+                    Data.Profile.Save();
+                }
+            }
         }
 
         private void UnlockIfUpgradingFromLegacy()
