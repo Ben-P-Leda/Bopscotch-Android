@@ -329,8 +329,6 @@ namespace Bopscotch.Scenes.NonGame
         {
             if (!NextSceneParameters.Get<bool>("music-already-running")) { MusicManager.PlayLoopedMusic("title"); }
 
-            Android.Util.Log.Debug("LEDA-FB-1", NextSceneParameters.Get<bool>("has-made-progress").ToString());
-
             _musicToStartOnDeactivation = "";
 
             base.Activate();
@@ -344,7 +342,7 @@ namespace Bopscotch.Scenes.NonGame
             else if (string.IsNullOrEmpty(_firstDialog)) { _firstDialog = Default_First_Dialog; }
             else if ((_firstDialog == "start") && (Data.Profile.RateBuyRemindersOn)) { _firstDialog = Reminder_Dialog; }
 
-            Android.Util.Log.Debug("LEDA-FB-2", NextSceneParameters.Get<bool>("has-made-progress").ToString());
+            Android.Util.Log.Debug("LEDA-FB-2", NextSceneParameters.Get<Bopscotch.Facebook.ShareAction>("share-action").ToString());
 
             UnlockIfUpgradingFromLegacy();
 

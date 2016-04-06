@@ -29,6 +29,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
         private SurvivalAreaCompleteContentFactory _contentFactory;
 
+        private Bopscotch.Facebook.ShareAction _exitShareAction;
         private bool _displayReminderOnExit;
 
         public SurvivalAreaCompleteScene()
@@ -90,6 +91,8 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             CreateBackgroundForScene(Profile.CurrentAreaData.SelectionTexture, new int[] { 0, 1, 2 });
             RegisterGameObject(new Effects.FullScreenColourOverlay() { TintFraction = 0.75f });
             RegisterGameObject(_congratulationsPopup);
+
+            _exitShareAction = ContentHasBeenUnlocked ? Bopscotch.Facebook.ShareAction.AreaComplete : Bopscotch.Facebook.ShareAction.None;
 
             _contentFactory.CreateContentForHeaderMessage();
 
@@ -162,6 +165,8 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         {
             if (_displayReminderOnExit) { NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "reminder"); }
             else { NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "survival-levels"); }
+
+            NextSceneParameters.Set("share-action", _exitShareAction);
 
             NextSceneType = typeof(TitleScene);
             Deactivate();

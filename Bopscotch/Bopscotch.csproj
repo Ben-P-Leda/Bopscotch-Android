@@ -97,6 +97,7 @@
     <Compile Include="Facebook\FacebookAdapterBase.cs" />
     <Compile Include="Facebook\FacebookLoginManager.cs" />
     <Compile Include="Facebook\IFacebookAdapter.cs" />
+    <Compile Include="Facebook\ShareAction.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Gameplay\Controllers\PlayerTrackingCameraController.cs" />
     <Compile Include="Gameplay\Coordination\RacePowerUpCoordinator.cs" />

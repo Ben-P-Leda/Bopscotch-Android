@@ -7,7 +7,7 @@
       <unlockable type="avatar-costume" unlocked="false" name="Teacher" trial-unlockable="true" />
     </completion-unlockables>
   </area>
-  <area name="Hilltops" level-count="30" selection-texture="background-1" difficulty-tag="Easy" speed-step="0" locked="true">
+  <area name="Hilltops" level-count="3" selection-texture="background-1" difficulty-tag="Easy" speed-step="0" locked="true">
     <completion-unlockables>
       <unlockable type="area" unlocked="false" name="Waterfall" />
       <unlockable type="golden-ticket" unlocked="false" units="1" />

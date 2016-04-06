@@ -76,7 +76,10 @@ namespace Bopscotch.Scenes.Gameplay.Survival
                 case "Quit":
                     NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "start");
                     NextSceneParameters.Set("music-already-running", false);
-                    NextSceneParameters.Set("has-made-progress", _hasMadeProgress);
+                    if (_hasMadeProgress)
+                    {
+                        NextSceneParameters.Set("share-action", Bopscotch.Facebook.ShareAction.Progress);
+                    }
                     NextSceneType = typeof(TitleScene); 
                     Profile.PauseOnSceneActivation = false; 
                     Deactivate(); 
