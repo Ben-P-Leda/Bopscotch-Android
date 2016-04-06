@@ -2,15 +2,15 @@
 
 using Android.Content;
 
-namespace Bopscotch.Interface.Dialogs.Generic
+namespace Bopscotch.Interface.Dialogs
 {
     public class BackDialog : ButtonDialog
     {
         public BackDialog()
             : base()
         {
-            Height = Constants.Dialog_Height;
-            TopYWhenActive = Definitions.Back_Buffer_Height - (Constants.Dialog_Height + Constants.Bottom_Margin);
+            Height = Dialog_Height;
+            TopYWhenActive = Definitions.Back_Buffer_Height - (Dialog_Height + Bottom_Margin);
                 
             _cancelButtonCaption = "Back";
         }
@@ -19,12 +19,12 @@ namespace Bopscotch.Interface.Dialogs.Generic
         {
             ClearButtons();
 
-            AddButton("Back", new Vector2(Definitions.Left_Button_Column_X, Constants.Button_Y), Button.ButtonIcon.Back, Color.Red, 0.6f);
+            AddButton("Back", new Vector2(Definitions.Left_Button_Column_X, Button_Y), Button.ButtonIcon.Back, Color.Red, 0.6f);
 
-            AddIconButton("Facebook", new Vector2(Definitions.Right_Button_Column_X + Social_Button_Spacing, Constants.Button_Y), Button.ButtonIcon.Facebook, Color.DodgerBlue, 0.6f);
-            AddIconButton("Twitter", new Vector2(Definitions.Right_Button_Column_X, Constants.Button_Y), Button.ButtonIcon.Twitter, Color.DodgerBlue, 0.6f);
-            AddIconButton("Leda", new Vector2(Definitions.Right_Button_Column_X - Social_Button_Spacing, Constants.Button_Y), Button.ButtonIcon.Website, Color.DodgerBlue, 0.6f);
-            AddIconButton("Rate", new Vector2(Definitions.Right_Button_Column_X - (Social_Button_Spacing * 2), Constants.Button_Y), Button.ButtonIcon.Rate, Color.Orange, 0.6f);
+            AddIconButton("Facebook", new Vector2(Definitions.Right_Button_Column_X + Social_Button_Spacing, Button_Y), Button.ButtonIcon.Facebook, Color.DodgerBlue, 0.6f);
+            AddIconButton("Twitter", new Vector2(Definitions.Right_Button_Column_X, Button_Y), Button.ButtonIcon.Twitter, Color.DodgerBlue, 0.6f);
+            AddIconButton("Leda", new Vector2(Definitions.Right_Button_Column_X - Social_Button_Spacing, Button_Y), Button.ButtonIcon.Website, Color.DodgerBlue, 0.6f);
+            AddIconButton("Rate", new Vector2(Definitions.Right_Button_Column_X - (Social_Button_Spacing * 2), Button_Y), Button.ButtonIcon.Rate, Color.Orange, 0.6f);
 
             base.Activate();
         }
@@ -75,6 +75,10 @@ namespace Bopscotch.Interface.Dialogs.Generic
             return false;
         }
 
+        private const int Dialog_Height = 150;
+        private const float Bottom_Margin = 20.0f;
+
+        private const float Button_Y = 75.0f;
         private const float Social_Button_Spacing = 125.0f;
     }
 }

@@ -178,9 +178,7 @@
     <Compile Include="Interface\Dialogs\DisconnectedDialog.cs" />
     <Compile Include="Interface\Dialogs\EditCharacter\ComponentSelectionCarouselDialog.cs" />
     <Compile Include="Interface\Dialogs\EditCharacter\ComponentSetSelectionCarouselDialog.cs" />
-    <Compile Include="Interface\Dialogs\Generic\BackDialog.cs" />
-    <Compile Include="Interface\Dialogs\Generic\Constants.cs" />
-    <Compile Include="Interface\Dialogs\Generic\ShareExitDialog.cs" />
+    <Compile Include="Interface\Dialogs\HelpScenes\BackDialog.cs" />
     <Compile Include="Interface\Dialogs\KeyboardDialog.cs" />
     <Compile Include="Interface\Dialogs\RaceFinishScene\ResultsAvatar.cs" />
     <Compile Include="Interface\Dialogs\RaceFinishScene\ResultsDialog.cs" />

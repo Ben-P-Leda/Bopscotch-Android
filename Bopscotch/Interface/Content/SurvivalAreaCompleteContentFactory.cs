@@ -86,7 +86,7 @@ namespace Bopscotch.Interface.Content
                 {
                     FadeFraction = 0.0f,
                     FadeFractionModifier = LockStateFadeModifier(lockState),
-                    Scale = 0.45f
+                    Scale = 0.5f
                 });
         }
 
@@ -110,7 +110,7 @@ namespace Bopscotch.Interface.Content
                 });
 
             _registerObject(
-                new ImageContentWithGlow("golden-ticket", new Vector2(Unlock_Image_X, yPosition), (lockState != Profile.LockState.NewlyUnlocked), 0.7f, 0.45f)
+                new ImageContentWithGlow("golden-ticket", new Vector2(Unlock_Image_X, yPosition), (lockState != Profile.LockState.NewlyUnlocked), 0.75f, 0.5f)
                 {
                     FadeFraction = 0.0f,
                     FadeFractionModifier = LockStateFadeModifier(lockState)
@@ -140,7 +140,7 @@ namespace Bopscotch.Interface.Content
             avatar.SkinSkeleton();
             avatar.FadeFraction = 0.0f;
             avatar.FadeFractionModifier = LockStateFadeModifier(lockState);
-            avatar.Scale = 0.6f;
+            avatar.Scale = 0.65f;
             _registerObject(avatar);
         }
 
@@ -169,7 +169,7 @@ namespace Bopscotch.Interface.Content
             avatar.SkinSkeleton();
             avatar.FadeFraction = 0.0f;
             avatar.FadeFractionModifier = LockStateFadeModifier(lockState);
-            avatar.Scale = 0.6f;
+            avatar.Scale = 0.65f;
             _registerObject(avatar);
         }
 
@@ -219,19 +219,19 @@ namespace Bopscotch.Interface.Content
         }
 
         private const string Factory_Manager_Key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtNa/c";
-        private const float Message_Top_Y = 160.0f;
+        private const float Message_Top_Y = 175.0f;
         private const float Message_Line_Height = 40.0f;
         private const float Text_Scale = 0.6f;
         private const float Outline_Thickness = 4.0f;
 
-        private const float Content_Top_Y = 280.0f;
+        private const float Content_Top_Y = 350.0f;
 
-        private const float Unlock_Line_Height = 85.0f;
+        private const float Unlock_Line_Height = 105.0f;
         private const float Unlock_Icon_X = 250.0f;
         private const float Unlock_Icon_Scale = 0.5f;
         private const float Unlock_Text_X = 275.0f;
         private const float Unlock_Text_Y_Offset = -25.0f;
-        private const float Unlock_Text_Scale = 0.55f;
+        private const float Unlock_Text_Scale = 0.6f;
         private const float Unlock_Image_X = 1255.0f;
 
         private const string Avatar_Costume_Display_Skeleton = "player-side";

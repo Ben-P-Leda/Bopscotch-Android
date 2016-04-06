@@ -13,11 +13,10 @@ using Leda.Core.Timing;
 using Bopscotch.Data;
 using Bopscotch.Data.Avatar;
 using Bopscotch.Gameplay.Objects.Characters.Player;
-using Bopscotch.Interface.Dialogs.Generic;
 
 namespace Bopscotch.Interface.Dialogs.RaceFinishScene
 {
-    public class ResultsDialog : ShareExitDialog
+    public class ResultsDialog : ButtonDialog
     {
         private Scene.ObjectRegistrationHandler _registerObject;
 
@@ -28,17 +27,11 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
         private SoundEffectInstance _resultsSoundInstance;
         private bool _displayLivesAward;
 
-        public override bool ShareOptionEnabled 
-        { 
-            protected get { return ((base.ShareOptionEnabled) && (Outcome == Definitions.RaceOutcome.OwnPlayerWin)); }
-            set { base.ShareOptionEnabled = value; }
-        }
-
         public Definitions.RaceOutcome Outcome { private get; set; }
         public bool LivesAwarded { private get; set; }
 
         public ResultsDialog(Scene.ObjectRegistrationHandler objectRegistrationHandler)
-            : base(625)
+            : base()
         {
             _registerObject = objectRegistrationHandler;
 
@@ -46,6 +39,12 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
 
             Height = Dialog_Height;
             TopYWhenActive = Top_Y_When_Active;
+
+            AddButton("Share", new Vector2(Definitions.Left_Button_Column_X, 625), Button.ButtonIcon.Facebook, Color.Orange, 0.7f);
+            AddButton("Exit", new Vector2(Definitions.Right_Button_Column_X, 625), Button.ButtonIcon.Play, Color.Red, 0.7f);
+
+            _defaultButtonCaption = "Exit";
+            _cancelButtonCaption = "Exit";
 
             _resultsAnnouncementTimer = new Timer("", AnnounceResults);
             GlobalTimerController.GlobalTimer.RegisterUpdateCallback(_resultsAnnouncementTimer.Tick);
@@ -92,12 +91,16 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
 
         public override void Activate()
         {
-            ShareDialogText = LivesAwarded
-                ? "Say something about your victory for extra adventure lives"
-                : "Say something about your victory";
-            ShareDialogDefaultValue = "I won a race on Bopscotch!";
-            SharePostText = "I just won a race on Bopscotch! Why don't you race me sometime? Download Bopscotch now for FREE on Android, iPhone, iPad and Windows Phone.";
-            AwardShareReward = AwardLivesForSharing;
+            if ((Game1.FacebookAdapter.IsLoggedIn) && (Outcome == Definitions.RaceOutcome.OwnPlayerWin))
+            {
+                _buttons["Share"].Disabled = false;
+                ActivateButton("Share");
+            }
+            else
+            {
+                _buttons["Share"].Disabled = true;
+                ActivateButton("Exit");
+            }
 
             base.Activate();
 
@@ -114,15 +117,6 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
 
             _glowBurst.Visible = false;
             _displayLivesAward = false;
-        }
-
-        private void AwardLivesForSharing()
-        {
-            if (LivesAwarded)
-            {
-                Data.Profile.Lives += Data.Profile.Share_Lives_Reward;
-                Data.Profile.Save();
-            }
         }
 
         private void SynchroniseComponentsWithDialog()
@@ -152,6 +146,45 @@ namespace Bopscotch.Interface.Dialogs.RaceFinishScene
                 TextWriter.Write(Translator.Translation("race-lives-award").Replace("[QUANTITY]", Data.Profile.Race_Win_Lives_Reward.ToString()), 
                     spriteBatch, new Vector2(Definitions.Back_Buffer_Center.X, WorldPosition.Y + 480.0f), Color.White, Color.Black, 3.0f, 
                     0.75f, 0.01f, TextWriter.Alignment.Center);
+            }
+        }
+
+        protected override void Dismiss()
+        {
+            if (_activeButtonCaption == "Share")
+            {
+                string prompt = LivesAwarded
+                    ? "Say something about your victory for extra adventure lives"
+                    : "Say something about your victory";
+
+                Bopscotch.Interface.KeyboardHelper.BeginShowKeyboardInput(
+                    Translator.Translation("Share on Facebook"),
+                    Translator.Translation(prompt),
+                    Translator.Translation("I won a race on Bopscotch!"),
+                    ShareResult);
+            }
+            else
+            {
+                base.Dismiss();
+            }
+        }
+
+        private void ShareResult(IAsyncResult result)
+        {
+            string message = Bopscotch.Interface.KeyboardHelper.EndShowKeyboardInput(result);
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                Android.Util.Log.Debug("LEDA-FB", "Post message: " + message);
+
+                // NOTE: Zone name is not working (look into this, probably trying to use the adventure setting rather than the race...)
+                // TODO: Award +3 extra lives for sharing
+
+                Game1.FacebookAdapter.Caption = "www.ledaentertainment.com";
+                Game1.FacebookAdapter.Description = "I just won a race in Bopscotch's " + Data.Profile.CurrentAreaData.Name + " zone! Why don't you race me sometime? Download Bopscotch now for FREE on Android, iPhone, iPad and Windows Phone.";
+                Game1.FacebookAdapter.AttemptPost(message);
+
+
+                DismissWithReturnValue("Exit");
             }
         }
 
