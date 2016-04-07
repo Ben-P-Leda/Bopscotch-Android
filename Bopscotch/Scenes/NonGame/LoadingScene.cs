@@ -4,7 +4,6 @@ using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-//using Windows.ApplicationModel.Store;
 
 using Leda.Core;
 using Leda.Core.Renderable;

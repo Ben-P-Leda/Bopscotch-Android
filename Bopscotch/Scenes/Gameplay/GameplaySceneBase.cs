@@ -49,8 +49,6 @@ namespace Bopscotch.Scenes.Gameplay
         protected StatusDisplay _statusDisplay;
         protected PlayerEventPopup _playerEventPopup;
 
-        protected string RaceAreaName { set { _levelFactory.RaceAreaName = value; } }
-
         protected bool _paused { get { return _pauseController.Paused; } set { _pauseController.Paused = value; } }
 
         public GameplaySceneBase(string sceneID)
@@ -184,6 +182,16 @@ namespace Bopscotch.Scenes.Gameplay
             RegisterGameObject(_speedometer);
             RegisterGameObject(_playerEventPopup);
             RegisterGameObject(_statusDisplay);
+        }
+
+        protected void ConfigureForAdventure()
+        {
+            _levelFactory.RaceAreaName = "";
+        }
+
+        protected void ConfigureForRace(string raceAreaName)
+        {
+            _levelFactory.RaceAreaName = raceAreaName;
         }
 
         private void SetForNewLevelStart()

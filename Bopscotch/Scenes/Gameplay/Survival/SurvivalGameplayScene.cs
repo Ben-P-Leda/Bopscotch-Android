@@ -229,7 +229,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             ObjectsToSerialize.Add(_levelData);
             StatusDisplay.CurrentLevelData = _levelData;
             StatusDisplay.FreezeDisplayedScore = false;
-            RaceAreaName = "";
+            ConfigureForAdventure();
 
             base.Activate();
 

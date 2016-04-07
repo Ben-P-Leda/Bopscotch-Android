@@ -30,6 +30,7 @@ namespace Bopscotch.Scenes.Gameplay.Survival
         private SurvivalAreaCompleteContentFactory _contentFactory;
 
         private Bopscotch.Facebook.ShareAction _exitShareAction;
+        private string _completedAreaName;
         private bool _displayReminderOnExit;
 
         public SurvivalAreaCompleteScene()
@@ -94,10 +95,12 @@ namespace Bopscotch.Scenes.Gameplay.Survival
 
             if ((Profile.CurrentAreaData.Name != "Tutorial") && (ContentHasBeenUnlocked))
             {
+                _completedAreaName = Profile.CurrentAreaData.Name;
                 _exitShareAction = Facebook.ShareAction.AreaComplete;
             }
             else
             {
+                _completedAreaName = "";
                 _exitShareAction = Facebook.ShareAction.None;
             }
 
@@ -173,7 +176,8 @@ namespace Bopscotch.Scenes.Gameplay.Survival
             if (_displayReminderOnExit) { NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "reminder"); }
             else { NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "survival-levels"); }
 
-            NextSceneParameters.Set("share-action", _exitShareAction);
+            NextSceneParameters.Set(Definitions.Share_Action_Parameter, _exitShareAction);
+            NextSceneParameters.Set(Definitions.Area_Name_Parameter, _completedAreaName);
 
             NextSceneType = typeof(TitleScene);
             Deactivate();

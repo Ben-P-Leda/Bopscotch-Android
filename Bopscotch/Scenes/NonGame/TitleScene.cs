@@ -344,9 +344,11 @@ namespace Bopscotch.Scenes.NonGame
             else if (string.IsNullOrEmpty(_firstDialog)) { _firstDialog = Default_First_Dialog; }
             else if ((_firstDialog == "start") && (Data.Profile.RateBuyRemindersOn)) { _firstDialog = Reminder_Dialog; }
 
-            if ((NextSceneParameters.Get<ShareAction>("share-action") != ShareAction.None) && (Game1.FacebookAdapter.IsLoggedIn))
+            if ((NextSceneParameters.Get<ShareAction>(Definitions.Share_Action_Parameter) != ShareAction.None) && (Game1.FacebookAdapter.IsLoggedIn))
             {
-                LaunchFacebookShareModal(NextSceneParameters.Get<ShareAction>("share-action"));
+                LaunchFacebookShareModal(
+                    NextSceneParameters.Get<ShareAction>(Definitions.Share_Action_Parameter),
+                    NextSceneParameters.Get<string>(Definitions.Area_Name_Parameter));
             }
 
             UnlockIfUpgradingFromLegacy();
@@ -357,9 +359,9 @@ namespace Bopscotch.Scenes.NonGame
             base.CompleteActivation();
         }
 
-        private void LaunchFacebookShareModal(ShareAction shareAction)
+        private void LaunchFacebookShareModal(ShareAction shareAction, string areaName)
         {
-            _facebookConfigurator.ConfigureForShareAction(shareAction);
+            _facebookConfigurator.ConfigureForShareAction(shareAction, areaName);
 
             Bopscotch.Interface.KeyboardHelper.BeginShowKeyboardInput(
                 Translator.Translation("Share on Facebook"),
@@ -371,16 +373,25 @@ namespace Bopscotch.Scenes.NonGame
         private void ShareResult(IAsyncResult result)
         {
             string message = Bopscotch.Interface.KeyboardHelper.EndShowKeyboardInput(result);
+
+            Android.Util.Log.Debug("LEDA-FB", string.IsNullOrWhiteSpace(message) ? "Cancelled or Empty" : message);
+
             if (!string.IsNullOrWhiteSpace(message))
             {
                 Game1.FacebookAdapter.Caption = "www.ledaentertainment.com";
                 Game1.FacebookAdapter.Description = _facebookConfigurator.PostText;
                 Game1.FacebookAdapter.AttemptPost(message);
 
+                Android.Util.Log.Debug("LEDA-FB", "Posted");
+
+                Android.Util.Log.Debug("LEDA-FB", "Lives to add: " + _facebookConfigurator.LivesToAdd.ToString());
+
                 if (_facebookConfigurator.LivesToAdd > 0)
                 {
                     Data.Profile.Lives += _facebookConfigurator.LivesToAdd;
+                    Android.Util.Log.Debug("LEDA-FB", "Lives added");
                     Data.Profile.Save();
+                    Android.Util.Log.Debug("LEDA-FB", "Profile saved");
                 }
             }
         }

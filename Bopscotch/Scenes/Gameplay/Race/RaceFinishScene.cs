@@ -14,6 +14,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
     {
         private AnimationController _animationController;
         private Bopscotch.Facebook.ShareAction _exitShareAction;
+        private string _raceAreaName;
 
         public RaceFinishScene()
             : base()
@@ -27,7 +28,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
         {
             NextSceneParameters.Clear();
             NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "start");
-            NextSceneParameters.Set("share-action", _exitShareAction);
+            NextSceneParameters.Set(Definitions.Share_Action_Parameter, _exitShareAction);
             NextSceneType = typeof(TitleScene);
             Deactivate();
         }
@@ -50,18 +51,20 @@ namespace Bopscotch.Scenes.Gameplay.Race
         {
             base.Activate();
 
-            Definitions.RaceOutcome outcome = NextSceneParameters.Get<Definitions.RaceOutcome>(Outcome_Parameter_Name);
-            bool awardLives = NextSceneParameters.Get<bool>("race-lives-awarded");
+            Definitions.RaceOutcome outcome = NextSceneParameters.Get<Definitions.RaceOutcome>(Definitions.Race_Outcome_Parameter);
+            bool awardLives = NextSceneParameters.Get<bool>(Definitions.Race_Lives_Parameter);
 
             ((ResultsDialog)_dialogs["results"]).Outcome = outcome;
             ((ResultsDialog)_dialogs["results"]).LivesAwarded = awardLives;
 
             if (outcome == Definitions.RaceOutcome.OwnPlayerWin)
             {
+                _raceAreaName = NextSceneParameters.Get<string>(Definitions.Course_Area_Parameter);
                 _exitShareAction = awardLives ? Bopscotch.Facebook.ShareAction.RaceWonAddLives : Bopscotch.Facebook.ShareAction.RaceWon;
             }
             else
             {
+                _raceAreaName = "";
                 _exitShareAction = Facebook.ShareAction.None;
             }
         }
@@ -81,7 +84,5 @@ namespace Bopscotch.Scenes.Gameplay.Race
         }
 
         private const string Background_Texture_Name = "background-2";
-
-        public const string Outcome_Parameter_Name = "race-outcome";
     }
 }

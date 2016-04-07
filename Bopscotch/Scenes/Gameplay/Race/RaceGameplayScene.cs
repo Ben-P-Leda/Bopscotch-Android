@@ -23,6 +23,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
 {
     public class RaceGameplayScene : GameplaySceneBase
     {
+        private string _raceAreaName;
         private RaceLevelData _levelData;
 
         private Communication.InterDeviceCommunicator _communicator;
@@ -117,10 +118,11 @@ namespace Bopscotch.Scenes.Gameplay.Race
             {
                 if (_progressCoordinator.Result == Definitions.RaceOutcome.OwnPlayerWin)
                 {
+                    NextSceneParameters.Set(Definitions.Course_Area_Parameter, _raceAreaName);
                     AwardLivesForWin();
                 }
 
-                NextSceneParameters.Set(RaceFinishScene.Outcome_Parameter_Name, _progressCoordinator.Result);
+                NextSceneParameters.Set(Definitions.Race_Outcome_Parameter, _progressCoordinator.Result);
                 SwitchToResultsScene();
             }
         }
@@ -167,7 +169,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
                 _quitRaceDialog.DismissWithReturnValue("");
                 _communicator.Message = "";
 
-                NextSceneParameters.Set(RaceFinishScene.Outcome_Parameter_Name, Definitions.RaceOutcome.Incomplete);
+                NextSceneParameters.Set(Definitions.Race_Outcome_Parameter, Definitions.RaceOutcome.Incomplete);
                 SwitchToResultsScene();
             }
         }
@@ -181,7 +183,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
                 AwardLivesForWin();
             }
 
-            NextSceneParameters.Set(RaceFinishScene.Outcome_Parameter_Name, outcome);
+            NextSceneParameters.Set(Definitions.Race_Outcome_Parameter, outcome);
             SwitchToResultsScene();
         }
 
@@ -228,7 +230,8 @@ namespace Bopscotch.Scenes.Gameplay.Race
             _raceStarted = false;
             _levelData = new RaceLevelData();
 
-            RaceAreaName = NextSceneParameters.Get<string>(Course_Area_Parameter);
+            _raceAreaName = NextSceneParameters.Get<string>(Definitions.Course_Area_Parameter);
+            ConfigureForRace(_raceAreaName);
 
             base.Activate();
 
@@ -239,10 +242,9 @@ namespace Bopscotch.Scenes.Gameplay.Race
             else
             {
                 _player.PlayerEventCallback = HandlePlayerEvent;
-                ((PlayerMotionEngine)_player.MotionEngine).DifficultySpeedBoosterUnit = NextSceneParameters.Get<int>(Course_Speed_Parameter);
+                ((PlayerMotionEngine)_player.MotionEngine).DifficultySpeedBoosterUnit = NextSceneParameters.Get<int>(Definitions.Course_Speed_Parameter);
 
-                //_opponentMarker.SetForRaceStart(_player.WorldPosition, _player.Mirror);
-                SetCoordinatorsForRace(NextSceneParameters.Get<string>(Course_Area_Parameter));
+                SetCoordinatorsForRace(_raceAreaName);
                 SetUpOpponentAttackEffects();
                 _waitingMessage.Activate();
             }
@@ -258,7 +260,6 @@ namespace Bopscotch.Scenes.Gameplay.Race
             base.RegisterStaticGameObjects();
 
             RegisterGameObject(_quitRaceButton);
-            //RegisterGameObject(_opponentMarker);
         }
 
         protected override void SetInterfaceDisplayObjectsForGame()
@@ -555,8 +556,5 @@ namespace Bopscotch.Scenes.Gameplay.Race
 
         private const int Exit_Sequence_Duration_In_Milliseconds = 3500;
         private const float Position_Status_Popup_Bottom_Margin = 100.0f;
-
-        public const string Course_Area_Parameter = "course-area-name";
-        public const string Course_Speed_Parameter = "course-speed";
     }
 }

@@ -133,8 +133,8 @@ namespace Bopscotch.Scenes.Gameplay.Race
         private void StartRaceForSelectedCourse(string courseName)
         {
             var areaData = (from el in Data.Profile.SimpleAreaData where el.Attribute("name").Value == courseName select el).First();
-            NextSceneParameters.Set(RaceGameplayScene.Course_Area_Parameter, courseName);
-            NextSceneParameters.Set(RaceGameplayScene.Course_Speed_Parameter, (int)areaData.Attribute("speed"));
+            NextSceneParameters.Set(Definitions.Course_Area_Parameter, courseName);
+            NextSceneParameters.Set(Definitions.Course_Speed_Parameter, (int)areaData.Attribute("speed"));
 
             Data.Profile.DecreasePlaysToNextRatingReminder();
 
@@ -161,7 +161,10 @@ namespace Bopscotch.Scenes.Gameplay.Race
         {
             ((RaceOpponentListDialog)_dialogs["opponents"]).TearDownCommunicator();
 
-            if (NextSceneParameters.Get<string>(Gameplay.Race.RaceGameplayScene.Course_Area_Parameter) != null) { MusicManager.StopMusic(); }
+            if (NextSceneParameters.Get<string>(Definitions.Course_Area_Parameter) != null)
+            { 
+                MusicManager.StopMusic(); 
+            }
 
             base.CompleteDeactivation();
         }
