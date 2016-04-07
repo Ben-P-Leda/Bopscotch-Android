@@ -29,6 +29,7 @@ namespace Bopscotch.Scenes.Gameplay.Race
             NextSceneParameters.Clear();
             NextSceneParameters.Set(TitleScene.First_Dialog_Parameter_Name, "start");
             NextSceneParameters.Set(Definitions.Share_Action_Parameter, _exitShareAction);
+            NextSceneParameters.Set(Definitions.Area_Name_Parameter, _raceAreaName);
             NextSceneType = typeof(TitleScene);
             Deactivate();
         }

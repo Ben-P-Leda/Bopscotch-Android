@@ -344,11 +344,17 @@ namespace Bopscotch.Scenes.NonGame
             else if (string.IsNullOrEmpty(_firstDialog)) { _firstDialog = Default_First_Dialog; }
             else if ((_firstDialog == "start") && (Data.Profile.RateBuyRemindersOn)) { _firstDialog = Reminder_Dialog; }
 
-            if ((NextSceneParameters.Get<ShareAction>(Definitions.Share_Action_Parameter) != ShareAction.None) && (Game1.FacebookAdapter.IsLoggedIn))
+            if (Game1.FacebookAdapter.IsLoggedIn)
             {
-                LaunchFacebookShareModal(
-                    NextSceneParameters.Get<ShareAction>(Definitions.Share_Action_Parameter),
-                    NextSceneParameters.Get<string>(Definitions.Area_Name_Parameter));
+                ShareAction shareAction = NextSceneParameters.Get<ShareAction>(Definitions.Share_Action_Parameter);
+                if (shareAction != ShareAction.None)
+                {
+                    string areaName = shareAction == ShareAction.Progress
+                        ? Data.Profile.CurrentAreaData.Name
+                        : NextSceneParameters.Get<string>(Definitions.Area_Name_Parameter);
+
+                    LaunchFacebookShareModal(NextSceneParameters.Get<ShareAction>(Definitions.Share_Action_Parameter), areaName);
+                }
             }
 
             UnlockIfUpgradingFromLegacy();
